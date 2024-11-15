@@ -82,7 +82,7 @@ export default function HomePage() {
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight">
                 Revolutionize Your Digital Landscape
                 <br className="hidden sm:inline" />
-                <span className="text-blue-500"> with Mana'o Pili</span>
+                <span className="text-blue-500"> {`with Mana'o Pili`}</span>
               </h1>
               <p className="text-xl sm:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
                 Embark on a transformative journey with our Digital Trip approach, optimizing your ServiceNow investment for unparalleled success.
@@ -100,7 +100,7 @@ export default function HomePage() {
           </div>
           <section className="py-16 bg-zinc-900">
             <div className="container mx-auto px-4">
-              <h2 className="text-4xl font-bold mb-12 text-zinc-100 text-center">Why Choose Mana'o Pili?</h2>
+              <h2 className="text-4xl font-bold mb-12 text-zinc-100 text-center">{`Why Choose Mana'o Pili?`}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {benefits.map((feature, index) => (
                   <Card

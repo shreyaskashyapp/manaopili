@@ -10,7 +10,7 @@ export default function Footer() {
             {/* Brand & CTA Section - Now Wider */}
             <div className="lg:col-span-5">
               <h2 className="text-3xl font-bold text-white mb-4">
-                Mana'o Pili
+                {`Mana'o Pili`}
               </h2>
               <p className="text-lg text-zinc-400 mb-8 max-w-lg">
                 Transform your business with data-driven insights and unlock the full potential of your organization through strategic analytics.
@@ -90,7 +90,7 @@ export default function Footer() {
           <div className="mt-16 pt-8 border-t border-zinc-800">
             <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0">
               <p className="text-sm text-zinc-500">
-                &copy; {new Date().getFullYear()} Mana'o Pili. All rights reserved.
+                &copy; {new Date().getFullYear()}{` Mana'o Pili. All rights reserved.`}
               </p>
             </div>
           </div>
