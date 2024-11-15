@@ -162,7 +162,7 @@ export default function HomePage() {
             </div>
           </section>
 
-          <section className="text-center py-8">
+          <section className="text-center py-10 pb-20">
             <div>
               <h2 className="text-3xl font-bold mb-6 text-white">Ready to Transform?</h2>
               <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">

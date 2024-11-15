@@ -85,8 +85,6 @@ export default function Footer() {
               </div>
             </div>
           </div>
-
-          {/* Footer Bottom - Enhanced */}
           <div className="mt-16 pt-8 border-t border-zinc-800">
             <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0">
               <p className="text-sm text-zinc-500">
