@@ -196,7 +196,7 @@ const comparisonData = [
         </section>
   
         <div className="container mx-auto px-4 py-12 md:py-24">
-          <div className="grid grid-cols-2 md:flex md:justify-center md:gap-10 mb-6 md:mb-12 gap-4">
+          <div className="grid grid-cols-2 md:flex md:justify-center md:gap-10 mb-10 md:mb-12 gap-4">
             {categories.map((category) => (
               <button
                 key={category}
