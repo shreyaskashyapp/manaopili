@@ -185,8 +185,8 @@ const comparisonData = [
     const [activeCategory, setActiveCategory] = useState("IMPLEMENTATIONS");
   
     return (
-      <div className="min-h-screen bg-zinc-900">
-        <section className="py-20 md:py-28 bg-gradient-to-b from-zinc-800 to-zinc-900 pb-0">
+      <div className="min-h-screen bg-zinc-900 pt-8">
+        <section className="py-20  md:py-28 py-10 bg-gradient-to-b from-zinc-800 to-zinc-900 ">
           <div className="container mx-auto px-4">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-6">Services</h1>
             <p className="text-lg md:text-xl text-zinc-300 text-center max-w-4xl mx-auto">
