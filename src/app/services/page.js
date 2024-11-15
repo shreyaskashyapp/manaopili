@@ -230,7 +230,7 @@ const comparisonData = [
                 </div>
                 <p className="text-sm text-zinc-300 mb-4">{service.description}</p>
                 <Link
-                  href={`/services/${service.slug}`}
+                  href={``}
                   className="inline-flex items-center text-sm text-blue-600 hover:text-blue-500 transition-colors"
                 >
                   Learn More <ArrowRight className="ml-2 w-4 h-4" />
