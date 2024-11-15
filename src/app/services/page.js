@@ -241,7 +241,7 @@ const comparisonData = [
   
           <div className="mt-16 text-center">
             <p className="text-lg md:text-xl text-zinc-300 mb-6 md:mb-8 px-4">
-              Ready to experience the Mana'o Pili difference?
+              {`Ready to experience the Mana'o Pili difference?`}
             </p>
             <Link
               href="/contact"
@@ -266,7 +266,7 @@ const comparisonData = [
                 )}
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-blue-600 font-medium">MANA'O PILI</span>
+                    <span className="text-blue-600 font-medium">{`MANA'O PILI`}</span>
                     <span className="text-white font-bold">{item.manaoPili}</span>
                   </div>
                   <div className="flex items-center justify-between">
@@ -274,7 +274,7 @@ const comparisonData = [
                     <span className="text-zinc-300">{item.traditional}</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-zinc-400">TRADITIONAL GSI's</span>
+                    <span className="text-zinc-400">{`TRADITIONAL GSI's`}</span>
                     <span className="text-zinc-300">{item.gsi}</span>
                   </div>
                 </div>
@@ -291,7 +291,7 @@ const comparisonData = [
 
         <div className="mt-16 text-center">
           <p className="text-lg md:text-xl text-zinc-300 mb-6 md:mb-8 px-4">
-            Ready to experience the Mana'o Pili difference?
+            {`Ready to experience the Mana'o Pili difference?`}
           </p>
           <Link
             href="/contact"
