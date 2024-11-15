@@ -190,7 +190,7 @@ const comparisonData = [
           <div className="container mx-auto px-4">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-6">Services</h1>
             <p className="text-lg md:text-xl text-zinc-300 text-center max-w-4xl mx-auto">
-              At Mana'o Pili, we specialize in delivering end-to-end solutions across all ServiceNow product lines, ensuring that your business maximizes its investment in the platform. Our team consists of highly qualified and experienced professionals—including Architects, Consultants, Business Analysts, and Project Managers—dedicated to optimizing your business processes and enhancing your ServiceNow experience.
+             {` At Mana'o Pili, we specialize in delivering end-to-end solutions across all ServiceNow product lines, ensuring that your business maximizes its investment in the platform. Our team consists of highly qualified and experienced professionals—including Architects, Consultants, Business Analysts, and Project Managers—dedicated to optimizing your business processes and enhancing your ServiceNow experience.`}
             </p>
           </div>
         </section>
