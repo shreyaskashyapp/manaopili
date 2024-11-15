@@ -139,7 +139,7 @@ export default function HomePage() {
             </div>
           </section>
 
-          <section className="mb-24 pt-12">
+          <section className=" pt-12">
             <div className="container mx-auto px-4">
               <h2 className="text-4xl font-bold mb-8 text-zinc-100 text-center">Transform Your Business</h2>
               <p className="text-xl text-zinc-300 mb-12 max-w-3xl mx-auto text-center">
@@ -162,7 +162,7 @@ export default function HomePage() {
             </div>
           </section>
 
-          <section className="text-center mb-24">
+          <section className="text-center py-8">
             <div>
               <h2 className="text-3xl font-bold mb-6 text-white">Ready to Transform?</h2>
               <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
@@ -175,46 +175,6 @@ export default function HomePage() {
             </div>
           </section>
         </div>
-
-        <footer className="bg-gray-900 text-white py-12">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div>
-                <h3 className="font-semibold mb-4 text-blue-400">Company</h3>
-                <ul className="space-y-2">
-                  <li><Link href="#" className="hover:text-blue-300 transition-colors">About Us</Link></li>
-                  <li><Link href="#" className="hover:text-blue-300 transition-colors">Careers</Link></li>
-                  <li><Link href="#" className="hover:text-blue-300 transition-colors">Survey</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-4 text-blue-400">Support</h3>
-                <ul className="space-y-2">
-                  <li><Link href="#" className="hover:text-blue-300 transition-colors">FAQ</Link></li>
-                  <li><Link href="#" className="hover:text-blue-300 transition-colors">Contact Us</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-4 text-blue-400">Legal</h3>
-                <ul className="space-y-2">
-                  <li><Link href="#" className="hover:text-blue-300 transition-colors">Privacy Policy</Link></li>
-                  <li><Link href="#" className="hover:text-blue-300 transition-colors">Cookie Policy</Link></li>
-                  <li><Link href="#" className="hover:text-blue-300 transition-colors">Terms of Service</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-4 text-blue-400">Connect</h3>
-                <div className="flex space-x-4">
-                  {/* Add social media icons here */}
-                </div>
-              </div>
-            </div>
-            <div className="mt-12 text-center text-sm text-gray-400">
-              © {new Date().getFullYear()} Mana'o Pili LLC. All rights reserved.
-            </div>
-          </div>
-        </footer>
-
         {showScrollTop && (
           <button
             onClick={scrollToTop}
