@@ -186,7 +186,7 @@ const comparisonData = [
   
     return (
       <div className="min-h-screen bg-zinc-900 pt-8">
-        <section className="py-20  md:py-28 py-10 bg-gradient-to-b from-zinc-800 to-zinc-900 ">
+        <section className="  md:py-28 py-10 bg-gradient-to-b from-zinc-800 to-zinc-900 ">
           <div className="container mx-auto px-4">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-6">Services</h1>
             <p className="text-lg md:text-xl text-zinc-300 text-center max-w-4xl mx-auto">
@@ -251,7 +251,7 @@ const comparisonData = [
             </Link>
           </div>
         <div className="mt-20">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white text-center">Why Choose Us?</h2>
+          <h2 className="text-3xl md:text-4xl font mb-8 text-white text-center">Why Choose Us?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {comparisonData.map((item, index) => (
               <div key={index} className="bg-zinc-800/50 backdrop-blur-sm rounded-lg p-6 shadow-lg border border-zinc-600/50">
@@ -259,7 +259,7 @@ const comparisonData = [
                   <div className="mr-4 text-blue-600">
                     {item.icon}
                   </div>
-                  <h3 className="text-xl font-semibold text-white">{item.category}</h3>
+                  <h3 className="text-xl font- text-white">{item.category}</h3>
                 </div>
                 {item.description && (
                   <p className="text-sm text-zinc-400 mb-4">{item.description}</p>
