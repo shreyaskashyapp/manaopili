@@ -12,6 +12,7 @@ export default function Survey() {
     method: 'blob'
   })
   const [barGraphData, setBarGraphData] = useState([])
+  const [isGraphsReady, setIsGraphsReady] = useState(false)
 
   const handleSubmit = (results) => {
     const rawData = parseResults(results, 'CSM')
@@ -41,16 +42,21 @@ export default function Survey() {
     setBarGraphData([...barData, overallBarData, implementedBarData])
   }
 
-  const generatePdf = async () => {
-    const blob = await toPDF()
-    console.log(blob)
-  }
-
   useEffect(() => {
-    if (targetRef.current && barGraphData?.length) {
-      generatePdf()
+    if (barGraphData.length > 0) {
+      setTimeout(() => setIsGraphsReady(true), 500)
     }
   }, [barGraphData])
+
+  useEffect(() => {
+    if (targetRef.current && isGraphsReady) {
+      const generatePdf = async () => {
+        const blob = await toPDF()
+        console.log(blob)
+      }
+      generatePdf()
+    }
+  }, [isGraphsReady])
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-900 to-black py-14 flex justify-center">
@@ -68,7 +74,7 @@ export default function Survey() {
           onComplete={handleSubmit}
         />
         <div
-          className="flex flex-col gap-4 fixed opacity-1 pointer-events-none"
+          className="flex flex-col gap-4 fixed pointer-events-none"
           style={{ width: '800px', height: 'auto' }}
           ref={targetRef}
         >
