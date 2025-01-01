@@ -5,6 +5,9 @@ import { CATEGORIES, findSum, getLengthFromModules, getNumberOfZeros, parseResul
 import { useEffect, useRef, useState } from 'react'
 import BarGraph from '../components/charts/barchart'
 import { usePDF } from 'react-to-pdf'
+import { Multiplechart } from '../components/charts/multiplechart'
+import { PDFHeader } from '../components/pdf-components/pdf-header'
+import { PDFFooter } from '../components/pdf-components/pdf-footer'
 
 export default function Survey() {
   const { toPDF, targetRef } = usePDF({
@@ -39,7 +42,7 @@ export default function Survey() {
     }))
 
     const barData = parseToGraph(rawData)
-    setBarGraphData([...barData, overallBarData, implementedBarData])
+    setBarGraphData([barData, overallBarData, implementedBarData])
   }
 
   useEffect(() => {
@@ -52,7 +55,7 @@ export default function Survey() {
     if (targetRef.current && isGraphsReady) {
       const generatePdf = async () => {
         const blob = await toPDF()
-        console.log(blob)
+
       }
       generatePdf()
     }
@@ -79,7 +82,18 @@ export default function Survey() {
           ref={targetRef}
         >
           {barGraphData?.map((item, index) => (
-            <BarGraph key={index} data={item} />
+            Array.isArray(item[0]) ?
+              <div className='flex flex-col gap-8'>
+                <PDFHeader />
+                <Multiplechart data={item} />
+                <PDFFooter />
+              </div>
+              :
+              <div className='flex flex-col gap-8'>
+                <PDFHeader />
+                <BarGraph key={index} data={item} />
+                <PDFFooter/>
+              </div>
           ))}
         </div>
       </div>

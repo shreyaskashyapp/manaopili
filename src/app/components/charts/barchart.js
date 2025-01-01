@@ -1,82 +1,77 @@
 'use client'
 
 import { useState } from 'react'
-import { Bar, BarChart, XAxis, YAxis, ResponsiveContainer, CartesianGrid } from 'recharts'
+import { Bar, BarChart, XAxis, YAxis, ResponsiveContainer, CartesianGrid, LabelList } from 'recharts'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
-const colorPalette = [
-  'hsl(var(--chart-1) / 0.8)',
-  'hsl(var(--chart-2) / 0.8)',
-  'hsl(var(--chart-3) / 0.8)',
-  'hsl(var(--chart-4) / 0.8)',
-  'hsl(var(--chart-5) / 0.8)'
-]
 
-export default function BarGraph(barData) {
-  const [data, setData] = useState(barData?.data)
 
-  function generateRandomData() {
-    const labels = ['A', 'B', 'C']
-    // return labels.map((label, index) => ({
-    //   name: label,
-    //   value: Math.floor(Math.random() * 6),
-    //   fill: colorPalette[index]
-    // }))
-  }
-
-  const handleRegenerateData = () => {
-    console.log(generateRandomData)
-    setData(generateRandomData())
-  }
-
+export default function Barchart({data}) {
   return (
     <Card className="w-full max-w-3xl mx-auto overflow-hidden">
-      <CardHeader className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 pb-8">
-        <CardTitle className="text-2xl font-bold text-foreground/90">{data?.[0]?.title}</CardTitle>
+      <CardHeader className="bg-gradient-to-b from-sky-100 to-sky-50 pb-2">
+        <CardTitle className="text-lg font-semibold text-gray-800">
+          Implemented CSM Investment Scores
+        </CardTitle>
       </CardHeader>
-      <CardContent className="pt-6 pb-8 px-8">
+      <CardContent className="pt-2 pb-8 px-4 bg-gradient-to-b from-sky-50 to-sky-100">
         <ChartContainer
           config={{
             value: {
-              label: "Value",
+              label: "Score",
               color: "hsl(var(--chart-1))",
             },
           }}
-          className="h-[300px]"
+          className="h-[350px]"
         >
-          <ResponsiveContainer width="90%" height="100%">
-            <BarChart data={data} margin={{ top: 10, right: 10, left: 10, bottom: 20 }} barGap={2} barSize={72}>
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart 
+              data={data} 
+              margin={{ top: 20, right: 20, left: 20, bottom: 40 }}
+              barSize={35}
+              barGap={0}
+            >
               <CartesianGrid 
-                stroke="hsl(var(--border) / 0.5)" 
-                vertical={false} 
-                strokeWidth={0.5} // Reduced stroke width for thinner grid lines
+                horizontal={true}
+                vertical={false}
+                stroke="#E5E7EB"
+                strokeDasharray="3 3"
               />
               <XAxis 
                 dataKey="name" 
-                tick={{ fill: 'hsl(var(--foreground) / 0.7)' }}
-                axisLine={{ stroke: 'hsl(var(--border) / 0.5)', strokeWidth: 0.5 }} // Thinner X-axis line
+                tick={{ fill: '#374151', fontSize: 11 }}
+                axisLine={{ stroke: '#E5E7EB' }}
+                tickLine={false}
+                interval={0}
               />
               <YAxis 
-                tick={{ fill: 'hsl(var(--foreground) / 0.7)' }}
-                axisLine={{ stroke: 'hsl(var(--border) / 0.5)', strokeWidth: 0.5 }} // Thinner Y-axis line
-              />
-              <ChartTooltip
-                content={<ChartTooltipContent />}
-                cursor={{ fill: 'hsl(var(--accent) / 0.1)' }}
+                tick={{ fill: '#374151', fontSize: 11 }}
+                axisLine={{ stroke: '#E5E7EB' }}
+                tickLine={false}
+                domain={[0, 5]}
+                ticks={[0, 1, 2, 3, 4, 5]}
               />
               <Bar 
                 dataKey="value" 
-                radius={[8, 8, 8, 8]}
-                strokeWidth={0.5} // Reduced stroke width for thinner bar outlines
-                className="drop-shadow-md transition-all duration-300 hover:brightness-110"
-              />
+                fill={(d) => d.fill}
+                radius={[0, 0, 0, 0]}
+              >
+                
+                <LabelList 
+                  dataKey="value" 
+                  position="top" 
+                  fill="#374151" 
+                  fontSize={11} 
+                />
+              </Bar>
             </BarChart>
           </ResponsiveContainer>
         </ChartContainer>
+        <div className="bg-[#1a365d] text-white text-xs p-2 text-center mt-2">
+          Aggregated scores for all implemented CSM modules.
+        </div>
       </CardContent>
     </Card>
   )
 }
-
