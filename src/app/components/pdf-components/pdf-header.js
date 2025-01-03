@@ -10,7 +10,7 @@ export function PDFHeader() {
       }}
     >
       <div className="space-y-2">
-        <h1 className="text-xl font-light tracking-wide">Mana'o Pili LLC</h1>
+        <h1 className="text-xl font-light tracking-wide">{`Mana'o Pili LLC`}</h1>
         <h2 className="text-4xl leading-tight font-semibold max-w-3xl">
         ServiceNow Technology Workflows (Tx) - Results
         </h2>
