@@ -3,13 +3,29 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ChartContainer, ChartTooltip } from "@/components/ui/chart"
 import { Bar, BarChart, CartesianGrid, LabelList, ResponsiveContainer, XAxis, YAxis, Legend, Tooltip, Cell } from "recharts"
 
-// Single bar chart component
 export default function Barchart({ data }) {
   const colors = [
     'hsl(var(--chart-1))',
     'hsl(var(--chart-2))',
     'hsl(var(--chart-3))',
   ]
+
+  const CustomizedLabel = (props) => {
+    const { x, y, value } = props;
+    return (
+      <text 
+        x={x + 17.5} 
+        y={y - 10} 
+        fill="hsl(var(--foreground))"
+        fontSize={12}
+        textAnchor="middle"
+        dominantBaseline="middle"
+      >
+        {value.toFixed(2)}
+      </text>
+    );
+  };
+
   return (
     <Card className="w-full bg-background mx-auto">
       <CardHeader>
@@ -17,7 +33,7 @@ export default function Barchart({ data }) {
         <CardDescription>Aggregated scores for all implemented CSM modules</CardDescription>
       </CardHeader>
       <CardContent className="pt-1">
-      <ChartContainer
+        <ChartContainer
           config={Object.fromEntries(data.map((item, index) => [
             item.name,
             { label: item.name, color: colors[index % colors.length] }
@@ -46,7 +62,6 @@ export default function Barchart({ data }) {
                 domain={[0, 5]}
                 ticks={[0, 1, 2, 3, 4, 5]}
               />
-              
               <Bar
                 dataKey="value"
                 radius={[4, 4, 0, 0]}
@@ -55,12 +70,8 @@ export default function Barchart({ data }) {
                   <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
                 ))}
                 <LabelList
-                  dataKey="value"
+                  content={<CustomizedLabel />}
                   position="top"
-                  fill="hsl(var(--foreground))"
-                  fontSize={12}
-                  fontWeight="normal" 
-                  
                 />
               </Bar>
             </BarChart>
@@ -70,4 +81,3 @@ export default function Barchart({ data }) {
     </Card>
   )
 }
-
