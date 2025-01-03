@@ -34,11 +34,11 @@ export default function Header() {
                                 {item.label}
                             </Link>
                         ))}
-                        <Button className="bg-blue-600 hover:bg-blue-700 text-zinc-100">
-                            <Link href={'/survey'}>
+                        <Link href={'/survey'}>
+                        <Button className="bg-blue-600 hover:bg-blue-700 text-zinc-100 rounded-full">
                             Survey
-                            </Link>
                         </Button>
+                        </Link>
                     </div>
                     <Button
                         variant="ghost"

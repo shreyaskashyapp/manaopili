@@ -16,15 +16,15 @@ export default function Barchart({ data }) {
         <CardTitle className="text-2xl font-bold">Implemented CSM Investment Scores</CardTitle>
         <CardDescription>Aggregated scores for all implemented CSM modules</CardDescription>
       </CardHeader>
-      <CardContent className="pt-4 pb-8">
+      <CardContent className="pt-1">
       <ChartContainer
           config={Object.fromEntries(data.map((item, index) => [
             item.name,
             { label: item.name, color: colors[index % colors.length] }
           ]))}
-          className="h-[400px]"
+          className="h-[350px]"
         >
-          <ResponsiveContainer width="100%" height="100%">
+          <ResponsiveContainer width="80%" height="80%">
             <BarChart
               data={data}
               margin={{ top: 20, right: 30, left: 20, bottom: 40 }}

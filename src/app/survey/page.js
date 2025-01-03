@@ -8,6 +8,7 @@ import { usePDF } from 'react-to-pdf'
 import { Multiplechart } from '../components/charts/multiplechart'
 import { PDFHeader } from '../components/pdf-components/pdf-header'
 import { PDFFooter } from '../components/pdf-components/pdf-footer'
+import SurveyText from '../components/pdf-components/survey-text'
 
 export default function Survey() {
   const { toPDF, targetRef } = usePDF({
@@ -89,9 +90,10 @@ export default function Survey() {
                 <PDFFooter />
               </div>
               :
-              <div className='flex flex-col gap-[152px]'>
+              <div className={`flex flex-col ${index === 2 ? 'gap-[2px]' : 'gap-[185px]'}`}>
                 <PDFHeader/>
                 <BarGraph key={index} data={item} />
+                {index===2 && <SurveyText/>}
                 <PDFFooter/>
               </div>
           ))}

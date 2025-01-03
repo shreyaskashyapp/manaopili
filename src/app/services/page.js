@@ -244,8 +244,8 @@ const comparisonData = [
               {`Ready to experience the Mana'o Pili difference?`}
             </p>
             <Link
-              href="/contact"
-              className="inline-flex items-center justify-center h-12 px-8 text-base font-medium text-white bg-blue-600 hover:bg-blue-600 rounded-md transition-colors"
+              href="/survey"
+              className="inline-flex items-center justify-center h-12 px-8 text-base font-medium text-white bg-blue-600 hover:bg-blue-600 rounded-full transition-colors"
             >
               Get Started
             </Link>
@@ -294,8 +294,8 @@ const comparisonData = [
             {`Ready to experience the Mana'o Pili difference?`}
           </p>
           <Link
-            href="/contact"
-            className="inline-flex items-center justify-center h-12 px-8 text-base font-medium text-white bg-blue-600 hover:bg-blue-600 rounded-md transition-colors"
+            href="/survey"
+            className="inline-flex items-center justify-center h-12 px-8 text-base font-medium text-white bg-blue-600 hover:bg-blue-600 rounded-full transition-colors"
           >
             Get Started
           </Link>
