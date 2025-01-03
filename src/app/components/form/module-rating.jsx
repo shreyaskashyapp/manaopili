@@ -23,7 +23,7 @@ export function ModuleRatingForm({
     <Card className="w-full bg-gray-900/50 border-gray-800 backdrop-blur-sm h-full" data-module-slug={moduleSlug}>
       <CardHeader className="border-b border-gray-800 pb-4">
         <CardTitle className="space-y-2">
-          <span className="text-xl text-white font-medium line-clamp-2">{moduleName}</span>
+          <span className="text-lg text-white font-medium line-clamp-1">{moduleName}</span>
           <span className="px-3 py-1 rounded-full text-sm bg-blue-500/10 text-blue-400 border border-blue-500/20 inline-block">
             {category}
           </span>

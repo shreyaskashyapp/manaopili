@@ -2,7 +2,7 @@
 
 export function PDFFooter() {
   return (
-    <div className="bg-black text-white p-4 w-full absolute bottom-0">
+    <div className="bg-black text-white p-4 w-full">
       <div className="text-center">
         <p className="mb-2">© {new Date().getFullYear()} Mana&apos;o Pili LLC. All rights reserved.</p>
         <p className="text-gray-400 text-sm">
@@ -10,5 +10,5 @@ export function PDFFooter() {
         </p>
       </div>
     </div>
-  )
+  );
 }

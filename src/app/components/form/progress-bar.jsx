@@ -2,7 +2,7 @@ export function ProgressBar({ current, total, category }) {
   const progress = (current / total) * 100
 
   return (
-    <div className="w-full space-y-2">
+    <div className="w-full space-y-1">
       <div className="flex items-center justify-between text-sm">
         <div className="flex items-center gap-2">
           <div className="h-2 w-2 rounded-full bg-blue-500" />

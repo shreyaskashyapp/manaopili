@@ -83,14 +83,14 @@ export default function Survey() {
         >
           {barGraphData?.map((item, index) => (
             Array.isArray(item[0]) ?
-              <div className='flex flex-col gap-8'>
-                <PDFHeader />
-                <Multiplechart data={item} />
+              <div className='flex flex-col gap-[152px] '>
+                <PDFHeader/>
+                <Multiplechart data={item}/>
                 <PDFFooter />
               </div>
               :
-              <div className='flex flex-col gap-8'>
-                <PDFHeader />
+              <div className='flex flex-col gap-[152px]'>
+                <PDFHeader/>
                 <BarGraph key={index} data={item} />
                 <PDFFooter/>
               </div>

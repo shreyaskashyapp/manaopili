@@ -56,7 +56,7 @@ export function SurveyForm({ config, onComplete }) {
   }
 
   return (
-    <div className="max-w-7xl mx-auto space-y-8 p-6">
+    <div className="max-w-7xl mx-auto space-y-4 p-6">
       <ProgressBar 
         current={currentIndex + 1}
         total={totalModules}
@@ -78,7 +78,7 @@ export function SurveyForm({ config, onComplete }) {
         ))}
       </div>
 
-      <div className="flex justify-between pt-4">
+      <div className="flex justify-between ">
         <Button
           variant="outline"
           onClick={handlePrevious}
