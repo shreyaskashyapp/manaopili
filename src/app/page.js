@@ -7,7 +7,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import Link from 'next/link'
 import Image from 'next/image'
 import Header from './components/header'
-import Survey from './survey/page'
 export default function HomePage() {
   const [activeFeature, setActiveFeature] = useState(0)
   const [showScrollTop, setShowScrollTop] = useState(false)
@@ -82,7 +81,7 @@ export default function HomePage() {
               alt="Background"
               layout="fill"
               objectFit="cover"
-              quality={100}
+              priority
             />
             <div className="absolute inset-0 bg-gradient-to-br from-black/70 to-blue-900/50 via-gray-800/60" />
             <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
