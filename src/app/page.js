@@ -7,7 +7,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import Link from 'next/link'
 import Image from 'next/image'
 import Header from './components/header'
-
 export default function HomePage() {
   const [activeFeature, setActiveFeature] = useState(0)
   const [showScrollTop, setShowScrollTop] = useState(false)
@@ -82,7 +81,7 @@ export default function HomePage() {
               alt="Background"
               layout="fill"
               objectFit="cover"
-              quality={100}
+              priority
             />
             <div className="absolute inset-0 bg-gradient-to-br from-black/70 to-blue-900/50 via-gray-800/60" />
             <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
@@ -175,21 +174,23 @@ export default function HomePage() {
               <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
                 Take the first step by completing our complimentary Digital Trip survey for your ServiceNow product line.
               </p>
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8">
-                Take Our Survey
+              <Link href={'/survey'}>
+              <Button  size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 rounded-full">
+                Take Our Survey    
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
+              </Link>
             </div>
           </section>
         </div>
         {showScrollTop && (
-          <button
-            onClick={scrollToTop}
-            className="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors"
-            aria-label="Scroll to top"
-          >
+            <Button size="lg" 
+              onClick={scrollToTop}
+              className=" fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors"
+              aria-label="Scroll to top"
+            >
             <ArrowUp className="h-6 w-6" />
-          </button>
+          </Button>
         )}
       </div>
     </div>

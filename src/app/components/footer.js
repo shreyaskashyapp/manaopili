@@ -17,7 +17,7 @@ export default function Footer() {
               </p>
               <a 
                 href="/survey" 
-                className="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-blue-600 hover:bg-blue-500 rounded-lg transition-all duration-200 group shadow-lg hover:shadow-blue-500/25"
+                className="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-blue-600 hover:bg-blue-500 rounded-full font-heading transition-all duration-200 group shadow-lg hover:shadow-blue-500/25"
               >
                 Take Our Survey
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
