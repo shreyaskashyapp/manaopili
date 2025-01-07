@@ -54,8 +54,8 @@ export function Multiplechart({ data }) {
           className="h-[400px]"
         >
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart 
-              data={chartData} 
+            <BarChart
+              data={chartData}
               margin={{ top: 20, right: 30, left: 20, bottom: 40 }}
               barSize={35}
               barGap={8}
@@ -100,13 +100,13 @@ export function Multiplechart({ data }) {
               />
               <Legend />
               <Bar dataKey="people" fill="hsl(var(--chart-1))" radius={[4, 4, 0, 0]}>
-                <LabelList dataKey="people" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" />
+                <LabelList dataKey="people" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" formatter={(value) => value.toFixed(2)} />
               </Bar>
               <Bar dataKey="process" fill="hsl(var(--chart-2))" radius={[4, 4, 0, 0]}>
-                <LabelList dataKey="process" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" />
+                <LabelList dataKey="process" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" formatter={(value) => value.toFixed(2)} />
               </Bar>
               <Bar dataKey="technology" fill="hsl(var(--chart-3))" radius={[4, 4, 0, 0]}>
-                <LabelList dataKey="technology" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" />
+                <LabelList dataKey="technology" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" formatter={value => value.toFixed(2)} />
               </Bar>
             </BarChart>
           </ResponsiveContainer>
