@@ -30,7 +30,7 @@ export function Multiplechart({ data }) {
   return (
     <Card className="w-full bg-background mx-auto">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold"></CardTitle>
+        <CardTitle className="text-2xl font-bold">{'CSM Investment Scores by Product Suite'}</CardTitle>
         <CardDescription>
           Individualized scores for implementation of the ServiceNow CSM suite for investment into people, process, and technology.
         </CardDescription>
