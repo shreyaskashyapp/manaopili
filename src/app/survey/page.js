@@ -32,14 +32,14 @@ export default function Survey() {
       name: key,
       value: overall_module_sum[key] / getLengthFromModules(csmSurveyConfig),
       fill: 'red',
-      title: 'Overall'
+      title: 'Aggregated Scores for All CSM Modules'
     }))
 
     const implementedBarData = Object.keys(overall_module_sum).map(key => ({
       name: key,
       value: overall_module_sum[key] / (getLengthFromModules(csmSurveyConfig) - getNumberOfZeros(results, key)),
       fill: 'hsl(var(--chart-1) / 0.8)',
-      title: 'Implemented Investment Scores'
+      title: 'Aggregated Scores For All Implemented CSM Modules'
     }))
 
     const barData = parseToGraph(rawData)
@@ -85,16 +85,21 @@ export default function Survey() {
           {barGraphData?.map((item, index) => (
             Array.isArray(item[0]) ?
               <div className='flex flex-col gap-[152px] ' key={`surevey-element-${index}`}>
-                <PDFHeader/>
-                <Multiplechart data={item}/>
+                <PDFHeader />
+                <Multiplechart
+                  data={item} />
                 <PDFFooter />
               </div>
               :
               <div className={`flex flex-col ${index === 2 ? 'gap-[2px]' : 'gap-[185px]'}`} key={`surevey-element-${index}`}>
-                <PDFHeader/>
-                <BarGraph key={index} data={item} />
-                {index===2 && <SurveyText/>}
-                <PDFFooter/>
+                <PDFHeader />
+                <BarGraph
+                  key={index}
+                  data={item}
+                  index={index}
+                />
+                {index === (barGraphData.length-1) && <SurveyText />}
+                <PDFFooter />
               </div>
           ))}
         </div>

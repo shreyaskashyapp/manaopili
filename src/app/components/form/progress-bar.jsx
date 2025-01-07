@@ -9,7 +9,7 @@ export function ProgressBar({ current, total, category }) {
           <span className="text-blue-400 font-medium">{category}</span>
         </div>
         <span className="text-gray-400">
-          Module {current} of {total}
+          Showing {current} of {total} modules
         </span>
       </div>
       <div className="h-2 bg-gray-800 rounded-full overflow-hidden">

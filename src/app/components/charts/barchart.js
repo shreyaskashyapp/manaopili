@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ChartContainer, ChartTooltip } from "@/components/ui/chart"
 import { Bar, BarChart, CartesianGrid, LabelList, ResponsiveContainer, XAxis, YAxis, Legend, Tooltip, Cell } from "recharts"
 
-export default function Barchart({ data }) {
+export default function Barchart({ data}) {
   const colors = [
     'hsl(var(--chart-1))',
     'hsl(var(--chart-2))',
@@ -29,8 +29,7 @@ export default function Barchart({ data }) {
   return (
     <Card className="w-full bg-background mx-auto">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold">Implemented CSM Investment Scores</CardTitle>
-        <CardDescription>Aggregated scores for all implemented CSM modules</CardDescription>
+        <CardTitle className="text-2xl font-bold">{data?.[0]?.title}</CardTitle>
       </CardHeader>
       <CardContent className="pt-1">
         <ChartContainer
