@@ -36,9 +36,9 @@ export default function Header() {
                             </Link>
                         ))}
                         <Link href={'/survey'}>
-                        <Button className="bg-blue-600 hover:bg-blue-700 text-zinc-100 rounded-full">
-                            Survey
-                        </Button>
+                            <Button className="bg-blue-600 hover:bg-blue-700 text-zinc-100 rounded-full">
+                                Survey
+                            </Button>
                         </Link>
                     </div>
                     <Button
@@ -69,9 +69,11 @@ export default function Header() {
                                 {item.label}
                             </Link>
                         ))}
-                        <Button className="bg-blue-600 hover:bg-blue-700 text-zinc-100 w-full">
-                            Survey
-                        </Button>
+                        <Link href={'/survey'}>
+                            <Button className="bg-blue-600 hover:bg-blue-700 text-zinc-100 w-full">
+                                Survey
+                            </Button>
+                        </Link>
                     </nav>
                 </div>
             )}
