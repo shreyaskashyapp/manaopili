@@ -88,7 +88,7 @@ export default function Footer() {
           <div className="mt-16 pt-8 border-t border-zinc-800">
             <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0">
               <p className="text-sm text-zinc-500">
-                &copy; {new Date().getFullYear()}{` Mana'o Pili. All rights reserved.`}
+                &copy; {`2025 Mana'o Pili. All rights reserved.`}
               </p>
             </div>
           </div>

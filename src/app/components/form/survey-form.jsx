@@ -1,11 +1,11 @@
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { ModuleRatingForm } from "./module-rating"
 import { ProgressBar } from "./progress-bar"
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 export function SurveyForm({ config, onComplete }) {
-  const allModules = config.categories.flatMap(category => 
+  const allModules = config.categories.flatMap(category =>
     category.modules.map(module => ({
       ...module,
       category: category.name,
@@ -20,9 +20,21 @@ export function SurveyForm({ config, onComplete }) {
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [results, setResults] = useState(allModules)
+  const [isLargeScreen, setIsLargeScreen] = useState(false)
 
   const totalModules = results.length
-  const cardsPerView = 3 // Number of cards to show on large screens
+  const cardsPerView = isLargeScreen ? 3 : 1
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const checkScreenSize = () => {
+        setIsLargeScreen(window.innerWidth >= 1024)
+      }
+      checkScreenSize()
+      window.addEventListener('resize', checkScreenSize)
+      return () => window.removeEventListener('resize', checkScreenSize)
+    }
+  }, [])
 
   const visibleModules = useMemo(() => {
     const modules = []
@@ -30,7 +42,7 @@ export function SurveyForm({ config, onComplete }) {
       modules.push(results[i])
     }
     return modules
-  }, [currentIndex, results, totalModules])
+  }, [currentIndex, results, totalModules, cardsPerView])
 
   const handleRatingChange = (index, ratings) => {
     const updatedResults = [...results]
@@ -42,8 +54,8 @@ export function SurveyForm({ config, onComplete }) {
   }
 
   const handleNext = () => {
-    if (currentIndex + 1 < totalModules) {
-      setCurrentIndex(currentIndex + 1)
+    if (currentIndex + cardsPerView < totalModules) {
+      setCurrentIndex(currentIndex + cardsPerView)
     } else {
       onComplete(results)
     }
@@ -51,21 +63,21 @@ export function SurveyForm({ config, onComplete }) {
 
   const handlePrevious = () => {
     if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1)
+      setCurrentIndex(Math.max(0, currentIndex - cardsPerView))
     }
   }
 
   return (
     <div className="max-w-7xl mx-auto space-y-4 p-6">
-      <ProgressBar 
-        current={currentIndex + 1}
+      <ProgressBar
+        current={Math.min(currentIndex + cardsPerView, totalModules)}
         total={totalModules}
         category={visibleModules[0]?.category}
       />
-      
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {visibleModules.map((module, index) => (
-          <div key={`${module.name}-${currentIndex + index}`} className={index === 0 ? 'block' : 'hidden lg:block'}>
+          <div key={`${module.slug}-${currentIndex + index}`} className={isLargeScreen ? 'block' : (index === 0 ? 'block' : 'hidden')}>
             <ModuleRatingForm
               key={`${module.slug}-${currentIndex + index}`}
               moduleName={module.name}
@@ -92,8 +104,8 @@ export function SurveyForm({ config, onComplete }) {
           onClick={handleNext}
           className="bg-blue-600 hover:bg-blue-700 text-white px-8"
         >
-          {currentIndex + 1 >= totalModules ? 'Complete' : 'Next'}
-          {currentIndex + 1 < totalModules && (
+          {currentIndex + cardsPerView >= totalModules ? 'Complete' : 'Next'}
+          {currentIndex + cardsPerView < totalModules && (
             <ChevronRight className="w-4 h-4 ml-2" />
           )}
         </Button>
