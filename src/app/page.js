@@ -75,18 +75,17 @@ export default function HomePage() {
       <Header />
       <div className="w-full ">
         <div className="min-h-screen bg-black">
-        <div className="relative h-[800px] w-full flex flex-col items-center justify-center overflow-hidden">
-        <Image
+          <div className="relative h-[800px] w-full flex flex-col items-center justify-center overflow-hidden">
+            <Image
               src="/bg_main.png"
               alt="Background"
               layout="fill"
               objectFit="cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/70 to-blue-900/50 via-gray-800/60" />
             <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font text-white mb-6 leading-tight">
-                Revolutionize Your Digital Landscape with
+                Achieve Digital Transformation with
                 <br className="hidden sm:inline" />
                 <span className="text-[#deff00] italic"> {`Mana'o Pili`}</span>
               </h1>
@@ -94,13 +93,11 @@ export default function HomePage() {
                 Embark on a transformative journey with our Digital Trip approach, optimizing your ServiceNow investment for unparalleled success.
               </p>
               <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg font-heading rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
-                  Start Your Journey
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button size="lg" variant="outline" className="text-blue-400 border-blue-400 font-heading hover:bg-blue-900/50 px-8 py-6 text-lg rounded-full shadow-md hover:shadow-lg transition-all duration-300">
-                  Explore Our Solutions
-                </Button>
+                <Link href="/survey">
+                  <Button size="lg" variant="outline" className="text-[#0328fa]  bg-blue-200 font-heading hover:bg-[#deff00] px-20 py-6 text-2xl rounded-full shadow-md hover:shadow-lg transition-all duration-300">
+                    Get Started
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
@@ -136,7 +133,7 @@ export default function HomePage() {
                       </div>
                       <h3 className="text-2xl font-semibold mb-4 text-zinc-100 text-center">{benefits[activeFeature]?.title}</h3>
                       <p className="text-xl text-zinc-300 text-center max-w-2xl mx-auto">
-                        { benefits[activeFeature]?.description}
+                        {benefits[activeFeature]?.description}
                       </p>
                     </div>
                   </CardContent>
@@ -175,20 +172,20 @@ export default function HomePage() {
                 Take the first step by completing our complimentary Digital Trip survey for your ServiceNow product line.
               </p>
               <Link href={'/survey'}>
-              <Button  size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 rounded-full">
-                Take Our Survey    
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 rounded-full">
+                  Take Our Survey
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
               </Link>
             </div>
           </section>
         </div>
         {showScrollTop && (
-            <Button size="lg" 
-              onClick={scrollToTop}
-              className=" fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors"
-              aria-label="Scroll to top"
-            >
+          <Button size="lg"
+            onClick={scrollToTop}
+            className=" fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors"
+            aria-label="Scroll to top"
+          >
             <ArrowUp className="h-6 w-6" />
           </Button>
         )}

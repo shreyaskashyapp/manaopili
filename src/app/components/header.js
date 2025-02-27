@@ -1,12 +1,29 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Menu, X } from 'lucide-react'
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [isScrolled, setIsScrolled]=useState(false)
+
+    useEffect(()=>{
+        const handleScroll=()=>{
+            if (window.scrollY>50){
+                setIsScrolled(true)
+            }
+            else{
+                setIsScrolled(false)
+            }
+        }
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+      }, []);
+
+
 
     const navItems = [
         { href: "/services", label: "Services" },
@@ -16,8 +33,8 @@ export default function Header() {
     ]
 
     return (
-        <header className="bg-zinc-900 shadow-md fixed top-0 left-0 right-0 z-50">
-            <div className="container mx-auto px-4 py-1">
+        <header className={`${isScrolled?"bg-[#141414]":"bg-transparent"} transition-colors duration-500 fixed top-0 left-0 right-0 z-50`}>
+            <div className="container mx-auto md:px-10 px-4 py-2">
                 <nav className="flex justify-between items-center h-16">
                     <Link href="/" className="text-2xl font-bold text-blue-500">
                         <div className="flex gap-0 items-center fill-white h-[20px]">
@@ -30,14 +47,15 @@ export default function Header() {
                             <Link
                                 key={item.href}
                                 href={item.href}
-                                className="text-zinc-100 hover:text-blue-400 transition-colors"
+                                className="text-zinc-100 hover:text-[#deff00] transition-colors"
                             >
                                 {item.label}
                             </Link>
                         ))}
                         <Link href={'/survey'}>
-                            <Button className="bg-blue-600 hover:bg-blue-700 text-zinc-100 rounded-full">
-                                Survey
+                            <Button className="hover:text-[#deff00] text-white font-thin text-xl flex items-center gap-2 rounded-full px-4 bg-transparent border-[#deff00] border-2">
+                                SURVEY
+                                <Image src="/arrow_yellow.png" alt="Arrow" width={15} height={15} />
                             </Button>
                         </Link>
                     </div>
