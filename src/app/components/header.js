@@ -88,8 +88,9 @@ export default function Header() {
                             </Link>
                         ))}
                         <Link href={'/survey'}>
-                            <Button className="bg-blue-600 hover:bg-blue-700 text-zinc-100 w-full">
-                                Survey
+                        <Button className="flex hover:text-[#deff00] text-white font-thin text-xl items-center gap-2 rounded-full px-4 bg-transparent border-[#deff00] border-2">
+                                SURVEY
+                                <Image src="/arrow_yellow.png" alt="Arrow" width={15} height={15} />
                             </Button>
                         </Link>
                     </nav>
