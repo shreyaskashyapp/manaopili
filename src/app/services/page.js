@@ -149,7 +149,7 @@ export default function Component() {
   return (
     <div className=" bg-[#141414]">
       <div className="w-full">
-        <div className="relative h-[90vh] w-full flex flex-col justify-center overflow-hidden">
+        <div className="relative h-[100vh] w-full flex flex-col justify-center overflow-hidden">
           <div className="absolute inset-0 z-0">
             <Image
               src="/services_bg.png"

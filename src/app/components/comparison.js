@@ -65,7 +65,7 @@ const comparisonData = [
     const value = parseInt(percentage)
     return (
       <div className="w-full bg-[#141414] rounded-full h-3 mt-2">
-        <div className="bg-[#deff00] h-3 rounded-full" style={{ width: `${value}%` }}></div>
+        <div className="bg-[#deff00] h-[8px] rounded-full" style={{ width: `${value}%` }}></div>
       </div>
     )
   }

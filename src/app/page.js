@@ -23,7 +23,7 @@ export default function HomePage() {
     <div className="bg-[#141414] text-white">
       <div className="w-full"> 
         <div className="">
-          <div className="relative h-[90vh] w-full flex flex-col items-center justify-center overflow-hidden">
+          <div className="relative h-[100vh] w-full flex flex-col items-center justify-center overflow-hidden">
             <Image
               src="/bg_main.png"
               alt="Background"
