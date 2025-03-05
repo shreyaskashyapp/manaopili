@@ -105,7 +105,7 @@ export default function Comparison() {
               className={`flex-1 py-3 text-lg font-medium border-b-2 ${activeTab === "manaopili" ? "border-[#deff00] text-[#deff00]" : "border-transparent text-gray-400"
                 }`}
             >
-              Mana'O Pili
+              {`Mana'O Pili`}
             </button>
             <button
               onClick={() => setActiveTab("traditional")}
@@ -193,7 +193,7 @@ export default function Comparison() {
             {/* ManaoPili Card */}
             <div className="w-full md:w-[30%] bg-gray-900/20 rounded-lg overflow-hidden border-2 border-[#deff00]">
               <div className="bg-[#deff00] p-4 text-center">
-                <h3 className="text-2xl font-bold text-black">Mana'O Pili</h3>
+                <h3 className="text-2xl font-bold text-black">{`Mana'O Pili`}</h3>
               </div>
 
               {comparisonData.map((item, index) => (

@@ -164,10 +164,10 @@ export default function Component() {
               Services
             </h1>
             <p className="text-xl sm:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto ">
-              At Mana'o Pili, we specialize in delivering end-to-end solutions across all ServiceNow product lines, 
+              {`At Mana'o Pili, we specialize in delivering end-to-end solutions across all ServiceNow product lines, 
               ensuring that your business maximizes its investment in the platform. Our team consists of highly 
               qualified and experienced professionals—including Architects, Consultants, Business Analysts, 
-              and Project Managers—dedicated to optimizing your business processes and enhancing your ServiceNow experience.
+              and Project Managers—dedicated to optimizing your business processes and enhancing your ServiceNow experience.`}
             </p>
           </div>
         </div>

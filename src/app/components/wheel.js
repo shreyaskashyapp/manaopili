@@ -43,7 +43,7 @@ export default function WhyManaopiliWheel() {
         <section className="pb-20 ">
             <div className='container mx-auto gap'>
                 <div className='flex justify-center items-center md:gap-2 gap-0 px-3  '>
-                    <h2 className="text-5xl font-normal text-[#e2e2e2] text-center pb-2">Why Mana'O Pili?</h2>
+                    <h2 className="text-5xl font-normal text-[#e2e2e2] text-center pb-2">{`Why Mana'O Pili?`}</h2>
                 </div>
                 <div className=' flex justify-center items-center'>
                     <div className="circle_container">
