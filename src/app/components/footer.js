@@ -25,14 +25,11 @@ const socialLinks = [
 export default function Footer() {
   return (
     <footer
-      className="relative bg-[#141414] text-zinc-300 border-gray-600"
-      style={{
-        backgroundImage: "url('/footerCircle.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
+      className="relative bg-gradient-to-br from-neutral-900 via-blue-800 to-zinc-700 text-zinc-300 border-red-500"
     >
+    {/* <footer
+      className="relative bg-gradient-to-br from-zinc-900 to-[#141414] text-zinc-300 border-red-500"
+    > */}
       <div className="container mx-auto px-6 py-6 lg:py-10 z-10 relative">
         <div className="max-w-7xl mx-auto">
           {/* Main Content */}
