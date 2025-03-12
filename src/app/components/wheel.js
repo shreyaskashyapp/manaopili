@@ -1,13 +1,12 @@
 'use client'
 
 import { useState, useEffect } from 'react';
-import '../css/circle.css'
 
 export default function WhyManaopiliWheel() {
-    const [rotation, setRotation] = useState(0); // Current rotation
-    const [targetRotation, setTargetRotation] = useState(0); // Target rotation
-    const [isRotating, setIsRotating] = useState(false); // State to track if the rotation is happening
-    // Labels and their corresponding rotation angles
+    const [rotation, setRotation] = useState(0);
+    const [targetRotation, setTargetRotation] = useState(0);
+    const [isRotating, setIsRotating] = useState(false);
+
     const labels = {
         savings: -110,
         experience: -40,
@@ -15,17 +14,17 @@ export default function WhyManaopiliWheel() {
         transform: 30,
         technical: -250,
     };
-    // Function to start rotating to a target
+
     const rotateToTarget = (newRotation) => {
-        const currentRotation = rotation % 360; // Normalize current rotation
-        const diff = (newRotation - currentRotation + 540) % 360 - 180; // Calculate shortest path to target
-        setTargetRotation(rotation + diff); // Set the target rotation to the current rotation + the shortest difference
-        setIsRotating(true); // Start rotating
+        const currentRotation = rotation % 360;
+        const diff = (newRotation - currentRotation + 540) % 360 - 180;
+        setTargetRotation(rotation + diff);
+        setIsRotating(true);
     };
-    // Effect to smoothly rotate toward the target rotation
+
     useEffect(() => {
         if (isRotating && rotation !== targetRotation) {
-            const step = (targetRotation - rotation) / 10; // Small steps to smooth the transition
+            const step = (targetRotation - rotation) / 10;
             const timeout = setTimeout(() => {
                 setRotation((prevRotation) =>
                     Math.abs(prevRotation - targetRotation) < 1
@@ -33,141 +32,115 @@ export default function WhyManaopiliWheel() {
                         : prevRotation + step
                 );
             }, 30);
-            return () => clearTimeout(timeout); // Clean up the timeout
+            return () => clearTimeout(timeout);
         } else {
-            setIsRotating(false); // Stop rotating when target is reached
+            setIsRotating(false);
         }
     }, [rotation, targetRotation, isRotating]);
 
     return (
-        <section className="pb-20 ">
-            <div className='container mx-auto gap'>
-                <div className='flex justify-center items-center md:gap-2 gap-0 px-3  '>
-                    <h2 className="text-5xl font-normal text-[#e2e2e2] text-center pb-2">{`Why Mana'O Pili?`}</h2>
-                </div>
-                <div className=' flex justify-center items-center'>
-                    <div className="circle_container">
-                        <div className="outer-circle"></div>
+        <section className="pb-10 md:pb-20">
+            <div className="container mx-auto">
+                <div className="flex justify-center items-center">
+                    <div className="relative w-[250px] h-[250px] md:w-[500px] md:h-[500px] mx-auto mb-[5%] md:mb-[8%] mt-[5%] md:mt-[8%]">
+                        {/* Outer circle */}
+                        <div className="absolute top-0 left-0 w-full h-full rounded-full border border-white"></div>
+                        
+                        {/* Gradient wheel */}
                         <div
-                            className="inner-circle"
+                            className="absolute top-[10%] left-[10%] w-[80%] h-[80%] rounded-full bg-gradient-to-br from-[#212121] via-[#1e40af] to-[#ffffff] bg-center bg-cover border border-white z-10 transition-transform duration-100 ease-in-out"
                             style={{ transform: `rotate(${rotation}deg)` }}
                         ></div>
-                        <div className="center-circle"></div>
-                        <div className="center-logo">
-                            <img src='./Logo_white.png' alt="Logo" width="50" height="50" />
+                        
+                        {/* Inner circle */}
+                        <div className="absolute top-[30%] left-[30%] w-[40%] h-[40%] rounded-full bg-[#141414] border border-white z-20"></div>
+                        {/* Center logo */}
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
+                            <img src='./Logo_white.png' alt="Logo" className="w-8 h-8 md:w-12 md:h-12" />
                         </div>
-                        <div className="outer-circle-dot">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="14"
-                                height="13"
-                                viewBox="0 0 14 13"
-                                fill="none"
-                            >
-                                <circle cx="7.00003" cy="6.60586" r="6.1282" fill="white" />
+                        
+                        {/* Top indicator */}
+                        <div className="absolute top-[-6px] left-1/2 transform -translate-x-1/2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                                <circle cx="50%" cy="50%" r="6.1282" fill="white" />
                             </svg>
                         </div>
 
                         {/* Savings label */}
                         <div
-                            className="label savings cursor-pointer hover:text-yellow-text"
-                            onMouseEnter={() => rotateToTarget(labels.savings)} // Rotate to the target angle for Savings
-                            onTouchStart={() => rotateToTarget(labels.savings)} // Handle mobile touch
+                            className="absolute top-[-25px] md:top-[-50px] left-1/2 transform -translate-x-1/2 text-white text-center font-sans text-xs md:text-2xl font-normal leading-none cursor-pointer hover:text-[#deff00]"
+                            onMouseEnter={() => rotateToTarget(labels.savings)}
+                            onTouchStart={() => rotateToTarget(labels.savings)}
                         >
                             Savings
                         </div>
 
-                        <div className="outer-circle-dot2">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="14"
-                                height="13"
-                                viewBox="0 0 14 13"
-                                fill="none"
-                            >
-                                <circle cx="7.00003" cy="6.60586" r="6.1282" fill="white" />
+                        {/* Right indicator */}
+                        <div className="absolute right-[-2.1%] md:right-[2px] top-[32%] transform -translate-x-1/2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                                <circle cx="50%" cy="50%" r="6.1282" fill="white" />
                             </svg>
                         </div>
 
                         {/* Experience label */}
                         <div
-                            className="label experience cursor-pointer hover:text-yellow-text"
-                            onMouseEnter={() => rotateToTarget(labels.experience)} // Rotate to the target angle for Experience
-                            onTouchStart={() => rotateToTarget(labels.experience)} // Handle mobile touch
+                            className="absolute top-[32%] md:top-[30%] right-[-90px] md:right-[-36%] transform -translate-x-1/2 text-white text-center font-sans text-xs md:text-2xl font-normal leading-none cursor-pointer hover:text-[#deff00]"
+                            onMouseEnter={() => rotateToTarget(labels.experience)}
+                            onTouchStart={() => rotateToTarget(labels.experience)}
                         >
                             Experience
                         </div>
 
-                        <div className="outer-circle-dot3">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="14"
-                                height="13"
-                                viewBox="0 0 14 13"
-                                fill="none"
-                            >
-                                <circle cx="7.00003" cy="6.60586" r="6.1282" fill="white" />
+                        {/* Left indicator */}
+                        <div className="absolute top-[32%] left-[7px] md:left-[15px] transform -translate-x-1/2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                                <circle cx="50%" cy="50%" r="6.1282" fill="white" />
                             </svg>
                         </div>
 
-                        {/* Customer-Centric label */}
+                        {/* Customer Centric label */}
                         <div
-                            className="label customer-centric cursor-pointer hover:text-yellow-text"
-                            onMouseEnter={() => rotateToTarget(labels.customerCentric)} // Rotate to the target angle for Customer-Centric
-                            onTouchStart={() => rotateToTarget(labels.customerCentric)} // Handle mobile touch
+                            className="absolute top-[32%] left-[-55px] md:left-[-120px] transform -translate-y-1/2 text-white text-center font-sans text-xs md:text-2xl font-normal leading-none cursor-pointer hover:text-[#deff00]"
+                            onMouseEnter={() => rotateToTarget(labels.customerCentric)}
+                            onTouchStart={() => rotateToTarget(labels.customerCentric)}
                         >
                             Customer <br /> Centric
                         </div>
 
-                        <div className="outer-circle-dot4">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="14"
-                                height="13"
-                                viewBox="0 0 14 13"
-                                fill="none"
-                            >
-                                <circle cx="7.00003" cy="6.60586" r="6.1282" fill="white" />
+                        {/* Bottom right indicator */}
+                        <div className="absolute top-[83%] right-[10%] md:right-[55px] transform -translate-x-1/2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                                <circle cx="50%" cy="50%" r="6.1282" fill="white" />
                             </svg>
                         </div>
 
-                        {/* Transform label */}
+                        {/* Transform in Place label */}
                         <div
-                            className="label transform cursor-pointer hover:text-yellow-text"
-                            onMouseEnter={() => rotateToTarget(labels.transform)} // Rotate to the target angle for Transform
-                            onTouchStart={() => rotateToTarget(labels.transform)} // Handle mobile touch
+                            className="absolute top-[85%] right-[-40px] md:right-[-80px] transform -translate-y-1/2 text-white text-center font-sans text-xs md:text-2xl font-normal leading-none cursor-pointer hover:text-[#deff00]"
+                            onMouseEnter={() => rotateToTarget(labels.transform)}
+                            onTouchStart={() => rotateToTarget(labels.transform)}
                         >
-                            Transform <br />
-                            in Place
+                            Transform <br /> in Place
                         </div>
 
-                        <div className="outer-circle-dot5">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="14"
-                                height="13"
-                                viewBox="0 0 14 13"
-                                fill="none"
-                            >
-                                <circle cx="7.00003" cy="6.60586" r="6.1282" fill="white" />
+                        {/* Bottom left indicator */}
+                        <div className="absolute left-[15%] top-[83%] md:left-[68px] transform -translate-x-1/2 ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                                <circle cx="50%" cy="50%" r="6.1282" fill="white" />
                             </svg>
                         </div>
 
-                        {/* Technical label */}
+                        {/* Technical Expertise label */}
                         <div
-                            className="label technical cursor-pointer hover:text-yellow-text"
-                            onMouseEnter={() => rotateToTarget(labels.technical)} // Rotate to the target angle for Technical
-                            onTouchStart={() => rotateToTarget(labels.technical)} // Handle mobile touch
+                            className="absolute left-[-30px] md:left-[-72px] top-[85%] text-white text-center font-sans text-xs md:text-2xl font-normal leading-none cursor-pointer hover:text-[#deff00]"
+                            onMouseEnter={() => rotateToTarget(labels.technical)}
+                            onTouchStart={() => rotateToTarget(labels.technical)}
                         >
-                            Technical <br />
-                            Expertise
+                            Technical <br /> Expertise
                         </div>
                     </div>
-
                 </div>
             </div>
-
-
         </section>
-    )
+    );
 }

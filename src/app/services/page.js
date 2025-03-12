@@ -15,7 +15,7 @@ import {
 import Link from 'next/link'
 import { cn } from "@/lib/utils"
 import { Button } from '@/components/ui/button'
-import Comparison from '../components/comparison'
+import CompareCard from '../components/comparisionCards'
 
 const categories = [
   "IMPLEMENTATIONS",
@@ -136,7 +136,103 @@ const services = {
     },
   ]
 };
+const data = {
+    "Mana'o Pili":
+    [
+        {
+            title: "SAVINGS UPTO",
+            value: 70,
+            label: "70%"
+        },
+        {
+            title: "EXPERIENCE LEVEL",
+            subtitle: "% of expert & experienced team members*",
+            value: 40,
+            label: "40%+"
+        },
+        {
+            title: "TECHNICAL EXPERTISE",
+            subtitle: "% of technical team members",
+            value: 75,
+            label: "75%"
+        },
+        {
+            title: "CLIENT CENTRIC APPROACH",
+            label: "Balanced",
+            logo: <Check />
+        },
+        {
+            title: "RISK FOR LICENSE UPSELL",
+            label: "Low",
+            color: 'rounded-full w-4 h-4 bg-green-500'
+        }
+    ],
+    "Traditional": [
+        {
+            title: "SAVINGS UPTO",
+            value: 30,
+            label: "30%"
+        },
+        {
+            title: "EXPERIENCE LEVEL",
+            subtitle: "% of expert & experienced team members*",
+            value: 25,
+            label: "25%"
+        },
+        {
+            title: "TECHNICAL EXPERTISE",
+            subtitle: "% of technical team members",
+            value: 50,
+            label: "50%+"
+        },
+        {
+            title: "CLIENT CENTRIC APPROACH",
+            label: "Overly Prescriptive",
+            logo: <X />
+        },
+        {
+            title: "RISK FOR LICENSE UPSELL",
+            label: "Medium",
+            color: 'rounded-full w-4 h-4 bg-yellow-500'
+        }
+    ],
+    "GSI":
+    [
+        {
+            title: "SAVINGS UPTO",
+            value: 70,
+            label: "70%"
+        },
+        {
+            title: "EXPERIENCE LEVEL",
+            subtitle: "% of expert & experienced team members*",
+            value: 10,
+            label: "10%"
+        },
+        {
+            title: "TECHNICAL EXPERTISE",
+            subtitle: "% of technical team members",
+            value: 50,
+            label: "50%"
+        },
+        {
+            title: "CLIENT CENTRIC APPROACH",
+            label: "Non-Prescriptive",
+            logo: <X />
+        },
+        {
+            title: "RISK FOR LICENSE UPSELL",
+            label: "High",
+            color: 'rounded-full w-4 h-4 bg-red-500'
+        }
+    ]
+};
 
+const companies = [
+    "Mana'o Pili",
+    "Traditional",
+    "GSI",
+]
 
 
 
@@ -228,7 +324,13 @@ export default function Component() {
           </Link>
         </div>
         {/* comparision section */}
-        <Comparison/>
+        {/* <Comparison/> */}
+        <div className='mt-16 text-center'>
+        <h2 className='text-5xl  font-semibold text-[#e2e2e2] text-center'>
+          Why Choose Us?
+        </h2>
+        <CompareCard data={data} companies={companies}/>
+        </div>
 
         <div className="text-center">
           <p className="text-lg md:text-xl text-zinc-300 mb-6 md:mb-8 px-4">

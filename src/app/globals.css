@@ -17,8 +17,8 @@ body {
 
 @layer base {
   h1 {
-    @apply tracking-wide;/* Adjust letter spacing for h1 */
-  }er
+    @apply tracking-wider;/* Adjust letter spacing for h1 */
+  }
   h2 {
     @apply tracking-wider; /* Adjust letter spacing for h2 */
   }
