@@ -19,6 +19,7 @@ export default function Header() {
                 setIsScrolled(false)
             }
         }
+        handleScroll()
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
       }, []);
@@ -26,10 +27,10 @@ export default function Header() {
 
 
     const navItems = [
-        { href: "/services", label: "Services" },
-        { href: "/about", label: "About" },
-        { href: "/non-profit", label: "Non-Profit" },
-        { href: "/contact", label: "Contact Us" },
+        { href: "/services", label: "SERVICES" },
+        { href: "/about", label: "ABOUT" },
+        { href: "/non-profit", label: "NON-PROFIT" },
+        { href: "/contact", label: "CONTACT US" },
     ]
 
     return (

@@ -7,7 +7,6 @@ import { useState } from "react";
 
 
 export default function CompareCard({data,companies}) {
-    console.log(companies)
     const [activeTab, setActiveTab] = useState(companies[0])
 
     const handleClick = (company) => {
@@ -28,8 +27,8 @@ export default function CompareCard({data,companies}) {
                                 </h2>
                             </CardTitle>
                         </CardHeader>
-                        {data[company].map((item, index) => (
-                            <CardContent key={index} className="flex flex-col gap-2 pt-5 border-t border-gray-800">
+                        {data[company].map((item, idx) => (
+                            <CardContent key={idx} className="flex flex-col gap-2 pt-5 border-t border-gray-800">
                                 <CardDescription className="text-gray-300">
                                     {item.title}
                                 </CardDescription>
@@ -40,7 +39,7 @@ export default function CompareCard({data,companies}) {
                                     {item.label}
                                 </CardDescription>
                                 {item.value && <CardDescription>
-                                    <Progress value={item.value} className="bg-black border border-[#141414] " />
+                                    <Progress value={item.value} className={`bg-black border ${index === 0 ? '[&>div]:bg-[#0328fa]' : '[&>div]:bg-gray-300'} border-[#141414]`}/>
                                 </CardDescription>}
                                 {item.logo && <CardDescription>
                                     <div className="flex justify-center gap-2">{item.logo}{item.label}</div>
@@ -69,8 +68,8 @@ export default function CompareCard({data,companies}) {
                     ))}
                 </div>
                 <div className="w-full mx-auto flex flex-col gap-6 py-6 px-3">
-                    {data[activeTab].map((item, index) => (
-                        <Card key={index} className="border-none  bg-gray-900/50 ">
+                    {data[activeTab].map((item, idx) => (
+                        <Card key={idx} className="border-none  bg-gray-900/50 ">
                             <CardHeader className="bg-gray-900 text-white py-3 rounded-t-lg">
                                 <CardTitle className="flex justify-start">
                                     <h2 className="text-lg">{item.title}</h2>
@@ -87,7 +86,7 @@ export default function CompareCard({data,companies}) {
                                         <span className="bg-[#0328fa] text-white px-3 py-1 rounded-full text-xs font-bold">OURS</span>
                                     </div>
                                     {item.value &&
-                                        <Progress value={item.value} className="h-2 bg-black" />
+                                        <Progress value={item.value} className={`${activeTab==="Mana'o Pili" ? '[&>div]:bg-[#0328fa]' : '[&>div]:bg-gray-300'} h-2 bg-black`} />
                                     }
 
                                 </CardDescription>
