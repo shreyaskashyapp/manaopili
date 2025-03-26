@@ -135,101 +135,101 @@ const services = {
 }
 
 const data = {
-    "Mana'o Pili":
+  "Mana'o Pili":
     [
-        {
-            title: "SAVINGS UPTO",
-            value: 70,
-            label: "70%"
-        },
-        {
-            title: "EXPERIENCE LEVEL",
-            subtitle: "% of expert & experienced team members*",
-            value: 40,
-            label: "40%+"
-        },
-        {
-            title: "TECHNICAL EXPERTISE",
-            subtitle: "% of technical team members",
-            value: 75,
-            label: "75%"
-        },
-        {
-            title: "CLIENT CENTRIC APPROACH",
-            label: "Balanced",
-            logo: <Check className="text-green-400" />
-        },
-        {
-            title: "RISK FOR LICENSE UPSELL",
-            label: "Low",
-            color: 'rounded-full w-3 h-3 bg-green-500'
-        }
+      {
+        title: "SAVINGS UPTO",
+        value: 70,
+        label: "70%"
+      },
+      {
+        title: "EXPERIENCE LEVEL",
+        subtitle: "% of expert & experienced team members*",
+        value: 40,
+        label: "40%+"
+      },
+      {
+        title: "TECHNICAL EXPERTISE",
+        subtitle: "% of technical team members",
+        value: 75,
+        label: "75%"
+      },
+      {
+        title: "CLIENT CENTRIC APPROACH",
+        label: "Balanced",
+        logo: <Check className="text-green-400" />
+      },
+      {
+        title: "RISK FOR LICENSE UPSELL",
+        label: "Low",
+        color: 'rounded-full w-3 h-3 bg-green-500'
+      }
     ],
-    "Service Now Partners": [
-        {
-            title: "SAVINGS UPTO",
-            value: 30,
-            label: "30%"
-        },
-        {
-            title: "EXPERIENCE LEVEL",
-            subtitle: "% of expert & experienced team members*",
-            value: 25,
-            label: "25%"
-        },
-        {
-            title: "TECHNICAL EXPERTISE",
-            subtitle: "% of technical team members",
-            value: 50,
-            label: "50%+"
-        },
-        {
-            title: "CLIENT CENTRIC APPROACH",
-            label: "Overly Prescriptive",
-            logo: <X className="text-yellow-300"/>
-        },
-        {
-            title: "RISK FOR LICENSE UPSELL",
-            label: "Medium",
-            color: 'rounded-full w-3 h-3 bg-yellow-300'
-        }
-    ],
-    "GSI":
+  "Service Now Partners": [
+    {
+      title: "SAVINGS UPTO",
+      value: 30,
+      label: "30%"
+    },
+    {
+      title: "EXPERIENCE LEVEL",
+      subtitle: "% of expert & experienced team members*",
+      value: 25,
+      label: "25%"
+    },
+    {
+      title: "TECHNICAL EXPERTISE",
+      subtitle: "% of technical team members",
+      value: 50,
+      label: "50%+"
+    },
+    {
+      title: "CLIENT CENTRIC APPROACH",
+      label: "Overly Prescriptive",
+      logo: <X className="text-yellow-300" />
+    },
+    {
+      title: "RISK FOR LICENSE UPSELL",
+      label: "Medium",
+      color: 'rounded-full w-3 h-3 bg-yellow-300'
+    }
+  ],
+  "GSI":
     [
-        {
-            title: "SAVINGS UPTO",
-            value: 70,
-            label: "70%"
-        },
-        {
-            title: "EXPERIENCE LEVEL",
-            subtitle: "% of expert & experienced team members*",
-            value: 10,
-            label: "10%"
-        },
-        {
-            title: "TECHNICAL EXPERTISE",
-            subtitle: "% of technical team members",
-            value: 50,
-            label: "50%"
-        },
-        {
-            title: "CLIENT CENTRIC APPROACH",
-            label: "Non-Prescriptive",
-            logo: <X className="text-red-400"/>
-        },
-        {
-            title: "RISK FOR LICENSE UPSELL",
-            label: "High",
-            color: 'rounded-full w-3 h-3 bg-red-400'
-        }
+      {
+        title: "SAVINGS UPTO",
+        value: 70,
+        label: "70%"
+      },
+      {
+        title: "EXPERIENCE LEVEL",
+        subtitle: "% of expert & experienced team members*",
+        value: 10,
+        label: "10%"
+      },
+      {
+        title: "TECHNICAL EXPERTISE",
+        subtitle: "% of technical team members",
+        value: 50,
+        label: "50%"
+      },
+      {
+        title: "CLIENT CENTRIC APPROACH",
+        label: "Non-Prescriptive",
+        logo: <X className="text-red-400" />
+      },
+      {
+        title: "RISK FOR LICENSE UPSELL",
+        label: "High",
+        color: 'rounded-full w-3 h-3 bg-red-400'
+      }
     ]
 };
 
 const companies = [
-    "Mana'o Pili",
-    "Service Now Partners",
-    "GSI",
+  "Mana'o Pili",
+  "Service Now Partners",
+  "GSI",
 ]
 
 
@@ -243,20 +243,20 @@ export default function Component() {
   return (
     <div className=" bg-[#141414]">
       <div className="w-full">
-      <div className="relative h-[70vh] w-full flex flex-col justify-center overflow-hidden bg-gradient-to-b from-blue-800 to-[#141414]">
-    <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto flex flex-col gap-10">
-      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font text-white mb-6 leading-tight">
-        Services
-      </h1>
-      <p className="text-xl sm:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
-        {`Empowering your business with end-to-end ServiceNow solutions, driven by expert professionals to maximize platform value.`}
-      </p>
-    </div>
-  </div>
-      
+        <div className="relative h-[70vh] w-full flex flex-col justify-center overflow-hidden bg-gradient-to-b from-blue-800 to-[#141414]">
+          <div className="relative px-8 max-w-5xl mx-auto flex flex-col gap-2">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font text-white mb-6 leading-tight">
+              Services
+            </h1>
+            <p className="text-gray-300 font-thin md:text-xl text-base w-3/4">
+              Empowering your business with end-to-end <span className="text-[#deff00]">ServiceNow</span> solutions, driven by expert professionals to <span className="text-[#deff00]">maximize platform value</span>.
+            </p>
+          </div>
+        </div>
 
-      <div className="container mx-auto px-4 py-12">
-        {/* <div className="grid grid-cols-2 md:flex md:justify-center md:gap-10 mb-10 md:mb-12 gap-4">
+
+        <div className="container mx-auto px-4 py-12">
+          {/* <div className="grid grid-cols-2 md:flex md:justify-center md:gap-10 mb-10 md:mb-12 gap-4">
           {categories.map((category) => (
             <button
               key={category}
@@ -300,36 +300,36 @@ export default function Component() {
         </div> */}
           <ServicesAccordion services={services} categories={categories} />
 
-        <div className="mt-16 text-center">
-          <p className="text-lg md:text-xl text-zinc-300 mb-6 md:mb-8 px-4">
-            {`Ready to experience the Mana'o Pili difference?`}
-          </p>
-          <Link href="/survey">
-            <Button size="lg" variant="outline" className="text-zinc-800  bg-blue-200 font-heading hover:bg-[#deff00] px-10 py-6 text-2xl rounded-full shadow-md hover:shadow-lg transition-all duration-300">
-              Get Started
-            </Button>
-          </Link>
-        </div>
-        {/* comparision section */}
-        {/* <Comparison/> */}
-        <div className='mt-16 text-center'>
-        <h2 className='text-5xl  font-semibold text-[#e2e2e2] text-center'>
-          Why Choose Us?
-        </h2>
-        <CompareCard data={data} companies={companies}/>
-        </div>
-
-        <div className="text-center">
-          <p className="text-lg md:text-xl text-zinc-300 mb-6 md:mb-8 px-4">
-            {`Ready to experience the Mana'o Pili difference?`}
-          </p>
+          <div className="mt-16 text-center">
+            <p className="text-lg md:text-xl text-zinc-300 mb-6 md:mb-8 px-4">
+              {`Ready to experience the Mana'o Pili difference?`}
+            </p>
             <Link href="/survey">
               <Button size="lg" variant="outline" className="text-zinc-800  bg-blue-200 font-heading hover:bg-[#deff00] px-10 py-6 text-2xl rounded-full shadow-md hover:shadow-lg transition-all duration-300">
                 Get Started
               </Button>
             </Link>
+          </div>
+          {/* comparision section */}
+          {/* <Comparison/> */}
+          <div className='mt-16 text-center'>
+            <h2 className='text-5xl  font-semibold text-[#e2e2e2] text-center'>
+              Why Choose Us?
+            </h2>
+            <CompareCard data={data} companies={companies} />
+          </div>
+
+          <div className="text-center">
+            <p className="text-lg md:text-xl text-zinc-300 mb-6 md:mb-8 px-4">
+              {`Ready to experience the Mana'o Pili difference?`}
+            </p>
+            <Link href="/survey">
+              <Button size="lg" variant="outline" className="text-zinc-800  bg-blue-200 font-heading hover:bg-[#deff00] px-10 py-6 text-2xl rounded-full shadow-md hover:shadow-lg transition-all duration-300">
+                Get Started
+              </Button>
+            </Link>
+          </div>
         </div>
-      </div>
       </div>
     </div>
   );

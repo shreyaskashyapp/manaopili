@@ -14,7 +14,7 @@ const HIGHLIGHT_COLOR = "var(--highlight-color, #deff00)" // Default is blue-500
 export default function ServicesAccordion({services, categories}) {
   return (
     <div
-      className="container mx-auto px-4 py-12 md:py-6 bg-[#141414]"
+      className="container mx-auto px-4 py-12 md:py-1 bg-[#141414]"
       style={{ "--highlight-color": "#deff00" }}
     >
       <Accordion type="single" collapsible defaultValue="IMPLEMENTATIONS" className="space-y-4">
