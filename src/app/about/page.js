@@ -3,48 +3,53 @@ import AboutCards from "../components/about-cards";
 import Founders from "../components/founders-cards";
 import GlobalImage from "../components/global-image";
 
-const teamMembers = [
-    {
-        imagePath: "/about/lelilani.png",
-        name: "Leilani Mossman",
-        titles: [
+const data={
+    "resources": {
+       "data": [
+        {
+          "title": "Architects",
+          "description": "Experts in designing robust and scalable ServiceNow solutions tailored to your business needs."
+        },
+        {
+          "title": "Consultants",
+          "description": "Seasoned professionals providing strategic insights and guidance to maximize your ServiceNow investment."
+        },
+        {
+          "title": "Business Analysts",
+          "description": "Skilled in analysing business requirements and translating them into effective ServiceNow configurations and enhancements."
+        },
+        {
+          "title": "Project Managers",
+          "description": "Experienced in managing end-to-end project delivery, ensuring timely and successful implementations."
+        }
+      ]
+    },
+    "founders": {
+      "teamMembers": [
+        {
+          "imagePath": "/about/lelilani.png",
+          "name": "Leilani Mossman",
+          "titles": [
             "Chief Executive Officer",
             "Co-Founder"
-        ]
-    },
-    {
-        imagePath: "/about/mike.png",
-        name: "Michael Yee",
-        titles: [
+          ]
+        },
+        {
+          "imagePath": "/about/mike.png",
+          "name": "Michael Yee",
+          "titles": [
             "Chief Operations Officer",
             "Co-Founder"
-        ]
+          ]
+        }
+      ]
+    },
+    "globalPresence": {
+      "title": "Global Presence, Local Expertise",
+      "description": "With offices in Los Angeles, Honolulu, and Bangalore, we're strategically positioned to serve you across time zones. Our global footprint is expanding - stay tuned for more locations coming soon.",
+      "imagePath": "/about/globalPresence.png"
     }
-]
-const data = [
-    {
-        "title": "Architects",
-        "description": "Experts in designing robust and scalable ServiceNow solutions tailored to your business needs."
-    },
-    {
-        "title": "Consultants",
-        "description": "Seasoned professionals providing strategic insights and guidance to maximize your ServiceNow investment."
-    },
-    {
-        "title": "Business Analysts",
-        "description": "Skilled in analysing business requirements and translating them into effective ServiceNow configurations and enhancements."
-    },
-    {
-        "title": "Project Managers",
-        "description": "Experienced in managing end-to-end project delivery, ensuring timely and successful implementations."
-    }
-]
-const imageData={
-    "title": "Global Presence, Local Expertise",
-    "description":"With offices in Los Angeles, Honolulu, and Bangalore, we're strategically positioned to serve you across time zones. Our global footprint is expanding - stay tuned for more locations coming soon.",
-    "imagePath":"/about/globalPresence.png"
-}
-
+  }
 export default function About() {
     return (
         <div className=" bg-[#141414] w-full">
@@ -69,7 +74,7 @@ export default function About() {
                     <h1 className='text-5xl font-semibold text-[#e2e2e2]  text-center pb-10 '>
                         Our team resources
                     </h1>
-                    <AboutCards data={data}/>
+                    <AboutCards data={data.resources.data}/>
                 </div>
 
             </div>
@@ -78,10 +83,10 @@ export default function About() {
                 <h2 className='text-5xl  font-semibold text-[#e2e2e2] text-center '>
                     Founders
                 </h2>
-                <Founders team={teamMembers}/>
+                <Founders team={data.founders.teamMembers}/>
             </div>
             {/* global presence */}
-            <GlobalImage data={imageData}/>
+            <GlobalImage data={data.globalPresence}/>
         </div>
 
     )
