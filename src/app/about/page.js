@@ -55,11 +55,11 @@ export default function About() {
         <div className=" bg-[#141414] w-full">
         {/* hero section */}
             <div className="relative h-[70vh] w-full flex flex-col justify-center overflow-hidden bg-gradient-to-b from-blue-800 to-[#141414]">
-                <div className="relative px-8 max-w-5xl mx-auto flex flex-col gap-2">
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font text-white mb-6 leading-tight">
+                <div className="relative px-8 max-w-5xl mx-auto flex flex-col gap-2 lg:pt-18">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font text-white mb-6 leading-tight">
                         About Us
                     </h1>
-                    <p className="text-gray-300 font-thin md:text-lg text-base">
+                    <p className="text-gray-300 font-thin md:text-xl text-base mt-0">
                         {`Mana’o Pili, meaning “`}
                         <span className="text-[#deff00]">{`connecting ideas`}</span>
                         {`” in native Hawaiian, was founded in 2024 on the `}
