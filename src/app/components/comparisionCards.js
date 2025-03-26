@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress"
+import Image from "next/image";
 
 import { useState } from "react";
 
@@ -11,9 +12,7 @@ export default function CompareCard({data,companies}) {
 
     const handleClick = (company) => {
         setActiveTab(company)
-
     }
-
     return (
         <section>
         {/* desktop view */}
@@ -21,7 +20,8 @@ export default function CompareCard({data,companies}) {
                 {companies.map((company, index) => (
                     <Card key={index} className={`flex flex-col flex-grow bg-gray-900/50 border ${index === 0 ? 'border-[#0328fa]' : 'border-gray-800'} w-1/3`}>
                         <CardHeader className={`${index === 0 ? 'bg-[#0328fa]' : 'bg-gray-800'} py-4 flex justify-center items-center rounded-t-md`}>
-                            <CardTitle>
+                            <CardTitle className="flex justify-center items-center gap-2">
+                            {index===0 && <Image src="/Logo_white.png" alt="Arrow" width={30} height={30} />}
                                 <h2 className='text-2xl font-semibold text-white '>
                                     {company}
                                 </h2>
@@ -45,7 +45,7 @@ export default function CompareCard({data,companies}) {
                                     <div className="flex justify-center gap-2">{item.logo}{item.label}</div>
                                 </CardDescription>}
                                 {item.color && <CardDescription className='flex justify-center gap-2 items-center'>
-                                    <div className="rounded-full w-3 h-3 bg-green-400"></div>
+                                    <div className={`${item.color}`}></div>
                                     {item.label}
                                 </CardDescription>}
                             </CardContent>
@@ -95,7 +95,7 @@ export default function CompareCard({data,companies}) {
                                         <CardDescription className="flex justify-start text-gray-300">{item.logo}</CardDescription>
                                     }
                                     {item.color && <CardDescription className='flex justify-start gap-2 items-center'>
-                                        <div className="rounded-full w-3 h-3 bg-green-400"></div>
+                                        <div className={`${item.color}`}></div>
                                         {item.label}
                                     </CardDescription>}
                                 </CardDescription>

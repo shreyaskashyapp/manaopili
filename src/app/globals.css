@@ -17,16 +17,16 @@ body {
 
 @layer base {
   h1 {
-    @apply tracking-wider;/* Adjust letter spacing for h1 */
+    @apply tracking-wide;/* Adjust letter spacing for h1 */
   }
   h2 {
-    @apply tracking-wider; /* Adjust letter spacing for h2 */
+    @apply tracking-wide; /* Adjust letter spacing for h2 */
   }
   h3 {
-    @apply tracking-wider; /* Adjust letter spacing for h3 */
+    @apply tracking-wide; /* Adjust letter spacing for h3 */
   }
   h4, h5, h6 {
-    @apply tracking-wider; /* Adjust letter spacing for smaller headings */
+    @apply tracking-wide; /* Adjust letter spacing for smaller headings */
   }
 }
 
