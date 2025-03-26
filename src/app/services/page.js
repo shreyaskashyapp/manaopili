@@ -157,12 +157,12 @@ const data = {
         {
             title: "CLIENT CENTRIC APPROACH",
             label: "Balanced",
-            logo: <Check />
+            logo: <Check className="text-green-400" />
         },
         {
             title: "RISK FOR LICENSE UPSELL",
             label: "Low",
-            color: 'rounded-full w-4 h-4 bg-green-500'
+            color: 'rounded-full w-3 h-3 bg-green-500'
         }
     ],
     "Service Now Partners": [
@@ -186,12 +186,12 @@ const data = {
         {
             title: "CLIENT CENTRIC APPROACH",
             label: "Overly Prescriptive",
-            logo: <X />
+            logo: <X className="text-yellow-300"/>
         },
         {
             title: "RISK FOR LICENSE UPSELL",
             label: "Medium",
-            color: 'rounded-full w-4 h-4 bg-yellow-500'
+            color: 'rounded-full w-3 h-3 bg-yellow-300'
         }
     ],
     "GSI":
@@ -216,12 +216,12 @@ const data = {
         {
             title: "CLIENT CENTRIC APPROACH",
             label: "Non-Prescriptive",
-            logo: <X />
+            logo: <X className="text-red-400"/>
         },
         {
             title: "RISK FOR LICENSE UPSELL",
             label: "High",
-            color: 'rounded-full w-4 h-4 bg-red-500'
+            color: 'rounded-full w-3 h-3 bg-red-400'
         }
     ]
 };
@@ -243,7 +243,7 @@ export default function Component() {
   return (
     <div className=" bg-[#141414]">
       <div className="w-full">
-      <div className="relative h-[70vh] w-full flex flex-col justify-center overflow-hidden bg-gradient-to-br from-neutral-900 via-blue-800 to-neutral-300">
+      <div className="relative h-[70vh] w-full flex flex-col justify-center overflow-hidden bg-gradient-to-b from-blue-800 to-[#141414]">
     <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto flex flex-col gap-10">
       <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font text-white mb-6 leading-tight">
         Services
@@ -255,7 +255,7 @@ export default function Component() {
   </div>
       
 
-      <div className="container mx-auto px-4 py-12 md:py-24">
+      <div className="container mx-auto px-4 py-12">
         {/* <div className="grid grid-cols-2 md:flex md:justify-center md:gap-10 mb-10 md:mb-12 gap-4">
           {categories.map((category) => (
             <button
