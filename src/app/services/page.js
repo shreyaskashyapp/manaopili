@@ -186,7 +186,7 @@ const data = {
         {
             title: "CLIENT CENTRIC APPROACH",
             label: "Overly Prescriptive",
-            logo: <X className="text-red-400"/>
+            logo: <X className="text-yellow-300"/>
         },
         {
             title: "RISK FOR LICENSE UPSELL",
