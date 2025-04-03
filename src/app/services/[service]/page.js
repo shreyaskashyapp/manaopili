@@ -346,7 +346,7 @@ export default function ServicePage() {
                         size="lg"
                         className="bg-blue-600 hover:bg-blue-700 text-white rounded-full"
                     >
-                        <Link href={`/survey?${params?.service}`}>
+                        <Link href={`/survey?survey=${params?.service}`}>
                             Take Survey <ArrowRight className="ml-2 h-5 w-5" />
                         </Link>
                     </Button>
@@ -405,7 +405,7 @@ export default function ServicePage() {
                         size="lg"
                         className="bg-blue-600 hover:bg-blue-700 text-white rounded-full"
                     >
-                        <Link href={`/survey?${params?.service}`}>
+                        <Link href={`/survey?survey=${params?.service}`}>
                             Take Survey Now <ArrowRight className="ml-2 h-5 w-5" />
                         </Link>
                     </Button>
