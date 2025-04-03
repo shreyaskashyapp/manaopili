@@ -13,7 +13,7 @@ const data = {
     title: "Careers",
     description: (
         <>
-            We're always looking for <span className="text-[#deff00]">talented</span> individuals to join our team. Submit your <span className="text-[#deff00]">resume</span> for future consideration.
+            We&apos;re always looking for <span className="text-[#deff00]">talented</span> individuals to join our team. Submit your <span className="text-[#deff00]">resume</span> for future consideration.
 
 
         </>
@@ -108,10 +108,10 @@ const Careers = () => {
       </div>
       <h1 className="text-3xl font-bold mb-4">Application Submitted!</h1>
       <p className="text-lg mb-8 text-gray-300">
-        Thank you for your interest in joining our team. We've received your application and will review it shortly.
+        Thank you for your interest in joining our team. We&apos;ve received your application and will review it shortly.
       </p>
       <p className="text-md mb-8 text-gray-400">
-        If your qualifications match our needs, we'll be in touch with you soon.
+        If your qualifications match our needs, we&apos;ll be in touch with you soon.
       </p>
       <button
         onClick={handleNewSubmission}
