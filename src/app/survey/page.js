@@ -18,7 +18,7 @@ export default function Survey() {
 
 
 
-  const module = params.get('survey')
+  const surveyModule = params.get('survey')
 
 
   const { toPDF, targetRef } = usePDF({
@@ -40,14 +40,14 @@ export default function Survey() {
 
     const overallBarData = Object.keys(overall_module_sum).map(key => ({
       name: key,
-      value: overall_module_sum[key] / getLengthFromModules(configs?.[module]),
+      value: overall_module_sum[key] / getLengthFromModules(configs?.[surveyModule]),
       fill: 'red',
       title: 'Aggregated Scores for All CSM Modules'
     }))
 
     const implementedBarData = Object.keys(overall_module_sum).map(key => ({
       name: key,
-      value: overall_module_sum[key] / (getLengthFromModules(configs?.[module]) - getNumberOfZeros(results, key)),
+      value: overall_module_sum[key] / (getLengthFromModules(configs?.[surveyModule]) - getNumberOfZeros(results, key)),
       fill: 'hsl(var(--chart-1) / 0.8)',
       title: 'Aggregated Scores For All Implemented CSM Modules'
     }))
@@ -75,17 +75,17 @@ export default function Survey() {
 
   return (
     <main className="min-h-screen py-16 flex justify-center">
-      {configs?.[module] ? <div className="container py-10">
+      {configs?.[surveyModule] ? <div className="container py-10">
         <div className="text-center mb-12 space-y-4">
           <h1 className="text-4xl font-bold text-[#455CFF]">
-            {configs?.[module]?.title}
+            {configs?.[surveyModule]?.title}
           </h1>
           <p className="text-gray-400 max-w-2xl mx-auto">
             Evaluate your ServiceNow CSM implementation across People, Process, and Technology dimensions
           </p>
         </div>
         <SurveyForm
-          config={configs?.[module]}
+          config={configs?.[surveyModule]}
           onComplete={handleSubmit}
         />
         <div
