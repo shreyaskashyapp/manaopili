@@ -14,9 +14,6 @@ import { configs } from '../config/data'
 export default function Survey() {
 
   const params = useSearchParams();
-  const router = useRouter();
-
-
 
   const surveyModule = params.get('survey')
 
