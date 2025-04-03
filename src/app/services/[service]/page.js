@@ -1,8 +1,11 @@
+"use client"
+
 import { ArrowRight, CheckCircle } from 'lucide-react'
 import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { useParams } from 'next/navigation'
 
 const services = {
     "technology-workflows": {
@@ -313,8 +316,9 @@ const services = {
     }
 }
 
-export default function ServicePage({ params }) {
-    const service = services[params.service]
+export default function ServicePage() {
+    const params = useParams();
+    const service = services[params?.service]
 
     if (!service) {
         return (
@@ -342,7 +346,7 @@ export default function ServicePage({ params }) {
                         size="lg"
                         className="bg-blue-600 hover:bg-blue-700 text-white rounded-full"
                     >
-                        <Link href="/survey">
+                        <Link href={`/survey?${params?.service}`}>
                             Take Survey <ArrowRight className="ml-2 h-5 w-5" />
                         </Link>
                     </Button>
@@ -401,7 +405,7 @@ export default function ServicePage({ params }) {
                         size="lg"
                         className="bg-blue-600 hover:bg-blue-700 text-white rounded-full"
                     >
-                        <Link href="/survey">
+                        <Link href={`/survey?${params?.service}`}>
                             Take Survey Now <ArrowRight className="ml-2 h-5 w-5" />
                         </Link>
                     </Button>

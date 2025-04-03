@@ -24,7 +24,7 @@ export function ModuleRatingForm({
       <CardHeader className="border-b border-gray-800 pb-4">
         <CardTitle className="space-y-2">
           <span className="text-lg text-white font-medium line-clamp-1">{moduleName}</span>
-          <span className="px-3 py-1 rounded-full text-sm bg-blue-500/10 text-blue-400 border border-blue-500/20 inline-block">
+          <span className="px-3 py-1 rounded-full text-sm bg-blue-500/10 text-[#455CFF] border border-blue-500/20 inline-block">
             {category}
           </span>
         </CardTitle>
@@ -39,7 +39,7 @@ export function ModuleRatingForm({
           />
         ))}
         <div className="space-y-2">
-          <Label htmlFor="comments" className="text-base font-medium text-blue-400">
+          <Label htmlFor="comments" className="text-base font-medium text-[#455CFF]">
             Comments
           </Label>
           <Textarea

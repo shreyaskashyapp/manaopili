@@ -102,7 +102,7 @@ export function SurveyForm({ config, onComplete }) {
         </Button>
         <Button
           onClick={handleNext}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-8"
+          className="bg-[#455CFF] hover:bg-blue-700 text-white px-8"
         >
           {currentIndex + cardsPerView >= totalModules ? 'Complete' : 'Next'}
           {currentIndex + cardsPerView < totalModules && (

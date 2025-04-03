@@ -6,7 +6,7 @@ const links = {
   Company: [
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
-    { name: "Survey", href: "/survey" },
+    { name: "Careers", href: "/careers" },
     { name: "Contact", href: "/contact" },
   ],
   Legal: [
@@ -20,12 +20,16 @@ const links = {
     { name: "LinkedIn", icon: <Linkedin className="inline mr-2 w-5 h-5" />, href: "#" },
   ],
 };
+const buttonData={
+  link:"/survey",
+  text:"Take Our Survey"
+}
 
 const headings = ['Company', 'Legal', 'Connect']
 
 export default function Footer() {
   return (
-    <footer className="relative bg-gradient-to-br from-neutral-900 via-blue-800 to-zinc-700 text-zinc-300 border-red-500">
+    <footer className="relative bg-gradient-to-br from-neutral-900 via-[#455CFF] to-zinc-700 text-zinc-300 border-red-500">
       <div className="flex flex-col gap-6 md:flex-row justify-between max-w-7xl mx-auto py-7 px-5 ">
       {/* logo */}
         <div className="flex flex-col flex-1 gap-3">
@@ -34,7 +38,7 @@ export default function Footer() {
             <h1 className="text-[#deff00] font-thin text-5xl italic">{`Mana'o Pili`}</h1>
           </div>
           <div>
-            <SurveyButton />
+            <SurveyButton data={buttonData} />
           </div>
         </div>
         {/* content */}
