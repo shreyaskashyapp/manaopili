@@ -11,7 +11,7 @@ export default function Founders({team}){
                             <CardHeader className="flex flex-col items-center">
                                 <CardTitle className="text-gray-200 text-lg">{member.name}</CardTitle>
                                 {member.titles.map((title, index) => (
-                                    <CardDescription key={index} className="text-gray-400">{title}</CardDescription>
+                                    <CardDescription key={index} className="text-[#deff00]">{title}</CardDescription>
                                 ))}
                             </CardHeader>
                         </Card>

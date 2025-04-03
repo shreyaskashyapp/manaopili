@@ -18,8 +18,8 @@ export default function CompareCard({data,companies}) {
         {/* desktop view */}
             <div className="hidden md:flex justify-center w-full lg:gap-10 md:gap-4 xl:px-20 lg:py-10 md:px-10">
                 {companies.map((company, index) => (
-                    <Card key={index} className={`flex flex-col flex-grow bg-gray-900/50 border ${index === 0 ? 'border-[#0328fa]' : 'border-gray-800'} w-1/3`}>
-                        <CardHeader className={`${index === 0 ? 'bg-[#0328fa]' : 'bg-gray-800'} py-4 flex justify-center items-center rounded-t-md`}>
+                    <Card key={index} className={`flex flex-col flex-grow bg-gray-900/50 border ${index === 0 ? 'border-[#455CFF]' : 'border-gray-800'} w-1/3`}>
+                        <CardHeader className={`${index === 0 ? 'bg-[#455CFF]' : 'bg-gray-800'} py-4 flex justify-center items-center rounded-t-md`}>
                             <CardTitle className="flex justify-center items-center gap-2">
                             {index===0 && <Image src="/Logo_white.png" alt="Arrow" width={30} height={30} />}
                                 <h2 className='text-2xl font-semibold text-white '>
@@ -39,7 +39,7 @@ export default function CompareCard({data,companies}) {
                                     {item.label}
                                 </CardDescription>
                                 {item.value && <CardDescription>
-                                    <Progress value={item.value} className={`bg-black border ${index === 0 ? '[&>div]:bg-[#0328fa]' : '[&>div]:bg-gray-300'} border-[#141414]`}/>
+                                    <Progress value={item.value} className={`bg-black border ${index === 0 ? '[&>div]:bg-[#455CFF]' : '[&>div]:bg-gray-300'} border-[#141414]`}/>
                                 </CardDescription>}
                                 {item.logo && <CardDescription>
                                     <div className="flex justify-center gap-2">{item.logo}{item.label}</div>
@@ -61,7 +61,7 @@ export default function CompareCard({data,companies}) {
                             onClick={() => handleClick(company)}
                             key={index}
                             className={`flex-1 w-full py-3  text-lg font-medium ${
-                            activeTab===company?' text-[#0328fa] bg-gray-900':'text-white'
+                            activeTab===company?' text-[#455CFF] bg-gray-900':'text-white'
                             }`}>
                             {company}
                         </Button>
@@ -83,10 +83,10 @@ export default function CompareCard({data,companies}) {
                                 <CardDescription className="flex flex-col items-start gap-2 text-white text-lg font-bold">
                                     <div className="flex w-full justify-between">
                                         {item.label}
-                                        <span className="bg-[#0328fa] text-white px-3 py-1 rounded-full text-xs font-bold">OURS</span>
+                                        <span className="bg-[#455CFF] text-white px-3 py-1 rounded-full text-xs font-bold">OURS</span>
                                     </div>
                                     {item.value &&
-                                        <Progress value={item.value} className={`${activeTab==="Mana'o Pili" ? '[&>div]:bg-[#0328fa]' : '[&>div]:bg-gray-300'} h-2 bg-black`} />
+                                        <Progress value={item.value} className={`${activeTab==="Mana'o Pili" ? '[&>div]:bg-[#455CFF]' : '[&>div]:bg-gray-300'} h-2 bg-black`} />
                                     }
 
                                 </CardDescription>

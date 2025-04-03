@@ -18,6 +18,8 @@ import { Button } from '@/components/ui/button'
 import CompareCard from '../components/comparisionCards'
 import Comparison from '../components/comparison'
 import ServicesAccordion from '../components/services-accordion'
+import HeroSection from '../components/hero-section'
+import SurveyButton from '../components/surveyButton'
 
 const categories = ["IMPLEMENTATIONS", "CONSULTING", "MANAGED SERVICES", "ENHANCEMENTS"]
 
@@ -232,83 +234,34 @@ const companies = [
   "GSI",
 ]
 
+const hero = {
+  title: "Services",
+  description: (
+    <>
+      Empowering your business with end-to-end <span className="text-[#deff00]">ServiceNow</span> solutions, driven by expert professionals to maximize <span className="text-[#deff00]">platform value</span>.
+    </>
+  )
+}
+const buttonData={
+  link:"/survey",
+  text:"Get Started"
+}
 
 
 export default function Component() {
-  const [activeCategory, setActiveCategory] = useState("IMPLEMENTATIONS");
-
-  const [activeTab, setActiveTab] = useState("manaopili")
-
-
   return (
     <div className=" bg-[#141414]">
       <div className="w-full">
-        <div className="relative h-[70vh] w-full flex flex-col justify-center overflow-hidden bg-gradient-to-b from-blue-800 to-[#141414]">
-          <div className="relative px-8 max-w-5xl mx-auto flex flex-col gap-2">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font text-white mb-6 leading-tight">
-              Services
-            </h1>
-            <p className="text-gray-300 font-thin md:text-xl text-base w-3/4">
-              Empowering your business with end-to-end <span className="text-[#deff00]">ServiceNow</span> solutions, driven by expert professionals to <span className="text-[#deff00]">maximize platform value</span>.
-            </p>
-          </div>
-        </div>
-
-
+        {/* //hero */}
+        <HeroSection data={hero} />
         <div className="container mx-auto px-4 py-12">
-          {/* <div className="grid grid-cols-2 md:flex md:justify-center md:gap-10 mb-10 md:mb-12 gap-4">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={cn(
-                "pb-2 md:pb-4 text-xs md:text-sm font-medium transition-colors relative whitespace-nowrap px-2",
-                activeCategory === category
-                  ? "text-blue-600"
-                  : "text-zinc-400 hover:text-white"
-              )}
-            >
-              {category}
-              {activeCategory === category && (
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600" />
-              )}
-            </button>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-          {services[activeCategory].map((service) => (
-            <div
-              key={service.title}
-              className="bg-zinc-800/50 backdrop-blur-sm rounded-lg p-4 md:p-6 shadow-lg hover:shadow-blue-600/10 transition-all duration-300 border border-zinc-600/50"
-            >
-              <div className="flex items-center mb-4">
-                <div className="mr-4 text-blue-600">
-                  {service.icon}
-                </div>
-                <h3 className="text-lg font-semibold text-white">{service.title}</h3>
-              </div>
-              <p className="text-sm text-zinc-300 mb-4">{service.description}</p>
-              <Link
-                href={`/services/${service.slug}`}
-                className="inline-flex items-center text-sm text-blue-600 hover:text-blue-500 transition-colors"
-              >
-                Learn More <ArrowRight className="ml-2 w-4 h-4" />
-              </Link>
-            </div>
-          ))}
-        </div> */}
           <ServicesAccordion services={services} categories={categories} />
 
           <div className="mt-16 text-center">
             <p className="text-lg md:text-xl text-zinc-300 mb-6 md:mb-8 px-4">
               {`Ready to experience the Mana'o Pili difference?`}
             </p>
-            <Link href="/survey">
-              <Button size="lg" variant="outline" className="text-zinc-800  bg-blue-200 font-heading hover:bg-[#deff00] px-10 py-6 text-2xl rounded-full shadow-md hover:shadow-lg transition-all duration-300">
-                Get Started
-              </Button>
-            </Link>
+            <SurveyButton data={buttonData}/>
           </div>
           {/* comparision section */}
           {/* <Comparison/> */}
@@ -323,11 +276,7 @@ export default function Component() {
             <p className="text-lg md:text-xl text-zinc-300 mb-6 md:mb-8 px-4">
               {`Ready to experience the Mana'o Pili difference?`}
             </p>
-            <Link href="/survey">
-              <Button size="lg" variant="outline" className="text-zinc-800  bg-blue-200 font-heading hover:bg-[#deff00] px-10 py-6 text-2xl rounded-full shadow-md hover:shadow-lg transition-all duration-300">
-                Get Started
-              </Button>
-            </Link>
+            <SurveyButton data={buttonData}/>
           </div>
         </div>
       </div>

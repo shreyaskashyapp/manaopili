@@ -9,6 +9,7 @@ import { Multiplechart } from '../components/charts/multiplechart'
 import { PDFHeader } from '../components/pdf-components/pdf-header'
 import { PDFFooter } from '../components/pdf-components/pdf-footer'
 import SurveyText from '../components/pdf-components/survey-text'
+import { itsmSurveyConfig } from '../config/itsm-survey'
 
 export default function Survey() {
   const { toPDF, targetRef } = usePDF({
@@ -63,18 +64,18 @@ export default function Survey() {
   }, [isGraphsReady])
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-900 to-black py-14 flex justify-center">
+    <main className="min-h-screen py-16 flex justify-center">
       <div className="container py-10">
         <div className="text-center mb-12 space-y-4">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-            {csmSurveyConfig.title}
+          <h1 className="text-4xl font-bold text-[#455CFF]">
+            {itsmSurveyConfig.title}
           </h1>
           <p className="text-gray-400 max-w-2xl mx-auto">
             Evaluate your ServiceNow CSM implementation across People, Process, and Technology dimensions
           </p>
         </div>
         <SurveyForm
-          config={csmSurveyConfig}
+          config={itsmSurveyConfig}
           onComplete={handleSubmit}
         />
         <div

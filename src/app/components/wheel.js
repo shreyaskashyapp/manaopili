@@ -48,7 +48,7 @@ export default function WhyManaopiliWheel() {
                         
                         {/* Gradient wheel */}
                         <div
-                            className="absolute top-[10%] left-[10%] w-[80%] h-[80%] rounded-full bg-gradient-to-br from-[#212121] via-[#1e40af] to-[#ffffff] bg-center bg-cover border border-white z-10 transition-transform duration-100 ease-in-out"
+                            className="absolute top-[10%] left-[10%] w-[80%] h-[80%] rounded-full bg-gradient-to-br from-[#212121] via-[#455CFF] to-[#ffffff] bg-center bg-cover border border-white z-10 transition-transform duration-100 ease-in-out"
                             style={{ transform: `rotate(${rotation}deg)` }}
                         ></div>
                         
