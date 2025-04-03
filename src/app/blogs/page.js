@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BlogsEmailCollection from "../components/blog-email-collection";
 import Link from "next/link";
 import Image from "next/image";
@@ -284,8 +284,8 @@ const VideoCard = ({ video }) => {
 
 // Create a custom hook for platform detection
 // This should be in a separate file: hooks/usePlatform.js
-/* 
-export default function usePlatform() {
+
+ function usePlatform() {
     const [isMobile, setIsMobile] = useState(false);
     
     useEffect(() => {
@@ -305,7 +305,7 @@ export default function usePlatform() {
     
     return isMobile;
 }
-*/
+
 
 export default function BlogAndVideosPage() {
     const [hasSubmitted, setHasSubmitted] = useState(false);

@@ -1,17 +1,26 @@
 'use client'
 import { SurveyForm } from '@/app/components/form/survey-form'
-import { csmSurveyConfig } from '../config/csm-survey'
 import { CATEGORIES, findSum, getLengthFromModules, getNumberOfZeros, parseResults, parseToGraph } from '@/lib/utils'
-import { useEffect, useRef, useState } from 'react'
-import BarGraph from '../components/charts/barchart'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import { usePDF } from 'react-to-pdf'
+import BarGraph from '../components/charts/barchart'
 import { Multiplechart } from '../components/charts/multiplechart'
-import { PDFHeader } from '../components/pdf-components/pdf-header'
 import { PDFFooter } from '../components/pdf-components/pdf-footer'
+import { PDFHeader } from '../components/pdf-components/pdf-header'
 import SurveyText from '../components/pdf-components/survey-text'
-import { itsmSurveyConfig } from '../config/itsm-survey'
+import { configs } from '../config/data'
 
 export default function Survey() {
+
+  const params = useSearchParams();
+  const router = useRouter();
+
+
+
+  const module = params.get('survey')
+
+
   const { toPDF, targetRef } = usePDF({
     filename: 'survey-results.pdf',
     method: 'blob'
@@ -31,14 +40,14 @@ export default function Survey() {
 
     const overallBarData = Object.keys(overall_module_sum).map(key => ({
       name: key,
-      value: overall_module_sum[key] / getLengthFromModules(csmSurveyConfig),
+      value: overall_module_sum[key] / getLengthFromModules(configs?.[module]),
       fill: 'red',
       title: 'Aggregated Scores for All CSM Modules'
     }))
 
     const implementedBarData = Object.keys(overall_module_sum).map(key => ({
       name: key,
-      value: overall_module_sum[key] / (getLengthFromModules(csmSurveyConfig) - getNumberOfZeros(results, key)),
+      value: overall_module_sum[key] / (getLengthFromModules(configs?.[module]) - getNumberOfZeros(results, key)),
       fill: 'hsl(var(--chart-1) / 0.8)',
       title: 'Aggregated Scores For All Implemented CSM Modules'
     }))
@@ -63,19 +72,20 @@ export default function Survey() {
     }
   }, [isGraphsReady])
 
+
   return (
     <main className="min-h-screen py-16 flex justify-center">
-      <div className="container py-10">
+      {configs?.[module] ? <div className="container py-10">
         <div className="text-center mb-12 space-y-4">
           <h1 className="text-4xl font-bold text-[#455CFF]">
-            {itsmSurveyConfig.title}
+            {configs?.[module]?.title}
           </h1>
           <p className="text-gray-400 max-w-2xl mx-auto">
             Evaluate your ServiceNow CSM implementation across People, Process, and Technology dimensions
           </p>
         </div>
         <SurveyForm
-          config={itsmSurveyConfig}
+          config={configs?.[module]}
           onComplete={handleSubmit}
         />
         <div
@@ -99,12 +109,17 @@ export default function Survey() {
                   data={item}
                   index={index}
                 />
-                {index === (barGraphData.length-1) && <SurveyText />}
+                {index === (barGraphData.length - 1) && <SurveyText />}
                 <PDFFooter />
               </div>
           ))}
         </div>
-      </div>
+      </div> :
+        <div className="flex flex-col items-center justify-center h-[80vh] mt-0 text-white text-center">
+          <h2 className="text-4xl mb-6">Oops! Survey not found</h2>
+          <p className="text-md">The requested survey could not be found.</p>
+        </div>
+      }
     </main>
   )
 }

@@ -17,7 +17,7 @@ export const itsmSurveyConfig = {
         ]
       },
       {
-        name: 'Professional',
+        name: 'Pro',
         modules: [
           { name: 'Performance Analytics', slug: 'performance-analytics' },
           { name: 'Digital Product Release', slug: 'digital-product-release' },

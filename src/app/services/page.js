@@ -1,24 +1,16 @@
 'use client'
 
-import { useState } from 'react'
-import Image from 'next/image'
 import {
-  Zap,
+  Check,
+  LineChart,
   Settings,
   Users,
-  LineChart,
-  ArrowRight,
-  Wrench as Tool,
-  Check,
-  X
+  X,
+  Zap
 } from 'lucide-react'
-import Link from 'next/link'
-import { cn } from "@/lib/utils"
-import { Button } from '@/components/ui/button'
 import CompareCard from '../components/comparisionCards'
-import Comparison from '../components/comparison'
-import ServicesAccordion from '../components/services-accordion'
 import HeroSection from '../components/hero-section'
+import ServicesAccordion from '../components/services-accordion'
 import SurveyButton from '../components/surveyButton'
 
 const categories = ["IMPLEMENTATIONS", "CONSULTING", "MANAGED SERVICES", "ENHANCEMENTS"]
