@@ -28,7 +28,7 @@ const data = {
   "founders": {
     "teamMembers": [
       {
-        "imagePath": "/about/lelilani.png",
+        "imagePath": "/about/leilani.jpeg",
         "name": "Leilani Mossman",
         "titles": [
           "Chief Executive Officer",
@@ -36,7 +36,7 @@ const data = {
         ]
       },
       {
-        "imagePath": "/about/mike.png",
+        "imagePath": "/about/mike.jpeg",
         "name": "Michael Yee",
         "titles": [
           "Chief Operations Officer",
@@ -62,7 +62,7 @@ export default function About() {
   return (
     <div className=" bg-[#141414] w-full">
       {/* hero section */}
-      <HeroSection data={hero}/>
+      <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} />
       {/* resources */}
       <div className="lg:px-32 px-6 pb-10">
         <div className="w-full lg:p-10  rounded-2xl  bg-gradient-t0-b from-[#141414] to-zinc-900">

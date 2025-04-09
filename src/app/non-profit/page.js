@@ -36,7 +36,7 @@ const hero = {
 export default function NonProfit() {
     return (
         <div className="w-full" >
-            <HeroSection data={hero} />
+            <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} />
             <div className="flex flex-col items-center justify-center">
                 <h2 className="flex italic justify-center text-4xl max-w-5xl text-gray-300 text-center ">
                     By Supporting Mana’o Pili you are supporting the Anahulu

@@ -7,7 +7,8 @@ export default function NonProfitAccordion({ data1 }) {
                 {
                     data1.map((item, index) => (
                         <AccordionItem key={index}  value={item} className="border-gray-700 py-6">
-                            <AccordionTrigger className="text-white hover:text-[#deff00] md:text-3xl text-lg font-medium">
+                            <AccordionTrigger className="text-white hover:text-[#deff00] md:text-3xl text-lg font-medium text-start" >
+
                                 {item.title}
                             </AccordionTrigger>
                             <AccordionContent className="text-gray-400 text-sm md:text-lg">

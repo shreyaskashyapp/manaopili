@@ -21,7 +21,7 @@ const data = {
 export default function Contact() {
     return (
         <div>
-            <HeroSection data={data} />
+            <HeroSection data={data} bgColor={`from-[#455CFF] to-[#141414]`}  />
             <div className="">
                 <ContactForm />
             </div>

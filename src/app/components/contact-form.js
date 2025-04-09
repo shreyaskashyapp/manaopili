@@ -9,9 +9,9 @@ import { useState } from "react";
 import LoadingIndicator from "./loader";
 
 const formFields = [
-    { id: "name", label: "Name", type: "text", placeholder: "Your name" },
-    { id: "email", label: "Email", type: "email", placeholder: "Your email" },
-    { id: "company", label: "Company Name", type: "text", placeholder: "Your company" },
+    { id: "name", label: "Name", type: "text", placeholder: "Your name", isRequired:true },
+    { id: "email", label: "Email", type: "email", placeholder: "Your email",isRequired:true  },
+    { id: "company", label: "Company Name", type: "text", placeholder: "Your company",isRequired:true  },
     { id: "message", label: "Message", type: "message", placeholder: "Your message" }
 ];
 
@@ -39,7 +39,7 @@ export default function ContactForm() {
     }
 
     return (
-        <div className="flex justify-center items-center w-full py-6 px-4">
+        <div className="flex justify-center items-center w-full px-4 pb-6">
             {isLoading && <LoadingIndicator size="large" color="lime" />}
             {submitSuccess ? (
                 <div className="bg-zinc-900 text-white p-8 max-w-3xl mx-auto rounded-lg text-center">
@@ -56,28 +56,28 @@ export default function ContactForm() {
                     </p>
                     <Button
                         onClick={() => setSubmitSuccess(false)}
-                        className="bg-[#DEFF00] text-black py-3 px-6 rounded-md font-medium inline-block mt-4 hover:bg-yellow-400 transition-colors"
+                        className="bg-white text-black py-3 px-6 rounded-md font-medium inline-block mt-4 hover:bg-[#deff00] transition-colors"
                     >
                         Send Another Message
                     </Button>
                 </div>
             ) : (
-                <Card className="w-full max-w-3xl border-none shadow-3xl bg-zinc-900 rounded-lg">
-                    <CardHeader className="py-6">
+                <Card className="w-full max-w-3xl border-none shadow-3xl bg-zinc-900 rounded-lg px-2">
+                    <CardHeader className="py-8">
                         <h2 className="text-3xl font-bold text-white">Connect With Our Team</h2>
                     </CardHeader>
                     <CardContent>
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                        <form onSubmit={handleSubmit} className="space-y-8">
                             {formFields.map((field) => (
                                 <div key={field.id} className="space-y-2">
-                                    <Label htmlFor={field.id} className="text-white">
-                                        {field.label}
+                                    <Label htmlFor={field.id} className="text-white text-base">
+                                        {field.label}{field.isRequired?" * ":" "}
                                     </Label>
                                     {field.type === "message" ? (
                                         <Textarea
                                             id={field.id}
                                             placeholder={field.placeholder}
-                                            className="bg-zinc-900 border-gray-600 focus:border-[#deff00] focus:ring-[#deff00] text-white"
+                                            className="bg-zinc-900  border-gray-600 focus:border-[#deff00] focus:ring-[#deff00] text-white placeholder:text-gray-400"
                                             onChange={(e) => setFormData({ ...formData, [field.id]: e.target.value })}
                                         />
                                     ) : (
@@ -85,7 +85,7 @@ export default function ContactForm() {
                                             id={field.id}
                                             type={field.type}
                                             placeholder={field.placeholder}
-                                            className="bg-zinc-900 border-gray-600 focus:border-[#deff00] focus:ring-[#deff00] text-white"
+                                            className="bg-zinc-900 border-gray-600 py-6 focus:border-[#deff00] focus:ring-[#deff00] text-white placeholder:text-gray-400"
                                             required
                                             onChange={(e) => setFormData({ ...formData, [field.id]: e.target.value })}
                                         />
@@ -94,7 +94,7 @@ export default function ContactForm() {
                             ))}
                             <Button
                                 type="submit"
-                                className="w-full bg-[#deff00] hover:bg-[#c8e600] text-black font-medium transition-all"
+                                className="w-full bg-white hover:bg-[#deff00] text-black font-medium transition-all"
                             >
                                 Submit
                             </Button>
