@@ -115,7 +115,7 @@ const Careers = () => {
       </p>
       <button
         onClick={handleNewSubmission}
-        className="bg-[#DEFF00] text-black py-3 px-6 rounded-md font-medium inline-block mt-4 hover:bg-yellow-400 transition-colors"
+        className="bg-white text-black py-3 px-6 rounded-md font-medium inline-block mt-4 hover:bg-[#deff00] transition-colors"
       >
         Submit Another Application
       </button>
@@ -126,8 +126,8 @@ const Careers = () => {
     <div>
       {isLoading && <LoadingIndicator size='large' color='lime'/>}
       <div className="min-h-screen bg-[#141414] text-white">
-      <HeroSection data={data}/>
-        <div className="container mx-auto px-4">
+      <HeroSection data={data} bgColor={`from-[#455CFF] to-[#141414]`} />
+        <div className="container mx-auto px-4 pb-6">
           <div className="max-w-3xl mx-auto">  
             {submitSuccess ? (
               <SuccessPage />
@@ -181,7 +181,7 @@ const Careers = () => {
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-[#DEFF00] text-black py-4 rounded-md font-medium flex justify-center items-center mt-6 hover:bg-yellow-300 transition-colors"
+                    className="w-full bg-white text-black py-4 rounded-md font-medium flex justify-center items-center mt-6 hover:bg-[#deff00] transition-colors"
                   >
                     Submit Application
                   </button>

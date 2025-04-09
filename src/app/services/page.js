@@ -245,7 +245,7 @@ export default function Component() {
     <div className=" bg-[#141414]">
       <div className="w-full">
         {/* //hero */}
-        <HeroSection data={hero} />
+        <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
         <div className="container mx-auto px-4 py-12">
           <ServicesAccordion services={services} categories={categories} />
 

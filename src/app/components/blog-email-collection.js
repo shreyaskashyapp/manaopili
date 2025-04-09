@@ -7,7 +7,7 @@ import { ArrowDownIcon } from 'lucide-react';
 
 const sampleCompanies = ["Google", "Microsoft", "Apple", "Amazon", "Meta", "Tesla", "Netflix"];
 
-const BlogsEmailCollection = ({ onGettingEmail , title = 'Ready to take our Digital TRiP survey?' , subtitle = 'Fill out your email address to access our survey'}) => {
+const BlogsEmailCollection = ({ onGettingEmail , title = 'Take a look at our articles' , subtitle = 'Fill out your email address to access our articles.'}) => {
     const [email, setEmail] = useState("");
     const [organization, setOrganization] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
@@ -43,11 +43,11 @@ const BlogsEmailCollection = ({ onGettingEmail , title = 'Ready to take our Digi
     };
 
     return (
-        <div className="flex justify-center items-center w-full py-6 px-4 h-[100vh] mt-10">
-            <Card className="w-full max-w-3xl border-none shadow-3xl bg-zinc-900 rounded-lg p-10">
+        <div className="flex justify-center items-center w-full py-6 px-2 h-[100vh] ">
+            <Card className="w-full max-w-3xl border-none bg-zinc-900 rounded-lg p-10">
                 <CardHeader className="py-6 text-center">
-                    <h2 className="text-3xl font-bold text-white">{title}</h2>
-                    <p className="text-lg text-gray-300 mt-4">{subtitle}</p>
+                    <h2 className="md:text-5xl text-3xl font-medium text-white">{title}</h2>
+                    <p className="text-lg text-[#deff00] mt-4">{subtitle}</p>
                 </CardHeader>
                 <CardContent>
                     <form onSubmit={handleSubmit} className="space-y-6">
@@ -101,7 +101,7 @@ const BlogsEmailCollection = ({ onGettingEmail , title = 'Ready to take our Digi
 
                         <Button
                             type="submit"
-                            className="w-full bg-[#deff00] hover:bg-[#c8e600] text-black font-medium transition-all"
+                            className="w-full bg-white hover:bg-[#deff00] text-black font-medium transition-all"
                         >
                             NEXT
                         </Button>

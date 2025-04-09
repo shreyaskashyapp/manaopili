@@ -8,16 +8,17 @@ const links = {
     { name: "Services", href: "/services" },
     { name: "Careers", href: "/careers" },
     { name: "Contact", href: "/contact" },
+    { name: "FAQ", href: "/faq" },
+
   ],
   Legal: [
-    { name: "Privacy Policy", href: "/privacy" },
+    { name: "Privacy Policy", href: "/privacy-policy" },
     { name: "Terms of Service", href: "/terms" },
-    { name: "Security", href: "/security" },
     { name: "Cookies", href: "/cookies" },
   ],
   Connect: [
-    { name: "Youtube", icon: <Youtube className="inline mr-2 w-5 h-5" />, href: "#" },
-    { name: "LinkedIn", icon: <Linkedin className="inline mr-2 w-5 h-5" />, href: "#" },
+    { name: "Youtube", icon: <Youtube className="inline mr-2 w-5 h-5" />, href: "https://www.youtube.com/@Manaopili-info" },
+    { name: "LinkedIn", icon: <Linkedin className="inline mr-2 w-5 h-5" />, href: "https://www.linkedin.com/company/mana-o-pili/ " },
   ],
 };
 const buttonData={
@@ -48,7 +49,7 @@ export default function Footer() {
             <h2 className="text-xl font-semibold text-white">{item}</h2>
             {links[item].map((link, idx) => (
               <div key={idx} className="">
-                <a href={link.href}>
+                <a href={link.href} target="blank">
                   <p className="text-base text-zinc-300 hover:text-[#deff00] items-center">
                     {link.icon && link.icon}
                     {link.name}
@@ -64,7 +65,7 @@ export default function Footer() {
       {/* copyrights */}
       <div className="border-t border-gray-300 py-4 mx-6 max-w-7xl md:mx-auto flex justify-center">
         <p className="text-sm text-zinc-300">
-          &copy; 2025 {`Mana'o Pili. All rights reserved.`}
+          &copy; 2025 {`Mana'o Pili LLC. All rights reserved.`}
         </p>
       </div>
     </footer>
