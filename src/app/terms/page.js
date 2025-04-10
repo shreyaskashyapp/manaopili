@@ -137,7 +137,7 @@ const terms = [
 export default function Terms() {
     return (
         <div>
-            <HeroSection data={{ title: "Terms of Services" }} bgColor={`from-[#141414] via-[#455CFF] to-[#141414]`}  />
+            <HeroSection data={{ title: "Terms of Services" }} bgColor={`from-[#455CFF] to-[#141414]`}  />
             <StaticContent data={terms} />
         </div>
     )

@@ -49,7 +49,7 @@ export default function Footer() {
             <h2 className="text-xl font-semibold text-white">{item}</h2>
             {links[item].map((link, idx) => (
               <div key={idx} className="">
-                <a href={link.href} target="blank">
+                <a href={link.href}>
                   <p className="text-base text-zinc-300 hover:text-[#deff00] items-center">
                     {link.icon && link.icon}
                     {link.name}
