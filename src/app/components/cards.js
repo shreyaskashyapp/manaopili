@@ -5,7 +5,7 @@ const sections = [
     {
       title: "Get Started",
       description: "Begin your journey with our tailored assessment.",
-      link: "/survey",
+      link: "/survey-list",
     },
     {
       title: "What We Do",

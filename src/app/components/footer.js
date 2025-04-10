@@ -22,7 +22,7 @@ const links = {
   ],
 };
 const buttonData={
-  link:"/survey",
+  link:"/survey-list",
   text:"Take Our Survey"
 }
 

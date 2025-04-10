@@ -11,7 +11,7 @@ const sections = [
   {
     title: "Get Started",
     description: "Begin your journey with our tailored assessment.",
-    link: "/survey",
+    link: "/survey-list",
   },
   {
     title: "What We Do",
@@ -41,7 +41,7 @@ export default function HomePage() {
                 Embark on a transformative journey with our <span className='text-[#deff00]'>Digital Trip</span> approach, optimizing your <span className='text-[#deff00]'>ServiceNow</span> investment for unparalleled success.
               </p>
               <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <Link href="/survey">
+                <Link href="/survey-list">
                   <Button size="lg" variant="outline" className="text-[#455CFF]  bg-blue-200 font-heading hover:bg-[#deff00] px-20 py-6 text-2xl rounded-full shadow-md hover:shadow-lg transition-all duration-300">
                     Get Started
                   </Button>
