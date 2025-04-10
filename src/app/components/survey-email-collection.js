@@ -1,10 +1,10 @@
-import React, { useState, useRef } from 'react';
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ArrowDownIcon } from 'lucide-react';
+import { useRef, useState } from 'react';
 import HeroSection from './hero-section';
+import LoadingIndicator from './loader';
 
 const sampleCompanies = ["Google", "Microsoft", "Apple", "Amazon", "Meta", "Tesla", "Netflix"];
 
@@ -13,6 +13,7 @@ export default function SurveyEmailCollection({ onGettingEmail, title = 'Ready t
     const [organization, setOrganization] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const dropdownRef = useRef(null);
 
     const filteredCompanies = searchTerm
@@ -22,6 +23,7 @@ export default function SurveyEmailCollection({ onGettingEmail, title = 'Ready t
         : [];
 
     const handleSubmit = async (e) => {
+        setIsLoading(true)
         e.preventDefault();
         if (!email || !organization) {
             alert("Please fill out all fields.");
@@ -40,18 +42,24 @@ export default function SurveyEmailCollection({ onGettingEmail, title = 'Ready t
             }
         } catch (error) {
             console.error('Error submitting form:', error);
+        }finally{
+            setIsLoading(false)
         }
-    };
-    const data = { title: 'Digital Trip Survey',
-        description:
-        (
-        <>
-          <span className='text-[#deff00]'>The Digital Trip Technology Survey</span> assesses your organization&apos;s capabilities and uncovers digital transformation opportunities across core business processes. Once completed, you&apos;ll receive a <span className='text-[#deff00]'>personalized report</span> via email, offering insights into growth and maturity levels, comparative benchmarks, and visual analytics to support <span className='text-[#deff00]'>strategic decision-making</span>.
 
-        </>
-        )}
+    };
+    const data = {
+        title: 'Digital Trip Survey',
+        description:
+            (
+                <>
+                    <span className='text-[#deff00]'>The Digital Trip Technology Survey</span> assesses your organization&apos;s capabilities and uncovers digital transformation opportunities across core business processes. Once completed, you&apos;ll receive a <span className='text-[#deff00]'>personalized report</span> via email, offering insights into growth and maturity levels, comparative benchmarks, and visual analytics to support <span className='text-[#deff00]'>strategic decision-making</span>.
+
+                </>
+            )
+    }
     return (
         <div>
+            {isLoading && <LoadingIndicator size='large' color='lime' />}
             <HeroSection bgColor={`from-[#455CFF] to-[#141414]`} data={data} />
             <div className="flex flex-col justify-center items-center w-full px-2 py-4 ">
                 <Card className="w-full max-w-3xl border-none bg-zinc-900 rounded-lg p-10">

@@ -14,15 +14,15 @@ const data = {
 }
 
 const modules = [
-    { name: "Technology (ITSM)", icon: <Settings className="h-5 w-5" /> },
-    { name: "Customer (CSM)", icon: <Headphones className="h-5 w-5" /> },
-    { name: "ITOM", icon: <Server className="h-5 w-5 flex-shrink-0" /> },
-    { name: "Asset (ITAM)", icon: <LineChart className="h-5 w-5" /> },
-    { name: "Risk Management (GRC)", icon: <Shield className="h-5 w-5" /> },
-    { name: "AI and GenAI", icon: <BrainCircuit className="h-5 w-5" /> },
-    { name: "SPM (PPM)", icon: <FolderKanban className="h-5 w-5" /> },
-    { name: "DevOps", icon: <Terminal className="h-5 w-5" /> },
-    { name: "Employee (HRSD)", icon: <UserCircle className="h-5 w-5" /> }
+    { name: "Technology (ITSM)", icon: <Settings className="h-5 w-5" />, slug: "technology-workflows" },
+    { name: "Customer (CSM)", icon: <Headphones className="h-5 w-5" />, slug: "customer-workflows" },
+    { name: "ITOM", icon: <Server className="h-5 w-5 flex-shrink-0" />, slug: "it-operations-management" },
+    { name: "Asset (ITAM)", icon: <LineChart className="h-5 w-5" />, slug: "strategic-portfolio-management" },
+    { name: "Risk Management (GRC)", icon: <Shield className="h-5 w-5" />, slug: "integrated-risk-management", },
+    { name: "AI and GenAI", icon: <BrainCircuit className="h-5 w-5" />, slug: "ai-and-genai", },
+    { name: "SPM (PPM)", icon: <FolderKanban className="h-5 w-5" />, slug: "strategic-planning", },
+    { name: "DevOps", icon: <Terminal className="h-5 w-5" />, slug: "", },
+    { name: "Employee (HRSD)", icon: <UserCircle className="h-5 w-5" />, slug: "" }
 ];
 
 export default function SurveyList() {
@@ -35,7 +35,7 @@ export default function SurveyList() {
                 </h2>
                 <div className="flex flex-col w-full max-w-7xl  bg-gradient-to-r from-[#141414] via-gray-900/50 to-[#141414] px-10">
                     {modules.map((module, index) => (
-                        <Link href={`/survey?survey=technology-workflows`} key={index} className="border-b border-zinc-800 py-8 text-xl text-zinc-400 hover:text-white hover:bg-gradient-to-r from-[#141414] via-zinc-900 to-[#141414]">
+                        <Link href={`/survey?survey=${module?.slug}`} key={index} className="border-b border-zinc-800 py-8 text-xl text-zinc-400 hover:text-white hover:bg-gradient-to-r from-[#141414] via-zinc-900 to-[#141414]">
                             <div className="flex justify-between items-center">
                                 <div className='flex'>
                                     <div className='w-8 h-8 mr-3 text-[#deff00] bg-zinc-800 rounded-full p-1.5'>{module.icon}</div>

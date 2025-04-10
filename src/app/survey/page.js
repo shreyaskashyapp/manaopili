@@ -13,9 +13,9 @@ import { configs } from '../config/data'
 import SurveyEmailCollection from '../components/survey-email-collection'
 
 export default function Survey() {
-  const [hasSubmitted,setHasSubmitted]=useState(false)
+  const [hasSubmitted, setHasSubmitted] = useState(false)
 
-  const handleEmail=(email,organizationName)=>{
+  const handleEmail = (email, organizationName) => {
     setHasSubmitted(true)
   }
 
@@ -78,56 +78,56 @@ export default function Survey() {
 
   return (
     <div>
-      {hasSubmitted?(
+      {hasSubmitted ? (
         <main className="min-h-screen py-16 flex justify-center">
-      {configs?.[surveyModule] ? <div className="container py-10">
-        <div className="text-center mb-12 space-y-4">
-          <h1 className="text-4xl font-bold text-[#455CFF]">
-            {configs?.[surveyModule]?.title}
-          </h1>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Evaluate your ServiceNow CSM implementation across People, Process, and Technology dimensions
-          </p>
-        </div>
-        <SurveyForm
-          config={configs?.[surveyModule]}
-          onComplete={handleSubmit}
-        />
-        <div
-          className="flex flex-col gap-4 fixed pointer-events-none"
-          style={{ width: '800px', height: 'auto' }}
-          ref={targetRef}
-        >
-          {barGraphData?.map((item, index) => (
-            Array.isArray(item[0]) ?
-              <div className='flex flex-col gap-[152px] ' key={`surevey-element-${index}`}>
-                <PDFHeader />
-                <Multiplechart
-                  data={item} />
-                <PDFFooter />
-              </div>
-              :
-              <div className={`flex flex-col ${index === 2 ? 'gap-[2px]' : 'gap-[185px]'}`} key={`surevey-element-${index}`}>
-                <PDFHeader />
-                <BarGraph
-                  key={index}
-                  data={item}
-                  index={index}
-                />
-                {index === (barGraphData.length - 1) && <SurveyText />}
-                <PDFFooter />
-              </div>
-          ))}
-        </div>
-      </div> :
-        <div className="flex flex-col items-center justify-center h-[80vh] mt-0 text-white text-center">
-          <h2 className="text-4xl mb-6">Oops! Survey not found</h2>
-          <p className="text-md">The requested survey could not be found.</p>
-        </div>
-      }
-    </main>
-      ):
-      <SurveyEmailCollection onGettingEmail={handleEmail}/>}
+          {configs?.[surveyModule] ? <div className="container py-10">
+            <div className="text-center mb-12 space-y-4">
+              <h1 className="text-4xl font-bold text-[#455CFF]">
+                {configs?.[surveyModule]?.title}
+              </h1>
+              <p className="text-gray-400 max-w-2xl mx-auto">
+                Evaluate your ServiceNow CSM implementation across People, Process, and Technology dimensions
+              </p>
+            </div>
+            <SurveyForm
+              config={configs?.[surveyModule]}
+              onComplete={handleSubmit}
+            />
+            <div
+              className="flex flex-col gap-4 fixed pointer-events-none"
+              style={{ width: '800px', height: 'auto' }}
+              ref={targetRef}
+            >
+              {barGraphData?.map((item, index) => (
+                Array.isArray(item[0]) ?
+                  <div className='flex flex-col gap-[152px] ' key={`surevey-element-${index}`}>
+                    <PDFHeader />
+                    <Multiplechart
+                      data={item} />
+                    <PDFFooter />
+                  </div>
+                  :
+                  <div className={`flex flex-col ${index === 2 ? 'gap-[2px]' : 'gap-[185px]'}`} key={`surevey-element-${index}`}>
+                    <PDFHeader />
+                    <BarGraph
+                      key={index}
+                      data={item}
+                      index={index}
+                    />
+                    {index === (barGraphData.length - 1) && <SurveyText />}
+                    <PDFFooter />
+                  </div>
+              ))}
+            </div>
+          </div> :
+            <div className="flex flex-col items-center justify-center h-[80vh] mt-0 text-white text-center">
+              <h2 className="text-4xl mb-6">Oops! Survey not found</h2>
+              <p className="text-md">The requested survey could not be found.</p>
+            </div>
+          }
+        </main>
+      ) :
+        <SurveyEmailCollection onGettingEmail={handleEmail} />}
     </div>
   )
 }
