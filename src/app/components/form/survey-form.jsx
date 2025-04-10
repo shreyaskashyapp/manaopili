@@ -46,10 +46,21 @@ export function SurveyForm({ config, onComplete }) {
 
   const handleRatingChange = (index, ratings) => {
     const updatedResults = [...results]
+    const currentRatings = updatedResults[currentIndex + index].ratings
+
+    const newRatings = Object.keys(ratings).reduce((acc, key) => {
+      acc[key] = currentRatings[key] === ratings[key] ? '' : ratings[key]
+      return acc
+    }, {})
+
     updatedResults[currentIndex + index] = {
       ...updatedResults[currentIndex + index],
-      ratings
+      ratings: {
+        ...currentRatings,
+        ...newRatings
+      }
     }
+
     setResults(updatedResults)
   }
 
