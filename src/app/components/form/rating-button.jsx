@@ -13,6 +13,7 @@ export function RatingButton({ value, isSelected, onChange }) {
       aria-pressed={isSelected}
     >
       {value}
+      
     </button>
   )
 }

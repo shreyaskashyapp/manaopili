@@ -14,10 +14,7 @@ const data = {
         </>
     )
 }
-// const buttonData={
-//     link:"/survey",
-//     text:"Book Online"
-// }
+
 export default function Contact() {
     return (
         <div>

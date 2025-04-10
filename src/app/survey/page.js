@@ -10,8 +10,14 @@ import { PDFFooter } from '../components/pdf-components/pdf-footer'
 import { PDFHeader } from '../components/pdf-components/pdf-header'
 import SurveyText from '../components/pdf-components/survey-text'
 import { configs } from '../config/data'
+import SurveyEmailCollection from '../components/survey-email-collection'
 
 export default function Survey() {
+  const [hasSubmitted,setHasSubmitted]=useState(false)
+
+  const handleEmail=(email,organizationName)=>{
+    setHasSubmitted(true)
+  }
 
   const params = useSearchParams();
 
@@ -71,7 +77,9 @@ export default function Survey() {
 
 
   return (
-    <main className="min-h-screen py-16 flex justify-center">
+    <div>
+      {hasSubmitted?(
+        <main className="min-h-screen py-16 flex justify-center">
       {configs?.[surveyModule] ? <div className="container py-10">
         <div className="text-center mb-12 space-y-4">
           <h1 className="text-4xl font-bold text-[#455CFF]">
@@ -118,5 +126,8 @@ export default function Survey() {
         </div>
       }
     </main>
+      ):
+      <SurveyEmailCollection onGettingEmail={handleEmail}/>}
+    </div>
   )
 }

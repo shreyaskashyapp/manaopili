@@ -235,7 +235,7 @@ const hero = {
   )
 }
 const buttonData={
-  link:"/survey",
+  link:"/survey-list",
   text:"Get Started"
 }
 
