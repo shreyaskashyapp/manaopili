@@ -258,7 +258,7 @@ export default function Component() {
           {/* comparision section */}
           {/* <Comparison/> */}
           <div className='mt-16 text-center'>
-            <h2 className='text-5xl  font-semibold text-[#e2e2e2] text-center'>
+            <h2 className='text-5xl font-normal text-[#e2e2e2] text-center'>
               Why Choose Us?
             </h2>
             <CompareCard data={data} companies={companies} />

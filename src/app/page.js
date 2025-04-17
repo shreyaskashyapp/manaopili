@@ -57,7 +57,7 @@ export default function HomePage() {
           <Cards data={sections} />
           {/* why manaopili wheel */}
           <div className="flex justify-center items-center md:gap-2 gap-0 px-3 py-4 md:py-1">
-            <h2 className="text-3xl md:text-5xl font-normal text-[#e2e2e2] text-center pb-2">{`Why Mana'o Pili?`}</h2>
+            <h2 className="text-5xl font-normal text-[#e2e2e2] text-center pb-2">{`Why Mana'o Pili?`}</h2>
           </div>
           <WhyManaopiliWheel />
         </div>

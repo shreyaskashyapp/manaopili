@@ -45,14 +45,14 @@ export default function Survey() {
       name: key,
       value: overall_module_sum[key] / getLengthFromModules(configs?.[surveyModule]),
       fill: 'red',
-      title: 'Aggregated Scores for All CSM Modules'
+      title: `Aggregated Scores for All ${configs?.[surveyModule]?.title}`
     }))
 
     const implementedBarData = Object.keys(overall_module_sum).map(key => ({
       name: key,
       value: overall_module_sum[key] / (getLengthFromModules(configs?.[surveyModule]) - getNumberOfZeros(results, key)),
       fill: 'hsl(var(--chart-1) / 0.8)',
-      title: 'Aggregated Scores For All Implemented CSM Modules'
+      title: `Aggregated Scores For All Implemented ${configs?.[surveyModule]?.title}`
     }))
 
     const barData = parseToGraph(rawData)

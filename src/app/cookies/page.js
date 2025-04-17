@@ -64,7 +64,7 @@ const cookiePolicy = [
 export default function Cookies() {
     return (
         <div>
-            <HeroSection data={{ title: "Cookies" }} bgColor={`from-[#455CFF] to-[#141414]`}/>
+            <HeroSection data={{ title: "Cookies" }} bgColor={`from-[#455CFF] to-[#141414]`} height={`[50vh]`}/>
             <StaticContent data={cookiePolicy} />
         </div>
     )

@@ -49,8 +49,10 @@ const faqData = [
 export default function FAQ() {
     return(
         <div className="w-full " >
-            <HeroSection data={data} bgColor={`from-[#455CFF] to-[#141414]`} />
+            <HeroSection data={data} bgColor={`from-[#455CFF] to-[#141414]`} height={'[50vh]'}/>
+            <div className="px-14">
             <NonProfitAccordion data1={faqData}/>
+            </div>
         </div>
     )
 }

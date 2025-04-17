@@ -62,11 +62,11 @@ export default function About() {
   return (
     <div className=" bg-[#141414] w-full">
       {/* hero section */}
-      <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} />
+      <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`}/>
       {/* resources */}
       <div className="lg:px-32 px-6 pb-10">
         <div className="w-full lg:p-10  rounded-2xl  bg-gradient-t0-b from-[#141414] to-zinc-900">
-          <h1 className='text-5xl font-semibold text-[#e2e2e2]  text-center pb-10 '>
+          <h1 className='text-5xl font-normal text-[#e2e2e2]  text-center pb-10 '>
             Our team resources
           </h1>
           <AboutCards data={data.resources.data} />
@@ -75,7 +75,7 @@ export default function About() {
       </div>
       {/* founders */}
       <div>
-        <h2 className='text-5xl  font-semibold text-[#e2e2e2] text-center '>
+        <h2 className='text-5xl  font-normal text-[#e2e2e2] text-center '>
           Founders
         </h2>
         <Founders team={data.founders.teamMembers} />

@@ -70,6 +70,7 @@ export default function CompareCard({data,companies}) {
                 <div className="w-full mx-auto flex flex-col gap-6 py-6 px-3">
                     {data[activeTab].map((item, idx) => (
                         <Card key={idx} className="border-none  bg-gray-900/50 ">
+                        
                             <CardHeader className="bg-gray-900 text-white py-3 rounded-t-lg">
                                 <CardTitle className="flex justify-start">
                                     <h2 className="text-lg">{item.title}</h2>
@@ -83,7 +84,9 @@ export default function CompareCard({data,companies}) {
                                 <CardDescription className="flex flex-col items-start gap-2 text-white text-lg font-bold">
                                     <div className="flex w-full justify-between">
                                         {item.label}
+                                        {activeTab==="Mana'o Pili" &&(
                                         <span className="bg-[#455CFF] text-white px-3 py-1 rounded-full text-xs font-bold">OURS</span>
+                                    )}
                                     </div>
                                     {item.value &&
                                         <Progress value={item.value} className={`${activeTab==="Mana'o Pili" ? '[&>div]:bg-[#455CFF]' : '[&>div]:bg-gray-300'} h-2 bg-black`} />
