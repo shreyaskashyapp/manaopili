@@ -64,7 +64,7 @@ export default function ContactForm() {
             ) : (
                 <Card className="w-full max-w-3xl border-none shadow-3xl bg-zinc-900 rounded-lg px-2">
                     <CardHeader className="py-8">
-                        <h2 className="text-3xl font-bold text-white">Connect With Our Team</h2>
+                        <h2 className="text-3xl font-medium text-white">Connect With Our Team</h2>
                     </CardHeader>
                     <CardContent>
                         <form onSubmit={handleSubmit} className="space-y-8">

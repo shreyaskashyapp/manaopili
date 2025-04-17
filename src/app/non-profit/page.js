@@ -37,7 +37,7 @@ export default function NonProfit() {
     return (
         <div className="w-full" >
             <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center py-10">
                 <h2 className="flex italic justify-center text-4xl max-w-5xl text-gray-300 text-center ">
                     By supporting Mana’o Pili you are supporting the Anahulu
                     Valley Preservation.

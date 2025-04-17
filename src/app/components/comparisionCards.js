@@ -85,7 +85,7 @@ export default function CompareCard({data,companies}) {
                                     <div className="flex w-full justify-between">
                                         {item.label}
                                         {activeTab==="Mana'o Pili" &&(
-                                        <span className="bg-[#455CFF] text-white px-3 py-1 rounded-full text-xs font-bold">OURS</span>
+                                        <span className="bg-[#455CFF] items-center flex justify-center text-white px-3 rounded-full text-xs font-semibold">OURS</span>
                                     )}
                                     </div>
                                     {item.value &&
