@@ -19,7 +19,7 @@ export default function Contact() {
     return (
         <div>
             <HeroSection data={data} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
-            <div className="">
+            <div className="py-10">
                 <ContactForm />
             </div>
 

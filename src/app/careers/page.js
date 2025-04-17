@@ -127,13 +127,13 @@ const Careers = () => {
       {isLoading && <LoadingIndicator size='large' color='lime'/>}
       <div className="min-h-screen bg-[#141414] text-white">
       <HeroSection data={data} bgColor={`from-[#455CFF] to-[#141414]`} />
-        <div className="container mx-auto px-4 pb-6">
+        <div className="container mx-auto px-4 py-10">
           <div className="max-w-3xl mx-auto">  
             {submitSuccess ? (
               <SuccessPage />
             ) : (
               <div className="bg-zinc-900 text-white p-8 max-w-3xl mx-auto rounded-lg">
-                <h1 className="text-3xl font-bold mb-8">Submit Your Application</h1>
+                <h1 className="text-3xl font-medium mb-8">Submit Your Application</h1>
                 {error && (
                   <div className="bg-red-900/50 border border-red-500 text-red-100 px-4 py-3 rounded mb-6">
                     {error}

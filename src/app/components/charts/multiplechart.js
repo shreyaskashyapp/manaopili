@@ -33,15 +33,15 @@ export function Multiplechart({ data }) {
   const chartData = transformData(data)
 
   return (
-    <Card className="w-full bg-background mx-auto">
+    <Card className="w-full bg-background mx-auto border-none">
       <CardHeader>
-      
+
         <CardTitle className="text-2xl font-bold">{`${configs?.[surveyModule]?.title} Investment Scores by Product Suite`}</CardTitle>
         <CardDescription>
           {`Individualized scores for implementation of the ServiceNow ${configs?.[surveyModule]?.title} for investment into people, process, and technology.`}
         </CardDescription>
       </CardHeader>
-      <CardContent className="pt-4 pb-8">
+      <CardContent className="py-2">
         <ChartContainer
           config={{
             people: {

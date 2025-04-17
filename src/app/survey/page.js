@@ -100,23 +100,30 @@ export default function Survey() {
             >
               {barGraphData?.map((item, index) => (
                 Array.isArray(item[0]) ?
-                  <div className='flex flex-col gap-[152px] ' key={`surevey-element-${index}`}>
-                    <PDFHeader />
+                  <div className='flex flex-col' key={`survey-element-${index}`}>
+                    <div className="relative top-0 left-0 right-0">
+                      <PDFHeader />
+                    </div>
                     <Multiplechart
                       data={item} />
-                    <PDFFooter />
                   </div>
                   :
-                  <div className={`flex flex-col ${index === 2 ? 'gap-[2px]' : 'gap-[185px]'}`} key={`surevey-element-${index}`}>
-                    <PDFHeader />
+                  <div className={`flex flex-col gap-14`} key={`survey-element-${index}`}>
                     <BarGraph
                       key={index}
                       data={item}
                       index={index}
                     />
-                    {index === (barGraphData.length - 1) && <SurveyText />}
-                    <PDFFooter />
-                  </div>
+                    {index === (barGraphData.length - 1) && (
+                      <>
+                        <SurveyText />
+                        <div className="relative bottom-0">
+                          <PDFFooter />
+                        </div>
+                      </>
+                    )}
+
+                  </div>  
               ))}
             </div>
           </div> :
