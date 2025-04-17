@@ -60,7 +60,7 @@ export default function SurveyEmailCollection({ onGettingEmail, title = 'Ready t
     return (
         <div>
             {isLoading && <LoadingIndicator size='large' color='lime' />}
-            <HeroSection bgColor={`from-[#455CFF] to-[#141414]`} data={data} />
+            <HeroSection bgColor={`from-[#455CFF] to-[#141414]`} data={data} height={`[70vh]`} />
             <div className="flex flex-col justify-center items-center w-full px-2 py-4 ">
                 <Card className="w-full max-w-3xl border-none bg-zinc-900 rounded-lg p-10">
                     <CardHeader className="py-6 text-center">

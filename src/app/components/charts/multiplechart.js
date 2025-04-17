@@ -3,6 +3,8 @@
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Legend, Tooltip, CartesianGrid, LabelList } from "recharts"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChartContainer } from "@/components/ui/chart"
+import { configs } from "@/app/config/data"
+import { useSearchParams } from "next/navigation"
 
 const transformData = (data) => {
   const categories = ['Standard', 'Pro', 'Enterprise']
@@ -24,15 +26,19 @@ export function Multiplechart({ data }) {
       technology: data[index].find(item => item.name === 'technology').value,
     }))
   }
+  const params = useSearchParams();
+  
+  const surveyModule = params.get('survey')
 
   const chartData = transformData(data)
 
   return (
     <Card className="w-full bg-background mx-auto">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold">{'CSM Investment Scores by Product Suite'}</CardTitle>
+      
+        <CardTitle className="text-2xl font-bold">{`${configs?.[surveyModule]?.title} Investment Scores by Product Suite`}</CardTitle>
         <CardDescription>
-          Individualized scores for implementation of the ServiceNow CSM suite for investment into people, process, and technology.
+          {`Individualized scores for implementation of the ServiceNow ${configs?.[surveyModule]?.title} for investment into people, process, and technology.`}
         </CardDescription>
       </CardHeader>
       <CardContent className="pt-4 pb-8">

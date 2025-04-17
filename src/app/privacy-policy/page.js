@@ -105,7 +105,7 @@ const privacyPolicy = [
 export default function Privacy() {
     return (
         <div>
-            <HeroSection data={{ title: "Privacy Policy" }} bgColor={`from-[#455CFF] to-[#141414]`}  />
+            <HeroSection data={{ title: "Privacy Policy" }} bgColor={`from-[#455CFF] to-[#141414]`} height={`[50vh]`}  />
             <StaticContent data={privacyPolicy} />
         </div>
     )

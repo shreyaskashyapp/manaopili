@@ -25,7 +25,7 @@ const NonProfitData = [
 
 
 const hero = {
-    title: "To Protect The Land",
+    title: "To Protect the Land",
     description: (
         <>
             <span className="text-[#deff00]">Our Mission is Simple</span>
@@ -36,10 +36,10 @@ const hero = {
 export default function NonProfit() {
     return (
         <div className="w-full" >
-            <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} />
+            <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
             <div className="flex flex-col items-center justify-center">
                 <h2 className="flex italic justify-center text-4xl max-w-5xl text-gray-300 text-center ">
-                    By Supporting Mana’o Pili you are supporting the Anahulu
+                    By supporting Mana’o Pili you are supporting the Anahulu
                     Valley Preservation.
                 </h2>
                 <div className="w-full md:px-28 py-10 px-10 flex flex-col gap-6 ">
