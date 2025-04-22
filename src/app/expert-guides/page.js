@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import BlogsEmailCollection from "../components/blog-email-collection";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
 
 // Import images
 // import acceleratorsImage from "/articles/Accelerators.png";
@@ -216,6 +217,7 @@ const videos = [
     },
 ];
 
+
 // Blog Card Component
 const BlogCard = ({ post }) => {
     const isMobile = usePlatform();
@@ -235,9 +237,9 @@ const BlogCard = ({ post }) => {
                 <h3 className="text-xl font-semibold mb-2 text-white">{post.title}</h3>
                 <p className="text-gray-300 text-sm line-clamp-2 mb-4">{post.description}</p>
                 {isMobile ? (
-                    <a 
+                    <a
                         href={post.link}
-                        target="_blank" 
+                        target="_blank"
                         rel="noopener noreferrer"
                     >
                         <button className="px-4 py-2 rounded text-sm font-medium bg-black text-[#deff00] border border-[#deff00] hover:bg-[#deff00] hover:text-black transition-colors duration-300 shadow-[0_0_10px_rgba(222,255,0,0.3)] hover:shadow-[0_0_15px_rgba(222,255,0,0.6)]">
@@ -285,33 +287,40 @@ const VideoCard = ({ video }) => {
 // Create a custom hook for platform detection
 // This should be in a separate file: hooks/usePlatform.js
 
- function usePlatform() {
+function usePlatform() {
     const [isMobile, setIsMobile] = useState(false);
-    
+
     useEffect(() => {
         const checkIfMobile = () => {
             const userAgent = window.navigator.userAgent;
             const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
             setIsMobile(mobile);
         };
-        
+
         checkIfMobile();
         window.addEventListener('resize', checkIfMobile);
-        
+
         return () => {
             window.removeEventListener('resize', checkIfMobile);
         };
     }, []);
-    
+
     return isMobile;
 }
 
 
 export default function BlogAndVideosPage() {
     const [hasSubmitted, setHasSubmitted] = useState(false);
+    const router = useRouter();
+    const params = useSearchParams();
+    const redirectionUrl = params.get('redirectTo')
 
     const handleSubmit = (email, organizationName) => {
         setHasSubmitted(true);
+        if (redirectionUrl) {
+            router.push(`white-paper?paper=${redirectionUrl}`)
+        }
+
     };
 
     return (
@@ -355,6 +364,6 @@ export default function BlogAndVideosPage() {
             ) : (
                 <BlogsEmailCollection onGettingEmail={handleSubmit} />
             )}
-            </div>
+        </div>
     );
 }
