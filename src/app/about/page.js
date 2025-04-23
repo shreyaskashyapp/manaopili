@@ -58,6 +58,17 @@ const hero = {
       Mana’o Pili, meaning <span className="text-[#deff00]">“connecting ideas”</span> in native Hawaiian, was founded in 2024 on the <span className="text-[#deff00]">“customer first”</span> idea of providing customers with an efficient and cost-effective approach to maximizing their ServiceNow investment. Too often, technology investments are underutilized with customers left struggling to maintain their implementations, let alone achieving outcomes. Look no further, Mana’o Pili is here to help.    </>
   )
 }
+
+export const metadata = {
+  title: "About Us | ServiceNow Experts | Mana'o Pili, LLC",
+  description: "Mana’o Pili, founded in 2024, helps customers maximize their ServiceNow investment through efficient and cost-effective solutions. Led by Leilani Mossman (CEO) and Michael Yee (COO).",
+  openGraph: {
+    title: "About Mana’o Pili",
+    description: "Mana’o Pili, founded in 2024, helps customers maximize their ServiceNow investment with a customer-first approach. Led by CEO Leilani Mossman and COO Michael Yee.",
+    url: "https://manaopili.com/about",
+  },
+};
+
 export default function About() {
   return (
     <div className=" bg-[#141414] w-full">

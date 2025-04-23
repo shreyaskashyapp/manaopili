@@ -1,6 +1,3 @@
-"use client"
-
-import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import Link from 'next/link'
 import Image from 'next/image'
@@ -24,6 +21,16 @@ const sections = [
     link: "/about",
   }
 ];
+
+export const metadata = {
+  title: "Home | Digital Transformation & ServiceNow Solutions | Mana'o Pili, LLC",
+  description: "Achieve Digital Transformation with Mana’o Pili. Optimize operations with AI-powered cloud solutions. Streamline IT, empower teams, and elevate customer service.",
+  openGraph: {
+    title: "Achieve Digital Transformation with Mana’o Pili",
+    description: "Optimize your operations with AI-powered cloud solutions and elevate customer service. Start your digital transformation today with Mana’o Pili.",
+    url: "https://manaopili.com/",
+  },
+};
 
 export default function HomePage() {
   return (
