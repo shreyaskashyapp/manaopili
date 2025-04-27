@@ -44,23 +44,12 @@ export function SurveyForm({ config, onComplete }) {
     return modules
   }, [currentIndex, results, totalModules, cardsPerView])
 
-  const handleRatingChange = (index, ratings) => {
+  const handleRatingChange = (index, ratings, slug) => {
     const updatedResults = [...results]
-    const currentRatings = updatedResults[currentIndex + index].ratings
-
-    const newRatings = Object.keys(ratings).reduce((acc, key) => {
-      acc[key] = currentRatings[key] === ratings[key] ? '' : ratings[key]
-      return acc
-    }, {})
-
     updatedResults[currentIndex + index] = {
       ...updatedResults[currentIndex + index],
-      ratings: {
-        ...currentRatings,
-        ...newRatings
-      }
+      ratings
     }
-
     setResults(updatedResults)
   }
 
@@ -95,7 +84,7 @@ export function SurveyForm({ config, onComplete }) {
               moduleSlug={module.slug}
               category={module.category}
               ratings={module.ratings}
-              onRatingChange={(ratings) => handleRatingChange(index, ratings)}
+              onRatingChange={(ratings) => handleRatingChange(index, ratings,module.slug)}
             />
           </div>
         ))}
