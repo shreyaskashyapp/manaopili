@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { ArrowDownIcon } from 'lucide-react';
+import LoadingIndicator from './loader';
 
 const sampleCompanies = ["Google", "Microsoft", "Apple", "Amazon", "Meta", "Tesla", "Netflix"];
 
@@ -13,6 +14,7 @@ const BlogsEmailCollection = ({ onGettingEmail , title = 'Take a look at our art
     const [searchTerm, setSearchTerm] = useState("");
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const filteredCompanies = searchTerm
         ? sampleCompanies.filter(company =>
@@ -21,6 +23,7 @@ const BlogsEmailCollection = ({ onGettingEmail , title = 'Take a look at our art
         : [];
 
     const handleSubmit = async (e) => {
+        setIsLoading(true);
         e.preventDefault();
         if (!email || !organization) {
             alert("Please fill out all fields.");
@@ -42,10 +45,14 @@ const BlogsEmailCollection = ({ onGettingEmail , title = 'Take a look at our art
         } catch (error) {
             console.error('Error submitting form:', error);
         }
+        finally{
+            setIsLoading(false)
+        }
     };
 
     return (
         <div className="flex justify-center items-center w-full py-6 px-2 h-[100vh] ">
+        {isLoading && <LoadingIndicator size="large" color="lime" />}
             <Card className="w-full max-w-3xl border-none bg-zinc-900 rounded-lg p-10">
                 <CardHeader className="py-6 text-center">
                     <h2 className="md:text-5xl text-3xl font-medium text-white">{title}</h2>
@@ -101,7 +108,8 @@ const BlogsEmailCollection = ({ onGettingEmail , title = 'Take a look at our art
                             )}
                         </div>
 
-                        <Button
+                        <Button 
+                      
                             type="submit"
                             className="w-full bg-white hover:bg-[#deff00] text-black font-medium transition-all"
                         >

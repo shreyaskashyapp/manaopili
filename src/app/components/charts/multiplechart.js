@@ -105,13 +105,13 @@ export function Multiplechart({ data }) {
                 }}
               />
               <Legend />
-              <Bar dataKey="people" fill="hsl(var(--chart-1))" radius={[4, 4, 0, 0]}>
+              <Bar dataKey="people" name="People" fill="hsl(var(--chart-1))" radius={[4, 4, 0, 0]}>
                 <LabelList dataKey="people" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" formatter={(value) => value.toFixed(2)} />
               </Bar>
-              <Bar dataKey="process" fill="hsl(var(--chart-2))" radius={[4, 4, 0, 0]}>
+              <Bar dataKey="process" name="Process" fill="hsl(var(--chart-2))" radius={[4, 4, 0, 0]}>
                 <LabelList dataKey="process" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" formatter={(value) => value.toFixed(2)} />
               </Bar>
-              <Bar dataKey="technology" fill="hsl(var(--chart-3))" radius={[4, 4, 0, 0]}>
+              <Bar dataKey="technology" name="Technology" fill="hsl(var(--chart-3))" radius={[4, 4, 0, 0]}>
                 <LabelList dataKey="technology" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" formatter={value => value.toFixed(2)} />
               </Bar>
             </BarChart>

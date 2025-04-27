@@ -13,7 +13,6 @@ export function ModuleRatingForm({
   const dimensions = ['people', 'process', 'technology']
 
   const handleDimensionChange = (dimension, value) => {
-    console.log(dimension,value)
     onRatingChange({
       ...ratings,
       [dimension]: ratings[dimension] === value ? null : value
