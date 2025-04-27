@@ -79,7 +79,7 @@ export default function Survey() {
 
   useEffect(() => {
     if (sessionStorage.getItem('email') &&
-      sessionStorage.setItem('organisationName')) {
+      sessionStorage.getItem('organisationName')) {
       setHasSubmitted(true);
     }
   }, [])
