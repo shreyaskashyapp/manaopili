@@ -9,6 +9,7 @@ import { useParams } from 'next/navigation'
 
 const services = {
     "technology-workflows": {
+        surveyCheck: true,
         "title": "Technology Workflows (Tx)",
         "description": "Expert guidance for Technology Workflows implementation and optimization",
         "features": [
@@ -27,6 +28,7 @@ const services = {
         ]
     },
     "customer-workflows": {
+        surveyCheck: true,
         "title": "Customer Workflows (Cx)",
         "description": "Tailored ServiceNow Customer Workflow implementation and support",
         "features": [
@@ -45,6 +47,7 @@ const services = {
         ]
     },
     "it-operations-management": {
+        surveyCheck: true,
         "title": "IT Operations Management",
         "description": "Comprehensive ITOM solutions for long-term success and visibility",
         "features": [
@@ -63,6 +66,7 @@ const services = {
         ]
     },
     "strategic-portfolio-management": {
+        surveyCheck: true,
         "title": "Strategic Portfolio Management",
         "description": "Optimized project and portfolio management aligned with business goals",
         "features": [
@@ -81,6 +85,7 @@ const services = {
         ]
     },
     "it-asset-management": {
+        surveyCheck: true,
         "title": "IT Asset Management",
         "description": "Efficient ITAM solutions for compliance and cost savings",
         "features": [
@@ -99,6 +104,7 @@ const services = {
         ]
     },
     "integrated-risk-management": {
+        surveyCheck: true,
         "title": "Integrated Risk Management (IRM)",
         "description": "Comprehensive risk, security, and compliance management solutions",
         "features": [
@@ -117,6 +123,7 @@ const services = {
         ]
     },
     "ai-and-genai": {
+        surveyCheck: true,
         "title": "AI and GenAI",
         "description": "Cutting-edge AI and GenAI capabilities for ServiceNow optimization",
         "features": [
@@ -346,9 +353,11 @@ export default function ServicePage() {
                         size="lg"
                         className="bg-blue-600 hover:bg-blue-700 text-white rounded-full"
                     >
-                        <Link href={`/survey?survey=${params?.service}`}>
+                        {service.surveyCheck && 
+                            <Link href={`/survey?survey=${params?.service}`}>
                             Take Survey <ArrowRight className="ml-2 h-5 w-5" />
                         </Link>
+                        }
                     </Button>
                     <Button
                         asChild
@@ -394,6 +403,7 @@ export default function ServicePage() {
             </div>
 
             {/* CTA Section */}
+            {service.surveyCheck &&
             <div className="container mx-auto px-4 py-16 text-center">
                 <div className="bg-gray-800/50 border border-gray-700 rounded-2xl p-8 max-w-4xl mx-auto">
                     <h2 className="text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
@@ -411,6 +421,7 @@ export default function ServicePage() {
                     </Button>
                 </div>
             </div>
+            }
         </div>
     )
 }
