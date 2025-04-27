@@ -281,7 +281,7 @@ export default function BlogAndVideosPage() {
     const params = useSearchParams();
     const redirectionUrl = params.get('redirectTo')
 
-    const handleSubmit = (email, organizationName) => {
+    const handleSubmit = () => {
         setHasSubmitted(true);
         if (redirectionUrl) {
             if(checkIfMobile()){
@@ -296,6 +296,13 @@ export default function BlogAndVideosPage() {
             }
         }
     };
+
+    useEffect(() => {
+        if (sessionStorage.getItem('email') &&
+            sessionStorage.getItem('organisationName')) {
+            setHasSubmitted(true)
+        }
+    }, [])
 
     return (
         <div>

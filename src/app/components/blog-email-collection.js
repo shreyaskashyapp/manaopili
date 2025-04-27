@@ -33,6 +33,8 @@ const BlogsEmailCollection = ({ onGettingEmail , title = 'Take a look at our art
                 body: JSON.stringify({ email, organization }),
             });
             if (response.ok) {
+                sessionStorage.setItem('email', email);
+                sessionStorage.setItem('organisationName', organization);
                 onGettingEmail(email, organization);
             } else {
                 console.error('Error submitting form:', response.statusText);
