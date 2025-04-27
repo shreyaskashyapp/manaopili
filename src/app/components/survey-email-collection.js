@@ -36,6 +36,8 @@ export default function SurveyEmailCollection({ onGettingEmail, title = 'Ready t
                 body: JSON.stringify({ email, organization }),
             });
             if (response.ok) {
+                sessionStorage.setItem('email', email);
+                sessionStorage.setItem('organisationName', organization);
                 onGettingEmail(email, organization);
             } else {
                 console.error('Error submitting form:', response.statusText);

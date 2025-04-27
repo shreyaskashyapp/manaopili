@@ -17,6 +17,7 @@ export default function Survey() {
   const [hasSubmitted, setHasSubmitted] = useState(false)
 
   const handleEmail = (email, organizationName) => {
+
     setHasSubmitted(true)
   }
 
@@ -76,6 +77,13 @@ export default function Survey() {
     }
   }, [isGraphsReady])
 
+  useEffect(() => {
+    if (sessionStorage.getItem('email') &&
+      sessionStorage.setItem('organisationName')) {
+      setHasSubmitted(true);
+    }
+  }, [])
+
 
   return (
     <div>
@@ -87,7 +95,7 @@ export default function Survey() {
                 {configs?.[surveyModule]?.title}
               </h1>
               <p className="text-gray-400 max-w-2xl mx-auto">
-              {configs?.[surveyModule]?.subtitle}
+                {configs?.[surveyModule]?.subtitle}
               </p>
             </div>
             <SurveyForm
@@ -132,7 +140,7 @@ export default function Survey() {
               <div className="flex flex-col items-center justify-center h-[80vh] mt-0 text-white text-center">
                 <h1 className="text-[48px] font-bold  md:text-[62px]">
                   {fallbackConfig?.[surveyModule]?.title}
-                </h1> 
+                </h1>
                 <p className="text-[26px] text-gray-400 max-w-2xl mx-auto md:text-[28px]">
                   {fallbackConfig?.[surveyModule]?.subtitle}
                 </p>
