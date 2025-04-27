@@ -4,6 +4,7 @@ import BlogsEmailCollection from "../components/blog-email-collection";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
+import { checkIfMobile } from "@/lib/utils";
 
   
 // Sample blog data
@@ -283,9 +284,17 @@ export default function BlogAndVideosPage() {
     const handleSubmit = (email, organizationName) => {
         setHasSubmitted(true);
         if (redirectionUrl) {
-            router.push(`white-paper?paper=${redirectionUrl}`)
+            if(checkIfMobile()){
+                const pdfLink = blogPosts?.find(post => post.slug === redirectionUrl)?.link;
+                if (pdfLink) {
+                window.open(pdfLink, '_blank');
+                return
+                }
+            }
+            else{
+                router.push(`white-paper?paper=${redirectionUrl}`)
+            }
         }
-
     };
 
     return (
