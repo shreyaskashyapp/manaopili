@@ -89,3 +89,10 @@ export function getNumberOfZeros(data, key) {
   const zeros = ratings.filter(item => item[key] === 0)
   return zeros.length
 }
+
+export const checkIfMobile = () => {
+  const userAgent = window.navigator.userAgent;
+  const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+  console.log(mobile)
+  return mobile; 
+};
