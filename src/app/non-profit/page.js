@@ -33,6 +33,16 @@ const hero = {
     ),
 };
 
+export const metadata = {
+    title: "Non-Profit Partnership | Mana'o Pili, LLC",
+    description: "Mana’o Pili partners with the Anahulu Valley Preservation Fund to protect sacred lands and cultural treasures in Hawaii.",
+    openGraph: {
+      title: "Mana’o Pili - Supporting Anahulu Valley Preservation",
+      description: "Mana’o Pili partners with the Anahulu Valley Preservation Fund to safeguard sacred lands in Hawaii. By supporting Mana’o Pili, you support environmental preservation.",
+      url: "https://manaopili.com/non-profit",
+    },
+  };
+
 export default function NonProfit() {
     return (
         <div className="w-full" >

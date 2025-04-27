@@ -15,6 +15,7 @@ const data = {
     )
 }
 
+
 export default function Contact() {
     return (
         <div>

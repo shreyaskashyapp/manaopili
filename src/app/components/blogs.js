@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import BlogsEmailCollection from "../components/blog-email-collection";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
 
   
 // Sample blog data
@@ -14,7 +13,7 @@ const blogPosts = [
         description: "Learn how to implement FDA compliance requirements in your ServiceNow instance.",
         image: "/articles/Apply FDA.png",
         slug: "fda-compliance",
-        link: "pdfs/Apply FDA Compliance to a ServiceNow Instance  v1.01.pdf",
+        link: "https://manaopili.vercel.app/pdfs/Apply FDA Compliance to a ServiceNow Instance v1.01.pdf",
     },
     {
         id: 2,
@@ -22,7 +21,7 @@ const blogPosts = [
         description: "A comprehensive guide for migrating from Cherwell to ServiceNow.",
         image: "/articles/Cherwell.png",
         slug: "cherwell-migration",
-        link: "pdfs/Best Practices Cherwell Migration to ServiceNow  v1.02.pdf",
+        link: "https://manaopili.vercel.app/pdfs/Best Practices Cherwell Migration to ServiceNow v1.02.pdf"
     },
     {
         id: 3,
@@ -30,7 +29,7 @@ const blogPosts = [
         description: "Updated guidelines for Common Service Data Model migration v1.10.",
         image: "/articles/CSDM.png",
         slug: "csdm-migration-v1-10",
-        link: "pdfs/Best Practices CSDM Migration v1.10.pdf"
+        link: "https://manaopili.vercel.app/pdfs/Best Practices CSDM Migration v1.10.pdf"
     },
     {
         id: 4,
@@ -38,7 +37,7 @@ const blogPosts = [
         description: "Implementing effective code management in ServiceNow development.",
         image: "/articles/Code Control.png",
         slug: "code-control",
-        link: "pdfs/Best Practices for Code Control, Versioning, Governance, and Collaboration v1.01.pdf"
+        link: "https://manaopili.vercel.app/pdfs/Best Practices for Code Control, Versioning, Governance, and Collaboration v1.01.pdf"
     },
     {
         id: 5,
@@ -46,7 +45,7 @@ const blogPosts = [
         description: "Design and implementation guidance for ITOM mid-server architecture.",
         image: "/articles/ITOM MID Server Arch.png",
         slug: "itom-architecture",
-        link: "pdfs/Building a Solid ITOM Mid-Server Architecture  v1.01.pdf"
+        link: "https://manaopili.vercel.app/pdfs/Building a Solid ITOM Mid-Server Architecture v1.01.pdf"
     },
     {
         id: 6,
@@ -54,7 +53,7 @@ const blogPosts = [
         description: "Integrating security operations and risk management with Zscaler.",
         image: "/articles/CyberSecurity.png",
         slug: "cybersecurity",
-        link: "pdfs/Cybersecurity Excellence - ServiceNow SecOps, IRM, & Zscaler  v1.01.pdf"
+        link: "https://manaopili.vercel.app/pdfs/Cybersecurity Excellence - ServiceNow SecOps, IRM, & Zscaler v1.01.pdf"
     },
     {
         id: 7,
@@ -62,7 +61,7 @@ const blogPosts = [
         description: "Leveraging AI capabilities in ServiceNow to enhance workflow efficiency.",
         image: "/articles/AI Boosts Productivity.png",
         slug: "ai-boost",
-        link: "pdfs/How ServiceNow AI Boosts Productivity (Without Taking Your Job)  v1.02.pdf"
+        link: "https://manaopili.vercel.app/pdfs/How ServiceNow AI Boosts Productivity (Without Taking Your Job) v1.02.pdf"
     },
     {
         id: 8,
@@ -70,7 +69,7 @@ const blogPosts = [
         description: "Optimization techniques for ServiceNow performance and user experience.",
         image: "/articles/Performance.png",
         slug: "performance-ux",
-        link: "pdfs/How to Improve Performance and UX  v1.01.pdf"
+        link: "https://manaopili.vercel.app/pdfs/How to Improve Performance and UX v1.01.pdf"
     },
     {
         id: 9,
@@ -78,7 +77,7 @@ const blogPosts = [
         description: "Best practices for integrating multiple ServiceNow instances with Service Bridge.",
         image: "/articles/Service Bridge.png",
         slug: "service-bridge",
-        link: "pdfs/Making the Most of ServiceNow Service Bridge for Integrating Multiple ServiceNow Instances  v1.00.pdf"
+        link: "https://manaopili.vercel.app/pdfs/Making the Most of ServiceNow Service Bridge for Integrating Multiple ServiceNow Instances v1.00.pdf"
     },
     {
         id: 10,
@@ -86,7 +85,7 @@ const blogPosts = [
         description: "Updated approaches for public sector ServiceNow optimization.",
         image: "/articles/Public Sector.png",
         slug: "public-sector-v1-04",
-        link: "pdfs/Maximizing ServiceNow Investment for Public Sector Agencies with Limited Budgets v1.04.pdf"
+        link: "https://manaopili.vercel.app/pdfs/Maximizing ServiceNow Investment for Public Sector Agencies with Limited Budgets v1.04.pdf"
     },
     {
         id: 11,
@@ -94,7 +93,7 @@ const blogPosts = [
         description: "Comparative analysis of Mulesoft and ServiceNow Integration Hub capabilities.",
         image: "/articles/Mulesoft.png",
         slug: "mulesoft-hub",
-        link: "pdfs/Mulesoft vs Integration Hub  v1.01.pdf"
+        link: "https://manaopili.vercel.app/pdfs/Mulesoft vs Integration Hub v1.01.pdf"
     },
     {
         id: 12,
@@ -102,7 +101,7 @@ const blogPosts = [
         description: "Implementing Scaled Agile Framework with ServiceNow and SoS methodology.",
         image: "/articles/Scaled Agile.png",
         slug: "scaled-agile",
-        link: "pdfs/Scaled Agile - ServiceNow and Scrum of Scrums (SoS)  v1.02.pdf"
+        link: "https://manaopili.vercel.app/pdfs/Scaled Agile - ServiceNow and Scrum of Scrums (SoS) v1.02.pdf"
     },
     {
         id: 13,
@@ -110,7 +109,7 @@ const blogPosts = [
         description: "Comparing ServiceNow's Service Portal and Employee Center interfaces.",
         image: "/articles/Service Portal.png",
         slug: "service-portal",
-        link: "pdfs/Service Portal vs Employee Center  v1.01.pdf"
+        link: "https://manaopili.vercel.app/pdfs/Service Portal vs Employee Center v1.01.pdf"
     },
     {
         id: 14,
@@ -118,7 +117,7 @@ const blogPosts = [
         description: "Strategies for building effective ServiceNow implementation teams.",
         image: "/articles/Team Building.png",
         slug: "team-building",
-        link: "pdfs/ServiceNow Team Building  v1.01.pdf"
+        link: "https://manaopili.vercel.app/pdfs/ServiceNow Team Building v1.01.pdf"
     },
     {
         id: 15,
@@ -126,7 +125,7 @@ const blogPosts = [
         description: "Understanding the true cost implications of using ServiceNow accelerators.",
         image: "/articles/Accelerators.png",
         slug: "hidden-costs",
-        link: "pdfs/The Hidden Costs of ServiceNow Accelerators v1.01.pdf"
+        link: "https://manaopili.vercel.app/pdfs/The Hidden Costs of ServiceNow Accelerators v1.01.pdf"
     },
     {
         id: 16,
@@ -134,7 +133,7 @@ const blogPosts = [
         description: "In-depth analysis of ServiceNow's ATF capabilities and limitations.",
         image: "/articles/ATF.png",
         slug: "automated-testing",
-        link: "pdfs/The Real Deal on ServiceNow Automated Testing Framework  v1.01.pdf"
+        link: "https://manaopili.vercel.app/pdfs/The Real Deal on ServiceNow Automated Testing Framework v1.01.pdf"
     },
     {
         id: 17,
@@ -142,7 +141,7 @@ const blogPosts = [
         description: "Understanding the limitations of ServiceNow's discovery capabilities.",
         image: "/articles/ITOM Top 10.png",
         slug: "top-technologies",
-        link: "pdfs/Top 10 Technologies ServiceNow ITOM Won't Discover  v1.01.pdf"
+        link: "https://manaopili.vercel.app/pdfs/Top 10 Technologies ServiceNow ITOM Won't Discover v1.01.pdf"
     }
 ];
 
@@ -180,7 +179,6 @@ const videos = [
     },
 ];
 
-
 // Blog Card Component
 const BlogCard = ({ post }) => {
     const isMobile = usePlatform();
@@ -200,9 +198,9 @@ const BlogCard = ({ post }) => {
                 <h3 className="text-xl font-semibold mb-2 text-white">{post.title}</h3>
                 <p className="text-gray-300 text-sm line-clamp-2 mb-4">{post.description}</p>
                 {isMobile ? (
-                    <a
+                    <a 
                         href={post.link}
-                        target="_blank"
+                        target="_blank" 
                         rel="noopener noreferrer"
                     >
                         <button className="px-4 py-2 rounded text-sm font-medium bg-black text-[#deff00] border border-[#deff00] hover:bg-[#deff00] hover:text-black transition-colors duration-300 shadow-[0_0_10px_rgba(222,255,0,0.3)] hover:shadow-[0_0_15px_rgba(222,255,0,0.6)]">
@@ -250,24 +248,24 @@ const VideoCard = ({ video }) => {
 // Create a custom hook for platform detection
 // This should be in a separate file: hooks/usePlatform.js
 
-function usePlatform() {
+ function usePlatform() {
     const [isMobile, setIsMobile] = useState(false);
-
+    
     useEffect(() => {
         const checkIfMobile = () => {
             const userAgent = window.navigator.userAgent;
             const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
             setIsMobile(mobile);
         };
-
+        
         checkIfMobile();
         window.addEventListener('resize', checkIfMobile);
-
+        
         return () => {
             window.removeEventListener('resize', checkIfMobile);
         };
     }, []);
-
+    
     return isMobile;
 }
 
@@ -276,16 +274,9 @@ function usePlatform() {
 
 export default function BlogAndVideosPage() {
     const [hasSubmitted, setHasSubmitted] = useState(false);
-    const router = useRouter();
-    const params = useSearchParams();
-    const redirectionUrl = params.get('redirectTo')
 
     const handleSubmit = (email, organizationName) => {
         setHasSubmitted(true);
-        if (redirectionUrl) {
-            router.push(`white-paper?paper=${redirectionUrl}`)
-        }
-
     };
 
     return (
@@ -329,6 +320,6 @@ export default function BlogAndVideosPage() {
             ) : (
                 <BlogsEmailCollection onGettingEmail={handleSubmit} />
             )}
-        </div>
+            </div>
     );
 }

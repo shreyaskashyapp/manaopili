@@ -25,6 +25,16 @@ const modules = [
     { name: "Employee (HRSD)", icon: <UserCircle className="h-5 w-5" />, slug: "" }
 ];
 
+export const metadata = {
+    title: "Digital Trip Survey | Mana'o Pili, LLC",
+    description: "Take the Digital Trip Survey to optimize ServiceNow usage. Get tailored roadmaps, quick wins, and insights to unlock the full potential of your investment.",
+    openGraph: {
+      title: "Digital Trip Survey - Mana’o Pili",
+      description: "Take the Digital Trip Survey to assess your ServiceNow usage and get a tailored roadmap with quick wins to maximize the value of your ServiceNow investment.",
+      url: "https://manaopili.com/survey",
+    },
+  };
+
 export default function SurveyList() {
     return (
         <div>
