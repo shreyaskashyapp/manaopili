@@ -86,7 +86,7 @@ export default function Survey() {
                 {configs?.[surveyModule]?.title}
               </h1>
               <p className="text-gray-400 max-w-2xl mx-auto">
-                Evaluate your ServiceNow CSM implementation across People, Process, and Technology dimensions
+                {configs?.[surveyModule]?.subtitle}
               </p>
             </div>
             <SurveyForm
