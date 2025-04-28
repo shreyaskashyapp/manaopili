@@ -2,7 +2,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 export default function NonProfitAccordion({ data1 }) {
     return (
-        <div className="py-6">
+        <div className="pb-6">
             <Accordion type="single" defaultValue={data1[0]} collapsible className="w-full md:px-28 px-10">
                 {
                     data1.map((item, index) => (

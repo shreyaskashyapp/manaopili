@@ -47,13 +47,14 @@ export default function NonProfit() {
     return (
         <div className="w-full" >
             <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
-            <div className="flex flex-col items-center justify-center py-10">
-                <h2 className="flex italic justify-center text-4xl max-w-5xl text-gray-300 text-center ">
+            <div className="flex flex-col items-center justify-center pt-10">
+                <h2 className="flex italic justify-center text-3xl  md:text-4xl max-w-5xl text-gray-300 text-center ">
                     By supporting Mana’o Pili you are supporting the Anahulu
                     Valley Preservation.
                 </h2>
-                <div className="w-full md:px-28 py-10 px-10 flex flex-col gap-6 ">
-                    <img src='/non-profit/nonprofit_1.png' alt="Beach" className="w-full" />
+                <div className="w-full md:px-28 md:py-10 px-4 py-4 flex flex-col gap-6 ">
+                    {/* <img src='/non-profit/nonprofit_1.png' alt="Beach" className="w-full" /> */}
+                    <Image src='/non-profit/nonprofit_1.png' alt="Beach" className="w-full" width={500} height={500} />
                 </div>
             </div>
             <NonProfitAccordion data1={NonProfitData} />
