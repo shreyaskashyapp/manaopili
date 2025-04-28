@@ -84,7 +84,7 @@ export default function WhyManaopiliWheel() {
 
                         {/* Experience label */}
                         <div
-                            className="absolute top-[32%] md:top-[30%] right-[-90px] md:right-[-36%] transform -translate-x-1/2 text-white text-center font-sans text-xs md:text-2xl font-normal leading-none cursor-pointer hover:text-[#deff00]"
+                            className="absolute top-[28%] md:top-[30%] right-[-86px] md:right-[-36%] transform -translate-x-1/2 text-white text-center font-sans text-xs md:text-2xl font-normal leading-none cursor-pointer hover:text-[#deff00]"
                             onMouseEnter={() => rotateToTarget(labels.experience)}
                             onTouchStart={() => rotateToTarget(labels.experience)}
                         >
