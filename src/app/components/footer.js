@@ -35,8 +35,8 @@ export default function Footer() {
       {/* logo */}
         <div className="flex flex-col flex-1 gap-3">
           <div>
-            <h1 className="text-3xl font-thin italic text-white">Transform your business with</h1>
-            <h1 className="text-[#deff00] font-thin text-5xl italic">{`Mana'o Pili`}</h1>
+            <h1 className="md:text-3xl text-2xl font-thin italic text-white">Transform your business with</h1>
+            <h1 className="text-[#deff00] font-thin text-4xl md:text-5xl italic">{`Mana'o Pili`}</h1>
           </div>
           <div>
             <SurveyButton data={buttonData} />
@@ -45,7 +45,7 @@ export default function Footer() {
         {/* content */}
         <div className="flex flex-wrap lg:flex-1 justify-between pr-10 gap-4 lg:flex-row">
         {headings.map((item, index) => (
-          <div key={index} className="flex flex-col gap-0.5 pr-10">
+          <div key={index} className="flex flex-col gap-0.5 md:pr-10">
             <h2 className="text-xl font-semibold text-white">{item}</h2>
             {links[item].map((link, idx) => (
               <div key={idx} className="">
