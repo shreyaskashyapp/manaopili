@@ -2,6 +2,7 @@ export const configs = {
     "technology-workflows": {
         title: 'ITSM Modules',
         subtitle:"Elevate your ITSM implementation",
+        header:"Technology Workflows (Tx)",
         categories: [
             {
                 name: 'Standard',
@@ -45,6 +46,7 @@ export const configs = {
     "customer-workflows": {
         title: 'CSM Modules',
         subtitle:"Elevate your CSM implementation",
+        header:" Customer Workflows (Cx)",
         categories: [
             {
                 name: 'Standard',

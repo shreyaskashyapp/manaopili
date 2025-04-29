@@ -7,7 +7,7 @@ export default function Founders({ team }) {
                 <Card className="flex flex-col items-center bg-zinc-900  shadow-lg border-none " key={index}>
                     <CardContent className="relative h-64 w-full rounded-t-lg p-0 ">
                         {/* <img src={member.imagePath} alt="Image Description" className="rounded-t-lg h-64 w-full object-cover" /> */}
-                        <Image src={member.imagePath} alt="Founders image" className="rounded-t-lg h-64 w-full object-cover" width={500} height={500} />
+                        <Image src={member.imagePath} alt="Founders image" className="rounded-t-lg h-64 w-full object-contain" width={500} height={500} />
                     </CardContent>
                     <CardHeader className="flex flex-col items-center">
                         <CardTitle className="text-gray-200 text-lg">{member.name}</CardTitle>
