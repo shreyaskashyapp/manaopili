@@ -14,7 +14,8 @@ import { fallbackConfig } from '../config/data'
 import SurveyEmailCollection from '../components/survey-email-collection'
 
 export default function Survey() {
-  const [hasSubmitted, setHasSubmitted] = useState(false)
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [pdfDownloaded, setPdfDownloaded] = useState(false);
 
   const handleEmail = (email, organizationName) => {
 
@@ -71,8 +72,8 @@ export default function Survey() {
     if (targetRef.current && isGraphsReady) {
       const generatePdf = async () => {
         const blob = await toPDF()
-
       }
+      setPdfDownloaded(true)
       generatePdf()
     }
   }, [isGraphsReady])
@@ -103,7 +104,7 @@ export default function Survey() {
               onComplete={handleSubmit}
             />
             <div
-              className="flex flex-col gap-4 fixed pointer-events-none"
+              className={`flex flex-col gap-4 fixed pointer-events-none ${pdfDownloaded ? 'hidden' : ''}`}
               style={{ width: '800px', height: 'auto' }}
               ref={targetRef}
             >
