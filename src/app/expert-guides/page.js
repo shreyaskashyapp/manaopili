@@ -287,8 +287,9 @@ export default function BlogAndVideosPage() {
             if(checkIfMobile()){
                 const pdfLink = blogPosts?.find(post => post.slug === redirectionUrl)?.link;
                 if (pdfLink) {
-                window.open(pdfLink, '_blank');
-                return
+                    setTimeout(()=>{
+                        window.open(pdfLink,'_blank')
+                    })
                 }
             }
             else{
