@@ -1,59 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
-const data = {
-    title: "Survey Instructions",
-    description: "Please fill out the survey to help us improve our services. Your feedback is valuable to us.",
-}
-const tableData = [
-    {
-        level: 0,
-        title: "None",
-        description: "Not implemented"
-    },
-    {
-        level: 1,
-        title: "Initial",
-        description: "Mostly manual driven activities."
-    },
-    {
-        level: 2,
-        title: "Managed",
-        description: "Basic repeatable activities. Use of templates, and limited workflow."
-    },
-    {
-        level: 3,
-        title: "Defined",
-        description: "Workflow driven activities"
-    },
-    {
-        level: 4,
-        title: "Quantitative",
-        description: "Advanced automation and reporting."
-    },
-    {
-        level: 5,
-        title: "Optimizing",
-        description: "Continuously improving, aligned with business, and enabled with automation and AI"
-    }
-]
 
-const points = [
-    {
-        title: "People/Resources",
-        description: "Staffing, training, and adoption"
-    },
-    {
-        title: "Process",
-        description: "Documentation and workflow standardization"
-    },
-    {
-        title: "Technology",
-        description: "ServiceNow implementation and configuration"
-    }
-];
-
-export default function SurveyInstructions() {
+export default function SurveyInstructions({ data, tableData, points }) {
     return (
         <div className="container flex flex-col gap-3 mx-auto p-4 md:py-1 bg-[#141414]">
             <p className="text-gray-400 max-w-2xl mx-auto text-center">
