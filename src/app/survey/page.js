@@ -12,6 +12,7 @@ import SurveyText from '../components/pdf-components/survey-text'
 import { configs } from '../config/data'
 import { fallbackConfig } from '../config/data'
 import SurveyEmailCollection from '../components/survey-email-collection'
+import SurveyInstructions from '../components/survey-instruction'
 
 export default function Survey() {
   const [hasSubmitted, setHasSubmitted] = useState(false)
@@ -89,6 +90,7 @@ export default function Survey() {
               <p className="text-gray-400 max-w-2xl mx-auto">
               {configs?.[surveyModule]?.subtitle}
               </p>
+              <SurveyInstructions/>
             </div>
             <SurveyForm
               config={configs?.[surveyModule]}
