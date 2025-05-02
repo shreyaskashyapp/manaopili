@@ -1,15 +1,15 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 
-export default function SurveyInstructions({ data, tableData, points }) {
+export default function SurveyInstructions({ data }) {
     return (
         <div className="container flex flex-col gap-3 mx-auto p-4 md:py-1 bg-[#141414]">
             <p className="text-gray-400 max-w-2xl mx-auto text-center">
-                {data.description}
+                {data?.info?.description}
             </p>
             <div className="pt-3 md:flex-row gap-4 flex flex-wrap justify-center items-center ">
                 {
-                    tableData.map((item, index) => (
+                    data?.scores?.map((item, index) => (
                         <Card key={index} className="md:w-[200px] md:h-[200px] w-[160px] h-[200px] p-1 border-none bg-gradient-to-b text-center from-[#141414] to-zinc-900 shadow-sm rounded-xl ">
                             <CardHeader className="p-2">
                                 <CardTitle className="text-[#455CFF] text-4xl font-normal">{item.level}</CardTitle>
@@ -31,7 +31,7 @@ export default function SurveyInstructions({ data, tableData, points }) {
                     Provide seperate scores for:
                 </p>
                 <ul className="flex flex-col gap-3 ">
-                    {points.map((item, index) => (
+                    {data?.bulletPoints?.map((item, index) => (
                         <li key={index} className="text-gray-400 text-base">
                             <span className=" text-[#455CFF]">{item.title}</span>: {item.description}
                         </li>
@@ -41,8 +41,6 @@ export default function SurveyInstructions({ data, tableData, points }) {
                     Leave blank if a module does not apply.
                 </p>
             </div>
-
-
         </div>
     )
 }
