@@ -1,18 +1,19 @@
 'use client'
 import { SurveyForm } from '@/app/components/form/survey-form'
 import { CATEGORIES, findSum, getLengthFromModules, getNumberOfZeros, parseResults, parseToGraph } from '@/lib/utils'
-import { useRouter, useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { useSearchParams } from 'next/navigation'
+import { use, useEffect, useRef, useState } from 'react'
 import { usePDF } from 'react-to-pdf'
 import BarGraph from '../components/charts/barchart'
 import { Multiplechart } from '../components/charts/multiplechart'
+import convertHtmlToBase64 from '../components/htmlToBase64'
 import { PDFFooter } from '../components/pdf-components/pdf-footer'
 import { PDFHeader } from '../components/pdf-components/pdf-header'
 import SurveyText from '../components/pdf-components/survey-text'
-import { configs } from '../config/data'
-import { fallbackConfig } from '../config/data'
 import SurveyEmailCollection from '../components/survey-email-collection'
 import SurveyInstructions from '../components/survey-instruction'
+import { configs, fallbackConfig } from '../config/data'
 
 const surveyData = {
   info: {
@@ -72,6 +73,11 @@ export default function Survey() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [pdfDownloaded, setPdfDownloaded] = useState(false);
 
+
+  const multiplechartRef = useRef(null);
+  const chart1Ref = useRef(null);
+  const chart2Ref = useRef(null);
+
   const handleEmail = (email, organizationName) => {
 
     setHasSubmitted(true)
@@ -123,15 +129,44 @@ export default function Survey() {
     }
   }, [barGraphData])
 
+  const getPdf = async () => {
+
+    const allRefsReady =
+      multiplechartRef.current &&
+      chart1Ref.current &&
+      chart2Ref.current
+
+    if (allRefsReady) {
+      const multipleChart = await convertHtmlToBase64(multiplechartRef.current);
+      const barChart1 = await convertHtmlToBase64(chart1Ref.current);
+      const barChart2 = await convertHtmlToBase64(chart2Ref.current);
+
+      const graphData = {
+        multipleChart,
+        barChart1,
+        barChart2
+      }
+
+      const res = await axios.post('/api/pdf', { graphData, Email: sessionStorage.getItem("email"), Name: sessionStorage.getItem('organisationName')})
+      console.log(res)
+
+    }
+    else {
+      console.log("All refs are not ready yet")
+    }
+  }
+
   useEffect(() => {
     if (targetRef.current && isGraphsReady) {
+      const htmlContent = targetRef.current.innerHTML
+      getPdf(htmlContent)
       const generatePdf = async () => {
         const blob = await toPDF()
       }
       setPdfDownloaded(true)
       generatePdf()
     }
-  }, [isGraphsReady])
+  }, [isGraphsReady, multiplechartRef.current, chart1Ref.current, chart2Ref.current])
 
   useEffect(() => {
     if (sessionStorage.getItem('email') &&
@@ -139,6 +174,7 @@ export default function Survey() {
       setHasSubmitted(true);
     }
   }, [])
+
 
 
   return (
@@ -160,35 +196,29 @@ export default function Survey() {
               onComplete={handleSubmit}
             />
             <div
-              className={`flex flex-col gap-4 fixed pointer-events-none ${pdfDownloaded ? 'hidden' : ''}`}
+              className={`flex flex-col gap-4 fixed pointer-events-none ${pdfDownloaded ? '' : ''}`}
               style={{ width: '800px', height: 'auto' }}
               ref={targetRef}
             >
               {barGraphData?.map((item, index) => (
                 Array.isArray(item[0]) ?
                   <div className='flex flex-col' key={`survey-element-${index}`}>
-                    <div className="relative top-0 left-0 right-0">
+                    <div className="">
                       <PDFHeader />
                     </div>
-                    <Multiplechart
-                      data={item} />
+                    <div ref={multiplechartRef}>
+                      <Multiplechart
+                        data={item}
+                      />
+                    </div>
                   </div>
                   :
-                  <div className={`flex flex-col gap-14`} key={`survey-element-${index}`}>
+                  <div ref={index === 1 ? chart1Ref : chart2Ref}>
                     <BarGraph
                       key={index}
                       data={item}
                       index={index}
                     />
-                    {index === (barGraphData.length - 1) && (
-                      <>
-                        <SurveyText />
-                        <div className="relative bottom-0">
-                          <PDFFooter />
-                        </div>
-                      </>
-                    )}
-
                   </div>
               ))}
             </div>
