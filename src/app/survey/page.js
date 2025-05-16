@@ -9,6 +9,7 @@ import BarGraph from '../components/charts/barchart'
 import { Multiplechart } from '../components/charts/multiplechart'
 import convertHtmlToBase64 from '../components/htmlToBase64'
 import { PDFHeader } from '../components/pdf-components/pdf-header'
+import Staller from '../components/staller'
 import SurveyEmailCollection from '../components/survey-email-collection'
 import SurveyInstructions from '../components/survey-instruction'
 import { configs, fallbackConfig } from '../config/data'
@@ -70,6 +71,7 @@ const surveyData = {
 export default function Survey() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [pdfDownloaded, setPdfDownloaded] = useState(false);
+  const [generatingPdf, setGeneratingPdf] = useState(false);
 
 
   const multiplechartRef = useRef(null);
@@ -77,7 +79,6 @@ export default function Survey() {
   const chart2Ref = useRef(null);
 
   const handleEmail = (email, organizationName) => {
-
     setHasSubmitted(true)
   }
 
@@ -153,6 +154,7 @@ export default function Survey() {
       }
 
       try {
+        setGeneratingPdf(true)
         const res = await axios.post('/api/pdf', payload, {
           responseType: 'arraybuffer', // <-- Important to handle raw binary PDF response
         });
@@ -171,6 +173,9 @@ export default function Survey() {
       } catch (err) {
         console.error('Error downloading PDF:', err);
         alert('Failed to download PDF');
+      }
+      finally{
+        setGeneratingPdf(false)
       }
 
 
@@ -201,6 +206,7 @@ export default function Survey() {
     <div>
       {hasSubmitted ? (
         <main className="min-h-screen py-16 flex justify-center">
+          { generatingPdf && <Staller />}
           {configs?.[surveyModule] ? <div className="container py-10">
             <div className="text-center mb-12 space-y-4">
               <h1 className="text-4xl font-bold text-[#455CFF]">
@@ -233,11 +239,12 @@ export default function Survey() {
                     </div>
                   </div>
                   :
-                  <div ref={index === 1 ? chart1Ref : chart2Ref}>
+                  <div ref={index === 1 ? chart1Ref : chart2Ref} key={`survey-element-${index}`}>
                     <BarGraph
                       key={index}
                       data={item}
                       index={index}
+                      
                     />
                   </div>
               ))}
