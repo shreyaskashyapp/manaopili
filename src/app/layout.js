@@ -3,6 +3,9 @@ import "./globals.css";
 import Header from "./components/header";
 import FooterPage from "./components/footer";
 import { Suspense } from "react";
+import { GoogleAnalytics } from '@next/third-parties/google'
+
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,12 +30,13 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#141414]`}
       >
         <Suspense>
-        <div className="">
-        {children}
-        </div>
-        <FooterPage />
+          <div className="">
+            {children}
+          </div>
+          <FooterPage />
         </Suspense>
-        <Header />
+        <Header />     
+        <GoogleAnalytics gaId={`${process.env.NEXT_PUBLIC_GA_ID}`}/>
       </body>
     </html>
   );
