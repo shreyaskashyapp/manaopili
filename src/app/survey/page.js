@@ -70,7 +70,6 @@ const surveyData = {
 export default function Survey() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [pdfDownloaded, setPdfDownloaded] = useState(false);
-  const [downloadLink ,setDownloadLink] = useState(null);
 
 
   const multiplechartRef = useRef(null);
@@ -157,24 +156,23 @@ export default function Survey() {
         const res = await axios.post('/api/pdf', payload, {
           responseType: 'arraybuffer', // <-- Important to handle raw binary PDF response
         });
-    
+
         const blob = new Blob([res.data], { type: 'application/pdf' });
         const url = URL.createObjectURL(blob);
-    
+
         const link = document.createElement('a');
         link.href = url;
         link.download = 'report.pdf';
         document.body.appendChild(link);
         link.click();
-        setDownloadLink(url)
-    
+
         URL.revokeObjectURL(url);
         link.remove();
       } catch (err) {
         console.error('Error downloading PDF:', err);
         alert('Failed to download PDF');
       }
-    
+
 
     }
     else {
@@ -244,12 +242,6 @@ export default function Survey() {
                   </div>
               ))}
             </div>
-            {downloadLink && (
-                <div className="mt-6 text-center text-lg">
-                  <p>Your report has been downloaded!</p>
-                  <p>If it didn't download automatically, <a href={downloadLink} className="text-blue-500">click here to download it manually</a>.</p>
-                </div>
-              )}
           </div> :
             fallbackConfig?.[surveyModule] ? (
               <div className="flex flex-col items-center justify-center h-[80vh] mt-0 text-white text-center">
