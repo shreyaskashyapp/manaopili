@@ -174,7 +174,7 @@ export default function Survey() {
         console.error('Error downloading PDF:', err);
         alert('Failed to download PDF');
       }
-      finally{
+      finally {
         setGeneratingPdf(false)
       }
 
@@ -206,7 +206,13 @@ export default function Survey() {
     <div>
       {hasSubmitted ? (
         <main className="min-h-screen py-16 flex justify-center">
-          { generatingPdf && <Staller />}
+          {generatingPdf &&
+            <Staller
+              messages={["Calculating Scores", "Processing Data", "Drawing Graphs", "Generating PDF", "Almost Done!"]}
+              disclaimer="Please do not close the page. An email with the scores will also be sent to you."
+              size="large"
+              color="indigo"
+            />}
           {configs?.[surveyModule] ? <div className="container py-10">
             <div className="text-center mb-12 space-y-4">
               <div className='flex justify-center'>
@@ -248,7 +254,7 @@ export default function Survey() {
                       key={index}
                       data={item}
                       index={index}
-                      
+
                     />
                   </div>
               ))}
