@@ -14,7 +14,7 @@ const footerBase64 = "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAPEA8PDw8ODw8QEBAPDw
 
 export const POST = async (req) => {
     try {
-        const { graphData, Name, Email } = await req.json();
+        const { graphData, Name, Email, survey } = await req.json();
 
         const htmlContent = htmlTemplate.
             replace('{{multipleChart}}', graphData.multipleChart)
@@ -89,7 +89,7 @@ export const POST = async (req) => {
                       </svg>
     <div style="position: absolute; top: 33%; left: 5%; margin-right: 20px;">
     <p style="margin: 0; color: white !important; font-size: 26px; padding: 5px; padding-bottom: 20px; font-family: 'degular-display', sans-serif; font-weight: bold; ">
-        ServiceNow Technology Workflows (Tx) - ITSM Report Made for }
+        ServiceNow - ${survey} Report Made for ${Name}
     </p>
 </div>
   </div>
@@ -102,7 +102,7 @@ export const POST = async (req) => {
         });
 
         const page = await browser.newPage();
-        
+
         // Set styled HTML content and wait for network to be idle
         await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
 
@@ -118,13 +118,13 @@ export const POST = async (req) => {
             margin: {
                 top: '80px',
                 bottom: '30px'
-              }
+            }
         });
 
-        await browser.close();
 
-        // Convert PDF Buffer to Base64 (optional, used in response)
         const pdfBase64 = pdfBuffer.toString('base64');
+
+        await browser.close();
 
         // Create Nodemailer transporter
         const transporter = nodemailer.createTransport({
@@ -159,10 +159,6 @@ export const POST = async (req) => {
                                 <td style="padding: 10px; border: 1px solid #ddd;"><strong>Email:</strong></td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">${Email}</td>
                             </tr>
-                            <tr>
-                                <td style="padding: 10px; border: 1px solid #ddd;"><strong>Message:</strong></td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">${message}</td>
-                            </tr>
                         </table>
 
                         <p style="margin-top: 20px;">Please review the attached PDF document generated from the application.</p>
@@ -189,10 +185,13 @@ export const POST = async (req) => {
         // Send the email
         await transporter.sendMail(mailOptions);
 
-        return NextResponse.json({
-            message: `Email sent successfully to manaopili.info@gmail.com`,
-            pdfBase64: pdfBase64,
-        });
+        return new NextResponse(pdfBuffer, {
+            status: 200,
+            headers: {
+              'Content-Type': 'application/pdf',
+              'Content-Disposition': 'attachment; filename="report.pdf"',
+            },
+          });
     } catch (error) {
         console.error("Email send error:", error);
         return NextResponse.json({ message: "Error sending email", error }, { status: 500 });

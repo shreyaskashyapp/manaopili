@@ -3,14 +3,12 @@ import { SurveyForm } from '@/app/components/form/survey-form'
 import { CATEGORIES, findSum, getLengthFromModules, getNumberOfZeros, parseResults, parseToGraph } from '@/lib/utils'
 import axios from 'axios'
 import { useSearchParams } from 'next/navigation'
-import { use, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { usePDF } from 'react-to-pdf'
 import BarGraph from '../components/charts/barchart'
 import { Multiplechart } from '../components/charts/multiplechart'
 import convertHtmlToBase64 from '../components/htmlToBase64'
-import { PDFFooter } from '../components/pdf-components/pdf-footer'
 import { PDFHeader } from '../components/pdf-components/pdf-header'
-import SurveyText from '../components/pdf-components/survey-text'
 import SurveyEmailCollection from '../components/survey-email-collection'
 import SurveyInstructions from '../components/survey-instruction'
 import { configs, fallbackConfig } from '../config/data'
@@ -72,6 +70,7 @@ const surveyData = {
 export default function Survey() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [pdfDownloaded, setPdfDownloaded] = useState(false);
+  const [downloadLink ,setDownloadLink] = useState(null);
 
 
   const multiplechartRef = useRef(null);
@@ -147,8 +146,35 @@ export default function Survey() {
         barChart2
       }
 
-      const res = await axios.post('/api/pdf', { graphData, Email: sessionStorage.getItem("email"), Name: sessionStorage.getItem('organisationName')})
-      console.log(res)
+      const payload = {
+        graphData,
+        Email: sessionStorage.getItem("email"),
+        Name: sessionStorage.getItem('organisationName'),
+        survey: configs?.[surveyModule]?.title
+      }
+
+      try {
+        const res = await axios.post('/api/pdf', payload, {
+          responseType: 'arraybuffer', // <-- Important to handle raw binary PDF response
+        });
+    
+        const blob = new Blob([res.data], { type: 'application/pdf' });
+        const url = URL.createObjectURL(blob);
+    
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'report.pdf';
+        document.body.appendChild(link);
+        link.click();
+        setDownloadLink(url)
+    
+        URL.revokeObjectURL(url);
+        link.remove();
+      } catch (err) {
+        console.error('Error downloading PDF:', err);
+        alert('Failed to download PDF');
+      }
+    
 
     }
     else {
@@ -160,20 +186,16 @@ export default function Survey() {
     if (targetRef.current && isGraphsReady) {
       const htmlContent = targetRef.current.innerHTML
       getPdf(htmlContent)
-      const generatePdf = async () => {
-        const blob = await toPDF()
-      }
       setPdfDownloaded(true)
-      generatePdf()
     }
   }, [isGraphsReady, multiplechartRef.current, chart1Ref.current, chart2Ref.current])
 
+
   useEffect(() => {
-    if (sessionStorage.getItem('email') &&
-      sessionStorage.getItem('organisationName')) {
+    if (sessionStorage.getItem('email') && sessionStorage.getItem('organisationName')) {
       setHasSubmitted(true);
     }
-  }, [])
+  }, []);
 
 
 
@@ -222,6 +244,12 @@ export default function Survey() {
                   </div>
               ))}
             </div>
+            {downloadLink && (
+                <div className="mt-6 text-center text-lg">
+                  <p>Your report has been downloaded!</p>
+                  <p>If it didn't download automatically, <a href={downloadLink} className="text-blue-500">click here to download it manually</a>.</p>
+                </div>
+              )}
           </div> :
             fallbackConfig?.[surveyModule] ? (
               <div className="flex flex-col items-center justify-center h-[80vh] mt-0 text-white text-center">
