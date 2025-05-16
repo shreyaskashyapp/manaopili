@@ -159,6 +159,7 @@ export default function Survey() {
                 {configs?.[surveyModule]?.subtitle}
               </p>
             </div>
+            
             <SurveyForm
               config={configs?.[surveyModule]}
               onComplete={handleSubmit}
