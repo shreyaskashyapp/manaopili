@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import fs from 'fs';
 import nodemailer from "nodemailer";
-import puppeteer from "puppeteer";
 import path from "path";
+import { chromium } from "playwright";
 
 const htmlTemplatePath = path.join(process.cwd(), 'public', 'htmlTemplate.html')
 const htmlTemplate = fs.readFileSync(htmlTemplatePath, 'utf8');
@@ -95,19 +95,17 @@ export const POST = async (req) => {
   </div>
 `;
 
-        // Launch Puppeteer and generate PDF
-        const browser = await puppeteer.launch({
-            headless: "new",
-            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        const browser = await chromium.launch({
+            headless: true,
         });
 
         const page = await browser.newPage();
 
         // Set styled HTML content and wait for network to be idle
-        await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
+        await page.setContent(htmlContent, { waitUntil: 'networkidle' });
 
         // Emulate screen media type to preserve colors
-        await page.emulateMediaType('screen');
+        await page.emulateMedia({ media: 'screen' });
 
         const pdfBuffer = await page.pdf({
             format: 'A4',
@@ -117,10 +115,9 @@ export const POST = async (req) => {
             displayHeaderFooter: true,
             margin: {
                 top: '80px',
-                bottom: '30px'
-            }
+                bottom: '30px',
+            },
         });
-
 
         const pdfBase64 = pdfBuffer.toString('base64');
 
@@ -141,38 +138,38 @@ export const POST = async (req) => {
             to: ["", "rittirag@manaopili.com", "shreyaskashyap2002@gmail.com"],
             subject: "📩 New Applicant Submission - Manaopili",
             html: `
-                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: #f9f9f9;">
-                    <div style="background-color: #0073e6; color: #ffffff; padding: 15px; text-align: center; border-radius: 10px 10px 0 0;">
-                        <h2 style="margin: 0;">New Job Application Received</h2>
-                    </div>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: #f9f9f9;">
+            <div style="background-color: #0073e6; color: #ffffff; padding: 15px; text-align: center; border-radius: 10px 10px 0 0;">
+                <h2 style="margin: 0;">New Job Application Received</h2>
+            </div>
 
-                    <div style="padding: 20px; color: #333;">
-                        <p style="font-size: 18px; font-weight: bold;">Hello Manaopili Team,</p>
-                        <p>A new job application has been submitted. Below are the details:</p>
+            <div style="padding: 20px; color: #333;">
+                <p style="font-size: 18px; font-weight: bold;">Hello Manaopili Team,</p>
+                <p>A new job application has been submitted. Below are the details:</p>
 
-                        <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
-                            <tr>
-                                <td style="padding: 10px; border: 1px solid #ddd;"><strong>Name:</strong></td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">${Name}</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 10px; border: 1px solid #ddd;"><strong>Email:</strong></td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">${Email}</td>
-                            </tr>
-                        </table>
+                <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ddd;"><strong>Name:</strong></td>
+                        <td style="padding: 10px; border: 1px solid #ddd;">${Name}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ddd;"><strong>Email:</strong></td>
+                        <td style="padding: 10px; border: 1px solid #ddd;">${Email}</td>
+                    </tr>
+                </table>
 
-                        <p style="margin-top: 20px;">Please review the attached PDF document generated from the application.</p>
+                <p style="margin-top: 20px;">Please review the attached PDF document generated from the application.</p>
 
-                        <div style="text-align: center; margin-top: 20px;">
-                            <a href="mailto:${Email}" style="background-color: #0073e6; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">Reply to Applicant</a>
-                        </div>
-                    </div>
-
-                    <div style="background-color: #0073e6; color: white; text-align: center; padding: 10px; font-size: 14px; border-radius: 0 0 10px 10px;">
-                        <p style="margin: 0;">Manaopili Team | Contact: <a href="mailto:manaopili.info@gmail.com" style="color: white; text-decoration: none;">manaopili.info@gmail.com</a></p>
-                    </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="mailto:${Email}" style="background-color: #0073e6; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">Reply to Applicant</a>
                 </div>
-            `,
+            </div>
+
+            <div style="background-color: #0073e6; color: white; text-align: center; padding: 10px; font-size: 14px; border-radius: 0 0 10px 10px;">
+                <p style="margin: 0;">Manaopili Team | Contact: <a href="mailto:manaopili.info@gmail.com" style="color: white; text-decoration: none;">manaopili.info@gmail.com</a></p>
+            </div>
+        </div>
+    `,
             attachments: [
                 {
                     filename: "application.pdf",
@@ -188,10 +185,10 @@ export const POST = async (req) => {
         return new NextResponse(pdfBuffer, {
             status: 200,
             headers: {
-              'Content-Type': 'application/pdf',
-              'Content-Disposition': 'attachment; filename="report.pdf"',
+                'Content-Type': 'application/pdf',
+                'Content-Disposition': 'attachment; filename="report.pdf"',
             },
-          });
+        });
     } catch (error) {
         console.error("Email send error:", error);
         return NextResponse.json({ message: "Error sending email", error }, { status: 500 });
