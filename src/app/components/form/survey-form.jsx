@@ -68,7 +68,7 @@ export function SurveyForm({ config, onComplete }) {
   }
 
   return (
-    <div className="max-w-7xl mx-auto space-y-4 px-6 py-3">
+    <div className="max-w-7xl mx-auto space-y-4 px-6 py-1">
       <ProgressBar
         current={Math.min(currentIndex + cardsPerView, totalModules)}
         total={totalModules}

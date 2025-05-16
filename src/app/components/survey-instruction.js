@@ -1,46 +1,73 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+'use client'
+import { Button } from "@/components/ui/button"
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { checkIfMobile } from "@/lib/utils"
+import { CircleHelp } from "lucide-react"
+import { useState } from "react"
 
 
 export default function SurveyInstructions({ data }) {
+    const [open, setOpen] = useState(true)
+
     return (
-        <div className="container flex flex-col gap-3 mx-auto p-4 md:py-1 bg-[#141414]">
-            <p className="text-gray-400 max-w-2xl mx-auto text-center">
-                {data?.info?.description}
-            </p>
-            <div className="pt-3 md:flex-row gap-4 flex flex-wrap justify-center items-center ">
-                {
-                    data?.scores?.map((item, index) => (
-                        <Card key={index} className="md:w-[200px] md:h-[200px] w-[160px] h-[200px] p-1 border-none bg-gradient-to-b text-center from-[#141414] to-zinc-900 shadow-sm rounded-xl ">
-                            <CardHeader className="p-2">
-                                <CardTitle className="text-[#455CFF] text-4xl font-normal">{item.level}</CardTitle>
-                            </CardHeader>
-                            <CardContent className="flex flex-col gap-2 px-2">
-                                <CardDescription className="text-gray-300 text-lg" >
-                                    {item.title}
-                                </CardDescription>
-                                <CardDescription className="text-gray-400 text-sm" >
-                                    {item.description}
-                                </CardDescription>
-                            </CardContent>
-                        </Card>
-                    ))
-                }
-            </div>
-            <div className="flex flex-col text-left gap-3 lg:px-28 md:px-10 px-2 pt-3">
-                <p className="text-gray-300 text-lg">
-                    Provide seperate scores for:
-                </p>
-                <ul className="flex flex-col gap-3 ">
-                    {data?.bulletPoints?.map((item, index) => (
-                        <li key={index} className="text-gray-400 text-base">
-                            <span className=" text-[#455CFF]">{item.title}</span>: {item.description}
-                        </li>
-                    ))}
-                </ul>
-                <p className="text-gray-300 text-lg">
-                    Leave blank if a module does not apply.
-                </p>
-            </div>
+        <div>
+            <Dialog open={open} onOpenChange={setOpen}>
+                <DialogTrigger className="flex gap-2 text-gray-300 border items-center border-zinc-800 rounded-full hover:bg-indigo-700/90 bg-[#141414] p-2 md:px-4 h-full">
+                    {checkIfMobile()
+                    ?
+                     <CircleHelp/>
+                     :
+                     (
+                        <>                            
+                        Open instructions <CircleHelp/>
+                        </>)}
+                </DialogTrigger>
+                <DialogContent className="container flex flex-col gap-2 p-2 px-4 mx-auto border border-zinc-800 bg-[#0a0a0a] overflow-y-auto h-auto max-h-full ">
+                    <DialogTitle className="text-gray-100 md:max-w-2xl font-semibold max-w-sm sm:max-w-md text-xl md:text-2xl mx-auto text-center tracking-wide">
+                        {data?.info?.title}
+                    </DialogTitle> 
+                    <DialogDescription className="text-gray-400 text-sm text-center">
+                        {data?.info?.description}
+                    </DialogDescription>
+
+                    <div className="gap-2 flex flex-col ">
+                        {
+                            data?.scores?.map((item, index) => (
+                                <div key={index} className="w-full h-full border border-zinc-800 hover:bg-indigo-700/10   bg-[#0a0a0a]  rounded-xl ">
+                                    <div className="p-2">
+                                        <h2 className="text-[#455CFF] text-lg font-normal">{item.level} - <span className="text-gray-300 text-lg">{item.title}</span></h2>
+                                        <p className="text-gray-400 text-xs" >
+                                            {item.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                    <div className="flex flex-col justify-center text-left gap-3">
+                        <p className="text-gray-300 md:text-base text-sm ">
+                            Provide seperate scores for:
+                        </p>
+                        <ul className="flex flex-col w-full gap-3 ">
+                            {data?.bulletPoints?.map((item, index) => (
+                                <li key={index} className="flex flex-1 text-gray-400 text-sm">
+                                    <span className=" text-[#455CFF] text-normal">{item.title} </span> : {item.description}
+                                </li>
+                            ))}
+                        </ul>
+                        <p className="text-gray-300 text-sm  italic">
+                            Leave blank if a module does not apply.
+                        </p>
+                    </div>
+                    <DialogFooter className="flex items-center">
+                        <DialogClose asChild>
+                            <Button type="submit" className="border border-zinc-600 hover:bg-indigo-700/90">
+                                Take survey
+                            </Button>
+                        </DialogClose>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
         </div>
     )
 }
