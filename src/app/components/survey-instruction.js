@@ -10,7 +10,7 @@ export default function SurveyInstructions({ data }) {
     const [open, setOpen] = useState(true)
 
     return (
-        <div>
+        <div className="">
             <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger className="flex gap-2 text-gray-300 border items-center border-zinc-800 rounded-full hover:bg-indigo-700/90 bg-[#141414] p-2 md:px-4 h-full">
                     {checkIfMobile()
@@ -22,13 +22,10 @@ export default function SurveyInstructions({ data }) {
                         Open instructions <CircleHelp/>
                         </>)}
                 </DialogTrigger>
-                <DialogContent className="container flex flex-col gap-2 p-2 px-4 mx-auto border border-zinc-800 bg-[#0a0a0a] overflow-y-auto h-auto max-h-full ">
+                <DialogContent className="container flex flex-col gap-2 py-2 px-4 w-[90%] rounded-md mx-auto border border-zinc-800 bg-[#0a0a0a] overflow-y-auto h-[600px] md:h-auto max-h-full ">
                     <DialogTitle className="text-gray-100 md:max-w-2xl font-semibold max-w-sm sm:max-w-md text-xl md:text-2xl mx-auto text-center tracking-wide">
                         {data?.info?.title}
-                    </DialogTitle> 
-                    <DialogDescription className="text-gray-400 text-sm text-center">
-                        {data?.info?.description}
-                    </DialogDescription>
+                    </DialogTitle>
 
                     <div className="gap-2 flex flex-col ">
                         {
@@ -55,7 +52,7 @@ export default function SurveyInstructions({ data }) {
                                 </li>
                             ))}
                         </ul>
-                        <p className="text-gray-300 text-sm  italic">
+                        <p className="text-gray-400 text-sm  italic">
                             Leave blank if a module does not apply.
                         </p>
                     </div>
