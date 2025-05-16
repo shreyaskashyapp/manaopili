@@ -144,16 +144,20 @@ export default function Survey() {
   return (
     <div>
       {hasSubmitted ? (
-        <main className="min-h-screen py-16 flex justify-center">
+        <main className="min-h-screen py-16 flex justify-center relative">
           {configs?.[surveyModule] ? <div className="container py-10">
             <div className="text-center mb-12 space-y-4">
-              <h1 className="text-4xl font-bold text-[#455CFF]">
-                {configs?.[surveyModule]?.title}
-              </h1>
+              <div className='flex justify-center'>
+                <h1 className="text-4xl font-bold text-[#455CFF]">
+                  {configs?.[surveyModule]?.title}
+                </h1>
+                <div className='absolute md:right-20 right-[30px]'>
+                  <SurveyInstructions data={surveyData} />
+                </div>
+              </div>
               <p className="text-gray-400 max-w-2xl mx-auto">
                 {configs?.[surveyModule]?.subtitle}
               </p>
-              <SurveyInstructions data={surveyData} />
             </div>
             <SurveyForm
               config={configs?.[surveyModule]}
