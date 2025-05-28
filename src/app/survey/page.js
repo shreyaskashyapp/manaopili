@@ -232,7 +232,7 @@ export default function Survey() {
               onComplete={handleSubmit}
             />
             <div
-              className={`flex flex-col gap-4 fixed pointer-events-none ${pdfDownloaded ? '' : ''}`}
+              className={`opacity-0 gap-4 fixed pointer-events-none ${pdfDownloaded ? '' : ''}`}
               style={{ width: '800px', height: 'auto' }}
               ref={targetRef}
             >
