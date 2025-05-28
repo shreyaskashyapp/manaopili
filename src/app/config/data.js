@@ -1,8 +1,13 @@
 export const configs = {
     "technology-workflows": {
         title: 'ITSM Modules',
-        subtitle:"Elevate your ITSM implementation",
-        header:"Technology Workflows (Tx)",
+        subtitle: "Elevate your ITSM implementation",
+        header: "Technology Workflows (Tx)",
+        "types": [
+            'Standard',
+            'Pro',
+            'Enterprise'
+        ],
         categories: [
             {
                 name: 'Standard',
@@ -45,8 +50,13 @@ export const configs = {
     },
     "customer-workflows": {
         title: 'CSM Modules',
-        subtitle:"Elevate your CSM implementation",
-        header:" Customer Workflows (Cx)",
+        subtitle: "Elevate your CSM implementation",
+        header: " Customer Workflows (Cx)",
+        "types": [
+            'Standard',
+            'Pro',
+            'Enterprise'
+        ],
         categories: [
             {
                 name: 'Standard',
@@ -85,8 +95,56 @@ export const configs = {
                 ]
             }
         ]
+    },
+    "it-operations-management": {
+        "title": "ITOM Modules",
+        "subtitle": "Strengthen your IT Operations Management",
+        "header": "Technology Workflows (ITOM)",
+        "types": [
+            'ITOM Visibility',
+            'ITOM Health',
+            'ITOM Optimization'
+        ],
+        "categories": [
+            {
+                "name": "Standard",
+                "modules": [
+                    { "name": "Discovery", "slug": "discovery" },
+                    { "name": "Service Mapping", "slug": "service-mapping" },
+                    { "name": "Service Graph Connectors", "slug": "service-graph-connectors" },
+                    { "name": "CMDB Data Manager", "slug": "cmdb-data-manager" },
+                    { "name": "MID Server (Management, Instrumentation, and Discovery)", "slug": "mid-server" },
+                    { "name": "Credential Management", "slug": "credential-management" },
+                    { "name": "Discovery Schedules & Patterns", "slug": "discovery-schedules-patterns" },
+                    { "name": "Application Services", "slug": "application-services" }
+                ]
+            },
+            {
+                "name": "Pro",
+                "modules": [
+                    { "name": "Event Management", "slug": "event-management" },
+                    { "name": "Operational Intelligence / Metric Intelligence", "slug": "operational-intelligence" },
+                    { "name": "Health Log Analytics (HLA)", "slug": "health-log-analytics" },
+                    { "name": "Service Health Dashboard", "slug": "service-health-dashboard" },
+                    { "name": "Alert Management", "slug": "alert-management" },
+                    { "name": "Connector Integrations", "slug": "connector-integrations" },
+                    { "name": "Impact Analysis (via Service Mapping)", "slug": "impact-analysis" }
+                ]
+            },
+            {
+                "name": "Enterprise",
+                "modules": [
+                    { "name": "Cloud Managament", "slug": "cloud-management" },
+                    { "name": "Cloud Insights", "slug": "cloud-insights" },
+                    { "name": "Cloud Respirce Optimization", "slug": "cloud-resource-optimization" },
+                    { "name": "Application Service Monitoring", "slug": "application-service-monitoring" },
+                    { "name": "Predictive AIOps (Advanced Intelligance)", "slug": "predictive-aiops" },
+                    { "name": "Automated Remediation", "slug": "automated-remediation" },
+                    { "name": "Runbook Automation (via Integration Hub)", "slug": "runbook-automation" }
+                ]
+            }
+        ]
     }
-
 }
 
 export const fallbackConfig = {

@@ -6,19 +6,13 @@ import { ChartContainer } from "@/components/ui/chart"
 import { configs } from "@/app/config/data"
 import { useSearchParams } from "next/navigation"
 
-const transformData = (data) => {
-  const categories = ['Standard', 'Pro', 'Enterprise']
-  return categories.map((category, index) => ({
-    name: category,
-    people: data[index].find(item => item.name === 'people').value,
-    process: data[index].find(item => item.name === 'process').value,
-    technology: data[index].find(item => item.name === 'technology').value,
-  }))
-}
-
-export function Multiplechart({ data }) {
+export function Multiplechart(
+  {
+    data,
+    modules =  ['Standard', 'Pro', 'Enterprise']
+  }) {
   const transformData = (data) => {
-    const categories = ['Standard', 'Pro', 'Enterprise']
+    const categories = modules
     return categories.map((category, index) => ({
       name: category,
       people: data[index].find(item => item.name === 'people').value,
@@ -27,7 +21,7 @@ export function Multiplechart({ data }) {
     }))
   }
   const params = useSearchParams();
-  
+
   const surveyModule = params.get('survey')
 
   const chartData = transformData(data)
@@ -35,7 +29,7 @@ export function Multiplechart({ data }) {
   return (
     <Card className="w-full bg-background mx-auto border-none">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold">{`${configs?.[surveyModule]?.title} Investment Scores by Product Suite`}</CardTitle>
+        <CardTitle className="text-2xl font-normal">{`${configs?.[surveyModule]?.title} Investment Scores by Product Suite`}</CardTitle>
         <CardDescription>
           {`Individualized scores for implementation of the ServiceNow ${configs?.[surveyModule]?.title} for investment into people, process, and technology.`}
         </CardDescription>
@@ -104,13 +98,13 @@ export function Multiplechart({ data }) {
                 }}
               />
               <Legend />
-              <Bar dataKey="people" name="People" fill="hsl(var(--chart-1))" radius={[4, 4, 0, 0]}>
+              <Bar dataKey="people" name={modules[0]} fill="hsl(var(--chart-1))" radius={[4, 4, 0, 0]}>
                 <LabelList dataKey="people" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" formatter={(value) => value.toFixed(2)} />
               </Bar>
-              <Bar dataKey="process" name="Process" fill="hsl(var(--chart-2))" radius={[4, 4, 0, 0]}>
+              <Bar dataKey="process" name={modules[1]} fill="hsl(var(--chart-2))" radius={[4, 4, 0, 0]}>
                 <LabelList dataKey="process" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" formatter={(value) => value.toFixed(2)} />
               </Bar>
-              <Bar dataKey="technology" name="Technology" fill="hsl(var(--chart-3))" radius={[4, 4, 0, 0]}>
+              <Bar dataKey="technology" name={modules[2]} fill="hsl(var(--chart-3))" radius={[4, 4, 0, 0]}>
                 <LabelList dataKey="technology" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" formatter={value => value.toFixed(2)} />
               </Bar>
             </BarChart>

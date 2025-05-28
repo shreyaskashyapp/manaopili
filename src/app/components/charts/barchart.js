@@ -29,7 +29,7 @@ export default function Barchart({ data}) {
   return (
     <Card className="w-full bg-background mx-auto border-none">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold">{data?.[0]?.title}</CardTitle>
+        <CardTitle className="text-2xl font-normal">{data?.[0]?.title}</CardTitle>
       </CardHeader>
       <CardContent className="">
         <ChartContainer
