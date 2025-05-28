@@ -245,7 +245,8 @@ export default function Survey() {
                     <div ref={multiplechartRef}>
                       <Multiplechart
                         data={item}
-                      />
+                        modules={configs?.[surveyModule]?.types}
+                      />     
                     </div>
                   </div>
                   :
@@ -254,7 +255,7 @@ export default function Survey() {
                       key={index}
                       data={item}
                       index={index}
-
+                      modules={configs?.[surveyModule]?.types}
                     />
                   </div>
               ))}
