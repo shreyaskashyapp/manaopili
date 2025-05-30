@@ -5,8 +5,8 @@ import { Label } from "@/components/ui/label";
 import { useRef, useState } from 'react';
 import HeroSection from './hero-section';
 import LoadingIndicator from './loader';
+import { sampleCompanies } from "../../../constant";
 
-const sampleCompanies = ["Google", "Microsoft", "Apple", "Amazon", "Meta", "Tesla", "Netflix"];
 
 export default function SurveyEmailCollection({ onGettingEmail, title = 'Ready to take our Digital TRiP survey?', subtitle = 'Fill out your email address to access our survey.' }) {
     const [email, setEmail] = useState("");

@@ -98,7 +98,7 @@ export const configs = {
     },
     "it-operations-management": {
         "title": "ITOM Modules",
-        "subtitle": "Strengthen your IT Operations Management",
+        "subtitle": "Elevate your ITOM implementation",
         "header": "Technology Workflows (ITOM)",
         "types": [
             'ITOM Visibility',

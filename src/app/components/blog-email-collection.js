@@ -5,8 +5,8 @@ import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { ArrowDownIcon } from 'lucide-react';
 import LoadingIndicator from './loader';
+import { sampleCompanies } from '../../../constant';
 
-const sampleCompanies = ["Google", "Microsoft", "Apple", "Amazon", "Meta", "Tesla", "Netflix"];
 
 const BlogsEmailCollection = ({ onGettingEmail , title = 'Take a look at our articles' , subtitle = 'Fill out your email address to access our articles.'}) => {
     const [email, setEmail] = useState("");
