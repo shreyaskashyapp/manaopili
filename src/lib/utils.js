@@ -5,11 +5,10 @@ export function cn(...inputs) {
   return twMerge(clsx(inputs));
 }
 
-export const CATEGORIES = [
-  'Standard',
-  'Pro',
-  'Enterprise'
-]
+export const CATEGORIES = (obj) =>{
+  return obj.types
+}
+
 
 export const findSum = (results, key) => {
 
@@ -47,10 +46,10 @@ const findAverageFromKey = (results, key) => {
 
 }
 
-export function parseResults(results, config) {
+export function parseResults(results, config, obj) {
   switch (config) {
     case 'CSM':
-      const result = CATEGORIES.map(category => {
+      const result = CATEGORIES(obj).map(category => {
       return findAverageFromKey(results, category)
       })
       return result

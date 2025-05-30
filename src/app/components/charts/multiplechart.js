@@ -9,7 +9,7 @@ import { useSearchParams } from "next/navigation"
 export function Multiplechart(
   {
     data,
-    modules =  ['Standard', 'Pro', 'Enterprise']
+    modules
   }) {
   const transformData = (data) => {
     const categories = modules

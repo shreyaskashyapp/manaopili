@@ -98,7 +98,7 @@ export const configs = {
     },
     "it-operations-management": {
         "title": "ITOM Modules",
-        "subtitle": "Strengthen your IT Operations Management",
+        "subtitle": "Elevate your ITOM implementation",
         "header": "Technology Workflows (ITOM)",
         "types": [
             'ITOM Visibility',
@@ -107,7 +107,7 @@ export const configs = {
         ],
         "categories": [
             {
-                "name": "Standard",
+                "name": "ITOM Visibility",
                 "modules": [
                     { "name": "Discovery", "slug": "discovery" },
                     { "name": "Service Mapping", "slug": "service-mapping" },
@@ -120,7 +120,7 @@ export const configs = {
                 ]
             },
             {
-                "name": "Pro",
+                "name": "ITOM Health",
                 "modules": [
                     { "name": "Event Management", "slug": "event-management" },
                     { "name": "Operational Intelligence / Metric Intelligence", "slug": "operational-intelligence" },
@@ -132,7 +132,7 @@ export const configs = {
                 ]
             },
             {
-                "name": "Enterprise",
+                "name": "ITOM Optimization",
                 "modules": [
                     { "name": "Cloud Managament", "slug": "cloud-management" },
                     { "name": "Cloud Insights", "slug": "cloud-insights" },

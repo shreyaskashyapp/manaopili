@@ -95,8 +95,8 @@ export default function Survey() {
   const [isGraphsReady, setIsGraphsReady] = useState(false)
 
   const handleSubmit = (results) => {
-    const rawData = parseResults(results, 'CSM')
-    const sum = CATEGORIES.map(category => findSum(results, category))
+    const rawData = parseResults(results, 'CSM',configs?.[surveyModule])
+    const sum = CATEGORIES(configs?.[surveyModule]).map(category => findSum(results, category))
 
     const overall_module_sum = sum.reduce((acc, curr) => ({
       people: acc.people + curr.people,
