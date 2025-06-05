@@ -136,7 +136,7 @@ export const configs = {
                 "modules": [
                     { "name": "Cloud Managament", "slug": "cloud-management" },
                     { "name": "Cloud Insights", "slug": "cloud-insights" },
-                    { "name": "Cloud Respirce Optimization", "slug": "cloud-resource-optimization" },
+                    { "name": "Cloud Resource Optimization", "slug": "cloud-resource-optimization" },
                     { "name": "Application Service Monitoring", "slug": "application-service-monitoring" },
                     { "name": "Predictive AIOps (Advanced Intelligance)", "slug": "predictive-aiops" },
                     { "name": "Automated Remediation", "slug": "automated-remediation" },
