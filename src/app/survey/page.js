@@ -95,7 +95,7 @@ export default function Survey() {
   const [isGraphsReady, setIsGraphsReady] = useState(false)
 
   const handleSubmit = (results) => {
-    const rawData = parseResults(results, 'CSM',configs?.[surveyModule])
+    const rawData = parseResults(results, 'CSM', configs?.[surveyModule])
     const sum = CATEGORIES(configs?.[surveyModule]).map(category => findSum(results, category))
 
     const overall_module_sum = sum.reduce((acc, curr) => ({
@@ -150,7 +150,8 @@ export default function Survey() {
         graphData,
         Email: sessionStorage.getItem("email"),
         Name: sessionStorage.getItem('organisationName'),
-        survey: configs?.[surveyModule]?.title
+        survey: configs?.[surveyModule]?.title,
+        data: results
       }
 
       try {
@@ -246,7 +247,7 @@ export default function Survey() {
                       <Multiplechart
                         data={item}
                         modules={configs?.[surveyModule]?.types}
-                      />     
+                      />
                     </div>
                   </div>
                   :
