@@ -72,6 +72,7 @@ export default function Survey() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [pdfDownloaded, setPdfDownloaded] = useState(false);
   const [generatingPdf, setGeneratingPdf] = useState(false);
+  const [formData, setFormData] = useState(null);
 
 
   const multiplechartRef = useRef(null);
@@ -97,6 +98,8 @@ export default function Survey() {
   const handleSubmit = (results) => {
     const rawData = parseResults(results, 'CSM', configs?.[surveyModule])
     const sum = CATEGORIES(configs?.[surveyModule]).map(category => findSum(results, category))
+
+    setFormData(results)
 
     const overall_module_sum = sum.reduce((acc, curr) => ({
       people: acc.people + curr.people,
@@ -151,7 +154,7 @@ export default function Survey() {
         Email: sessionStorage.getItem("email"),
         Name: sessionStorage.getItem('organisationName'),
         survey: configs?.[surveyModule]?.title,
-        data: results
+        data: formData
       }
 
       try {
