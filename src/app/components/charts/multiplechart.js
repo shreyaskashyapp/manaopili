@@ -15,9 +15,9 @@ export function Multiplechart(
     const categories = modules
     return categories.map((category, index) => ({
       name: category,
-      People: data[index].find(item => item.name === 'People').value,
-      Process: data[index].find(item => item.name === 'Process').value,
-      Technology: data[index].find(item => item.name === 'Technology').value,
+      people: data[index].find(item => item.name === 'people').value,
+      process: data[index].find(item => item.name === 'process').value,
+      technology: data[index].find(item => item.name === 'technology').value,
     }))
   }
   const params = useSearchParams();
@@ -37,15 +37,15 @@ export function Multiplechart(
       <CardContent className="py-2">
         <ChartContainer
           config={{
-            People: {
+            people: {
               label: "People",
               color: "hsl(var(--chart-1))",
             },
-            Process: {
+            process: {
               label: "Process",
               color: "hsl(var(--chart-2))",
             },
-            Technology: {
+            technology: {
               label: "Technology",
               color: "hsl(var(--chart-3))",
             },
@@ -98,14 +98,14 @@ export function Multiplechart(
                 }}
               />
               <Legend />
-              <Bar dataKey="People" name={modules[0]} fill="hsl(var(--chart-1))" radius={[4, 4, 0, 0]}>
-                <LabelList dataKey="People" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" formatter={(value) => value.toFixed(2)} />
+              <Bar dataKey="people" name={modules[0]} fill="hsl(var(--chart-1))" radius={[4, 4, 0, 0]}>
+                <LabelList dataKey="people" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" formatter={(value) => value.toFixed(2)} />
               </Bar>
-              <Bar dataKey="Process" name={modules[1]} fill="hsl(var(--chart-2))" radius={[4, 4, 0, 0]}>
-                <LabelList dataKey="Process" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" formatter={(value) => value.toFixed(2)} />
+              <Bar dataKey="process" name={modules[1]} fill="hsl(var(--chart-2))" radius={[4, 4, 0, 0]}>
+                <LabelList dataKey="process" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" formatter={(value) => value.toFixed(2)} />
               </Bar>
-              <Bar dataKey="Technology" name={modules[2]} fill="hsl(var(--chart-3))" radius={[4, 4, 0, 0]}>
-                <LabelList dataKey="Technology" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" formatter={value => value.toFixed(2)} />
+              <Bar dataKey="technology" name={modules[2]} fill="hsl(var(--chart-3))" radius={[4, 4, 0, 0]}>
+                <LabelList dataKey="technology" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" formatter={value => value.toFixed(2)} />
               </Bar>
             </BarChart>
           </ResponsiveContainer>

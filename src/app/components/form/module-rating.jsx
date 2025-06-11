@@ -10,7 +10,7 @@ export function ModuleRatingForm({
   ratings, 
   onRatingChange 
 }) {
-  const dimensions = ['People', 'Process', 'Technology']
+  const dimensions = ['people', 'process', 'technology']
 
   const handleDimensionChange = (dimension, value) => {
     onRatingChange({
