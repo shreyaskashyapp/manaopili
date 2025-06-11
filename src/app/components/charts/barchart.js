@@ -27,7 +27,7 @@ export default function Barchart({ data}) {
   };
 
   return (
-    <Card className="w-full bg-background mx-auto border-none">
+    <Card className="w-full bg-white mx-auto border-none">
       <CardHeader>
         <CardTitle className="text-2xl font-normal">{data?.[0]?.title}</CardTitle>
       </CardHeader>
@@ -46,7 +46,7 @@ export default function Barchart({ data}) {
               barSize={35}
               barGap={8}
             >
-              <CartesianGrid strokeDasharray="3 3" vertical={false} />
+              <CartesianGrid stroke="hsl(var(--border))" strokeDasharray="3 3" vertical={false} />
               <XAxis
                 dataKey="name"
                 tick={{ fill: 'hsl(var(--foreground))', fontSize: 12 }}

@@ -144,6 +144,52 @@ export const configs = {
                 ]
             }
         ]
+    },
+    "strategic-portfolio-management": {
+        "title": "SPM Modules",
+        "subtitle": "Optimize your Strategic Portfolio Management",
+        "header": "Technology Workflows (SPM)",
+         "types": [
+            'Standard',
+            'Pro',
+            'Enterprise'
+        ],
+        "categories": [
+            {
+                "name": "Standard",
+                "modules": [
+                    { "name": "Project Portfolio Management", "slug": "project-portfolio-management" },
+                    { "name": "Resource Management", "slug": "resource-management" },
+                    { "name": "Demand Management", "slug": "demand-management" },
+                    { "name": "Time Card Management", "slug": "time-card-management" },
+                    { "name": "Basic Financial Planning (Cost Plans, Budgets)", "slug": "basic-financial-planning" }
+                ]
+            },
+            {
+                "name": "Pro",
+                "modules": [
+                    { "name": "Agile Development 2.0", "slug": "agile-development-2" },
+                    { "name": "SAFe Support & Hybrid Project Planning", "slug": "safe-hybrid-project-planning" },
+                    { "name": "Application Portfolio Management (APM)", "slug": "application-portfolio-management" },
+                    { "name": "Financial Planning & Cost Modeling", "slug": "financial-planning-cost-modeling" },
+                    { "name": "Program Management Workspace", "slug": "program-management-workspace" },
+                    { "name": "Performance Analytics for SPM", "slug": "performance-analytics-spm" },
+                    { "name": "Integration with DevOps", "slug": "integration-with-devops" }
+                ]
+            },
+            {
+                "name": "Enterprise",
+                "modules": [
+                    { "name": "Digital Portfolio Management", "slug": "digital-portfolio-management" },
+                    { "name": "Objectives and Key Results (OKRs)", "slug": "objectives-key-results" },
+                    { "name": "Strategic Planning Workspace", "slug": "strategic-planning-workspace" },
+                    { "name": "Innovation Management", "slug": "innovation-management" },
+                    { "name": "Advanced Financial Planning (e.g., scenario modeling)", "slug": "advanced-financial-planning" },
+                    { "name": "Now Assist for SPM (GenAI features)", "slug": "now-assist-spm" },
+                    { "name": "Agentic Workflows for proactive guidance", "slug": "agentic-workflows-guidance" }
+                ]
+            }
+        ]
     }
 }
 
