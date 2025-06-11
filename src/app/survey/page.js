@@ -99,9 +99,9 @@ export default function Survey() {
     const sum = CATEGORIES(configs?.[surveyModule]).map(category => findSum(results, category))
 
     const overall_module_sum = sum.reduce((acc, curr) => ({
-      people: acc.people + curr.people,
-      process: acc.process + curr.process,
-      technology: acc.technology + curr.technology
+      People: acc.People + curr.People,
+      Process: acc.Process + curr.Process,
+      Technology: acc.Technology + curr.Technology
     }))
 
     const overallBarData = Object.keys(overall_module_sum).map(key => ({

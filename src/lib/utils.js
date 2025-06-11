@@ -19,11 +19,11 @@ export const findSum = (results, key) => {
 
   const accumalate = ratings.reduce((acc, curr) => {
     return {
-      people: acc.people + curr.people,
-      process: acc.process + curr.process,
-      technology: acc.technology + curr.technology
+      People: acc.People + curr.People,
+      Process: acc.Process + curr.Process,
+      Technology: acc.Technology + curr.Technology
     }
-  }, { people: 0, process: 0, technology: 0 })
+  }, { People: 0, Process: 0, Technology: 0 })
 
   return accumalate
 }

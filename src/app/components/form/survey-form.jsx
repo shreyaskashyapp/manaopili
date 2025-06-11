@@ -10,9 +10,9 @@ export function SurveyForm({ config, onComplete }) {
       ...module,
       category: category.name,
       ratings: {
-        people: null,
-        process: null,
-        technology: null,
+        People: null,
+        Process: null,
+        Technology: null,
         comments: ''
       }
     }))
