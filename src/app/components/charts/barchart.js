@@ -37,7 +37,7 @@ export default function Barchart({ data}) {
             item.name,
             { label: item.name, color: colors[index % colors.length] }
           ]))}
-          className="h-[350px]"
+          className="h-[350px] capitalize"
         >
           <ResponsiveContainer width="80%" height="80%">
             <BarChart
