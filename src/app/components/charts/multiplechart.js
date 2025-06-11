@@ -27,7 +27,7 @@ export function Multiplechart(
   const chartData = transformData(data)
 
   return (
-    <Card className="w-full bg-background mx-auto border-none">
+    <Card className="w-full bg-white mx-auto border-none">
       <CardHeader>
         <CardTitle className="text-2xl font-normal">{`${configs?.[surveyModule]?.title} Investment Scores by Product Suite`}</CardTitle>
         <CardDescription>
@@ -59,7 +59,7 @@ export function Multiplechart(
               barSize={35}
               barGap={8}
             >
-              <CartesianGrid strokeDasharray="3 3" vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
               <XAxis
                 dataKey="name"
                 tick={{ fill: 'hsl(var(--foreground))', fontSize: 12 }}

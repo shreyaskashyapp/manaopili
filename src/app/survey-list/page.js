@@ -17,10 +17,10 @@ const modules = [
     { name: "Technology (ITSM)", icon: <Settings className="h-5 w-5" />, slug: "technology-workflows" },
     { name: "Customer (CSM)", icon: <Headphones className="h-5 w-5" />, slug: "customer-workflows" },
     { name: "ITOM", icon: <Server className="h-5 w-5 flex-shrink-0" />, slug: "it-operations-management" },
-    { name: "Asset (ITAM)", icon: <LineChart className="h-5 w-5" />, slug: "strategic-portfolio-management" },
+    { name: "SPM (PPM)", icon: <FolderKanban className="h-5 w-5" />, slug: "strategic-portfolio-management", },
+    { name: "Asset (ITAM)", icon: <LineChart className="h-5 w-5" />, slug: "" },
     { name: "Risk Management (GRC)", icon: <Shield className="h-5 w-5" />, slug: "integrated-risk-management", },
     { name: "AI and GenAI", icon: <BrainCircuit className="h-5 w-5" />, slug: "ai-and-genai", },
-    { name: "SPM (PPM)", icon: <FolderKanban className="h-5 w-5" />, slug: "strategic-planning", },
     { name: "DevOps", icon: <Terminal className="h-5 w-5" />, slug: "", },
     { name: "Employee (HRSD)", icon: <UserCircle className="h-5 w-5" />, slug: "" }
 ];
