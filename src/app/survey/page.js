@@ -181,8 +181,6 @@ export default function Survey() {
       finally {
         setGeneratingPdf(false)
       }
-
-
     }
     else {
       console.log("All refs are not ready yet")
