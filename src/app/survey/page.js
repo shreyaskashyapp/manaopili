@@ -13,7 +13,6 @@ import Staller from '../components/staller'
 import SurveyEmailCollection from '../components/survey-email-collection'
 import SurveyInstructions from '../components/survey-instruction'
 import { configs, fallbackConfig } from '../config/data'
-import SurveyCompletionMessage from '../components/surveyCompletionMessage'
 
 
 const surveyData = {
@@ -187,7 +186,6 @@ export default function Survey() {
         }
         await axios.post('https://manaopili-dashboard.vercel.app/api/survey-data-collection', surveyDataPayload);
         console.error("PDF failed to download", err);
-        setPdfError(true)
       }
       finally {
         setGeneratingPdf(false)
@@ -293,9 +291,6 @@ export default function Survey() {
         </main>
       ) :
         <SurveyEmailCollection onGettingEmail={handleEmail} />}
-        {pdfError && (
-          <SurveyCompletionMessage/>
-        )}
     </div>
   )
 }
