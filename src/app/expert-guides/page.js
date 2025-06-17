@@ -179,6 +179,12 @@ const videos = [
         channel: "Mana'o Pili",
         videoId: "Up8LcOVZgAI",
     },
+    {
+        id: 6,
+        title: "The Hidden Costs of ServiceNow Accelerators",
+        channel: "Mana'o Pili",
+        videoId: "jxn8D-5_m-0",
+    },
 ];
 
 
