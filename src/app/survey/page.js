@@ -3,7 +3,7 @@ import { SurveyForm } from '@/app/components/form/survey-form'
 import { CATEGORIES, findSum, getLengthFromModules, getNumberOfZeros, parseResults, parseToGraph } from '@/lib/utils'
 import axios from 'axios'
 import { useSearchParams } from 'next/navigation'
-import { useEffect, useRef, useState } from 'react'
+import { use, useEffect, useRef, useState } from 'react'
 import { usePDF } from 'react-to-pdf'
 import BarGraph from '../components/charts/barchart'
 import { Multiplechart } from '../components/charts/multiplechart'
@@ -13,6 +13,8 @@ import Staller from '../components/staller'
 import SurveyEmailCollection from '../components/survey-email-collection'
 import SurveyInstructions from '../components/survey-instruction'
 import { configs, fallbackConfig } from '../config/data'
+import SurveyCompletionMessage from '../components/surveyCompletionMessage'
+
 
 const surveyData = {
   info: {
@@ -73,6 +75,7 @@ export default function Survey() {
   const [pdfDownloaded, setPdfDownloaded] = useState(false);
   const [generatingPdf, setGeneratingPdf] = useState(false);
   const [formData, setFormData] = useState(null);
+  const [pdfError, setPdfError] = useState(false)
 
 
   const multiplechartRef = useRef(null);
@@ -157,6 +160,8 @@ export default function Survey() {
         data: formData
       }
 
+
+
       try {
         setGeneratingPdf(true)
         const res = await axios.post('https://manaopili-dashboard.vercel.app/api/puppeteer', payload, {
@@ -175,8 +180,14 @@ export default function Survey() {
         URL.revokeObjectURL(url);
         link.remove();
       } catch (err) {
-        console.error('Error downloading PDF:', err);
-        alert('Failed to download PDF');
+        const surveyDataPayload={
+          ...payload,
+        'status':'error',
+        'error':JSON.stringify(err)
+        }
+        await axios.post('http://localhost:3001/api/survey-data-collection', surveyDataPayload);
+        console.error("PDF failed to download", err);
+        setPdfError(true)
       }
       finally {
         setGeneratingPdf(false)
@@ -282,6 +293,9 @@ export default function Survey() {
         </main>
       ) :
         <SurveyEmailCollection onGettingEmail={handleEmail} />}
+        {pdfError && (
+          <SurveyCompletionMessage/>
+        )}
     </div>
   )
 }

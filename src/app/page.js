@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Cards from './components/homecards'
 import WhyManaopiliWheel from './components/wheel'
 
+
 const sections = [
   {
     title: "Get Started",
