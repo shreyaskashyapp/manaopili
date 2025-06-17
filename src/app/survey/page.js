@@ -3,7 +3,7 @@ import { SurveyForm } from '@/app/components/form/survey-form'
 import { CATEGORIES, findSum, getLengthFromModules, getNumberOfZeros, parseResults, parseToGraph } from '@/lib/utils'
 import axios from 'axios'
 import { useSearchParams } from 'next/navigation'
-import { use, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { usePDF } from 'react-to-pdf'
 import BarGraph from '../components/charts/barchart'
 import { Multiplechart } from '../components/charts/multiplechart'
@@ -74,7 +74,6 @@ export default function Survey() {
   const [pdfDownloaded, setPdfDownloaded] = useState(false);
   const [generatingPdf, setGeneratingPdf] = useState(false);
   const [formData, setFormData] = useState(null);
-  const [pdfError, setPdfError] = useState(false)
 
 
   const multiplechartRef = useRef(null);
