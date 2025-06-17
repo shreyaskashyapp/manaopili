@@ -14,6 +14,7 @@ import SurveyEmailCollection from '../components/survey-email-collection'
 import SurveyInstructions from '../components/survey-instruction'
 import { configs, fallbackConfig } from '../config/data'
 
+
 const surveyData = {
   info: {
     title: "Survey Instructions",
@@ -157,6 +158,8 @@ export default function Survey() {
         data: formData
       }
 
+
+
       try {
         setGeneratingPdf(true)
         const res = await axios.post('https://manaopili-dashboard.vercel.app/api/puppeteer', payload, {
@@ -175,8 +178,13 @@ export default function Survey() {
         URL.revokeObjectURL(url);
         link.remove();
       } catch (err) {
-        console.error('Error downloading PDF:', err);
-        alert('Failed to download PDF');
+        const surveyDataPayload={
+          ...payload,
+        'status':'error',
+        'error':JSON.stringify(err)
+        }
+        await axios.post('https://manaopili-dashboard.vercel.app/api/survey-data-collection', surveyDataPayload);
+        console.error("PDF failed to download", err);
       }
       finally {
         setGeneratingPdf(false)
