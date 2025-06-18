@@ -26,7 +26,7 @@ export default function SurveyCompletionMessage() {
                         Form Submitted Successfully
                     </DialogTitle>
                     <DialogDescription className="text-gray-400 text-base sm:text-lg leading-relaxed max-w-md mx-auto px-2">
-                        Thank you for considering Mana'o Pili. Survey results are typically shared via email within 48 hours of submission.
+                        Thank you for considering Mana&apos;o Pili. Survey results are typically shared via email within 48 hours of submission.
                     </DialogDescription>
                 </div>
                 <DialogFooter className="pt-4 border-t border-zinc-700">
