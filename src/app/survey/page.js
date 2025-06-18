@@ -2,7 +2,7 @@
 import { SurveyForm } from '@/app/components/form/survey-form'
 import { CATEGORIES, findSum, getLengthFromModules, getNumberOfZeros, parseResults, parseToGraph } from '@/lib/utils'
 import axios from 'axios'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { usePDF } from 'react-to-pdf'
 import BarGraph from '../components/charts/barchart'
@@ -13,6 +13,7 @@ import Staller from '../components/staller'
 import SurveyEmailCollection from '../components/survey-email-collection'
 import SurveyInstructions from '../components/survey-instruction'
 import { configs, fallbackConfig } from '../config/data'
+import SurveyCompletionMessage from '../components/surveyCompletionMessage'
 
 
 const surveyData = {
@@ -74,6 +75,8 @@ export default function Survey() {
   const [pdfDownloaded, setPdfDownloaded] = useState(false);
   const [generatingPdf, setGeneratingPdf] = useState(false);
   const [formData, setFormData] = useState(null);
+  const [pdfError,setPdfError]=useState(false)
+  const router=useRouter();
 
 
   const multiplechartRef = useRef(null);
@@ -171,13 +174,15 @@ export default function Survey() {
 
         const link = document.createElement('a');
         link.href = url;
-        link.download = 'report.pdf';
+        link.download = 'Survey_Results.pdf';
         document.body.appendChild(link);
         link.click();
 
         URL.revokeObjectURL(url);
         link.remove();
-      } catch (err) {
+        router.push('/survey-list')
+      } 
+      catch (err) {
         const surveyDataPayload={
           ...payload,
         'status':'error',
@@ -185,6 +190,7 @@ export default function Survey() {
         }
         await axios.post('https://manaopili-dashboard.vercel.app/api/survey-data-collection', surveyDataPayload);
         console.error("PDF failed to download", err);
+        setPdfError(true)
       }
       finally {
         setGeneratingPdf(false)
@@ -290,6 +296,10 @@ export default function Survey() {
         </main>
       ) :
         <SurveyEmailCollection onGettingEmail={handleEmail} />}
+        {
+          pdfError &&
+        <SurveyCompletionMessage/>
+        }
     </div>
   )
 }
