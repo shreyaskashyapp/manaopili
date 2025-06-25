@@ -1,4 +1,4 @@
-
+'use client'
 import {
   Check,
   LineChart,
@@ -11,7 +11,8 @@ import CompareCard from '../components/comparisionCards'
 import HeroSection from '../components/hero-section'
 import ServicesAccordion from '../components/services-accordion'
 import SurveyButton from '../components/surveyButton'
-import ActivateServer from '../components/activateServer'
+import { activateServer } from '@/lib/utils'
+import { useEffect } from 'react'
 
 const categories = ["IMPLEMENTATIONS", "CONSULTING", "MANAGED SERVICES", "ENHANCEMENTS"]
 
@@ -241,9 +242,11 @@ const buttonData = {
 
 
 export default function Component() {
+    useEffect(()=>{
+      activateServer()
+    },[])
   return (
     <div className=" bg-[#141414]">
-      <ActivateServer />
       <div className="w-full">
         {/* //hero */}
         <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
