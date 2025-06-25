@@ -165,7 +165,7 @@ export default function Survey() {
 
       try {
         setGeneratingPdf(true)
-        const res = await axios.post('https://manaopili-dashboard.vercel.app/api/puppeteer', payload, {
+        const res = await axios.post('https://backend-manaopili.onrender.com/generate-pdf', payload, {
           responseType: 'arraybuffer', // <-- Important to handle raw binary PDF response
         });
 
