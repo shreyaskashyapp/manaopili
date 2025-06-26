@@ -1,4 +1,4 @@
-
+'use client'
 import {
   Check,
   LineChart,
@@ -11,6 +11,8 @@ import CompareCard from '../components/comparisionCards'
 import HeroSection from '../components/hero-section'
 import ServicesAccordion from '../components/services-accordion'
 import SurveyButton from '../components/surveyButton'
+import { activateServer } from '@/lib/utils'
+import { useEffect } from 'react'
 
 const categories = ["IMPLEMENTATIONS", "CONSULTING", "MANAGED SERVICES", "ENHANCEMENTS"]
 
@@ -233,13 +235,16 @@ const hero = {
     </>
   )
 }
-const buttonData={
-  link:"/survey-list",
-  text:"Get Started"
+const buttonData = {
+  link: "/survey-list",
+  text: "Get Started"
 }
 
 
 export default function Component() {
+    useEffect(()=>{
+      activateServer()
+    },[])
   return (
     <div className=" bg-[#141414]">
       <div className="w-full">
@@ -252,7 +257,7 @@ export default function Component() {
             <p className="text-lg md:text-xl text-zinc-300 mb-6 md:mb-8 px-4">
               {`Ready to experience the Mana'o Pili difference?`}
             </p>
-            <SurveyButton data={buttonData}/>
+            <SurveyButton data={buttonData} />
           </div>
           {/* comparision section */}
           {/* <Comparison/> */}
@@ -267,7 +272,7 @@ export default function Component() {
             <p className="text-lg md:text-xl text-zinc-300 mb-6 md:mb-8 px-4">
               {`Ready to experience the Mana'o Pili difference?`}
             </p>
-            <SurveyButton data={buttonData}/>
+            <SurveyButton data={buttonData} />
           </div>
         </div>
       </div>

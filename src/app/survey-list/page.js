@@ -1,7 +1,10 @@
+'use client'
 import { LineChart, Settings, Users, Zap, Server, Headphones, Shield, BrainCircuit, FolderKanban, Terminal, UserCircle } from 'lucide-react'
 import Link from "next/link";
 import HeroSection from "../components/hero-section";
 import Image from 'next/image';
+import { useEffect } from 'react';
+import { activateServer } from '@/lib/utils';
 
 const data = {
     'title': "Take Our Survey",
@@ -25,20 +28,14 @@ const modules = [
     { name: "Employee (HRSD)", icon: <UserCircle className="h-5 w-5" />, slug: "" }
 ];
 
-export const metadata = {
-    title: "Digital Trip Survey | Mana'o Pili, LLC",
-    description: "Take the Digital Trip Survey to optimize ServiceNow usage. Get tailored roadmaps, quick wins, and insights to unlock the full potential of your investment.",
-    openGraph: {
-      title: "Digital Trip Survey - Mana’o Pili",
-      description: "Take the Digital Trip Survey to assess your ServiceNow usage and get a tailored roadmap with quick wins to maximize the value of your ServiceNow investment.",
-      url: "https://manaopili.com/survey",
-    },
-  };
 
 export default function SurveyList() {
+    useEffect(()=>{
+        activateServer();
+    },[])
     return (
         <div>
-            <HeroSection data={data} bgColor="from-[#455CFF] to-[#141414]" height={`[70vh]`}/>
+            <HeroSection data={data} bgColor="from-[#455CFF] to-[#141414]" height={`[70vh]`} />
             <div className="flex flex-col justify-center items-center gap-8 py-10">
                 <h2 className="text-3xl md:text-4xl text-gray-300 text-center italic">
                     Select a Digital Trip Survey below by ServiceNow Product Line.

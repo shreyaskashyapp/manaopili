@@ -19,8 +19,13 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Mana'o Pili, LLC | Digital Transformation & ServiceNow Solutions",
-  description: `Mana'o Pili, LLC is a ServiceNow partner specializing in digital transformation solutions. We help organizations optimize their ServiceNow investment through tailored assessments, roadmaps, and quick wins. Our expertise in AI-driven solutions empowers businesses to streamline operations and enhance customer service.`,
+  title: "Home | Digital Transformation & ServiceNow Solutions | Mana'o Pili, LLC",
+  description: "Achieve Digital Transformation with Mana’o Pili. Optimize operations with AI-powered cloud solutions. Streamline IT, empower teams, and elevate customer service.",
+  openGraph: {
+    title: "Achieve Digital Transformation with Mana’o Pili",
+    description: "Optimize your operations with AI-powered cloud solutions and elevate customer service. Start your digital transformation today with Mana’o Pili.",
+    url: "https://manaopili.com/",
+  },
 };
 
 export default function RootLayout({ children }) {

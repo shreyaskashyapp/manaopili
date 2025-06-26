@@ -1,3 +1,4 @@
+import axios from "axios";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge"
 
@@ -5,7 +6,7 @@ export function cn(...inputs) {
   return twMerge(clsx(inputs));
 }
 
-export const CATEGORIES = (obj) =>{
+export const CATEGORIES = (obj) => {
   return obj.types
 }
 
@@ -41,8 +42,8 @@ const findAverageFromKey = (results, key) => {
     acc[key] = accumalate[key] / ratings.length;
     return acc;
   }, {});
-  
-  return {average, category: key};
+
+  return { average, category: key };
 
 }
 
@@ -50,7 +51,7 @@ export function parseResults(results, config, obj) {
   switch (config) {
     case 'CSM':
       const result = CATEGORIES(obj).map(category => {
-      return findAverageFromKey(results, category)
+        return findAverageFromKey(results, category)
       })
       return result
 
@@ -60,7 +61,7 @@ export function parseResults(results, config, obj) {
 }
 
 export function parseToGraph(rawData = []) {
-  if(!Array.isArray(rawData)) return;
+  if (!Array.isArray(rawData)) return;
   const barData = rawData?.map((item, index) => {
     return Object.keys(item?.average).map((key, index) => {
       return {
@@ -93,5 +94,18 @@ export const checkIfMobile = () => {
   const userAgent = window.navigator.userAgent;
   const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
   console.log(mobile)
-  return mobile; 
+  return mobile;
 };
+
+export async function activateServer() {
+  try{
+    const response = await axios.get('https://backend-manaopili.onrender.com/')
+    if (response.status === 200) {
+      console.log("Server activated", response.status)
+    }
+  }
+  catch(err){
+    console.error(err.message)
+  }
+  return null;
+}
