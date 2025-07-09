@@ -33,7 +33,14 @@ const formFields = [
     { id: "service", label: "Service Needed",isSelection:true,isRequired:true }
 ];
 
-
+const serviceOptions = [
+  { value: "general-inquiry", label: "General Inquiry" },
+  { value: "strategy-roadmap", label: "ServiceNow Strategy & Roadmap Consulting Services" },
+  { value: "implementation", label: "ServiceNow Implementation Services" },
+  { value: "custom-app-dev", label: "ServiceNow Custom Application Development (AppEngine) Services" },
+  { value: "managed-services", label: "ServiceNow Managed Services" },
+  { value: "careers", label: "Careers with Mana'o Pili" }
+];
 
 export default function HomePage() {
   useEffect(() => {
@@ -63,7 +70,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="relative px-4 md:w-1/2 md:pr-6">
-                <ContactFormV2 formFields={formFields} />
+                <ContactFormV2 formFields={formFields} serviceOptions={serviceOptions} />
               </div>
             </div>
           </div>
