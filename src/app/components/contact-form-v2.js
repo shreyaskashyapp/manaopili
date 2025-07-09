@@ -78,7 +78,7 @@ export default function ContactFormV2({formFields}) {
                                                     <SelectItem value="implementation">ServiceNow Implementation Services</SelectItem>
                                                     <SelectItem value="custom-app-dev">ServiceNow Custom Application Development (AppEngine) Services</SelectItem>
                                                     <SelectItem value="managed-services">ServiceNow Managed Services</SelectItem>
-                                                    <SelectItem value="careers">Careers with Mana'o Pili</SelectItem>
+                                                    <SelectItem value="careers">Careers with Mana&apos;o Pili</SelectItem>
                                                 </SelectContent>
                                             </Select>
                                     ) :
