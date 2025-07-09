@@ -9,7 +9,8 @@ import { useSearchParams } from "next/navigation"
 export function Multiplechart(
   {
     data,
-    modules
+    modules,
+    mode = 'light', // Default to light mode, can be overridden
   }) {
   const transformData = (data) => {
     const categories = modules
@@ -25,6 +26,8 @@ export function Multiplechart(
   const surveyModule = params.get('survey')
 
   const chartData = transformData(data)
+
+  const isDarkMode = mode === 'dark'
 
   return (
     <Card className="w-full bg-white mx-auto border-none">
