@@ -10,25 +10,6 @@ export default function Barchart({ data, mode }) {
     !isDarkMode ? 'hsl(var(--chart-2))' : 'hsl(var(--chart-2--dark))',
     !isDarkMode ? 'hsl(var(--chart-3))' : 'hsl(var(--chart-4--dark))',
   ]
-  const CustomTooltip = ({ active, payload, label }) => {
-    if (active && payload && payload.length) {
-      return (
-        <div className="custom-tooltip">
-          <p className="label">{`${label} : ${payload[0].value}`}</p>
-          <div>
-            {payload.map((pld) => (
-              <div style={{ display: "inline-block", padding: 10 }}>
-                <div style={{ color: pld.fill }}>{pld.value}</div>
-                <div>{pld.dataKey}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      );
-    }
-
-    return null;
-  };
 
   const CustomizedLabel = (props) => {
     const { x, y, value } = props;

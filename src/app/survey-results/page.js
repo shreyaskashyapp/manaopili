@@ -29,7 +29,7 @@ export default function SurveyResultsPage() {
             title: "Next Steps",
             content:
                 <>
-                    Use this report to prioritize improvement areas. Schedule a complimentary expert consultation to discuss your <span className="text-[#deff00]">Digital Transformation roadmap</span>. Mana'o Pili offers tailored recommendation plans focused on specific processes or modules.</>,
+                    Use this report to prioritize improvement areas. Schedule a complimentary expert consultation to discuss your <span className="text-[#deff00]">Digital Transformation roadmap</span>.{` Mana'o Pili offers tailored recommendation plans focused on specific processes or modules.`}</>,
             isButton: true,
             label: "Schedule Consultation"
         },
