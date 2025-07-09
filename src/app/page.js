@@ -7,6 +7,7 @@ import WhyManaopiliWheel from './components/wheel'
 import { useEffect } from "react"
 import { activateServer } from "@/lib/utils"
 import NewForm from "./components/contact-form-v2"
+import ContactFormV2 from "./components/contact-form-v2"
 
 const sections = [
   {
@@ -26,7 +27,12 @@ const sections = [
   }
 ];
 
-
+const formFields = [
+    { id: "name", label: "Name", type: "text", placeholder: "Your name", isRequired:true },
+    { id: "email", label: "Email", type: "email", placeholder: "Your email",isRequired:true  },
+    { id: "company", label: "Company Name", type: "text", placeholder: "Your company",isRequired:true  },
+    { id: "service", label: "Service Needed",isSelection:true,isRequired:true }
+];
 
 
 
@@ -39,8 +45,8 @@ export default function HomePage() {
       <div className="w-full">
         <div className="">
           <div className="relative h-full md:h-[100vh] bg-gradient-to-b from-[#455CFF] to-[#141414] w-full flex flex-col justify-center items-center overflow-hidden">
-            <div className="relative flex flex-col md:flex-row">
-              <div className="relative z-10  min-h-[80vh] md:min-h-0 px-6 lg:px-10 flex flex-col md:w-1/2 justify-center items-center">
+            <div className="relative pt-[100px] md:pt-0 flex flex-col md:flex-row">
+              <div className="relative z-10 px-6 lg:px-10 flex flex-col md:w-1/2 justify-center items-center">
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font text-white mb-6 leading-tight">
                   Achieve Digital Transformation with
                   <br className="hidden sm:inline" />
@@ -57,8 +63,8 @@ export default function HomePage() {
                   </Link> */}
                 </div>
               </div>
-              <div className="relative px-2 md:w-1/2 md:pr-6 ">
-                <NewForm />
+              <div className="relative px-4 md:w-1/2 md:pr-6">
+                <ContactFormV2 formFields={formFields} />
               </div>
             </div>
           </div>

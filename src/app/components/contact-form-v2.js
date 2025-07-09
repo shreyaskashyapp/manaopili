@@ -13,14 +13,16 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 export default function ContactFormV2({formFields}) {
     const [formData, setFormData] = useState({})
     const [isLoading, setIsLoading] = useState(false)
+    const [submitSuccess,setSubmitSuccess]=useState(false)
 
     async function handleSubmit(e) {
         e.preventDefault()
-        setIsLoading(true)
+        setIsLoading(true) 
         try {
-            const res = await axios.post('', formData)
+            const res = await axios.post('http://localhost:3001/api/lead-collection', formData)
+            console.log(formData)
             if (res?.status === 200) {
-                setFormData({})
+               setSubmitSuccess(true)
             }
         }
         catch (err) {
@@ -28,14 +30,36 @@ export default function ContactFormV2({formFields}) {
         }
         finally {
             setIsLoading(false)
+            
         }
     }
     return (
         <div className="h-full w-full mx-auto flex justify-center">
-            {isLoading && <LoadingIndicator size="large" color="lime" />}
-            <Card className='bg-gray-200/10 border-gray-400 w-full h-full max-w-3xl flex flex-col p-4 '>
+            {isLoading && <LoadingIndicator size="large" color="[#deff00]" />}
+            {submitSuccess? (
+                <div className="bg-blue-200/10 border border-blue-200 text-white p-8 max-w-3xl mx-auto rounded-lg text-center">
+                    <div className="mb-6 flex justify-center">
+                        <div className="h-24 w-24 rounded-full bg-[#DEFF00] flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                    </div>
+                    <h1 className="text-3xl font-bold mb-4">Message Sent!</h1>
+                    <p className="text-lg mb-8 text-gray-300">
+                        Thank you for reaching out. Our team will review your message and get back to you shortly.
+                    </p>
+                    <Button
+                        onClick={() => setSubmitSuccess(false)}
+                        className="bg-white text-black py-3 px-6 rounded-md font-medium inline-block mt-4 hover:bg-[#deff00] transition-colors"
+                    >
+                        Send Another Message
+                    </Button>
+                </div>
+            ):
+            <Card className='bg-gray-200/10 border-gray-400 w-full h-full max-w-3xl flex flex-col p-2 '>
                 <CardHeader className='text-white text-2xl'>
-                    Quick Connect
+                    Connect with us
                 </CardHeader>
                 <CardContent>
                     <form onSubmit={handleSubmit} className="space-y-8">
@@ -69,10 +93,10 @@ export default function ContactFormV2({formFields}) {
                                 {"We'll contact you within 2 business hours to discuss your digital transformation needs."}
                             </p>
                         </div>
-                        <Button type='submit' className="w-full bg-gradient-to-r from-yellow-400 to-green-400 font-semibold bg-blue-200 hover:bg-[#deff00] text-black transition-all">Get Started Now </Button>
+                        <Button type='submit' className="w-full bg-blue-200 font-semibold hover:bg-[#deff00] text-black transition-all">Get Started Now </Button>
                     </form>
                 </CardContent>
-            </Card>
+            </Card>}
         </div>
     )
 }
