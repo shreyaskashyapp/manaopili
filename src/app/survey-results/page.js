@@ -65,12 +65,12 @@ export default function SurveyResultsPage() {
                         </div>
                         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
                             <Badge className="bg-[#deff00]/20 text-[#deff00] border-[#deff00]/30 hover:bg-[#deff00]/30 w-fit">
-                                {`${surveyData?.organisationName}`}
+                                {`${configs?.[currentSurvey]?.title} Assessment Results`}
                             </Badge>
-                            <Button size="sm" className="bg-[#455CFF] hover:bg-[#455CFF]/80 text-white w-fit">
+                            {/* <Button size="sm" className="bg-[#455CFF] hover:bg-[#455CFF]/80 text-white w-fit">
                                 <Download className="w-4 h-4 mr-2" />
                                 Export PDF
-                            </Button>
+                            </Button> */}
                         </div>
                     </div>
                 </div>
