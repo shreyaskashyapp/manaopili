@@ -6,7 +6,6 @@ import Cards from './components/homecards'
 import WhyManaopiliWheel from './components/wheel'
 import { useEffect } from "react"
 import { activateServer } from "@/lib/utils"
-import NewForm from "./components/contact-form-v2"
 import ContactFormV2 from "./components/contact-form-v2"
 
 const sections = [
