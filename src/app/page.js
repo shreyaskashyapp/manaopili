@@ -6,6 +6,7 @@ import Cards from './components/homecards'
 import WhyManaopiliWheel from './components/wheel'
 import { useEffect } from "react"
 import { activateServer } from "@/lib/utils"
+import ContactFormV2 from "./components/contact-form-v2"
 
 const sections = [
   {
@@ -25,32 +26,44 @@ const sections = [
   }
 ];
 
+const formFields = [
+    { id: "name", label: "Name", type: "text", placeholder: "Your name", isRequired:true },
+    { id: "email", label: "Email", type: "email", placeholder: "Your email",isRequired:true  },
+    { id: "company", label: "Company Name", type: "text", placeholder: "Your company",isRequired:true  },
+    { id: "service", label: "Service Needed",isSelection:true,isRequired:true }
+];
+
 
 
 export default function HomePage() {
-  useEffect(()=>{
+  useEffect(() => {
     activateServer()
-  },[])
+  }, [])
   return (
     <div className="bg-[#141414] text-white">
       <div className="w-full">
         <div className="">
-          <div className="relative h-[100vh] bg-gradient-to-b from-[#455CFF] to-[#141414] w-full flex flex-col items-center justify-center overflow-hidden">
-            <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font text-white mb-6 leading-tight">
-                Achieve Digital Transformation with
-                <br className="hidden sm:inline" />
-                <span className="text-[#deff00] italic"> {`Mana'o Pili`}</span>
-              </h1>
-              <p className="text-base md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
-                Embark on a transformative journey with our <span className='text-[#deff00]'>Digital Trip</span> approach, optimizing your <span className='text-[#deff00]'>ServiceNow</span> investment for unparalleled success.
-              </p>
-              <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <Link href="/survey-list">
-                  <Button size="lg" variant="outline" className="text-[#455CFF]  bg-blue-200 font-heading hover:bg-[#deff00] px-20 py-6 text-2xl rounded-full shadow-md hover:shadow-lg transition-all duration-300">
-                    Get Started
-                  </Button>
-                </Link>
+          <div className="relative h-full md:h-[100vh] bg-gradient-to-b from-[#455CFF] to-[#141414] w-full flex flex-col justify-center items-center overflow-hidden">
+            <div className="relative pt-[100px] md:pt-0 flex flex-col md:flex-row">
+              <div className="relative z-10 px-6 lg:px-10 flex flex-col md:w-1/2 justify-center items-center">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font text-white mb-6 leading-tight">
+                  Achieve Digital Transformation with
+                  <br className="hidden sm:inline" />
+                  <span className="text-[#deff00] italic"> {`Mana'o Pili`}</span>
+                </h1>
+                <p className="text-base md:text-2xl text-gray-300 mb-10  mx-auto">
+                  Embark on a transformative journey with our <span className='text-[#deff00]'>Digital Trip</span> approach, optimizing your <span className='text-[#deff00]'>ServiceNow</span> investment for unparalleled success.
+                </p>
+                <div className="">
+                  {/* <Link href="/survey-list">
+                    <Button size="lg" variant="outline" className="text-[#455CFF]  bg-blue-200 font-heading hover:bg-[#deff00] px-20 py-6 text-2xl rounded-full shadow-md hover:shadow-lg transition-all duration-300">
+                      Get Started
+                    </Button>
+                  </Link> */}
+                </div>
+              </div>
+              <div className="relative px-4 md:w-1/2 md:pr-6">
+                <ContactFormV2 formFields={formFields} />
               </div>
             </div>
           </div>
