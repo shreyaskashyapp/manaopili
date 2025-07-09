@@ -162,10 +162,9 @@ export default function Survey() {
         data: formData
       }
 
-
-
       try {
         setGeneratingPdf(true)
+        router.push('/survey-results')
         const res = await axios.post('https://backend-manaopili.onrender.com/generate-pdf', payload, {
           responseType: 'arraybuffer', // <-- Important to handle raw binary PDF response
         });
@@ -181,7 +180,7 @@ export default function Survey() {
 
         URL.revokeObjectURL(url);
         link.remove();
-        router.push('/survey-list')
+        // router.push('/survey-list')
       }
       catch (err) {
         const surveyDataPayload = {

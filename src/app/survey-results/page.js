@@ -3,18 +3,20 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-import { Download, TrendingUp } from "lucide-react";
+import { Download } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, XAxis, YAxis } from "recharts";
 import BarGraph from '../components/charts/barchart';
 import { Multiplechart } from "../components/charts/multiplechart";
+import { useRouter } from "next/navigation";
 
 
 export default function SurveyResultsPage() {
+
     const [barGraphData, setBarGraphData] = useState([]);
     const [surveyModule, setSurveyModule] = useState('');
     const [currentSurvey, setCurrentSurvey] = useState('ITSM');
+
+    const router = useRouter();
 
     const digitalTransformationInfo = [
         {
@@ -36,7 +38,12 @@ export default function SurveyResultsPage() {
     useEffect(() => {
 
         const surveyData = sessionStorage.getItem('surveyResults');
-        if (surveyData) {
+
+        if (!surveyData) {
+            router.push('/survey-list');
+            return;
+        }
+        else {
             const parsedData = JSON.parse(surveyData);
             setBarGraphData(parsedData.barGraphData);
             setSurveyModule(parsedData.modules);
@@ -105,7 +112,7 @@ export default function SurveyResultsPage() {
                                             data={item}
                                             index={index}
                                             modules={surveyModule}
-                                            mode=""
+                                            mode="dark"
                                         />
                                     </div>
                             ))}
