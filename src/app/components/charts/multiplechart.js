@@ -11,6 +11,7 @@ export function Multiplechart(
     data,
     modules,
     mode = 'light', // Default to light mode, can be overridden
+    currentModule, // Default module
   }) {
   const transformData = (data) => {
     const categories = modules
@@ -23,7 +24,7 @@ export function Multiplechart(
   }
   const params = useSearchParams();
 
-  const surveyModule = params.get('survey')
+  const surveyModule = currentModule || params.get('survey')
 
   const chartData = transformData(data)
 

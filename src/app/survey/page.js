@@ -208,10 +208,11 @@ export default function Survey() {
       email: sessionStorage.getItem("email"),
       organisationName: sessionStorage.getItem('organisationName'),
       surveyTitle: configs?.[surveyModule]?.title,
-      modules: configs?.[surveyModule]?.types
+      modules: configs?.[surveyModule]?.types,
+      survey : surveyModule
     };
     console.log("Storing survey results in localStorage", surveyResults);
-    localStorage.setItem('surveyResults', JSON.stringify(surveyResults));
+    sessionStorage.setItem('surveyResults', JSON.stringify(surveyResults));
 
   }
 

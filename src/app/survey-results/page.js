@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -13,9 +13,8 @@ import { Multiplechart } from "../components/charts/multiplechart";
 
 export default function SurveyResultsPage() {
     const [barGraphData, setBarGraphData] = useState([]);
-    const [formData, setFormData] = useState([]);
     const [surveyModule, setSurveyModule] = useState('');
-
+    const [currentSurvey, setCurrentSurvey] = useState('ITSM');
 
     const digitalTransformationInfo = [
         {
@@ -34,14 +33,14 @@ export default function SurveyResultsPage() {
         },
     ];
 
-
     useEffect(() => {
-        const surveyData = localStorage.getItem('surveyResults');
+
+        const surveyData = sessionStorage.getItem('surveyResults');
         if (surveyData) {
             const parsedData = JSON.parse(surveyData);
             setBarGraphData(parsedData.barGraphData);
-            setFormData(parsedData.formData);
             setSurveyModule(parsedData.modules);
+            setCurrentSurvey(parsedData.survey);
         }
     }, []);
     return (
@@ -83,7 +82,7 @@ export default function SurveyResultsPage() {
                                 </div>
                             </CardHeader>
                         </Card> */}
-                        
+
                         <div className="flex flex-col space-y-6">
                             {barGraphData?.map((item, index) => (
                                 Array.isArray(item[0]) ?
@@ -95,6 +94,7 @@ export default function SurveyResultsPage() {
                                                 data={item}
                                                 modules={surveyModule}
                                                 mode="dark"
+                                                currentModule={currentSurvey}
                                             />
                                         </div>
                                     </div>
@@ -105,7 +105,7 @@ export default function SurveyResultsPage() {
                                             data={item}
                                             index={index}
                                             modules={surveyModule}
-                                            mode = ""
+                                            mode=""
                                         />
                                     </div>
                             ))}
