@@ -29,9 +29,9 @@ export default function Barchart({ data, mode }) {
 
   return (
     <Card
-      className={`w-full mx-auto ${isDarkMode
+      className={`w-full mx-auto overflow-auto ${isDarkMode
         ? 'bg-gray-900/30 backdrop-blur-sm border border-gray-800 text-white'
-        : 'bg-white border-none text-black'
+        : 'bg-white border-none text-black '
         }`}
     >
       <CardHeader>

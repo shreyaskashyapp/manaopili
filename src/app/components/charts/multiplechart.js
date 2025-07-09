@@ -31,7 +31,7 @@ export function Multiplechart(
   const isDarkMode = mode === 'dark'
 
   return (
-    <Card className="w-full bg-white mx-auto border-none">
+    <Card className="w-full bg-white mx-auto border-none overflow-auto">
       <CardHeader>
         <CardTitle className="text-2xl font-normal">{`${configs?.[surveyModule]?.title} Investment Scores by Product Suite`}</CardTitle>
         <CardDescription>

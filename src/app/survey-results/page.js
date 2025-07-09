@@ -9,12 +9,14 @@ import BarGraph from '../components/charts/barchart';
 import { Multiplechart } from "../components/charts/multiplechart";
 import { useRouter } from "next/navigation";
 
+import { configs } from "../config/data";
 
 export default function SurveyResultsPage() {
 
     const [barGraphData, setBarGraphData] = useState([]);
     const [surveyModule, setSurveyModule] = useState('');
     const [currentSurvey, setCurrentSurvey] = useState('ITSM');
+    const [surveyData, setSurveyData] = useState(null);
 
     const router = useRouter();
 
@@ -45,6 +47,7 @@ export default function SurveyResultsPage() {
         }
         else {
             const parsedData = JSON.parse(surveyData);
+            setSurveyData(parsedData);
             setBarGraphData(parsedData.barGraphData);
             setSurveyModule(parsedData.modules);
             setCurrentSurvey(parsedData.survey);
@@ -57,12 +60,12 @@ export default function SurveyResultsPage() {
                 <div className="mb-6 sm:mb-8">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
                         <div className="flex-1">
-                            <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2">ServiceNow ITSM Modules Assessment</h1>
-                            <p className="text-gray-400 text-base sm:text-lg">Digital Transformation Investment Analysis for Tesla</p>
+                            <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2">{`ServiceNow ${configs?.[currentSurvey]?.title} Assessment`}</h1>
+                            <p className="text-gray-400 text-base sm:text-lg">{`Digital Transformation Investment Analysis for ${surveyData?.organisationName}`} </p>
                         </div>
                         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
                             <Badge className="bg-[#deff00]/20 text-[#deff00] border-[#deff00]/30 hover:bg-[#deff00]/30 w-fit">
-                                Tesla Report
+                                {`${surveyData?.organisationName}`}
                             </Badge>
                             <Button size="sm" className="bg-[#455CFF] hover:bg-[#455CFF]/80 text-white w-fit">
                                 <Download className="w-4 h-4 mr-2" />
