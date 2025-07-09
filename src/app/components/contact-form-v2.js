@@ -19,7 +19,7 @@ export default function ContactFormV2({formFields,serviceOptions}) {
         e.preventDefault()
         setIsLoading(true) 
         try {
-            const res = await axios.post('http://localhost:3001/api/lead-collection', formData)
+            const res = await axios.post('https://manaopili-dashboard.vercel.app/api/lead-collection', formData)
             console.log(formData)
             if (res?.status === 200) {
                setSubmitSuccess(true)
