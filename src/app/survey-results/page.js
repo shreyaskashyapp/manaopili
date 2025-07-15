@@ -21,25 +21,21 @@ export default function SurveyResultsPage() {
     const router = useRouter();
 
 
-    useEffect(()=>{
-        const interval=setInterval(()=>{
-            const url=sessionStorage.getItem('PdfUrl')
-            if (url){
-                setPdfUrl(url)
-                clearInterval(interval)
+    useEffect(() => {
+        const onStorage = (e) => {
+            if (e.key === 'PdfUrl' && e.newValue) {
+                const url = e.newValue;
+                // trigger download
+                console.log(e)
+                console.log(url)
             }
-        },2000)
-        return ()=> clearInterval(interval)
-    })
+        }
+        window.addEventListener("storage", onStorage)
+        console.log("listening")
+        return () => window.removeEventListener('storage', onStorage)
+    }, [])
 
-    const pdfDownload = () => {
-        const link = document.createElement('a');
-        link.href = pdfUrl;
-        link.download = 'Survey_Results.pdf';
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-    }
+
     const digitalTransformationInfo = [
         {
             title: "How to Use These Scores",
@@ -87,8 +83,8 @@ export default function SurveyResultsPage() {
                             <Badge className="bg-[#deff00]/20 text-[#deff00] border-[#deff00]/30 hover:bg-[#deff00]/30 w-fit">
                                 {`${configs?.[currentSurvey]?.title} Assessment Results`}
                             </Badge>
-                            <Button size="sm" onClick={pdfDownload} className="bg-[#455CFF] hover:bg-[#455CFF]/80 text-white w-fit">
-                                {pdfUrl?"Download PDF":(<>Generating PDF<LoaderCircle className="animate-spin"/></>)}
+                            <Button size="sm" className="bg-[#455CFF] hover:bg-[#455CFF]/80 text-white w-fit">
+                                {pdfUrl ? "Download PDF" : (<>Generating PDF<LoaderCircle className="animate-spin" /></>)}
                             </Button>
                         </div>
                     </div>

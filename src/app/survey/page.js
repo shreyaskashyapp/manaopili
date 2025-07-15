@@ -169,12 +169,11 @@ export default function Survey() {
         const res = await axios.post('http://localhost:3000/generate-pdf', payload, {
           responseType: 'arraybuffer', // <-- Important to handle raw binary PDF response
         });
-        
         const blob = new Blob([res.data], { type: 'application/pdf' });
         const url = URL.createObjectURL(blob);
-        sessionStorage.setItem('PdfUrl', url)
+        localStorage.setItem("PdfUrl",url)
+        window.dispatchEvent(new Event("storage"));
         console.log("yes blob", url)
-
         // const link = document.createElement('a');
         // link.href = url;
         // link.download = 'Survey_Results.pdf';
