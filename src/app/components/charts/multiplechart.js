@@ -10,7 +10,7 @@ export function Multiplechart(
   {
     data,
     modules,
-    mode = 'light', // Default to light mode, can be overridden
+    mode, // Default to light mode, can be overridden
     currentModule, // Default module
   }) {
   const transformData = (data) => {
@@ -28,12 +28,15 @@ export function Multiplechart(
 
   const chartData = transformData(data)
 
-  const isDarkMode = mode === 'dark'
+  const isDarkMode = mode === 'dark';
 
   return (
-    <Card className="w-full bg-white mx-auto border-none overflow-auto">
+    <Card className={`w-full mx-auto overflow-auto ${isDarkMode
+      ? 'bg-gray-900/30 backdrop-blur-sm border border-gray-800 text-white'
+      : 'bg-white border-none text-black '
+      }`}>
       <CardHeader>
-        <CardTitle className="text-2xl font-normal">{`${configs?.[surveyModule]?.title} Investment Scores by Product Suite`}</CardTitle>
+        <CardTitle className="md:text-xl font-normal text-lg">{`${configs?.[surveyModule]?.title} Investment Scores by Product Suite`}</CardTitle>
         <CardDescription>
           {`Individualized scores for implementation of the ServiceNow ${configs?.[surveyModule]?.title} for investment into people, process, and technology.`}
         </CardDescription>
@@ -54,31 +57,32 @@ export function Multiplechart(
               color: "hsl(var(--chart-3))",
             },
           }}
-          className="h-[400px]"
+          className={`h-[400px] ${isDarkMode ? 'bg-transparent' : ''}`}
         >
-          <ResponsiveContainer width="100%" height="100%">
+          <ResponsiveContainer width="100%" height="100%" className="">
             <BarChart
               data={chartData}
               margin={{ top: 20, right: 30, left: 20, bottom: 40 }}
               barSize={35}
               barGap={8}
             >
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke={isDarkMode ? "rgba(255,255,255,0.08)" : "hsl(var(--border))"} vertical={false} />
               <XAxis
                 dataKey="name"
-                tick={{ fill: 'hsl(var(--foreground))', fontSize: 12 }}
-                axisLine={{ stroke: 'hsl(var(--border))' }}
+                tick={{ fill: isDarkMode ? "#fff" : "hsl(var(--foreground))", fontSize: 12 }}
+                axisLine={{ stroke: isDarkMode ? "rgba(255,255,255,0.15)" : "hsl(var(--border))" }}
                 tickLine={false}
                 interval={0}
               />
               <YAxis
-                tick={{ fill: 'hsl(var(--foreground))', fontSize: 12 }}
-                axisLine={{ stroke: 'hsl(var(--border))' }}
+                tick={{ fill: isDarkMode ? "#fff" : "hsl(var(--foreground))", fontSize: 12 }}
+                axisLine={{ stroke: isDarkMode ? "rgba(255,255,255,0.15)" : "hsl(var(--border))" }}
                 tickLine={false}
                 domain={[0, 5]}
                 ticks={[0, 1, 2, 3, 4, 5]}
               />
               <Tooltip
+                cursor={{ opacity:0 }}
                 content={({ active, payload }) => {
                   if (active && payload && payload.length) {
                     return (
@@ -102,14 +106,14 @@ export function Multiplechart(
                 }}
               />
               <Legend />
-              <Bar dataKey="people" name={modules[0]} fill="hsl(var(--chart-1))" radius={[4, 4, 0, 0]}>
-                <LabelList dataKey="people" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" formatter={(value) => value.toFixed(2)} />
+              <Bar dataKey="people" name={modules[0]} fill={`${!isDarkMode ? 'hsl(var(--chart-1))' : 'hsl(var(--chart-1--dark))'}`} radius={[4, 4, 0, 0]}>
+                <LabelList dataKey="people" position="top" fill={isDarkMode ? "#fff" : "hsl(var(--foreground))"} fontSize={12} fontWeight="normal" formatter={(value) => value.toFixed(2)} />
               </Bar>
-              <Bar dataKey="process" name={modules[1]} fill="hsl(var(--chart-2))" radius={[4, 4, 0, 0]}>
-                <LabelList dataKey="process" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" formatter={(value) => value.toFixed(2)} />
+              <Bar dataKey="process" name={modules[1]} fill={`${!isDarkMode ? 'hsl(var(--chart-2))' : 'hsl(var(--chart-2--dark))'}`} radius={[4, 4, 0, 0]}>
+                <LabelList dataKey="process" position="top" fill={isDarkMode ? "#fff" : "hsl(var(--foreground))"} fontSize={12} fontWeight="normal" formatter={(value) => value.toFixed(2)} />
               </Bar>
-              <Bar dataKey="technology" name={modules[2]} fill="hsl(var(--chart-3))" radius={[4, 4, 0, 0]}>
-                <LabelList dataKey="technology" position="top" fill="hsl(var(--foreground))" fontSize={12} fontWeight="normal" formatter={value => value.toFixed(2)} />
+              <Bar dataKey="technology" name={modules[2]} fill={`${!isDarkMode ? 'hsl(var(--chart-3))' : 'hsl(var(--chart-4--dark))'}`} radius={[4, 4, 0, 0]}>
+                <LabelList dataKey="technology" position="top" fill={isDarkMode ? "#fff" : "hsl(var(--foreground))"} fontSize={12} fontWeight="normal" formatter={value => value.toFixed(2)} />
               </Bar>
             </BarChart>
           </ResponsiveContainer>

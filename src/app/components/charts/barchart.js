@@ -35,7 +35,7 @@ export default function Barchart({ data, mode }) {
         }`}
     >
       <CardHeader>
-        <CardTitle className={`text-2xl font-normal ${isDarkMode ? 'text-white' : 'text-black'}`}>
+        <CardTitle className={`md:text-xl text-lg font-normal ${isDarkMode ? 'text-white' : 'text-black'}`}>
           {data?.[0]?.title}
         </CardTitle>
       </CardHeader>
