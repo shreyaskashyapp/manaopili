@@ -73,8 +73,10 @@ const surveyData = {
 export default function Survey() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [pdfDownloaded, setPdfDownloaded] = useState(false);
+  const [generatingPdf, setGeneratingPdf] = useState(false);
   const [formData, setFormData] = useState(null);
   const [pdfError, setPdfError] = useState(false)
+  const [pdfBlob, setPdfBlob] = useState(null)
   const router = useRouter();
 
 
@@ -127,7 +129,6 @@ export default function Survey() {
     const barData = parseToGraph(rawData)
     setBarGraphData([barData, overallBarData, implementedBarData])
     storeData(barData, overallBarData, implementedBarData);
-    router.push('/survey-results')
   }
 
   useEffect(() => {
@@ -161,8 +162,42 @@ export default function Survey() {
         survey: configs?.[surveyModule]?.title,
         data: formData
       }
-      console.log(payload)
-      sessionStorage.setItem("payload",JSON.stringify(payload))
+
+      try {
+        setGeneratingPdf(true)
+        router.push('/survey-results')
+        const res = await axios.post('http://localhost:3000/generate-pdf', payload, {
+          responseType: 'arraybuffer', // <-- Important to handle raw binary PDF response
+        });
+        
+        const blob = new Blob([res.data], { type: 'application/pdf' });
+        const url = URL.createObjectURL(blob);
+        sessionStorage.setItem('PdfUrl', url)
+        console.log("yes blob", url)
+
+        // const link = document.createElement('a');
+        // link.href = url;
+        // link.download = 'Survey_Results.pdf';
+        // document.body.appendChild(link);
+        // link.click();
+
+        // URL.revokeObjectURL(url);
+        // link.remove();
+        // router.push('/survey-list')
+      }
+      catch (err) {
+        const surveyDataPayload = {
+          ...payload,
+          'status': 'error',
+          'error': err.message
+        }
+        await axios.post('https://manaopili-dashboard.vercel.app/api/survey-data-collection', surveyDataPayload);
+        console.error("PDF failed to download", err);
+        setPdfError(true)
+      }
+      finally {
+        setGeneratingPdf(false)
+      }
     }
     else {
       console.log("All refs are not ready yet")
@@ -176,7 +211,7 @@ export default function Survey() {
       organisationName: sessionStorage.getItem('organisationName'),
       surveyTitle: configs?.[surveyModule]?.title,
       modules: configs?.[surveyModule]?.types,
-      survey : surveyModule
+      survey: surveyModule
     };
     console.log("Storing survey results in localStorage", surveyResults);
     sessionStorage.setItem('surveyResults', JSON.stringify(surveyResults));
@@ -204,13 +239,13 @@ export default function Survey() {
     <div>
       {hasSubmitted ? (
         <main className="min-h-screen py-16 flex justify-center">
-          {/* {generatingPdf &&
+          {generatingPdf &&
             <Staller
               messages={["Calculating Scores", "Processing Data", "Drawing Graphs", "Generating PDF", "Almost Done!"]}
               disclaimer="Please do not close the page. An email with the scores will also be sent to you."
               size="large"
               color="indigo"
-            />} */}
+            />}
           {configs?.[surveyModule] ? <div className="container py-10">
             <div className="text-center mb-12 space-y-4">
               <div className='flex justify-center'>

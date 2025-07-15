@@ -4,66 +4,42 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Download, LoaderCircle } from "lucide-react";
-import { use, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import BarGraph from '../components/charts/barchart';
 import { Multiplechart } from "../components/charts/multiplechart";
+import { useRouter } from "next/navigation";
+
 import { configs } from "../config/data";
-import { pdfDownload } from "@/lib/utils";
-import { useSearchParams } from "next/navigation";
-import axios from "axios";
 
 export default function SurveyResultsPage() {
+
     const [barGraphData, setBarGraphData] = useState([]);
     const [surveyModule, setSurveyModule] = useState('');
     const [currentSurvey, setCurrentSurvey] = useState('ITSM');
     const [surveyData, setSurveyData] = useState(null);
-    const [generatingPdf, setGeneratingPdf] = useState(false);
-    const [pdfLoading, setPdfLoading] = useState(false)
-    const [pdfBlob,setPdfBlob]=useState(null)
+    const [pdfUrl, setPdfUrl] = useState(null)
+    const router = useRouter();
 
 
-    useEffect(() => {
-        async function handlePdf() {
-            const payload = sessionStorage.getItem('payload')
-            const parsedPayload = JSON.parse(payload)
-            console.log(parsedPayload)
-            try {
-                setPdfLoading(true)
-                setGeneratingPdf(true)
-                const res = await axios.post('http://localhost:3000/generate-pdf', parsedPayload, {
-                    responseType: 'arraybuffer', // <-- Important to handle raw binary PDF response
-                });
-                const blob = new Blob([res.data], { type: 'application/pdf' });
-                setPdfBlob(blob)
+    useEffect(()=>{
+        const interval=setInterval(()=>{
+            const url=sessionStorage.getItem('PdfUrl')
+            if (url){
+                setPdfUrl(url)
+                clearInterval(interval)
             }
-            catch (err) {
-                const surveyDataPayload = {
-                    ...payload,
-                    'status': 'error',
-                    'error': err.message
-                }
-                await axios.post('https://manaopili-dashboard.vercel.app/api/survey-data-collection', surveyDataPayload);
-                console.error("PDF failed to download", err);
-            }
-            finally {
-                setGeneratingPdf(false)
-                setPdfLoading(false)
-            }
-        }
-        handlePdf()
-    }, [])
+        },2000)
+        return ()=> clearInterval(interval)
+    })
 
-    function pdfDownload() {
-        const url = URL.createObjectURL(pdfBlob);
+    const pdfDownload = () => {
         const link = document.createElement('a');
-        link.href = url;
+        link.href = pdfUrl;
         link.download = 'Survey_Results.pdf';
         document.body.appendChild(link);
         link.click();
-        URL.revokeObjectURL(url);
         link.remove();
     }
-
     const digitalTransformationInfo = [
         {
             title: "How to Use These Scores",
@@ -82,7 +58,9 @@ export default function SurveyResultsPage() {
     ];
 
     useEffect(() => {
+
         const surveyData = sessionStorage.getItem('surveyResults');
+
         if (!surveyData) {
             router.push('/survey-list');
             return;
@@ -99,7 +77,6 @@ export default function SurveyResultsPage() {
         <div className=" bg-[#141414] text-white pt-20">
             <div className="max-w-7xl top-20 mx-auto p-4 sm:p-6">
                 {/* Header Section */}
-
                 <div className="mb-6 sm:mb-8">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
                         <div className="flex-1">
@@ -110,12 +87,13 @@ export default function SurveyResultsPage() {
                             <Badge className="bg-[#deff00]/20 text-[#deff00] border-[#deff00]/30 hover:bg-[#deff00]/30 w-fit">
                                 {`${configs?.[currentSurvey]?.title} Assessment Results`}
                             </Badge>
-                            <Button onClick={pdfDownload} size="sm" className="bg-[#455CFF] hover:bg-[#455CFF]/80 text-white w-fit">
-                                {pdfLoading ? (<>Generating PDF {<LoaderCircle className="animate-spin"/>}</>) : "Download PDF"}
+                            <Button size="sm" onClick={pdfDownload} className="bg-[#455CFF] hover:bg-[#455CFF]/80 text-white w-fit">
+                                {pdfUrl?"Download PDF":(<>Generating PDF<LoaderCircle className="animate-spin"/></>)}
                             </Button>
                         </div>
                     </div>
                 </div>
+
                 {/* Main Content Grid */}
                 <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 sm:gap-8">
                     {/* Left Column - Charts */}
