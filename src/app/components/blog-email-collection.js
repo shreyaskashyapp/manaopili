@@ -51,12 +51,12 @@ const BlogsEmailCollection = ({ onGettingEmail , title = 'Take a look at our art
     };
 
     return (
-        <div className="flex justify-center items-center w-full py-6 px-2 h-[100vh] ">
+        <div className="flex justify-center md:items-center w-full py-24 md:py-0 px-2 md:h-[100vh] h-full ">
         {isLoading && <LoadingIndicator size="large" color="lime" />}
-            <Card className="w-full max-w-3xl border-none bg-zinc-900 rounded-lg p-10">
+            <Card className="w-full max-w-3xl border-none bg-zinc-900 rounded-lg md:p-10 p-2">
                 <CardHeader className="py-6 text-center">
-                    <h2 className="md:text-5xl text-3xl font-medium text-white">{title}</h2>
-                    <p className="text-lg text-[#deff00] mt-4">{subtitle}</p>
+                    <h2 className="text-3xl md:text-4xl font-medium text-white">{title}</h2>
+                    <p className="text-md text-[#deff00] mt-6">{subtitle}</p>
                 </CardHeader>
                 <CardContent>
                     <form onSubmit={handleSubmit} className="space-y-6">
@@ -71,7 +71,6 @@ const BlogsEmailCollection = ({ onGettingEmail , title = 'Take a look at our art
                                 className="bg-zinc-900 border-gray-600 focus:border-[#deff00] focus:ring-[#deff00] text-white"
                             />
                         </div>
-
                         <div className="relative" ref={dropdownRef}>
                             <Label htmlFor="organization" className="text-white">Organization Name</Label>
                             <Input

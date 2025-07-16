@@ -166,23 +166,18 @@ export default function Survey() {
       try {
         setGeneratingPdf(true)
         router.push('/survey-results')
-        const res = await axios.post('http://localhost:3000/generate-pdf', payload, {
+        const res = await axios.post('https://backend-manaopili.onrender.com/generate-pdf', payload, {
           responseType: 'arraybuffer', // <-- Important to handle raw binary PDF response
         });
         const blob = new Blob([res.data], { type: 'application/pdf' });
         const url = URL.createObjectURL(blob);
-        localStorage.setItem("PdfUrl",url)
-        window.dispatchEvent(new Event("storage"));
-        console.log("yes blob", url)
-        // const link = document.createElement('a');
-        // link.href = url;
-        // link.download = 'Survey_Results.pdf';
-        // document.body.appendChild(link);
-        // link.click();
-
-        // URL.revokeObjectURL(url);
-        // link.remove();
-        // router.push('/survey-list')
+        localStorage.setItem('PdfUrl', url)
+        window.dispatchEvent(
+          new StorageEvent("storage", {
+            key: "PdfUrl",
+            newValue: url,
+          })
+        );
       }
       catch (err) {
         const surveyDataPayload = {

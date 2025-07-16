@@ -10,6 +10,7 @@ import { Multiplechart } from "../components/charts/multiplechart";
 import { useRouter } from "next/navigation";
 
 import { configs } from "../config/data";
+import Link from "next/link";
 
 export default function SurveyResultsPage() {
 
@@ -24,17 +25,24 @@ export default function SurveyResultsPage() {
     useEffect(() => {
         const onStorage = (e) => {
             if (e.key === 'PdfUrl' && e.newValue) {
-                const url = e.newValue;
-                // trigger download
-                console.log(e)
-                console.log(url)
+                setPdfUrl(e.newValue)
             }
         }
         window.addEventListener("storage", onStorage)
-        console.log("listening")
+
         return () => window.removeEventListener('storage', onStorage)
     }, [])
 
+    const pdfDownload = () => {
+        if (pdfUrl) {
+            const link = document.createElement('a');
+            link.href = pdfUrl;
+            link.download = 'Survey_Results.pdf';
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+        }
+    }
 
     const digitalTransformationInfo = [
         {
@@ -79,11 +87,11 @@ export default function SurveyResultsPage() {
                             <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2">{`ServiceNow ${configs?.[currentSurvey]?.title} Assessment`}</h1>
                             <p className="text-gray-400 text-base sm:text-lg">{`Digital Transformation Investment Analysis for ${surveyData?.organisationName}`} </p>
                         </div>
-                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                        <div className="flex flex-row items-start sm:items-center gap-3">
                             <Badge className="bg-[#deff00]/20 text-[#deff00] border-[#deff00]/30 hover:bg-[#deff00]/30 w-fit">
                                 {`${configs?.[currentSurvey]?.title} Assessment Results`}
                             </Badge>
-                            <Button size="sm" className="bg-[#455CFF] hover:bg-[#455CFF]/80 text-white w-fit">
+                            <Button size="sm" onClick={pdfDownload} className="bg-[#455CFF] hover:bg-[#455CFF]/80 text-white w-fit">
                                 {pdfUrl ? "Download PDF" : (<>Generating PDF<LoaderCircle className="animate-spin" /></>)}
                             </Button>
                         </div>
@@ -144,12 +152,14 @@ export default function SurveyResultsPage() {
                                 <CardHeader className="p-6">
                                     <CardTitle className="text-lg text-white">{item.title}</CardTitle>
                                 </CardHeader>
-                                <CardContent className="p-6 pt-0 space-y-4">
+                                <CardContent className="p-6 pt-0 space-y-6">
                                     <p className="text-sm text-gray-300 leading-relaxed">{item.content}</p>
                                     {item?.isButton &&
-                                        <Button className="w-full text-sm bg-[#455CFF] hover:bg-[#455CFF]/80 text-white" size="sm">
-                                            {item.label}
-                                        </Button>}
+                                        <Link className="block w-full" href='https://outlook.office.com/bookwithme/user/2d20486392d94cf9b823bc508a230121@manaopili.com?anonymous&ep=plink'>
+                                            <Button className="w-full text-sm bg-[#455CFF] hover:bg-[#455CFF]/80 text-white" size="sm">
+                                                {item.label}
+                                            </Button>
+                                        </Link>}
                                 </CardContent>
                             </Card>
                         ))}
