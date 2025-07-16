@@ -76,13 +76,13 @@ export default function HomePage() {
           </div>
           {/* Transformm your business  */}
           <div className='flex justify-center items-center pt-20 md:gap-2 gap-0 px-3  '>
-            <h2 className="text-5xl  font-normal text-[#e2e2e2] text-center">Transform your business.</h2>
+            <h2 className="text-4xl md:text-5xl  font-normal text-[#e2e2e2] text-center">Transform your business.</h2>
             <Image src="/arrow_yellow.png" alt="Arrow" width={28} height={28} />
           </div>
           <Cards data={sections} />
           {/* why manaopili wheel */}
           <div className="flex justify-center items-center md:gap-2 gap-0 px-3 py-4 md:py-1">
-            <h2 className="text-5xl font-normal text-[#e2e2e2] text-center pb-2">{`Why Mana'o Pili?`}</h2>
+            <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] text-center pb-2">{`Why Mana'o Pili?`}</h2>
           </div>
           <WhyManaopiliWheel />
         </div>

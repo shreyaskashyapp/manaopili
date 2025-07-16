@@ -64,10 +64,10 @@ export default function SurveyEmailCollection({ onGettingEmail, title = 'Ready t
             {isLoading && <LoadingIndicator size='large' color='lime' />}
             <HeroSection bgColor={`from-[#455CFF] to-[#141414]`} data={data} height={`[70vh]`} />
             <div className="flex flex-col justify-center items-center w-full px-2 py-10 ">
-                <Card className="w-full max-w-3xl border-none bg-zinc-900 rounded-lg p-10">
+                <Card className="w-full max-w-3xl border-none bg-zinc-900 rounded-lg md:p-10 ">
                     <CardHeader className="py-6 text-center">
-                        <h2 className="md:text-5xl text-3xl font-medium text-white">{title}</h2>
-                        <p className="text-lg text-[#deff00] mt-4">{subtitle}</p>
+                        <h2 className="md:text-4xl text-3xl font-medium text-white">{title}</h2>
+                        <p className="text-md text-[#deff00] mt-4">{subtitle}</p>
                     </CardHeader>
                     <CardContent>
                         <form onSubmit={handleSubmit} className="space-y-6">

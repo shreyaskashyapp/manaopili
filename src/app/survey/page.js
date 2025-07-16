@@ -75,8 +75,9 @@ export default function Survey() {
   const [pdfDownloaded, setPdfDownloaded] = useState(false);
   const [generatingPdf, setGeneratingPdf] = useState(false);
   const [formData, setFormData] = useState(null);
-  const [pdfError,setPdfError]=useState(false)
-  const router=useRouter();
+  const [pdfError, setPdfError] = useState(false)
+  const [pdfBlob, setPdfBlob] = useState(null)
+  const router = useRouter();
 
 
   const multiplechartRef = useRef(null);
@@ -127,6 +128,7 @@ export default function Survey() {
 
     const barData = parseToGraph(rawData)
     setBarGraphData([barData, overallBarData, implementedBarData])
+    storeData(barData, overallBarData, implementedBarData);
   }
 
   useEffect(() => {
@@ -161,32 +163,27 @@ export default function Survey() {
         data: formData
       }
 
-
-
       try {
         setGeneratingPdf(true)
+        router.push('/survey-results')
         const res = await axios.post('https://backend-manaopili.onrender.com/generate-pdf', payload, {
           responseType: 'arraybuffer', // <-- Important to handle raw binary PDF response
         });
-
         const blob = new Blob([res.data], { type: 'application/pdf' });
         const url = URL.createObjectURL(blob);
-
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = 'Survey_Results.pdf';
-        document.body.appendChild(link);
-        link.click();
-
-        URL.revokeObjectURL(url);
-        link.remove();
-        router.push('/survey-list')
-      } 
+        localStorage.setItem('PdfUrl', url)
+        window.dispatchEvent(
+          new StorageEvent("storage", {
+            key: "PdfUrl",
+            newValue: url,
+          })
+        );
+      }
       catch (err) {
-        const surveyDataPayload={
+        const surveyDataPayload = {
           ...payload,
-        'status':'error',
-        'error':err.message 
+          'status': 'error',
+          'error': err.message
         }
         await axios.post('https://manaopili-dashboard.vercel.app/api/survey-data-collection', surveyDataPayload);
         console.error("PDF failed to download", err);
@@ -199,6 +196,20 @@ export default function Survey() {
     else {
       console.log("All refs are not ready yet")
     }
+  }
+
+  const storeData = (barData, overallBarData, implementedBarData) => {
+    const surveyResults = {
+      barGraphData: [barData, overallBarData, implementedBarData],
+      email: sessionStorage.getItem("email"),
+      organisationName: sessionStorage.getItem('organisationName'),
+      surveyTitle: configs?.[surveyModule]?.title,
+      modules: configs?.[surveyModule]?.types,
+      survey: surveyModule
+    };
+    console.log("Storing survey results in localStorage", surveyResults);
+    sessionStorage.setItem('surveyResults', JSON.stringify(surveyResults));
+
   }
 
   useEffect(() => {
@@ -296,10 +307,10 @@ export default function Survey() {
         </main>
       ) :
         <SurveyEmailCollection onGettingEmail={handleEmail} />}
-        {
-          pdfError &&
-        <SurveyCompletionMessage/>
-        }
+      {
+        pdfError &&
+        <SurveyCompletionMessage />
+      }
     </div>
   )
 }

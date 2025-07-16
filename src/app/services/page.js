@@ -253,7 +253,7 @@ export default function Component() {
         <div className="container mx-auto px-4 py-10">
           <ServicesAccordion services={services} categories={categories} />
 
-          <div className="mt-16 text-center">
+          <div className="text-center">
             <p className="text-lg md:text-xl text-zinc-300 mb-6 md:mb-8 px-4">
               {`Ready to experience the Mana'o Pili difference?`}
             </p>
@@ -262,7 +262,7 @@ export default function Component() {
           {/* comparision section */}
           {/* <Comparison/> */}
           <div className='mt-16 text-center'>
-            <h2 className='text-5xl font-normal text-[#e2e2e2] text-center'>
+            <h2 className='text-4xl md:text-5xl font-normal text-[#e2e2e2] text-center'>
               Why Choose Us?
             </h2>
             <CompareCard data={data} companies={companies} />
