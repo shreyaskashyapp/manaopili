@@ -13,12 +13,30 @@ import { configs } from "../config/data";
 import Link from "next/link";
 
 export default function SurveyResultsPage() {
+    const digitalTransformationInitailInfo = [
+        {
+            title: "Interesting Insights",
+            content: <>
+                Your scores reflect current Digital Transformation investment levels. Lower scores are common without <span className="text-[#deff00]">Service Improvement Programs (SIPs)</span> or <span className="text-[#deff00]">Continual Service Improvement (CSI)</span> initiatives.<br /><br /> Organizations rarely exceed scores of 3-4 without significant investment across all three areas. Use these results for <span className="text-[#deff00]">strategic planning</span> and <span className="text-[#deff00]">identifying improvement opportunities.</span>
+            </>
+        },
+        {
+            title: "Next Steps",
+            content:
+                <>
+                    Use this report to prioritize improvement areas. Schedule a complimentary expert consultation to discuss your <span className="text-[#deff00]">Digital Transformation roadmap</span>.{` Mana'o Pili offers tailored recommendation plans focused on specific processes or modules.`}</>,
+            isButton: true,
+            url: "https://outlook.office.com/bookwithme/user/2d20486392d94cf9b823bc508a230121@manaopili.com?anonymous&ep=plink",
+            label: "Schedule Consultation"
+        },
+    ];
 
     const [barGraphData, setBarGraphData] = useState([]);
     const [surveyModule, setSurveyModule] = useState('');
     const [currentSurvey, setCurrentSurvey] = useState('ITSM');
     const [surveyData, setSurveyData] = useState(null);
     const [pdfUrl, setPdfUrl] = useState(null)
+    const [digitalTransformationInfo, setDigitalTransformationInfo] = useState(digitalTransformationInitailInfo)
     const router = useRouter();
 
 
@@ -44,26 +62,28 @@ export default function SurveyResultsPage() {
         }
     }
 
-    const digitalTransformationInfo = [
-        {
-            title: "How to Use These Scores",
-            content: <>
-                Your scores reflect current Digital Transformation investment levels. Lower scores are common without <span className="text-[#deff00]">Service Improvement Programs (SIPs)</span> or <span className="text-[#deff00]">Continual Service Improvement (CSI)</span> initiatives.<br /><br /> Organizations rarely exceed scores of 3-4 without significant investment across all three areas. Use these results for <span className="text-[#deff00]">strategic planning</span> and <span className="text-[#deff00]">identifying improvement opportunities.</span>
-            </>
-        },
-        {
-            title: "Next Steps",
-            content:
-                <>
-                    Use this report to prioritize improvement areas. Schedule a complimentary expert consultation to discuss your <span className="text-[#deff00]">Digital Transformation roadmap</span>.{` Mana'o Pili offers tailored recommendation plans focused on specific processes or modules.`}</>,
-            isButton: true,
-            label: "Schedule Consultation"
-        },
-    ];
-
     useEffect(() => {
 
         const surveyData = sessionStorage.getItem('surveyResults');
+
+        const getAiInsights = async () => {
+            const aiResponse = "We have found 2 interesting insights in your implementation which could potentially save you up to $20,000. Get in touch with us to know more.";
+
+            setDigitalTransformationInfo(prev => {
+                const newFirstItem = {
+                    ...prev[0],
+                    title: "Interesting Insights",
+                    content: aiResponse,
+                    isButton: true,
+                    label: "Get In Touch",
+                    url: "https://outlook.office.com/bookwithme/user/2d20486392d94cf9b823bc508a230121@manaopili.com?anonymous&ep=plink"
+                };
+
+                const rest = prev.slice(1);
+
+                return [newFirstItem, ...rest];
+            });
+        };
 
         if (!surveyData) {
             router.push('/survey-list');
@@ -76,6 +96,8 @@ export default function SurveyResultsPage() {
             setSurveyModule(parsedData.modules);
             setCurrentSurvey(parsedData.survey);
         }
+
+        getAiInsights();
     }, []);
     return (
         <div className=" bg-[#141414] text-white pt-20">
@@ -102,20 +124,6 @@ export default function SurveyResultsPage() {
                 <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 sm:gap-8">
                     {/* Left Column - Charts */}
                     <div className="xl:col-span-2 space-y-6 sm:space-y-8">
-                        {/* <Card className="bg-gray-900/30 backdrop-blur-sm border-gray-800">
-                            <CardHeader className="p-4 sm:p-6">
-                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                                    <div>
-                                        <CardTitle className="text-lg sm:text-xl text-white">Product Suite Investment Scores</CardTitle>
-                                        <p className="text-sm text-gray-400 mt-1">
-                                            ServiceNow ITSM implementation scores across different product tiers
-                                        </p>
-                                    </div>
-                                    <TrendingUp className="w-5 h-5 text-[#455CFF] flex-shrink-0" />
-                                </div>
-                            </CardHeader>
-                        </Card> */}
-
                         <div className="flex flex-col space-y-6">
                             {barGraphData?.map((item, index) => (
                                 Array.isArray(item[0]) ?
@@ -147,7 +155,7 @@ export default function SurveyResultsPage() {
 
                     {/* Right Column - Information Cards */}
                     <div className="space-y-6">
-                        {digitalTransformationInfo.map((item, index) => (
+                        {digitalTransformationInfo?.map((item, index) => (
                             <Card key={index} className="bg-[#deff00]/10 backdrop-blur-sm border border-[#deff00]/20 shadow-lg shadow-[#deff00]/10">
                                 <CardHeader className="p-6">
                                     <CardTitle className="text-lg text-white">{item.title}</CardTitle>
@@ -155,7 +163,7 @@ export default function SurveyResultsPage() {
                                 <CardContent className="p-6 pt-0 space-y-6">
                                     <p className="text-sm text-gray-300 leading-relaxed">{item.content}</p>
                                     {item?.isButton &&
-                                        <Link className="block w-full" href='https://outlook.office.com/bookwithme/user/2d20486392d94cf9b823bc508a230121@manaopili.com?anonymous&ep=plink'>
+                                        <Link className="block w-full" href={item?.url} target="_blank">
                                             <Button className="w-full text-sm bg-[#455CFF] hover:bg-[#455CFF]/80 text-white" size="sm">
                                                 {item.label}
                                             </Button>
