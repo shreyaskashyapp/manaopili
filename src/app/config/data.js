@@ -8,42 +8,43 @@ export const configs = {
             'Pro',
             'Enterprise'
         ],
+        name:'ITSM',
         categories: [
             {
                 name: 'Standard',
                 modules: [
-                    { name: 'Incident Management', slug: 'incident-management' },
-                    { name: 'Problem Management', slug: 'problem-management' },
-                    { name: 'Change Management', slug: 'change-management' },
-                    { name: 'Release Management', slug: 'release-management' },
-                    { name: 'Cost Management', slug: 'cost-management' },
-                    { name: 'Asset Management', slug: 'asset-management' },
-                    { name: 'Request Management', slug: 'request-management' },
-                    { name: 'Walk-Up Experience', slug: 'walk-up-experience' },
-                    { name: 'Digital Portfolio Management', slug: 'digital-portfolio-management' },
-                    { name: 'Universal Request', slug: 'universal-request' }
+                    { name: 'Incident Management', slug: 'incident_management' },
+                    { name: 'Problem Management', slug: 'problem_management' },
+                    { name: 'Change Management', slug: 'change_management' },
+                    { name: 'Release Management', slug: 'release_management' },
+                    { name: 'Cost Management', slug: 'cost_management' },
+                    { name: 'Asset Management', slug: 'asset_management' },
+                    { name: 'Request Management', slug: 'request_management' },
+                    { name: 'Walk-Up Experience', slug: 'walk_up_experience' },
+                    { name: 'Digital Portfolio Management', slug: 'digital_portfolio_management' },
+                    { name: 'Universal Request', slug: 'universal_request' }
                 ]
             },
             {
                 name: 'Pro',
                 modules: [
-                    { name: 'Performance Analytics', slug: 'performance-analytics' },
-                    { name: 'Digital Product Release', slug: 'digital-product-release' },
-                    { name: 'Virtual Agent', slug: 'virtual-agent' },
-                    { name: 'Predictive Intelligence', slug: 'predictive-intelligence' },
-                    { name: 'Continual Improvement', slug: 'continual-improvement' },
-                    { name: 'Vendor Manager Workspace', slug: 'vendor-manager-workspace' },
-                    { name: 'Mobile Publishing', slug: 'mobile-publishing' },
-                    { name: 'DevOps Change Velocity', slug: 'devops-change-velocity' },
-                    { name: 'DevOps Config', slug: 'devops-config' }
+                    { name: 'Performance Analytics', slug: 'performance_analytics' },
+                    { name: 'Digital Product Release', slug: 'digital_product_release' },
+                    { name: 'Virtual Agent', slug: 'virtual_agent' },
+                    { name: 'Predictive Intelligence', slug: 'predictive_intelligence' },
+                    { name: 'Continual Improvement', slug: 'continual_improvement' },
+                    { name: 'Vendor Manager Workspace', slug: 'vendor_manager_workspace' },
+                    { name: 'Mobile Publishing', slug: 'mobile_publishing' },
+                    { name: 'DevOps Change Velocity', slug: 'devops_change_velocity' },
+                    { name: 'DevOps Config', slug: 'devops_config' }
                 ]
             },
             {
                 name: 'Enterprise',
                 modules: [
-                    { name: 'Workspace Optimization', slug: 'workspace-optimization' },
-                    { name: 'Process Mining', slug: 'process-mining' },
-                    { name: 'App Engine Starter', slug: 'app-engine-starter' }
+                    { name: 'Workspace Optimization', slug: 'workspace_optimization' },
+                    { name: 'Process Mining', slug: 'process_mining' },
+                    { name: 'App Engine Starter', slug: 'app_engine_starter' }
                 ]
             }
         ]
@@ -57,41 +58,42 @@ export const configs = {
             'Pro',
             'Enterprise'
         ],
+        name:'CSM',
         categories: [
             {
                 name: 'Standard',
                 modules: [
-                    { name: 'Agent Workspace', slug: 'agent-workspace' },
-                    { name: 'Case Management', slug: 'case-management' },
+                    { name: 'Agent Workspace', slug: 'agent_workspace' },
+                    { name: 'Case Management', slug: 'case_management' },
                     { name: 'Omnichannel', slug: 'omnichannel' },
-                    { name: 'Self-Service', slug: 'self-service' },
-                    { name: 'Knowledge Management', slug: 'knowledge-management' },
-                    { name: 'Walk-Up Experience for CSM', slug: 'walk-up-experience-for-csm' },
-                    { name: 'Service Management For Issue Resolution', slug: 'service-management-for-issue-resolution' },
-                    { name: 'Advanced Work Assignment', slug: 'advanced-work-assignment' },
-                    { name: 'Engagement Messenger', slug: 'engagement-messenger' },
-                    { name: 'Digital Portfolio Management', slug: 'digital-portfolio-management' },
+                    { name: 'Self-Service', slug: 'self_service' },
+                    { name: 'Knowledge Management', slug: 'knowledge_management' },
+                    { name: 'Walk-Up Experience for CSM', slug: 'walk_up_experience_for_csm' },
+                    { name: 'Service Management For Issue Resolution', slug: 'service_management_for_issue_resolution' },
+                    { name: 'Advanced Work Assignment', slug: 'advanced_work_assignment' },
+                    { name: 'Engagement Messenger', slug: 'engagement_messenger' },
+                    { name: 'Digital Portfolio Management', slug: 'digital_portfolio_management' },
                 ]
             },
             {
                 name: 'Pro',
                 modules: [
-                    { name: 'Proactive Customer Service Operations', slug: 'proactive-customer-service-operations' },
-                    { name: 'Task Intelligence', slug: 'task-intelligence' },
-                    { name: 'Performance Analytics', slug: 'performance-analytics' },
-                    { name: 'Virtual Agent', slug: 'virtual-agent' },
-                    { name: 'Outsource Customer Service', slug: 'outsource-customer-service' },
-                    { name: 'Continual Improvement Management', slug: 'continual-improvement-management' },
-                    { name: 'Vendor Management Workspace', slug: 'vendor-management-workspace' },
+                    { name: 'Proactive Customer Service Operations', slug: 'proactive_customer_service_operations' },
+                    { name: 'Task Intelligence', slug: 'task_intelligence' },
+                    { name: 'Performance Analytics', slug: 'performance_analytics' },
+                    { name: 'Virtual Agent', slug: 'virtual_agent' },
+                    { name: 'Outsource Customer Service', slug: 'outsource_customer_service' },
+                    { name: 'Continual Improvement Management', slug: 'continual_improvement_management' },
+                    { name: 'Vendor Management Workspace', slug: 'vendor_management_workspace' },
                     { name: 'DevOps', slug: 'devops' },
-                    { name: 'Now Assist for CSM', slug: 'now-assist-for-csm' },
+                    { name: 'Now Assist for CSM', slug: 'now_assist_for_csm' },
                 ]
             },
             {
                 name: 'Enterprise',
                 modules: [
-                    { name: 'Workforce Optimization', slug: 'workforce-optimization' },
-                    { name: 'Process Mining', slug: 'process-mining' },
+                    { name: 'Workforce Optimization', slug: 'workforce_optimization' },
+                    { name: 'Process Mining', slug: 'process_mining' },
                 ]
             }
         ]
@@ -105,42 +107,43 @@ export const configs = {
             'ITOM Health',
             'ITOM Optimization'
         ],
+        name:'ITOM',
         "categories": [
             {
                 "name": "ITOM Visibility",
                 "modules": [
                     { "name": "Discovery", "slug": "discovery" },
-                    { "name": "Service Mapping", "slug": "service-mapping" },
-                    { "name": "Service Graph Connectors", "slug": "service-graph-connectors" },
-                    { "name": "CMDB Data Manager", "slug": "cmdb-data-manager" },
-                    { "name": "MID Server (Management, Instrumentation, and Discovery)", "slug": "mid-server" },
-                    { "name": "Credential Management", "slug": "credential-management" },
-                    { "name": "Discovery Schedules & Patterns", "slug": "discovery-schedules-patterns" },
-                    { "name": "Application Services", "slug": "application-services" }
+                    { "name": "Service Mapping", "slug": "service_mapping" },
+                    { "name": "Service Graph Connectors", "slug": "service_graph_connectors" },
+                    { "name": "CMDB Data Manager", "slug": "cmdb_data_manager" },
+                    { "name": "MID Server (Management, Instrumentation, and Discovery)", "slug": "mid_server" },
+                    { "name": "Credential Management", "slug": "credential_management" },
+                    { "name": "Discovery Schedules & Patterns", "slug": "discovery_schedules_patterns" },
+                    { "name": "Application Services", "slug": "application_services" }
                 ]
             },
             {
                 "name": "ITOM Health",
                 "modules": [
-                    { "name": "Event Management", "slug": "event-management" },
-                    { "name": "Operational Intelligence / Metric Intelligence", "slug": "operational-intelligence" },
-                    { "name": "Health Log Analytics (HLA)", "slug": "health-log-analytics" },
-                    { "name": "Service Health Dashboard", "slug": "service-health-dashboard" },
-                    { "name": "Alert Management", "slug": "alert-management" },
-                    { "name": "Connector Integrations", "slug": "connector-integrations" },
-                    { "name": "Impact Analysis (via Service Mapping)", "slug": "impact-analysis" }
+                    { "name": "Event Management", "slug": "event_management" },
+                    { "name": "Operational Intelligence / Metric Intelligence", "slug": "operational_intelligence" },
+                    { "name": "Health Log Analytics (HLA)", "slug": "health_log_analytics" },
+                    { "name": "Service Health Dashboard", "slug": "service_health_dashboard" },
+                    { "name": "Alert Management", "slug": "alert_management" },
+                    { "name": "Connector Integrations", "slug": "connector_integrations" },
+                    { "name": "Impact Analysis (via Service Mapping)", "slug": "impact_analysis" }
                 ]
             },
             {
                 "name": "ITOM Optimization",
                 "modules": [
-                    { "name": "Cloud Managament", "slug": "cloud-management" },
-                    { "name": "Cloud Insights", "slug": "cloud-insights" },
-                    { "name": "Cloud Resource Optimization", "slug": "cloud-resource-optimization" },
-                    { "name": "Application Service Monitoring", "slug": "application-service-monitoring" },
-                    { "name": "Predictive AIOps (Advanced Intelligance)", "slug": "predictive-aiops" },
-                    { "name": "Automated Remediation", "slug": "automated-remediation" },
-                    { "name": "Runbook Automation (via Integration Hub)", "slug": "runbook-automation" }
+                    { "name": "Cloud Managament", "slug": "cloud_management" },
+                    { "name": "Cloud Insights", "slug": "cloud_insights" },
+                    { "name": "Cloud Resource Optimization", "slug": "cloud_resource_optimization" },
+                    { "name": "Application Service Monitoring", "slug": "application_service_monitoring" },
+                    { "name": "Predictive AIOps (Advanced Intelligance)", "slug": "predictive_aiops" },
+                    { "name": "Automated Remediation", "slug": "automated_remediation" },
+                    { "name": "Runbook Automation (via Integration Hub)", "slug": "runbook_automation" }
                 ]
             }
         ]
@@ -154,39 +157,40 @@ export const configs = {
             'Pro',
             'Enterprise'
         ],
+        name:"SPM",
         "categories": [
             {
                 "name": "Standard",
                 "modules": [
-                    { "name": "Project Portfolio Management", "slug": "project-portfolio-management" },
-                    { "name": "Resource Management", "slug": "resource-management" },
-                    { "name": "Demand Management", "slug": "demand-management" },
-                    { "name": "Time Card Management", "slug": "time-card-management" },
-                    { "name": "Basic Financial Planning (Cost Plans, Budgets)", "slug": "basic-financial-planning" }
+                    { "name": "Project Portfolio Management", "slug": "project_portfolio_management" },
+                    { "name": "Resource Management", "slug": "resource_management" },
+                    { "name": "Demand Management", "slug": "demand_management" },
+                    { "name": "Time Card Management", "slug": "time_card_management" },
+                    { "name": "Basic Financial Planning (Cost Plans, Budgets)", "slug": "basic_financial_planning" }
                 ]
             },
             {
                 "name": "Pro",
                 "modules": [
-                    { "name": "Agile Development 2.0", "slug": "agile-development-2" },
-                    { "name": "SAFe Support & Hybrid Project Planning", "slug": "safe-hybrid-project-planning" },
-                    { "name": "Application Portfolio Management (APM)", "slug": "application-portfolio-management" },
-                    { "name": "Financial Planning & Cost Modeling", "slug": "financial-planning-cost-modeling" },
-                    { "name": "Program Management Workspace", "slug": "program-management-workspace" },
-                    { "name": "Performance Analytics for SPM", "slug": "performance-analytics-spm" },
-                    { "name": "Integration with DevOps", "slug": "integration-with-devops" }
+                    { "name": "Agile Development 2.0", "slug": "agile_development_2" },
+                    { "name": "SAFe Support & Hybrid Project Planning", "slug": "safe_hybrid_project_planning" },
+                    { "name": "Application Portfolio Management (APM)", "slug": "application_portfolio_management" },
+                    { "name": "Financial Planning & Cost Modeling", "slug": "financial_planning_cost_modeling" },
+                    { "name": "Program Management Workspace", "slug": "program_management_workspace" },
+                    { "name": "Performance Analytics for SPM", "slug": "performance_analytics_spm" },
+                    { "name": "Integration with DevOps", "slug": "integration_with_devops" }
                 ]
             },
             {
                 "name": "Enterprise",
                 "modules": [
-                    { "name": "Digital Portfolio Management", "slug": "digital-portfolio-management" },
-                    { "name": "Objectives and Key Results (OKRs)", "slug": "objectives-key-results" },
-                    { "name": "Strategic Planning Workspace", "slug": "strategic-planning-workspace" },
-                    { "name": "Innovation Management", "slug": "innovation-management" },
-                    { "name": "Advanced Financial Planning (e.g., scenario modeling)", "slug": "advanced-financial-planning" },
-                    { "name": "Now Assist for SPM (GenAI features)", "slug": "now-assist-spm" },
-                    { "name": "Agentic Workflows for proactive guidance", "slug": "agentic-workflows-guidance" }
+                    { "name": "Digital Portfolio Management", "slug": "digital_portfolio_management" },
+                    { "name": "Objectives and Key Results (OKRs)", "slug": "objectives_key_results" },
+                    { "name": "Strategic Planning Workspace", "slug": "strategic_planning_workspace" },
+                    { "name": "Innovation Management", "slug": "innovation_management" },
+                    { "name": "Advanced Financial Planning (e.g., scenario modeling)", "slug": "advanced_financial_planning" },
+                    { "name": "Now Assist for SPM (GenAI features)", "slug": "now_assist_spm" },
+                    { "name": "Agentic Workflows for proactive guidance", "slug": "agentic_workflows_guidance" }
                 ]
             }
         ]

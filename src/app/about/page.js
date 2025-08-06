@@ -76,7 +76,7 @@ export default function About() {
       <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`}/>
       {/* resources */}
       <div className="lg:px-32 px-6 py-10">
-        <div className="w-full lg:p-10  rounded-2xl  bg-gradient-t0-b from-[#141414] to-zinc-900">
+        <div className="w-full  rounded-2xl  bg-gradient-t0-b from-[#141414] to-zinc-900">
           <h1 className='text-4xl md:text-5xl font-normal text-[#e2e2e2]  text-center pb-10 '>
             Our team resources
           </h1>
