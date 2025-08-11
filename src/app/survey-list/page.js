@@ -21,11 +21,11 @@ const modules = [
     { name: "Customer (CSM)", icon: <Headphones className="h-5 w-5" />, slug: "customer-workflows" },
     { name: "ITOM", icon: <Server className="h-5 w-5 flex-shrink-0" />, slug: "it-operations-management" },
     { name: "SPM (PPM)", icon: <FolderKanban className="h-5 w-5" />, slug: "strategic-portfolio-management", },
-    { name: "Asset (ITAM)", icon: <LineChart className="h-5 w-5" />, slug: "" },
+    { name: "Asset (ITAM)", icon: <LineChart className="h-5 w-5" />, slug: "it-asset-management" },
     { name: "Risk Management (GRC)", icon: <Shield className="h-5 w-5" />, slug: "integrated-risk-management", },
     { name: "AI and GenAI", icon: <BrainCircuit className="h-5 w-5" />, slug: "ai-and-genai", },
-    { name: "DevOps", icon: <Terminal className="h-5 w-5" />, slug: "", },
-    { name: "Employee (HRSD)", icon: <UserCircle className="h-5 w-5" />, slug: "" }
+    { name: "DevOps", icon: <Terminal className="h-5 w-5" />, slug: "devops", },
+    { name: "Employee (HRSD)", icon: <UserCircle className="h-5 w-5" />, slug: "employee-hrsd" }
 ];
 
 

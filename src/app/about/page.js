@@ -3,6 +3,7 @@ import AboutCards from "../components/about-cards";
 import Founders from "../components/founders-cards";
 import GlobalImage from "../components/global-image";
 import HeroSection from "../components/hero-section";
+import SurveyButton from "../components/surveyButton";
 
 const data = {
   "resources": {
@@ -73,7 +74,7 @@ export default function About() {
   return (
     <div className=" bg-[#141414] w-full">
       {/* hero section */}
-      <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`}/>
+      <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
       {/* resources */}
       <div className="lg:px-32 px-6 py-10">
         <div className="w-full  rounded-2xl  bg-gradient-t0-b from-[#141414] to-zinc-900">
@@ -90,6 +91,9 @@ export default function About() {
           Founders
         </h2>
         <Founders team={data.founders.teamMembers} />
+        <div className='flex justify-center items-center'>
+          <SurveyButton title='Schedule a meeting!' url='https://outlook.office.com/bookwithme/user/2d20486392d94cf9b823bc508a230121@manaopili.com?anonymous&ep=plink' />
+        </div>
       </div>
       {/* global presence */}
       <GlobalImage data={data.globalPresence} />

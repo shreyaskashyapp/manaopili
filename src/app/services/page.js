@@ -242,9 +242,9 @@ const buttonData = {
 
 
 export default function Component() {
-    useEffect(()=>{
-      activateServer()
-    },[])
+  useEffect(() => {
+    activateServer()
+  }, [])
   return (
     <div className=" bg-[#141414]">
       <div className="w-full">
@@ -254,10 +254,12 @@ export default function Component() {
           <ServicesAccordion services={services} categories={categories} />
 
           <div className="text-center">
-            <p className="text-lg md:text-xl text-zinc-300 mb-6 md:mb-8 px-4">
+            <p className="text-lg md:text-xl text-zinc-300 py-8 px-4">
               {`Ready to experience the Mana'o Pili difference?`}
             </p>
-            <SurveyButton title='Take Our Survey' url='/survey-list' />
+            <div className='flex justify-center items-center'>
+              <SurveyButton title='Take Our Survey' url='/survey-list' />
+            </div>
           </div>
           {/* comparision section */}
           {/* <Comparison/> */}
@@ -272,7 +274,9 @@ export default function Component() {
             <p className="text-lg md:text-xl text-zinc-300 mb-6 md:mb-8 px-4">
               {`Ready to experience the Mana'o Pili difference?`}
             </p>
-            <SurveyButton title='Take Our Survey' url='/survey-list' />
+            <div className='flex justify-center items-center'>
+              <SurveyButton title='Take Our Survey' url='/survey-list' />
+            </div>
           </div>
         </div>
       </div>

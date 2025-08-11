@@ -8,7 +8,7 @@ export const configs = {
             'Pro',
             'Enterprise'
         ],
-        name:'ITSM',
+        name: 'ITSM',
         categories: [
             {
                 name: 'Standard',
@@ -58,7 +58,7 @@ export const configs = {
             'Pro',
             'Enterprise'
         ],
-        name:'CSM',
+        name: 'CSM',
         categories: [
             {
                 name: 'Standard',
@@ -107,7 +107,7 @@ export const configs = {
             'ITOM Health',
             'ITOM Optimization'
         ],
-        name:'ITOM',
+        name: 'ITOM',
         "categories": [
             {
                 "name": "ITOM Visibility",
@@ -152,12 +152,12 @@ export const configs = {
         "title": "SPM Modules",
         "subtitle": "Optimize your Strategic Portfolio Management",
         "header": "Technology Workflows (SPM)",
-         "types": [
+        "types": [
             'Standard',
             'Pro',
             'Enterprise'
         ],
-        name:"SPM",
+        name: "SPM",
         "categories": [
             {
                 "name": "Standard",
@@ -226,4 +226,31 @@ export const fallbackConfig = {
         "title": "Strategic Planning",
         "subtitle": "Coming Soon - September 25, 2025"
     }
+}
+
+export const modulesComingSoon = {
+    "it-asset-management": {
+        "title": "IT Asset Management",
+        "subtitle": "Coming Soon"
+    },
+    "integrated-risk-management": {
+        "title": "Integrated Risk Management",
+        "subtitle": "Coming Soon "
+    },
+    "ai-and-genai": {
+        "title": "AI and GenAI",
+        "subtitle": "Coming Soon "
+    },
+    "strategic-planning": {
+        "title": "Strategic Planning",
+        "subtitle": "Coming Soon"
+    },
+    "devops": {
+        "title": "DevOps",
+        "subtitle": "Coming Soon"
+    },
+    "employee-hrsd": {
+        "title": "Employee (HRSD)",
+        "subtitle": "Coming Soon"
+    },
 }
