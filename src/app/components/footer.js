@@ -39,7 +39,7 @@ export default function Footer() {
             <h1 className="text-[#deff00] font-thin text-4xl md:text-5xl italic">{`Mana'o Pili`}</h1>
           </div>
           <div>
-            <SurveyButton data={buttonData} />
+            <SurveyButton title="Take Our Survey" url="/survey-list" />
           </div>
         </div>
         {/* content */}

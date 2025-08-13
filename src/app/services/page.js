@@ -257,7 +257,7 @@ export default function Component() {
             <p className="text-lg md:text-xl text-zinc-300 mb-6 md:mb-8 px-4">
               {`Ready to experience the Mana'o Pili difference?`}
             </p>
-            <SurveyButton data={buttonData} />
+            <SurveyButton title='Take Our Survey' url='/survey-list' />
           </div>
           {/* comparision section */}
           {/* <Comparison/> */}
@@ -272,7 +272,7 @@ export default function Component() {
             <p className="text-lg md:text-xl text-zinc-300 mb-6 md:mb-8 px-4">
               {`Ready to experience the Mana'o Pili difference?`}
             </p>
-            <SurveyButton data={buttonData} />
+            <SurveyButton title='Take Our Survey' url='/survey-list' />
           </div>
         </div>
       </div>

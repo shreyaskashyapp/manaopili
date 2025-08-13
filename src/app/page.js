@@ -7,6 +7,7 @@ import WhyManaopiliWheel from './components/wheel'
 import { useEffect } from "react"
 import { activateServer } from "@/lib/utils"
 import ContactFormV2 from "./components/contact-form-v2"
+import SurveyButton from "./components/surveyButton"
 
 const sections = [
   {
@@ -82,9 +83,12 @@ export default function HomePage() {
           <Cards data={sections} />
           {/* why manaopili wheel */}
           <div className="flex justify-center items-center md:gap-2 gap-0 px-3 py-4 md:py-1">
-            <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] text-center pb-2">{`Why Mana'o Pili?`}</h2>
+            <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] text-center">{`Why Mana'o Pili?`}</h2>
           </div>
           <WhyManaopiliWheel />
+        </div>
+        <div className="flex justify-center items-center py-8 md:pb-10 md:py-0">
+          <SurveyButton title='Take Our Survey' url='/survey-list'/>
         </div>
       </div>
     </div>

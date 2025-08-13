@@ -8,21 +8,21 @@ import Image from "next/image"
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const [isScrolled, setIsScrolled]=useState(false)
+    const [isScrolled, setIsScrolled] = useState(false)
 
-    useEffect(()=>{
-        const handleScroll=()=>{
-            if (window.scrollY>50){
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
                 setIsScrolled(true)
             }
-            else{
+            else {
                 setIsScrolled(false)
             }
         }
         handleScroll()
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-      }, []);
+    }, []);
 
 
 
@@ -36,7 +36,7 @@ export default function Header() {
     ]
 
     return (
-        <header className={`${isScrolled?"bg-[#141414]":"bg-transparent"} transition-colors duration-500 fixed top-0 left-0 right-0 z-50`}>
+        <header className={`${isScrolled ? "bg-[#141414]" : "bg-transparent"} transition-colors duration-500 fixed top-0 left-0 right-0 z-50`}>
             <div className="container mx-auto md:px-10 px-4 py-2">
                 <nav className="flex justify-between items-center h-16">
                     <Link href="/" className="text-2xl font-bold text-blue-500">
@@ -56,7 +56,7 @@ export default function Header() {
                             </Link>
                         ))}
                         <Link href={'/survey-list'}>
-                            <Button className="hover:text-[#deff00] text-white font-thin text-xl flex items-center gap-2 rounded-full px-4 bg-transparent border-[#deff00] border-2">
+                            <Button className="hover:text-[#deff00] hover:bg-blue-200/10 text-white font-thin text-xl flex items-center gap-2 rounded-full px-4 bg-transparent border-[#deff00] border-2">
                                 SURVEY
                                 <Image src="/arrow_yellow.png" alt="Arrow" width={15} height={15} />
                             </Button>
@@ -91,7 +91,7 @@ export default function Header() {
                             </Link>
                         ))}
                         <Link href={'/survey-list'}>
-                        <Button onClick={() => setIsMenuOpen(false)} className="flex hover:text-[#deff00] text-white font-thin text-xl items-center gap-2 rounded-full px-4 bg-transparent border-[#deff00] border-2">
+                            <Button onClick={() => setIsMenuOpen(false)} className="flex hover:text-[#deff00] hover:bg-blue-200/10 text-white font-thin text-xl items-center gap-2 rounded-full px-4 bg-transparent border-[#deff00] border-2">
                                 SURVEY
                                 <Image src="/arrow_yellow.png" alt="Arrow" width={15} height={15} />
                             </Button>
