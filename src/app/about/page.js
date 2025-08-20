@@ -83,6 +83,10 @@ export default function About() {
           </h1>
           <AboutCards data={data.resources.data} />
         </div>
+        <div className="flex justify-center items-center pt-10">
+          <SurveyButton title='Take Our Survey' url='/survey-list' />
+        </div>
+
 
       </div>
       {/* founders */}

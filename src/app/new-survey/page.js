@@ -1,6 +1,6 @@
 "use client"
 
-import { use, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
@@ -17,26 +17,13 @@ import convertHtmlToBase64 from "../components/htmlToBase64"
 import LoadingIndicator from "../components/loader"
 
 export default function SurveyPage() {
+
+    const router = useRouter()
     const params = useSearchParams()
     const surveyModule = params.get("survey")
-    const graphRef = useRef(null)
-    const graphRef2 = useRef(null)
 
-    if (surveyModule in modulesComingSoon) {
-        return (
-            <div className="flex flex-col items-center justify-center h-[80vh] mt-0 text-white text-center">
-                <h1 className="text-[48px] font-bold  md:text-[62px]">
-                    {modulesComingSoon?.[surveyModule]?.title}
-                </h1>
-                <p className="text-[26px] text-gray-400 max-w-2xl mx-auto md:text-[28px]">
-                    {modulesComingSoon?.[surveyModule]?.subtitle}
-                </p>
-            </div>
-        )
-    }
-
-    // Dynamically get tiersData from configs based on surveyModule
     const tiersData = configs?.[surveyModule]?.categories
+
 
     const [currentTierIndex, setCurrentTierIndex] = useState(0)
     const [moduleRatings, setModuleRatings] = useState({})
@@ -44,15 +31,17 @@ export default function SurveyPage() {
     const [submitted, setSubmitted] = useState(false)
     const [results, setResults] = useState({})
     const [hasSubmitted, setHasSubmitted] = useState(false)
-    const [barGraphReady, setBarGraphReady] = useState(false);
     const [allModulesResults, setAllModulesResults] = useState({})
     const [isLoading, setIsLoading] = useState(false)
 
-    const currentTier = tiersData[currentTierIndex]
-    const totalTiers = tiersData.length
+    const currentTier = tiersData?.[currentTierIndex]
+    const totalTiers = tiersData?.length
     const progress = ((currentTierIndex + 1) / totalTiers) * 100
-    const router = useRouter()
-    console.log(surveyModule)
+
+
+    const graphRef = useRef(null)
+    const graphRef2 = useRef(null)
+
 
     const handleEmail = (email, organizationName) => {
         setHasSubmitted(true)
@@ -164,7 +153,7 @@ export default function SurveyPage() {
 
 
             try {
-                const res = await axios.post('https://backend-manaopili.onrender.com/generate-pdf', payload, {
+                const res = await axios.post('http://localhost:3000/generate-pdf', payload, {
                     responseType: 'arraybuffer',
                 });
                 const blob = new Blob([res.data], { type: 'application/pdf' });
@@ -233,9 +222,9 @@ export default function SurveyPage() {
                                             </div>
                                             <Progress value={progress} className="h-2 bg-zinc-800" />
                                         </div>
-                                        <Tabs value={currentTier.name} onValueChange={handleTabChange} className="w-full px-2 md:px-4">
+                                        <Tabs value={currentTier?.name} onValueChange={handleTabChange} className="w-full px-2 md:px-4">
                                             <TabsList className="grid w-full grid-cols-3 bg-gradient-to-b from-[#141414] to-zinc-900 shadow-lg rounded-xl p-1">
-                                                {configs?.[surveyModule]?.types.map(
+                                                {configs?.[surveyModule]?.types?.map(
                                                     (
                                                         tierType,
                                                         index, // Use types for TabsTrigger
@@ -250,7 +239,7 @@ export default function SurveyPage() {
                                                     ),
                                                 )}
                                             </TabsList>
-                                            {tiersData.map(
+                                            {tiersData?.map(
                                                 (
                                                     tier,
                                                 ) => (
@@ -260,7 +249,7 @@ export default function SurveyPage() {
                                                 </p> */}
                                                         <div className="grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-2">
                                                             {tier.modules.map((module, index) => (
-                                                                <Card key={module.slug} className={`group relative py-3 px-4 border bg-gradient-to-br from-[#141414] to-zinc-900 shadow-lg rounded-xl  transition-all duration-200 hover:scale-[1.01] ${moduleRatings[tier.name]?.[module.slug] == null ? "border-none" : "border-[#455cff]"}`}>
+                                                                <Card key={module.slug} className={`group relative py-3 px-4 border bg-gradient-to-br from-[#141414] to-zinc-900 shadow-lg rounded-xl  transition-all duration-100 hover:scale-[1.01] ${moduleRatings[tier.name]?.[module.slug] == null ? "border-none" : "border-none"}`}>
                                                                     <CardContent className="flex flex-col p-0 gap-3">
                                                                         <div className="flex justify-between items-center gap-2">
                                                                             <div className="flex items-center gap-2 overflow-hidden">
@@ -269,7 +258,7 @@ export default function SurveyPage() {
                                                                                 </h2>
                                                                             </div>
                                                                             <div>
-                                                                                {moduleRatings[tier.name]?.[module.slug] && (
+                                                                                {moduleRatings[tier.name]?.[module.slug] != null && (
                                                                                     <div className="flex items-center gap-1.5 md:gap-2 flex-shrink-0">
                                                                                         <CheckCircle2 className="w-3 h-3 md:w-4 md:h-4 text-[#455CFF]" />
                                                                                     </div>)
@@ -356,21 +345,34 @@ export default function SurveyPage() {
                                     style={{ width: '800px', height: 'auto' }}
                                 >
                                     <div ref={graphRef}>
-                                        <BarChart2 results={results} title={`Implemented ${configs?.[surveyModule].title}`} />
+                                        <BarChart2 results={results} title={`Implemented ${configs?.[surveyModule]?.title}`} />
                                     </div>
                                     <div ref={graphRef2}>
-                                        <BarChart2 results={results} title={`${configs?.[surveyModule].title}`} />
+                                        <BarChart2 results={results} title={`${configs?.[surveyModule]?.title}`} />
                                     </div>
                                 </div>
                             </div>
                         </div>
                     ) : <SurveyEmailCollection onGettingEmail={handleEmail} />
                     }
-                </div>
-            ) : (
-                <div><h2>Module not found</h2></div>
-            )}
-
+                </div>)
+                :
+                modulesComingSoon?.[surveyModule] ? (
+                    <div className="flex flex-col items-center justify-center h-[80vh] mt-0 text-white text-center">
+                        <h1 className="text-[48px] font-bold  md:text-[62px]">
+                            {modulesComingSoon?.[surveyModule]?.title}
+                        </h1>
+                        <p className="text-[26px] text-gray-400 max-w-2xl mx-auto md:text-[28px]">
+                            {modulesComingSoon?.[surveyModule]?.subtitle}
+                        </p>
+                    </div>
+                ) : (
+                    <div className="flex flex-col items-center justify-center h-[80vh] mt-0 text-white text-center">
+                        <h2 className="text-4xl mb-6">Oops! Survey not found</h2>
+                        <p className="text-md">The requested survey could not be found.</p>
+                    </div>
+                )
+            }
         </div>
     )
 }

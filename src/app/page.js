@@ -8,6 +8,8 @@ import { useEffect } from "react"
 import { activateServer } from "@/lib/utils"
 import ContactFormV2 from "./components/contact-form-v2"
 import SurveyButton from "./components/surveyButton"
+import Timeline from "./components/journey-map"
+import ContactBanner from "./components/contact-banner"
 
 const sections = [
   {
@@ -28,11 +30,83 @@ const sections = [
 ];
 
 const formFields = [
-    { id: "name", label: "Name", type: "text", placeholder: "Your name", isRequired:true },
-    { id: "email", label: "Email", type: "email", placeholder: "Your email",isRequired:true  },
-    { id: "company", label: "Company Name", type: "text", placeholder: "Your company",isRequired:true  },
-    { id: "service", label: "Service Needed",isSelection:true,isRequired:true }
+  { id: "name", label: "Name", type: "text", placeholder: "Your name", isRequired: true },
+  { id: "email", label: "Email", type: "email", placeholder: "Your email", isRequired: true },
+  { id: "company", label: "Company Name", type: "text", placeholder: "Your company", isRequired: true },
+  { id: "service", label: "Service Needed", isSelection: true, isRequired: true }
 ];
+
+const journeyMapData = {
+  header: {
+    title: "Your Journey to ServiceNow Success",
+    subtitle:
+      "Every digital transformation is a journey. At Mana'o Pili, we guide you through each step — from strategy to sustained success — ensuring your ServiceNow investment delivers measurable business impact.",
+    description: "",
+    additionalInfo: "",
+  },
+  timeline: {
+    title: "Journey Stages",
+    steps: [
+      {
+        id: 1,
+        step: "STEP 1",
+        title: "Discovery & Assessment",
+        description: "We begin by understanding your business needs, current processes, and challenges.",
+        highlights: ["Identify gaps in workflows", "Define success metrics", "Prioritize initiatives"],
+        imageSpace: true,
+      },
+      {
+        id: 2,
+        step: "STEP 2",
+        title: "Strategy & Roadmap",
+        description: "A clear blueprint tailored to your organization.",
+        highlights: [
+          "Align IT and business goals",
+          "Build a transformation roadmap",
+          "Establish timelines & milestones",
+        ],
+        imageSpace: true,
+      },
+      {
+        id: 3,
+        step: "STEP 3",
+        title: "Implementation & Optimization",
+        description: "Hands-on deployment by our expert team.",
+        highlights: [
+          "Configure and customize ServiceNow modules",
+          "Integrate with existing systems",
+          "Optimize workflows for efficiency",
+        ],
+        imageSpace: true,
+      },
+      {
+        id: 4,
+        step: "STEP 4",
+        title: "Enablement & Adoption",
+        description: "Driving value through people and processes.",
+        highlights: [
+          "Train your teams for smooth adoption",
+          "Provide user-friendly knowledge resources",
+          "Change management support",
+        ],
+        imageSpace: true,
+      },
+      {
+        id: 5,
+        step: "STEP 5",
+        title: "Ongoing Support & Innovation",
+        description: "Long-term partnership for continuous improvement.",
+        highlights: [
+          "Proactive monitoring & managed services",
+          "Regular enhancements and upgrades",
+          "AI & GenAI-driven innovation to stay ahead",
+        ],
+        imageSpace: true,
+      },
+    ],
+  }
+}
+
 
 const serviceOptions = [
   { value: "general-inquiry", label: "General Inquiry" },
@@ -81,15 +155,16 @@ export default function HomePage() {
             <Image src="/arrow_yellow.png" alt="Arrow" width={28} height={28} />
           </div>
           <Cards data={sections} />
-          {/* why manaopili wheel */}
-          <div className="flex justify-center items-center md:gap-2 gap-0 px-3 py-4 md:py-1">
+          <div>
+            <Timeline data={journeyMapData} />
+          </div>
+          <div className="flex justify-center items-center md:gap-2 gap-0 px-3 py-4 md:py-0 md:pt-4">
             <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] text-center">{`Why Mana'o Pili?`}</h2>
           </div>
           <WhyManaopiliWheel />
         </div>
-        <div className="flex justify-center items-center py-8 md:pb-10 md:py-0">
-          <SurveyButton title='Take Our Survey' url='/survey-list'/>
-        </div>
+        {/* Contact us banner */}
+        <ContactBanner />
       </div>
     </div>
   )
