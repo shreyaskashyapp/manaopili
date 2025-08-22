@@ -108,7 +108,7 @@ export default function SurveyPage() {
 
     const handleSubmit = async () => {
         setIsLoading(true)
-        console.log(moduleRatings);
+        sessionStorage.setItem('rawData', JSON.stringify(moduleRatings));
         const calculatedImplementedResults = {}
         const calculatedAllModulesResults = {}
         tiersData.forEach((tier) => {
@@ -234,7 +234,7 @@ export default function SurveyPage() {
                                             <Progress value={progress} className="h-2 bg-zinc-800" />
                                         </div>
                                         <Tabs value={currentTier.name} onValueChange={handleTabChange} className="w-full px-2 md:px-4">
-                                            <TabsList className="grid w-full grid-cols-3 bg-gradient-to-b from-[#141414] to-zinc-900 shadow-lg rounded-xl p-1">
+                                            <TabsList className="grid w-full grid-cols-3 bg-gradient-to-b from-[#141414] to-zinc-900 shadow-lg  p-1">
                                                 {configs?.[surveyModule]?.types.map(
                                                     (
                                                         tierType,
@@ -243,7 +243,7 @@ export default function SurveyPage() {
                                                         <TabsTrigger
                                                             key={index}
                                                             value={tiersData[index]?.name || tierType} // Use tier name from tiersData if available, otherwise type
-                                                            className="data-[state=active]:bg-[#455CFF] data-[state=active]:text-white text-zinc-400 rounded-xl py-2 px-2 text-sm font-medium transition-colors"
+                                                            className="data-[state=active]:bg-[#455CFF] data-[state=active]:text-white text-zinc-400  py-2 px-2 text-sm font-medium transition-colors"
                                                         >
                                                             {tierType}
                                                         </TabsTrigger>
@@ -260,7 +260,7 @@ export default function SurveyPage() {
                                                 </p> */}
                                                         <div className="grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-2">
                                                             {tier.modules.map((module, index) => (
-                                                                <Card key={module.slug} className={`group relative py-3 px-4 border bg-gradient-to-br from-[#141414] to-zinc-900 shadow-lg rounded-xl  transition-all duration-200 hover:scale-[1.01] ${moduleRatings[tier.name]?.[module.slug] == null ? "border-none" : "border-[#455cff]"}`}>
+                                                                <Card key={module.slug} className={`md:hover:scale-[1.01] group relative py-3 px-4 border bg-gradient-to-br from-[#141414] to-zinc-900 shadow-lg rounded-xl  transition-all duration-200 ${moduleRatings[tier.name]?.[module.slug] == null ? "border-none" : "border-[#455cff]"}`}>
                                                                     <CardContent className="flex flex-col p-0 gap-3">
                                                                         <div className="flex justify-between items-center gap-2">
                                                                             <div className="flex items-center gap-2 overflow-hidden">
