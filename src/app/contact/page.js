@@ -8,7 +8,7 @@ const data = {
         <>
             Let’s <span className="text-[#deff00]">connect</span> with some ideas. Fill out the contact form to have someone on our team <span className="text-[#deff00]">contact</span> you.
             You can also book some time with our team directly using&nbsp;
-            <a href='https://outlook.office.com/bookwithme/user/2d20486392d94cf9b823bc508a230121@manaopili.com?anonymous&ep=plink' target="_blank" className="text-[#deff00] underline">
+            <a href={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} target="_blank" className="text-[#deff00] underline">
                 Online Booking!
             </a>
         </>

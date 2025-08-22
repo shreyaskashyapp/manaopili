@@ -42,7 +42,7 @@ export default function WhyManaopiliWheel() {
         <section className=" ">
             <div className="container mx-auto">
                 <div className="flex justify-center items-center">
-                    <div className="relative w-[250px] h-[250px] md:w-[500px] md:h-[500px] mx-auto mb-[5%] mt-[7%]">
+                    <div className="relative w-[250px] h-[250px] md:w-[500px] md:h-[500px] mx-auto mb-[5%] my-[7%]">
                         {/* Outer circle */}
                         <div className="absolute top-0 left-0 w-full h-full rounded-full border border-white"></div>
                         

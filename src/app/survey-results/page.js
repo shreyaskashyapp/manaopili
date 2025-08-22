@@ -148,7 +148,7 @@ export default function SurveyResultsPage() {
                                 <CardContent className="p-6 pt-0 space-y-6">
                                     <p className="text-sm text-gray-300 leading-relaxed">{item.content}</p>
                                     {item?.isButton &&
-                                        <Link className="block w-full" href='https://outlook.office.com/bookwithme/user/2d20486392d94cf9b823bc508a230121@manaopili.com?anonymous&ep=plink'>
+                                        <Link className="block w-full" href={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK}>
                                             <Button className="w-full text-sm bg-[#455CFF] hover:bg-[#455CFF]/80 text-white" size="sm">
                                                 {item.label}
                                             </Button>

@@ -258,7 +258,7 @@ export default function Component() {
               {`Ready to experience the Mana'o Pili difference?`}
             </p>
             <div className='flex justify-center items-center'>
-              <SurveyButton title='Take Our Survey' url='/survey-list' />
+              <SurveyButton title='Book Consultation' url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} />
             </div>
           </div>
           {/* comparision section */}
@@ -275,7 +275,7 @@ export default function Component() {
               {`Ready to experience the Mana'o Pili difference?`}
             </p>
             <div className='flex justify-center items-center'>
-              <SurveyButton title='Take Our Survey' url='/survey-list' />
+              <SurveyButton title='Book Consultation' url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} />
             </div>
           </div>
         </div>

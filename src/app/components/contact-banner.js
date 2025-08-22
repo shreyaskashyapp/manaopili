@@ -13,7 +13,7 @@ export default function ContactBanner() {
   };
 
   return (
-    <section className="bg-gradient-to-r from-[#141414] via-zinc-950 to-[#141414] py-8 md:py-16">
+    <section className="bg-gradient-to-r from-[#141414] via-zinc-900 to-[#141414] py-8 md:py-16">
       <div className="max-w-5xl mx-auto px-6 text-center">
         <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] mb-4">
           {content.title}
@@ -24,7 +24,7 @@ export default function ContactBanner() {
         <div className="flex flex-row gap-4 justify-center items-center">
           <SurveyButton title="Take Our Survey" url="/survey-list" />
           <SurveyButton
-            title="Connect With Us"
+            title="Book Consultation"
             url="https://outlook.office.com/bookwithme/user/2d20486392d94cf9b823bc508a230121@manaopili.com?anonymous&ep=plink"
           />
         </div>

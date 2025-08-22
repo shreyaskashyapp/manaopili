@@ -25,9 +25,9 @@ export default function Timeline({ data }) {
     const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1])
 
     return (
-        <section className="w-full bg-[#141414]" ref={containerRef}>
+        <section className="w-full bg-gradient-to-r from-[#141414] via-zinc-900 to-[#141414] py-8 md:py-16" ref={containerRef}>
             <div className="container mx-auto px-4 md:px-6">
-                <div className="max-w-6xl mx-auto py-4 md:py-8 ">
+                <div className="max-w-6xl mx-auto">
                     {/* Header */}
                     <div className="text-center space-y-6 ">
                         <h2 className="flex justify-center items-center gap-0 md:gap-2 text-4xl md:text-5xl font-normal text-[#e2e2e2] leading-tight">
@@ -103,11 +103,11 @@ export default function Timeline({ data }) {
 
                     {/* CTA Section */}
                     <div className="text-center">
-                        <p className="text-lg md:text-xl text-zinc-300 py-8 px-4">
+                        {/* <p className="text-lg md:text-xl text-zinc-300 py-8 px-4">
                             {`Ready to experience the Mana'o Pili difference?`}
-                        </p>
-                        <div className='flex justify-center items-center'>
-                            <SurveyButton title='Take Our Survey' url='/survey-list' />
+                        </p> */}
+                        <div className='flex justify-center items-center pt-8'>
+                            <SurveyButton title='Book Consultation' url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} />
                         </div>
                     </div>
 

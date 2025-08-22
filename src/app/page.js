@@ -158,7 +158,7 @@ export default function HomePage() {
           <div>
             <Timeline data={journeyMapData} />
           </div>
-          <div className="flex justify-center items-center md:gap-2 gap-0 px-3 py-4 md:py-0 md:pt-4">
+          <div className="flex justify-center items-center md:gap-2 gap-0 px-3 pt-8 pb-4 md:pb-0 md:pt-16 ">
             <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] text-center">{`Why Mana'o Pili?`}</h2>
           </div>
           <WhyManaopiliWheel />
