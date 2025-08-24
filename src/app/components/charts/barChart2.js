@@ -16,7 +16,7 @@ export default function BarChart2({ results, mode ,title }) {
   }
 
   // Filter out tiers that have null or undefined average scores
-  const chartData = Object.entries(results)
+  const chartData = Object.entries(results || {})
     .filter(([, score]) => score !== null && score !== undefined)
     .map(([name, score]) => ({
       name,
