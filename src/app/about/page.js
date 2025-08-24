@@ -83,6 +83,10 @@ export default function About() {
           </h1>
           <AboutCards data={data.resources.data} />
         </div>
+        <div className="flex justify-center items-center pt-10">
+          <SurveyButton title='Book Consultation' url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} />
+        </div>
+
 
       </div>
       {/* founders */}
@@ -92,7 +96,7 @@ export default function About() {
         </h2>
         <Founders team={data.founders.teamMembers} />
         <div className='flex justify-center items-center'>
-          <SurveyButton title='Schedule a meeting!' url='https://outlook.office.com/bookwithme/user/2d20486392d94cf9b823bc508a230121@manaopili.com?anonymous&ep=plink' />
+          <SurveyButton title='Schedule a meeting!' url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} />
         </div>
       </div>
       {/* global presence */}

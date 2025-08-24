@@ -42,7 +42,7 @@ export default function WhyManaopiliWheel() {
         <section className=" ">
             <div className="container mx-auto">
                 <div className="flex justify-center items-center">
-                    <div className="relative w-[250px] h-[250px] md:w-[500px] md:h-[500px] mx-auto mb-[5%] mt-[5%] md:mt-[8%]">
+                    <div className="relative w-[250px] h-[250px] md:w-[500px] md:h-[500px] mx-auto mb-[5%] my-[7%]">
                         {/* Outer circle */}
                         <div className="absolute top-0 left-0 w-full h-full rounded-full border border-white"></div>
                         
@@ -68,7 +68,7 @@ export default function WhyManaopiliWheel() {
 
                         {/* Savings label */}
                         <div
-                            className="absolute top-[-25px] md:top-[-50px] left-1/2 transform -translate-x-1/2 text-white text-center font-sans text-xs md:text-2xl font-normal leading-none cursor-pointer hover:text-[#deff00]"
+                            className="absolute top-[-25px] md:top-[-50px] left-1/2 transform -translate-x-1/2 text-white text-center font-sans text-xs md:text-xl whitespace-nowrap font-normal leading-none cursor-pointer hover:text-[#deff00]"
                             onMouseEnter={() => rotateToTarget(labels.savings)}
                             onTouchStart={() => rotateToTarget(labels.savings)}
                         >
@@ -84,7 +84,7 @@ export default function WhyManaopiliWheel() {
 
                         {/* Experience label */}
                         <div
-                            className="absolute top-[26%] md:top-[30%] right-[-87px] md:right-[-36%] transform -translate-x-1/2 text-white text-center font-sans text-xs md:text-2xl font-normal leading-none cursor-pointer hover:text-[#deff00]"
+                            className="absolute top-[26%] md:top-[30%] right-[-87px] md:right-[-36%] transform -translate-x-1/2 text-white text-center font-sans text-xs md:text-xl whitespace-nowrap font-normal leading-none cursor-pointer hover:text-[#deff00]"
                             onMouseEnter={() => rotateToTarget(labels.experience)}
                             onTouchStart={() => rotateToTarget(labels.experience)}
                         >
@@ -100,7 +100,7 @@ export default function WhyManaopiliWheel() {
 
                         {/* Customer Centric label */}
                         <div
-                            className="absolute top-[32%] left-[-55px] md:left-[-120px] transform -translate-y-1/2 text-white text-center font-sans text-xs md:text-2xl font-normal leading-none cursor-pointer hover:text-[#deff00]"
+                            className="absolute top-[32%] left-[-55px] md:left-[-120px] transform -translate-y-1/2 text-white text-center font-sans text-xs md:text-xl whitespace-nowrap font-normal leading-none cursor-pointer hover:text-[#deff00]"
                             onMouseEnter={() => rotateToTarget(labels.customerCentric)}
                             onTouchStart={() => rotateToTarget(labels.customerCentric)}
                         >
@@ -116,7 +116,7 @@ export default function WhyManaopiliWheel() {
 
                         {/* Transform in Place label */}
                         <div
-                            className="absolute top-[85%] right-[-40px] md:right-[-80px] transform -translate-y-1/2 text-white text-center font-sans text-xs md:text-2xl font-normal leading-none cursor-pointer hover:text-[#deff00]"
+                            className="absolute top-[85%] right-[-40px] md:right-[-80px] transform -translate-y-1/2 text-white text-center font-sans text-xs md:text-xl whitespace-nowrap font-normal leading-none cursor-pointer hover:text-[#deff00]"
                             onMouseEnter={() => rotateToTarget(labels.transform)}
                             onTouchStart={() => rotateToTarget(labels.transform)}
                         >
@@ -132,7 +132,7 @@ export default function WhyManaopiliWheel() {
 
                         {/* Technical Expertise label */}
                         <div
-                            className="absolute left-[-30px] md:left-[-72px] top-[85%] text-white text-center font-sans text-xs md:text-2xl font-normal leading-none cursor-pointer hover:text-[#deff00]"
+                            className="absolute left-[-30px] md:left-[-72px] top-[85%] text-white text-center font-sans text-xs md:text-xl whitespace-nowrap font-normal leading-none cursor-pointer hover:text-[#deff00]"
                             onMouseEnter={() => rotateToTarget(labels.technical)}
                             onTouchStart={() => rotateToTarget(labels.technical)}
                         >

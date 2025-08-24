@@ -9,6 +9,7 @@ import Link from "next/link"
 import BarChart2 from "../components/charts/barChart2"
 import { configs } from "../config/data"
 import axios from "axios"
+import ContactBanner from "../components/contact-banner"
 
 export default function SurveyResultsPage() {
   // Sample AI insights data - you can replace this with dynamic data later
@@ -251,7 +252,6 @@ export default function SurveyResultsPage() {
         setAiInsights(JSON.parse(aiInsightsData))
       } catch (error) {
         console.error("Error parsing AI insights:", error)
-        // Keep using sample data if parsing fails
       }
     }
     setLoading(false)
@@ -469,6 +469,8 @@ export default function SurveyResultsPage() {
               ))}
             </div>
           </section>
+          {/* Contact us banner */}
+          <ContactBanner />
         </div>
       </div>
     </div>
