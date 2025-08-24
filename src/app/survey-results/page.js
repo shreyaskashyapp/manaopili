@@ -259,7 +259,7 @@ export default function SurveyResultsPage() {
 
   const getAiInsights = async () => {
     const raw = sessionStorage.getItem("rawData")
-    const res = await axios.post("http://localhost:3000/insights", {
+    const res = await axios.post("https://backend-manaopili.onrender.com/insights", {
       "data": raw
     })
     console.log(res?.data)
