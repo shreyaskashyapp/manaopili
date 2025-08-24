@@ -137,7 +137,6 @@ export default function SurveyPage() {
         if (graphRef.current) {
             const barChart = await convertHtmlToBase64(graphRef.current)
             const barChart2 = await convertHtmlToBase64(graphRef2.current)
-            console.log(barChart)
             const payload = {
                 barChart,
                 barChart2,
@@ -153,7 +152,7 @@ export default function SurveyPage() {
 
 
             try {
-                const res = await axios.post('https://backend-manaopili.onrender.com/generate-pdf', payload, {
+                const res = await axios.post('https://backend-manaopili.onrender.com/generate-pdf-v2', payload, {
                     responseType: 'arraybuffer',
                 });
                 const blob = new Blob([res.data], { type: 'application/pdf' });
