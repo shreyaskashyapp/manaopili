@@ -176,10 +176,10 @@ export default function SurveyResultsPage() {
         {/* Disclaimer */}
         <div className="bg-gray-900/50 rounded-lg p-6 border border-gray-600/30 max-w-5xl mx-auto">
           <p className="text-sm text-gray-400 leading-relaxed text-center">
-            <span className="font-medium text-gray-300">Disclaimer:</span> These insights and estimated savings are
+            <span className="font-medium text-gray-300">Disclaimer:</span> {`These insights and estimated savings are
             based on AI analysis and industry benchmarks. Actual results may vary based on your organization's unique
             situation, implementation, and market conditions. For accurate results, we recommend a detailed review with
-            our experts.
+            our experts.`}
           </p>
         </div>
       </div>
