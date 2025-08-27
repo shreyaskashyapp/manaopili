@@ -134,9 +134,10 @@ export default function SurveyResultsPage() {
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </Link>
-          <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 bg-transparent px-8 py-3">
+          <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3">
             <Download className="w-5 h-5 mr-2" />
             Download Action Plan
+            <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
         </div>
 
@@ -168,7 +169,7 @@ export default function SurveyResultsPage() {
                   <Calendar className="w-5 h-5 mr-2" />
                   Schedule Implementation Call
                 </Button>
-            </Link>
+              </Link>
             </div>
           </>
         )}
