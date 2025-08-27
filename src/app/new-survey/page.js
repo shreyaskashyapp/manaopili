@@ -15,6 +15,7 @@ import BarChart2 from "../components/charts/barChart2"
 import axios from "axios"
 import convertHtmlToBase64 from "../components/htmlToBase64"
 import LoadingIndicator from "../components/loader"
+import { topScroll } from "@/lib/utils"
 
 export default function SurveyPage() {
 
@@ -117,6 +118,7 @@ export default function SurveyPage() {
     }
 
     const handlePreviousTier = () => {
+        console.log("wait what")
         if (currentTierIndex > 0) {
             setCurrentTierIndex(currentTierIndex - 1)
         }
@@ -183,12 +185,18 @@ export default function SurveyPage() {
         }
     }
 
-
     useEffect(() => {
         if (sessionStorage.getItem('email') && sessionStorage.getItem('organisationName')) {
             setHasSubmitted(true);
         }
     }, []);
+
+    useEffect(()=>{
+        if (hasSubmitted){
+            topScroll()
+            console.log("Working")
+        }
+    },[hasSubmitted])
 
     useEffect(() => {
         if (submitted && graphRef.current && results) {
@@ -314,7 +322,11 @@ export default function SurveyPage() {
                                         <div className="flex flex-col sm:flex-row justify-between gap-4 pt-6 border-t border-zinc-800 px-4">
                                             <Button
                                                 variant="outline"
-                                                onClick={handlePreviousTier}
+                                                onClick={() => {
+                                                    handlePreviousTier()
+                                                    topScroll()
+                                                }
+                                                }
                                                 disabled={currentTierIndex === 0}
                                                 className="bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border-zinc-700 w-full sm:w-auto"
                                             >
@@ -328,7 +340,7 @@ export default function SurveyPage() {
                                                 </Button>
                                                 {currentTierIndex < totalTiers - 1 && (
                                                     <Button
-                                                        onClick={handleNextTier}
+                                                        onClick={() => { handleNextTier(), topScroll() }}
                                                         className="bg-[#455CFF] hover:bg-[#3A4CD0] text-white w-full sm:w-auto"
                                                     >
                                                         Continue to {tiersData[currentTierIndex + 1]?.name}
@@ -372,6 +384,6 @@ export default function SurveyPage() {
                     </div>
                 )
             }
-        </div>
+        </div >
     )
 }

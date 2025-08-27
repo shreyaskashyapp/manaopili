@@ -5,6 +5,7 @@ import FooterPage from "./components/footer";
 import { Suspense } from "react";
 import { GoogleAnalytics } from '@next/third-parties/google'
 import FloaterCTA from "./components/floater-cta";
+import SocialCTA from "./components/social-cta";
 
 
 
@@ -43,6 +44,7 @@ export default function RootLayout({ children }) {
         </Suspense>
         <Header />  
         <FloaterCTA/>
+        <SocialCTA/>
         <GoogleAnalytics gaId={`${process.env.NEXT_PUBLIC_GA_ID}`}/>
       </body>
     </html>

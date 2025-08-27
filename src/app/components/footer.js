@@ -30,7 +30,7 @@ const headings = ['Company', 'Legal', 'Connect']
 
 export default function Footer() {
   return (
-    <footer className="relative bg-gradient-to-br from-neutral-900 via-[#455CFF] to-zinc-700 text-zinc-300 border-red-500">
+    <footer className="relative bg-gradient-to-r via-[#455cff]/80  to-[#141414] from-[#141414] text-zinc-300 border-t border-zinc-800">
       <div className="flex flex-col gap-6 md:flex-row justify-between max-w-7xl mx-auto py-7 px-5 ">
       {/* logo */}
         <div className="flex flex-col flex-1 gap-3">

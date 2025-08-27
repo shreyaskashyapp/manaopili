@@ -22,7 +22,7 @@ export default function ServicesAccordion({services, categories}) {
           <AccordionItem
             key={category}
             value={category}
-            className="border border-zinc-900 rounded-lg overflow-hidden bg-gray-900/50"
+            className="border border-zinc-900 rounded-lg overflow-hidden bg-zinc-900"
           >
             <AccordionTrigger className="px-4 py-5 md:px-6 md:py-6 text-lg md:text-xl font-semibold hover:no-underline data-[state=open]:text-[color:var(--highlight-color)] hover:text-[color:var(--highlight-color)]/80 text-zinc-300">
               <span>{category}</span>

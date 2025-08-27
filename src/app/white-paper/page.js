@@ -99,7 +99,7 @@ const WhitePaper = () => {
         <div className="min-h-screen p-8 text-white mt-20">
             <h1 className="text-4xl mb-4 text-white">{documentTitle}</h1>
             {article ? (
-                <div className="w-full h-[80vh] border-2 border-[#deff00] rounded-lg overflow-hidden">
+                <div className="w-full h-[80vh] border-2 border-zinc-500 rounded-lg overflow-hidden">
                     <iframe
                         src={article}
                         title={documentTitle}

@@ -19,8 +19,8 @@ export default function CompareCard({data,companies}) {
         {/* desktop view */}
             <div className="hidden md:flex justify-center w-full lg:gap-10 md:gap-4 xl:px-20 lg:py-10 md:px-10">
                 {companies.map((company, index) => (
-                    <Card key={index} className={`flex flex-col flex-grow bg-gray-900/50 border ${index === 0 ? 'border-[#455CFF]' : 'border-gray-800'} w-1/3`}>
-                        <CardHeader className={`${index === 0 ? 'bg-[#455CFF]' : 'bg-gray-800'} py-4 flex justify-center items-center rounded-t-md`}>
+                    <Card key={index} className={`flex flex-col flex-grow bg-gray-900/50 border ${index === 0 ? 'border-[#455CFF]' : 'border-gray-800/50'} w-1/3`}>
+                        <CardHeader className={`${index === 0 ? 'bg-[#455CFF]' : 'bg-gray-800/50'} py-4 flex justify-center items-center rounded-t-md`}>
                             <CardTitle className="flex justify-center items-center gap-2">
                             {index===0 && <Image src="/Logo_white.png" alt="Arrow" width={30} height={30} />}
                                 <h2 className='text-2xl font-semibold text-white '>
@@ -29,7 +29,7 @@ export default function CompareCard({data,companies}) {
                             </CardTitle>
                         </CardHeader>
                         {data[company].map((item, idx) => (
-                            <CardContent key={idx} className="flex flex-col gap-2 pt-5 border-t border-gray-800">
+                            <CardContent key={idx} className="flex flex-col gap-2 pt-5 border-t border-zinc-800">
                                 <CardDescription className="text-gray-300">
                                     {item.title}
                                 </CardDescription>
