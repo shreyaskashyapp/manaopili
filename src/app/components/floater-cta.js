@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function FloaterCTA() {
     return (
-        <div className="fixed bottom-10 right-5 z-50 ">
+        <div className="fixed bottom-5 right-5 z-50 ">
             <Link
                 href={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK}
                 target="_blank"

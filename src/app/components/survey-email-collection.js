@@ -63,7 +63,7 @@ export default function SurveyEmailCollection({ onGettingEmail, title = 'Ready t
         <div>
             {isLoading && <LoadingIndicator size='large' color='lime' />}
             <HeroSection bgColor={`from-[#455CFF] to-[#141414]`} data={data} height={`[70vh]`} />
-            <div className="flex flex-col justify-center items-center w-full px-2 py-10 ">
+            <div className="flex flex-col justify-center items-center w-full px-2 ppt-4 pb-10 ">
                 <Card className="w-full max-w-3xl border-none bg-zinc-900 rounded-lg md:p-10 ">
                     <CardHeader className="py-6 text-center">
                         <h2 className="md:text-4xl text-3xl font-medium text-white">{title}</h2>

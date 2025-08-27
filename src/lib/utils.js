@@ -98,14 +98,18 @@ export const checkIfMobile = () => {
 };
 
 export async function activateServer() {
-  try{
+  try {
     const response = await axios.get('https://backend-manaopili.onrender.com/')
     if (response.status === 200) {
       console.log("Server activated", response.status)
     }
   }
-  catch(err){
+  catch (err) {
     console.error(err.message)
   }
   return null;
+}
+
+export function topScroll() {
+  window.scrollTo(0, 0)
 }
