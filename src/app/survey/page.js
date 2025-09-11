@@ -185,7 +185,7 @@ export default function Survey() {
           'status': 'error',
           'error': err.message
         }
-        await axios.post('https://manaopili-dashboard.vercel.app/api/survey-data-collection', surveyDataPayload);
+        await axios.post('https://backend-manaopili.onrender.com/survey-data-collection', surveyDataPayload);
         console.error("PDF failed to download", err);
         setPdfError(true)
       }

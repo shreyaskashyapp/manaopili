@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 import { configs } from "@/app/config/data";
 
-export default function BarChart2({ results, mode ,title }) {
+export default function BarChart2({ results, mode, title }) {
   const isDarkMode = mode === 'dark';
 
   // Define colors for each tier with light/dark mode support
@@ -44,16 +44,16 @@ export default function BarChart2({ results, mode ,title }) {
   return (
     <Card
       className={`w-full mx-auto overflow-auto ${isDarkMode
-        ? 'bg-gray-900/30 backdrop-blur-sm border border-gray-800 text-white'
+        ? 'bg-gradient-to-br from-zinc-900 via-[#141414] to-zinc-900   border border-gray-800 backdrop-blur-sm text-white'
         : 'bg-white border-none text-black'
-      }`}
+        }`}
     >
       <CardHeader>
         <CardTitle className={`md:text-xl text-lg font-normal ${isDarkMode ? 'text-white' : 'text-black'}`}>
-        Aggregated Scores For All {title}
+          Aggregated Scores For All {title}
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="py-4 px-0">
         <ChartContainer
           config={Object.fromEntries(
             chartData.map((item, index) => [
@@ -61,14 +61,14 @@ export default function BarChart2({ results, mode ,title }) {
               { label: item.name, color: item.color }
             ])
           )}
-          className={`h-[350px] capitalize ${isDarkMode ? 'bg-transparent' : ''}`}
+          className={`h-[350px] w-full capitalize ${isDarkMode ? 'bg-transparent' : ''}`}
         >
           <ResponsiveContainer width="80%" height="80%">
             <BarChart
               data={chartData}
-              margin={{ top: 20, right: 30, left: 20, bottom: 40 }}
+              margin={{ top: 20, right: 10, left: 0, bottom: 20 }}
               barSize={35}
-              barGap={8}
+              barGap={6}
             >
               <CartesianGrid
                 stroke={isDarkMode ? "rgba(255,255,255,0.08)" : "hsl(var(--border))"}

@@ -20,7 +20,7 @@ export default function Contact() {
     return (
         <div>
             <HeroSection data={data} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
-            <div className="pt-4 pb-10">
+            <div className="pb-10">
                 <ContactForm />
             </div>
 

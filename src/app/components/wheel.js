@@ -185,9 +185,9 @@ export default function WhyManaopiliWheel() {
                                             <div className="bg-zinc-400 border w-2 h-2  border-zinc-700 group-hover:border-[#455cff] group-hover:bg-[#455cff] rounded-full ">
                                                 {/* <IconComponent className="w-3 h-3 text-zinc-400 group-hover:text-[#455cff] transition-colors duration-300" /> */}
                                             </div>
-                                            <h3 onMouseEnter={() => rotateToTarget(labels[pillar.id])} className="text-[#e2e2e2] font-medium text-lg md:text-2xl group-hover:text-[#455cff] transition-colors">
+                                            <p onMouseEnter={() => rotateToTarget(labels[pillar.id])} className="text-[#e2e2e2] font-medium text-base md:text-lg group-hover:text-[#455cff] transition-colors">
                                                 {pillar.title}
-                                            </h3>
+                                            </p>
                                         </div>
                                         <p className="text-gray-300 text-sm md:text-base group-hover:text-gray-300 ">{pillar.description}</p>
 
@@ -197,7 +197,6 @@ export default function WhyManaopiliWheel() {
                         })}
                     </div>
                 </div>
-
             </div>
         </section>
     );

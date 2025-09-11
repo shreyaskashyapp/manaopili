@@ -32,7 +32,7 @@ const BlogsEmailCollection = ({ onGettingEmail, title = 'Access Expert Insights'
             return;
         }
         try {
-            const response = await fetch('https://manaopili-dashboard.vercel.app/api/data-collection', {
+            const response = await fetch('https://backend-manaopili.onrender.com/data-collection', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, organization }),
@@ -65,7 +65,7 @@ const BlogsEmailCollection = ({ onGettingEmail, title = 'Access Expert Insights'
         <div className=" ">
             {isLoading && <LoadingIndicator size="large" color="lime" />}
             <HeroSection data={data} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
-            <div className='flex  justify-center items-center w-full py-10 px-2 h-full'>
+            <div className='flex justify-center items-center w-full py-6 px-2 h-full'>
                 <Card className="border-none w-full max-w-3xl bg-zinc-800/30 rounded-2xl pt-4 pb-10 px-4">
                     <CardHeader className="space-y-3 text-center relative">
                         <h2 className="text-3xl font-semibold text-white tracking-wide">{title}</h2>

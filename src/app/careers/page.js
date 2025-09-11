@@ -69,7 +69,7 @@ const Careers = () => {
     setIsLoading(true);
     
     try {
-      const response = await fetch('https://manaopili-dashboard.vercel.app/api/job-application', {
+      const response = await fetch('https://manaopili/job-application', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

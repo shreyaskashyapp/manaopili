@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { AlertTriangle, CheckCircle, LoaderCircle, TrendingUp, ArrowRight, Calendar, Download, Zap } from "lucide-react"
+import { AlertTriangle, CheckCircle, LoaderCircle, TrendingUp, ArrowRight, Calendar, Download, Zap, LucideTrendingUp } from "lucide-react"
 import { useEffect, useState } from "react"
 
 import Link from "next/link"
@@ -10,6 +10,7 @@ import BarChart2 from "../components/charts/barChart2"
 import { configs } from "../config/data"
 import axios from "axios"
 import ContactBanner from "../components/contact-banner"
+import SurveyButton from "../components/surveyButton"
 
 export default function SurveyResultsPage() {
   // Sample AI insights data - you can replace this with dynamic data later
@@ -101,44 +102,37 @@ export default function SurveyResultsPage() {
     return (
       <div className="space-y-10 max-w-7xl mx-auto">
         {/* Main Insights Card */}
-        <div className="bg-gray-900/50 rounded-xl p-8 border border-gray-700/50">
-          <div className="text-center mb-8">
-            <div className="flex justify-center mb-4">
-            </div>
-            <p className="text-gray-300 font-semibold text-xl max-w-4xl mx-auto">{aiInsights.title}</p>
+        <div className="bg-gradient-to-br from-[#141414] via-zinc-900 to-[#141414]  border border-gray-800 rounded-xl p-8 mb-3 md:mb-6 backdrop-blur-sm transition-all duration-500">
+          <div className="text-center mb-6">
+
+            <p className="text-[#e2e2e2] text-md md:text-xl max-w-4xl mx-auto">{aiInsights?.title}</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {points.map((point, index) => {
-              const [category, description] = point.split(": ")
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {points?.map((point, index) => {
+              const [category, description] = point.split(": ");
               return (
-                <div key={index} className="bg-gray-800/50 rounded-lg p-6 border border-gray-600/50 text-center">
-                  <div className="flex flex-col items-center gap-4">
-                    <CheckCircle className="w-6 h-6 text-green-400" />
-                    <div>
-                      <h4 className="text-white font-semibold text-base mb-3">{category}</h4>
-                      <p className="text-gray-300 text-sm leading-relaxed">{description}</p>
-                    </div>
+                <div
+                  key={index}
+                  className="bg-gradient-to-br to-zinc-900 from-zinc-900 via-[#141414] border border-gray-700/50 rounded-xl p-8 hover:border-[#455cff]/30 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-lg hover:shadow-[#455cff]/10 text-center"
+                >
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gray-900/50 border border-gray-700 mb-4">
+                    <CheckCircle className="w-6 h-6 text-green-500" />
                   </div>
+                  <h4 className="text-xl font-bold text-white mb-3">{category}</h4>
+                  <p className="text-gray-300 text-sm leading-relaxed">{description}</p>
                 </div>
-              )
+              );
             })}
           </div>
         </div>
 
+
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Link href="https://outlook.office.com/bookwithme/user/2d20486392d94cf9b823bc508a230121@manaopili.com?anonymous&ep=plink">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3">
-              <Calendar className="w-5 h-5 mr-2" />
-              Get Detailed Analysis
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-          </Link>
-          <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3">
-            <Download className="w-5 h-5 mr-2" />
-            Download Action Plan
-            <ArrowRight className="w-5 h-5 ml-2" />
-          </Button>
+          <SurveyButton
+            title="Get Detailed Insights"
+            url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK}
+          />
         </div>
 
         {/* Quick Wins Section */}
@@ -175,9 +169,9 @@ export default function SurveyResultsPage() {
         )}
 
         {/* Disclaimer */}
-        <div className="bg-gray-900/50 rounded-lg p-6 border border-gray-600/30 max-w-5xl mx-auto">
+        <div className="bg-gradient-to-r from-zinc-900 via-[#141414] to-zinc-900 rounded-xl p-6 border border-gray-800 max-w-5xl mx-auto">
           <p className="text-sm text-gray-400 leading-relaxed text-center">
-            <span className="font-medium text-gray-300">Disclaimer:</span> {`These insights and estimated savings are
+            <span className="font-medium text-[#455cff]">Disclaimer:</span> {`These insights and estimated savings are
             based on AI analysis and industry benchmarks. Actual results may vary based on your organization's unique
             situation, implementation, and market conditions. For accurate results, we recommend a detailed review with
             our experts.`}
@@ -307,21 +301,25 @@ export default function SurveyResultsPage() {
           <span className="text-lg text-white font-semibold">Loading Results...</span>
         </div>
       )}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Header Section */}
-        <div className="text-center mb-16">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-              {`ServiceNow ${configs?.[currentSurvey]?.title} Assessment`}
+        <div className="text-center mb-20">
+          <div className="max-w-3xl mx-auto">
+            <div className="inline-flex items-center gap-3 bg-[#455cff]/15 border border-[#455cff]/30 rounded-full px-3 py-1 mb-3 md:mb-6  backdrop-blur-sm">
+              <div className="w-2 h-2 bg-[#455cff] rounded-full animate-pulse shadow-lg shadow-[#455cff]/50"></div>
+              <h2 className="text-[#455cff] text-sm font-semibold tracking-wide">Digital Transformation Analysis</h2>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-3 md:mb-6">
+              ServiceNow <span className="text-[#455cff]">{configs?.[currentSurvey]?.title}</span> Assessment
             </h1>
-            <p className="text-gray-400 text-xl sm:text-2xl mb-8">
-              {`Digital Transformation Investment Analysis for ${surveyData?.Name}`}
+            <p className="text-gray-400 text-md md:text-lg mb-3 md:mb-6">
+              Comprehensive assessment for <span className="text-[#455cff]">{surveyData?.Name}</span> with intelligent insights and actionable recommendations
             </p>
             <div className="flex justify-center">
               <Button
                 size="lg"
                 onClick={pdfDownload}
-                className="bg-[#455CFF] hover:bg-[#455CFF]/80 text-white font-semibold px-8 py-3"
+                className="bg-[#455CFF] hover:bg-[#455CFF]/80 text-white font-semibold px-8 py-4"
               >
                 {pdfUrl ? (
                   <>
@@ -343,11 +341,15 @@ export default function SurveyResultsPage() {
         <div className="space-y-20">
           {/* Performance Overview */}
           <section className="w-full">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Performance Overview</h2>
-              <p className="text-gray-400 text-xl max-w-3xl mx-auto">Your current ServiceNow implementation metrics</p>
+            <div className="text-center mb-3 md:mb-6">
+              {/* <div className="inline-flex items-center gap-2 text-[#455cff] font-medium mb-4">
+                <LucideTrendingUp className="w-5 h-5" />
+                Performance Overview
+              </div> */}
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Current ServiceNow Implementation Metrics</h2>
+              <p className="text-gray-400 text-base md:text-lg max-w-3xl mx-auto">Comprehensive analysis of your {configs?.[currentSurvey]?.title} performance across different service tiers</p>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full mx-auto">
               <div className="w-full">
                 <BarChart2 results={newGraphData} mode="dark" title={`Implemented ${surveyModule}`} />
               </div>
@@ -359,9 +361,9 @@ export default function SurveyResultsPage() {
 
           {/* AI Insights Section */}
           <section className="w-full">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">AI-Powered Insights</h2>
-              <p className="text-gray-400 text-xl max-w-4xl mx-auto">
+            <div className="text-center mb-3 md:mb-6">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">AI-Powered Insights</h2>
+              <p className="text-gray-400 md:text-lg text-sm max-w-4xl mx-auto">
                 Intelligent analysis of your ServiceNow implementation with actionable recommendations
               </p>
             </div>
@@ -371,62 +373,40 @@ export default function SurveyResultsPage() {
           {/* Areas for Improvement */}
           {aiInsights?.Inefficiencies && aiInsights.Inefficiencies.length > 0 && (
             <section className="w-full">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Areas for Improvement</h2>
-                <p className="text-gray-400 text-xl max-w-4xl mx-auto">Identified Inefficiencies and optimization opportunities</p>
+              <div className="text-center mb-3 md:mb-6">
+                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
+                  Areas for Improvement
+                </h2>
+                <p className="text-gray-400 text-sm md:text-lg max-w-4xl mx-auto">
+                  Identified Inefficiencies and optimization opportunities
+                </p>
               </div>
-              <div className="max-w-6xl flex flex-col items-center justify-center  mx-auto">
-                <Card className="bg-gray-900/50 border border-gray-700/50">
-                  {/* <CardHeader className="p-10 text-center">
-                    <div className="flex justify-center mb-4">
-                      <div className="p-3 bg-gray-800 rounded-xl">
-                        <AlertTriangle className="h-8 w-8 text-red-400" />
-                      </div>
-                    </div>
-                    <CardTitle className="text-2xl text-white">
-                      Critical Inefficiencies Detected
-                    </CardTitle>
-                    <p className="text-gray-400 mt-4 text-lg max-w-3xl mx-auto">
-                      Areas requiring immediate attention to maximize your ServiceNow investment
-                    </p>
-                  </CardHeader> */}
-                  <CardContent className="p-10 ">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-                      {aiInsights.Inefficiencies.map((inefficiency, index) => {
-                        const [category, description] = inefficiency.split(": ")
-                        return (
-                          <div
-                            key={index}
-                            className="p-6 bg-gray-800/50 rounded-xl border border-gray-600/50 hover:border-gray-500/50 transition-all duration-300 text-center"
-                          >
-                            <div className="flex flex-col items-center gap-4">
-                              <div className="p-3 bg-gray-800 rounded-lg">
-                                <AlertTriangle className="h-6 w-6 text-red-400" />
-                              </div>
-                              <div>
-                                <h4 className="text-base font-semibold text-white mb-3">{category}</h4>
-                                <p className="text-sm text-gray-400 leading-relaxed">{description}</p>
-                              </div>
-                            </div>
-                          </div>
-                        )
-                      })}
-                    </div>
-                  </CardContent>
-                </Card>
 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
-                  <Link href="https://outlook.office.com/bookwithme/user/2d20486392d94cf9b823bc508a230121@manaopili.com?anonymous&ep=plink">
-                    <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3">
-                      <Calendar className="w-5 h-5 mr-2" />
-                      Get Priority Fix Roadmap
-                      <ArrowRight className="w-5 h-5 ml-2" />
-                    </Button>
-                  </Link>
-                  <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 bg-transparent px-8 py-3">
-                    <Download className="w-5 h-5 mr-2" />
-                    Download Improvement Plan
-                  </Button>
+              <div className="max-w-6xl mx-auto">
+                <div className="grid gap-4 md:grid-cols-3">
+                  {aiInsights.Inefficiencies.map((inefficiency, index) => {
+                    const [category, description] = inefficiency.split(": ");
+                    return (
+                      <article
+                        key={index}
+                        className="rounded-xl p-6 bg-gradient-to-br from-zinc-900 via-[#141414] to-zinc-900 border border-gray-800 hover:border-[#455cff]/30  hover:transform hover:scale-105 hover:shadow-lg hover:shadow-[#455cff]/10 transition-all duration-300"
+                      >
+                        <div className="mb-3 flex items-center gap-2">
+                          <AlertTriangle className="h-6 w-6 text-red-400 flex-shrink-0" />
+                          <h3 className="text-white text-xl font-medium">{category}</h3>
+                        </div>
+                        <p className="text-sm leading-6 text-gray-400">{description}</p>
+                      </article>
+                    );
+                  })}
+                </div>
+
+                {/* CTA Buttons */}
+                <div className="flex justify-center items-center pt-10">
+                  <SurveyButton
+                    title="Reach Out To Us"
+                    url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK}
+                  />
                 </div>
               </div>
             </section>
@@ -434,9 +414,9 @@ export default function SurveyResultsPage() {
 
           {/* Expert Recommendations */}
           <section className="w-full">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Expert Recommendations</h2>
-              <p className="text-gray-400 text-xl max-w-4xl mx-auto">
+            <div className="text-center md:mb-6 mb-3">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">Expert Recommendations</h2>
+              <p className="text-gray-400 text-sm md:text-lg max-w-4xl mx-auto">
                 Professional guidance for your digital transformation journey
               </p>
             </div>
@@ -444,15 +424,15 @@ export default function SurveyResultsPage() {
               {digitalTransformationInfo.map((item, index) => (
                 <Card
                   key={index}
-                  className="bg-gray-900/50 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300 h-full"
+                  className="bg-gradient-to-br from-zinc-900 via-[#141414] to-zinc-900 border border-gray-800 transition-all duration-300 h-full"
                 >
-                  <CardHeader className="p-8 text-center">
+                  <CardHeader className="p-8 ">
                     <CardTitle className="text-xl text-white">{item.title}</CardTitle>
                   </CardHeader>
-                  <CardContent className="p-8 pt-0 space-y-6 flex flex-col items-center text-center">
+                  <CardContent className="p-8 pt-0 space-y-6 flex flex-col">
                     <p className="text-gray-300 leading-relaxed">{item.content}</p>
                     {item?.isButton && (
-                      <div className="flex justify-center mt-auto pt-4">
+                      <div className="flex mt-auto pt-4">
                         <Link href="https://outlook.office.com/bookwithme/user/2d20486392d94cf9b823bc508a230121@manaopili.com?anonymous&ep=plink">
                           <Button
                             className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8"

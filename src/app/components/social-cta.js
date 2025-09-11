@@ -4,16 +4,16 @@ import Link from "next/link";
 
 const socials = [
     {
+        icon: Youtube,
+        name: "Youtube",
+        link: "https://www.youtube.com/@Manaopili-info",
+        color:"red-600"
+    },
+    {
         icon: Linkedin,
         name: "LinkedIn",
         link: "https://www.linkedin.com/company/mana-o-pili/",
         color:"blue-600"
-    },
-    {
-        icon: Youtube,
-        name: "Youtube",
-        link: "https://www.youtube.com/@Manaopili-info",
-        color:'red-600'
     },
 
 ]

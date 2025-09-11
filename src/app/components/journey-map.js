@@ -135,14 +135,14 @@ export default function Timeline({ data }) {
 
 
                     <div className="bg-gradient-to-br from-[#141414] to-zinc-900 border-gray-600/20 border rounded-xl p-4 md:p-5 hover:shadow-lg hover:shadow-zinc-800/20 transition-all duration-300">
-                      <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-4">{step.description}</p>
+                      <p className="text-gray-300 text-sm md:text-lg leading-relaxed mb-4">{step.description}</p>
 
 
                       <div className="flex flex-col gap-1.5 md:gap-2">
                         {step.highlights.map((highlight, highlightIndex) => (
                           <div
                             key={highlightIndex}
-                            className="text-xs text-[#deff00] font-medium flex items-center gap-1.5"
+                            className="md:text-sm text-xs text-[#deff00] font-medium flex items-center gap-1.5"
                           >
                             <p className="bg-zinc-700/20 flex items-center gap-1.5  px-2.5 py-1 rounded-full ">
                               {getHighlightIcon(highlight)}

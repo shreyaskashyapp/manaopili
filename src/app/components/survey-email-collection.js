@@ -30,7 +30,7 @@ export default function SurveyEmailCollection({ onGettingEmail, title = 'Ready t
             return;
         }
         try {
-            const response = await fetch('https://manaopili-dashboard.vercel.app/api/data-collection', {
+            const response = await fetch('https://backend-manaopili.onrender.com/data-collection', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, organization }),
@@ -63,16 +63,16 @@ export default function SurveyEmailCollection({ onGettingEmail, title = 'Ready t
         <div>
             {isLoading && <LoadingIndicator size='large' color='lime' />}
             <HeroSection bgColor={`from-[#455CFF] to-[#141414]`} data={data} height={`[70vh]`} />
-            <div className="flex flex-col justify-center items-center w-full px-2 ppt-4 pb-10 ">
-                <Card className="w-full max-w-3xl border-none bg-zinc-900 rounded-lg md:p-10 ">
-                    <CardHeader className="py-6 text-center">
-                        <h2 className="md:text-4xl text-3xl font-medium text-white">{title}</h2>
-                        <p className="text-md text-[#deff00] mt-4">{subtitle}</p>
+            <div className="flex flex-col justify-center items-center w-full px-2 py-6 ">
+                <Card className="border-none w-full max-w-3xl bg-zinc-800/30 rounded-2xl pt-4 pb-10 px-4 ">
+                    <CardHeader className="space-y-3 text-center relative">
+                        <h2 className="text-3xl font-semibold text-white tracking-wide">{title}</h2>
+                        <p className="text-zinc-400 text-base">{subtitle}</p>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="pb-4 px-8">
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div>
-                                <Label htmlFor="email" className="text-white">Email Address</Label>
+                                <Label htmlFor="email" className="text-sm pb-2 text-white flex items-center gap-2">Email Address</Label>
                                 <Input
                                     id="email"
                                     type="email"
@@ -84,7 +84,7 @@ export default function SurveyEmailCollection({ onGettingEmail, title = 'Ready t
                             </div>
 
                             <div className="relative" ref={dropdownRef}>
-                                <Label htmlFor="organization" className="text-white">Organization Name</Label>
+                                <Label htmlFor="organization" className="text-sm pb-2 text-white flex items-center gap-2">Organization Name</Label>
                                 <Input
                                     id="organization"
                                     type="text"

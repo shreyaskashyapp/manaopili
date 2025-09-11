@@ -61,7 +61,7 @@ const blogPosts = [
         image: "/articles/CyberSecurity.png",
         slug: "cybersecurity",
         link: "pdfs/Cybersecurity Excellence - ServiceNow SecOps, IRM, & Zscaler  v1.01.pdf",
-        category: "Security"
+        category: "CyberSecurity"
     },
     {
         id: 7,
@@ -161,15 +161,24 @@ const blogPosts = [
         slug: "top-technologies",
         link: "pdfs/Top 10 Technologies ServiceNow ITOM Won't Discover  v1.01.pdf",
         category: "ITOM"
-    },{
+    },
+    {
         id: 18,
         title: "Best Practice Implementing and Migrating to CSDM 5",
-        description: " Practical guidance for adopting and migrating to ServiceNow's CSDM 5 to align business and IT under a unified, future-ready model.",
+        description: "Practical guidance for adopting and migrating to ServiceNow's CSDM 5 to align business and IT under a unified, future-ready model.",
         image: "/articles/CSDM_5.png",
-        slug: "top-technologies",
-        link: "pdfs/Best Practices Implementing & Migration to CSDM 5 v1.0.pdf",
+        slug: "csdm-migration-5",
+        link: "pdfs/Cybersecurity Excellence - ServiceNow SecOps, IRM, & Tanium  v1.00.pdf",
         category: "CSDM"
-    }
+    }, {
+        id: 19,
+        title: "Cybersecurity Excellence - ServiceNow SecOps, IRM, & Tanium",
+        description: "Learn how ServiceNow and Tanium unite to deliver faster remediation, stronger compliance, and real-time cybersecurity.",
+        image: "/articles/Tanium Thumbnail.gif",
+        slug: "cybersecurity-excellence",
+        link: "pdfs/Cybersecurity Excellence - ServiceNow SecOps, IRM, & Tanium v1.00.pdf",
+        category: "CyberSecurity"
+    },
 ];
 
 
