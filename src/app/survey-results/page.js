@@ -136,7 +136,7 @@ export default function SurveyResultsPage() {
         </div>
 
         {/* Quick Wins Section */}
-        {quick_wins.length > 0 && (
+        {/* {quick_wins.length > 0 && (
           <>
             <div className="bg-gray-900/50 rounded-xl p-8 border border-gray-700/50">
               <div className="text-center mb-8">
@@ -166,7 +166,7 @@ export default function SurveyResultsPage() {
               </Link>
             </div>
           </>
-        )}
+        )} */}
 
         {/* Disclaimer */}
         <div className="bg-gradient-to-r from-zinc-900 via-[#141414] to-zinc-900 rounded-xl p-6 border border-gray-800 max-w-5xl mx-auto">
@@ -221,12 +221,54 @@ export default function SurveyResultsPage() {
     },
   ]
 
+  // useEffect(() => {
+  //   setLoading(true)
+  //   const surveyData = sessionStorage.getItem("payload")
+  //   const graphData = sessionStorage.getItem("graphData")
+  //   const allModulesGraphData = sessionStorage.getItem("allModulesGraphData")
+  //   const rawData = sessionStorage.getItem("rawData")
+  //   // console.log(graphData)
+  //   const parsedGraphData = JSON.parse(graphData)
+  //   const parsedGraphData2 = JSON.parse(allModulesGraphData)
+  //   setNewGraphData(parsedGraphData)
+  //   setAllModulesGraphData(parsedGraphData2)
+  //   if (!surveyData) {
+  //     setLoading(false)
+  //     return
+  //   } else {
+  //     const parsedData = JSON.parse(surveyData)
+  //     setSurveyData(parsedData)
+  //     setSurveyModule(parsedData.surveyTitle)
+  //     setCurrentSurvey(parsedData.survey)
+  //   }
+  //   const aiInsightsData = sessionStorage.getItem("aiInsightsData")
+  //   if (aiInsightsData) {
+  //     try {
+  //       setAiInsights(JSON.parse(aiInsightsData))
+  //     } catch (error) {
+  //       console.error("Error parsing AI insights:", error)
+  //     }
+  //   }
+  //   sessionStorage.removeItem("aiInsightsData");
+  //   setLoading(false)
+  // }, [])
+
+  // const getAiInsights = async () => {
+  //   const raw = sessionStorage.getItem("rawData")
+  //   const res = await axios.post("https://backend-manaopili.onrender.com/insights", {
+  //     "data": raw
+  //   })
+  //   console.log(res?.data)
+  //   setAiInsights(res?.data?.data)
+  // }
+
   useEffect(() => {
     setLoading(true)
     const surveyData = sessionStorage.getItem("payload")
     const graphData = sessionStorage.getItem("graphData")
     const allModulesGraphData = sessionStorage.getItem("allModulesGraphData")
-    const rawData = sessionStorage.getItem("rawData")
+    const aiInsightsData = sessionStorage.getItem("aiInsightsData")
+    console.log(aiInsightsData)
     // console.log(graphData)
     const parsedGraphData = JSON.parse(graphData)
     const parsedGraphData2 = JSON.parse(allModulesGraphData)
@@ -241,56 +283,17 @@ export default function SurveyResultsPage() {
       setSurveyModule(parsedData.surveyTitle)
       setCurrentSurvey(parsedData.survey)
     }
-    const aiInsightsData = sessionStorage.getItem("aiInsights")
     if (aiInsightsData) {
       try {
         setAiInsights(JSON.parse(aiInsightsData))
-      } catch (error) {
-        console.error("Error parsing AI insights:", error)
-      }
-    }
-    setLoading(false)
-  }, [])
-
-  const getAiInsights = async () => {
-    const raw = sessionStorage.getItem("rawData")
-    const res = await axios.post("https://backend-manaopili.onrender.com/insights", {
-      "data": raw
-    })
-    console.log(res?.data)
-    setAiInsights(res?.data?.data)
-  }
-
-  useEffect(() => {
-    setLoading(true)
-    const surveyData = sessionStorage.getItem("payload")
-    const graphData = sessionStorage.getItem("graphData")
-    const allModulesGraphData = sessionStorage.getItem("allModulesGraphData")
-    // console.log(graphData)
-    const parsedGraphData = JSON.parse(graphData)
-    const parsedGraphData2 = JSON.parse(allModulesGraphData)
-    setNewGraphData(parsedGraphData)
-    setAllModulesGraphData(parsedGraphData2)
-    if (!surveyData) {
-      setLoading(false)
-      return
-    } else {
-      const parsedData = JSON.parse(surveyData)
-      setSurveyData(parsedData)
-      setSurveyModule(parsedData.surveyTitle)
-      setCurrentSurvey(parsedData.survey)
-    }
-
-    const aiInsightsData = sessionStorage.getItem("aiInsights")
-    if (aiInsightsData) {
-      try {
-        setAiInsights(JSON.parse(aiInsightsData))
+        console.log(aiInsightsData)
       } catch (error) {
         console.error("Error parsing AI insights:", error)
         // Keep using sample data if parsing fails
       }
     }
-    getAiInsights().finally(() => setLoading(false))
+    console.log("hey i am working")
+    setLoading(false)
   }, [])
 
   return (

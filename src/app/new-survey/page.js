@@ -34,6 +34,7 @@ export default function SurveyPage() {
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [allModulesResults, setAllModulesResults] = useState({})
     const [isLoading, setIsLoading] = useState(false)
+    const [aiInsights, setAiInsights] = useState({})
 
     const currentTier = tiersData?.[currentTierIndex]
     const totalTiers = tiersData?.length
@@ -96,7 +97,21 @@ export default function SurveyPage() {
         return totalScore / totalModules
     }
 
+    const getAiInsights = async () => {
+        sessionStorage.removeItem("aiInsightsData");
+        const raw = JSON.stringify(moduleRatings)
+        const res = await axios.post("http://localhost:3000/insights", {
+            "data": raw
+        })
+        console.log(res?.data)
+        console.log(res?.data?.data)
+        const aiInsightsData = res?.data?.data
+        setAiInsights(aiInsightsData)
+        sessionStorage.setItem('aiInsightsData', JSON.stringify(aiInsightsData));
+    }
+
     const handleSubmit = async () => {
+        getAiInsights()
         setIsLoading(true)
         sessionStorage.setItem('rawData', JSON.stringify(moduleRatings));
         const calculatedImplementedResults = {}
@@ -135,6 +150,8 @@ export default function SurveyPage() {
     const generatePdf = async () => {
         sessionStorage.setItem('graphData', JSON.stringify(results));
         sessionStorage.setItem('allModulesGraphData', JSON.stringify(allModulesResults));
+        const aiInsightsData = JSON.parse(sessionStorage.getItem("aiInsightsData"));
+        console.log(aiInsightsData)
         // console.log("Storing Graph results in localStorage", results);
         if (graphRef.current) {
             const barChart = await convertHtmlToBase64(graphRef.current)
@@ -146,15 +163,15 @@ export default function SurveyPage() {
                 Name: sessionStorage.getItem('organisationName'),
                 surveyTitle: configs?.[surveyModule]?.title,
                 data: results,
-                survey: surveyModule
+                survey: surveyModule,
+                aiInsights: aiInsightsData,
             }
             sessionStorage.setItem('payload', JSON.stringify(payload));
             setIsLoading(false)
             router.push('/survey-results')
-
-
             try {
-                const res = await axios.post('https://backend-manaopili.onrender.com/generate-pdf-v2', payload, {
+                console.log(payload)
+                const res = await axios.post('http://localhost:3000/generate-pdf-v2', payload, {
                     responseType: 'arraybuffer',
                 });
                 const blob = new Blob([res.data], { type: 'application/pdf' });
@@ -166,6 +183,7 @@ export default function SurveyPage() {
                         newValue: url,
                     })
                 );
+
             }
             catch (err) {
                 const surveyDataPayload = {
@@ -191,18 +209,19 @@ export default function SurveyPage() {
         }
     }, []);
 
-    useEffect(()=>{
-        if (hasSubmitted){
+    useEffect(() => {
+        if (hasSubmitted) {
             topScroll()
             console.log("Working")
         }
-    },[hasSubmitted])
+    }, [hasSubmitted])
 
     useEffect(() => {
         if (submitted && graphRef.current && results) {
-            setTimeout(() => {
-                generatePdf()
-            }, 500)
+            setTimeout(async () => {
+                await getAiInsights();   
+                await generatePdf();   
+            }, 500);
         }
     }, [graphRef.current, results])
 
