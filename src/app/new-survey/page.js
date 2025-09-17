@@ -100,7 +100,7 @@ export default function SurveyPage() {
     const getAiInsights = async () => {
         sessionStorage.removeItem("aiInsightsData");
         const raw = JSON.stringify(moduleRatings)
-        const res = await axios.post("http://localhost:3000/insights", {
+        const res = await axios.post("https://backend-manaopili.onrender.com/insights", {
             "data": raw
         })
         console.log(res?.data)
@@ -171,7 +171,7 @@ export default function SurveyPage() {
             router.push('/survey-results')
             try {
                 console.log(payload)
-                const res = await axios.post('http://localhost:3000/generate-pdf-v2', payload, {
+                const res = await axios.post('https://backend-manaopili.onrender.com/generate-pdf-v2', payload, {
                     responseType: 'arraybuffer',
                 });
                 const blob = new Blob([res.data], { type: 'application/pdf' });
