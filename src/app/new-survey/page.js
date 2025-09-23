@@ -300,7 +300,7 @@ export default function SurveyPage() {
                                                                                     size="icon"
                                                                                     className={`md:w-9 md:h-9 w-7 h-7 rounded-full text-sm font-medium transition-colors
                                                               ${moduleRatings[tier.name]?.[module.slug] === rating
-                                                                                            ? "bg-[#455CFF] text-white border-[#455CFF] shadow-blue-500/25   hover:text-[#455CFF] hover:bg-transparent"
+                                                                                            ? "bg-[#455CFF] text-white border-[#455CFF] shadow-blue-500/25   hover:text-white hover:bg-[#455CFF]"
                                                                                             : "bg-transparent text-zinc-300 border-zinc-700 hover:text-[#455CFF] hover:bg-transparent hover:border-[#455CFF]"
                                                                                         }`}
 
