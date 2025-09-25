@@ -19,7 +19,7 @@ export default function ContactFormV2({formFields,serviceOptions}) {
         e.preventDefault()
         setIsLoading(true) 
         try {
-            const res = await axios.post('https://backend-manaopili.onrender.com/contact-leads', formData)
+            const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}contact-leads`, formData)
             if (res?.status === 200) {
                setSubmitSuccess(true)
             }

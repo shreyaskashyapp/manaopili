@@ -163,7 +163,7 @@ export default function SurveyPage() {
             setIsLoading(false)
             router.push('/survey-results')
             try {
-                const res = await axios.post('https://backend-manaopili.onrender.com/generate-pdf-v2', payload, {
+                const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}generate-pdf-v2`, payload, {
                     responseType: 'arraybuffer',
                 });
                 const blob = new Blob([res.data], { type: 'application/pdf' });
