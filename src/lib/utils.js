@@ -93,7 +93,6 @@ export function getNumberOfZeros(data, key) {
 export const checkIfMobile = () => {
   const userAgent = window.navigator.userAgent;
   const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-  console.log(mobile)
   return mobile;
 };
 

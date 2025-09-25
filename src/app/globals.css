@@ -75,14 +75,14 @@ body {
     --accent-foreground: 0 0% 9%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 75%;
+    --border: 0 0% 90%;
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
-    --chart-1: 233 100% 63%; /* #455CFF */
-    --chart-2: 0 0% 88%; /* TIN          #e2e2e2 */
+    --chart-1: 240 100% 40%; /* #455CFF */
+    --chart-2: 0 0% 70%; /* TIN          #e2e2e2 */
     --chart-3: 0 0% 8%; /* MANA BLACK   #141414 */
-    --chart-4: 72 100% 50%; /* HIGHLIGHTER  #deff00 */
-    --chart-5: 300 60% 60%; /* Purple */
+    --chart-4:  0 0% 18%; /* dark gray */
+    --chart-5: 67.8 100% 50%; /* yellow deff00 */
 
     --chart-1--dark:233 100% 63%; /* Purple */
     --chart-2--dark: 0 0% 24%; /* Dark Gray   #3d3d3d */

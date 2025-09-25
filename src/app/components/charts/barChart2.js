@@ -10,9 +10,9 @@ export default function BarChart2({ results, mode, title }) {
 
   // Define colors for each tier with light/dark mode support
   const tierColors = {
-    "Standard": !isDarkMode ? 'hsl(var(--chart-1))' : 'hsl(var(--chart-1--dark))',
-    "Pro": !isDarkMode ? 'hsl(var(--chart-2))' : 'hsl(var(--chart-2--dark))',
-    "Enterprise": !isDarkMode ? 'hsl(var(--chart-3))' : 'hsl(var(--chart-3--dark))',
+    "Standard": !isDarkMode ? 'hsl(var(--chart-1--dark))' : 'hsl(var(--chart-1--dark))',
+    "Pro": !isDarkMode ? 'hsl(var(--chart-4))' : 'hsl(var(--chart-2--dark))',
+    "Enterprise": !isDarkMode ? 'hsl(var(--chart-2))' : 'hsl(var(--chart-3--dark))',
   }
 
   // Filter out tiers that have null or undefined average scores
@@ -29,10 +29,10 @@ export default function BarChart2({ results, mode, title }) {
     const { x, y, value } = props;
     return (
       <text
-        x={x + 17.5}
+        x={x + 18}
         y={y - 10}
         fill={isDarkMode ? "#fff" : "hsl(var(--foreground))"}
-        fontSize={12}
+        fontSize={11}
         textAnchor="middle"
         dominantBaseline="middle"
       >
@@ -48,11 +48,11 @@ export default function BarChart2({ results, mode, title }) {
         : 'bg-white border-none text-black'
         }`}
     >
-      <CardHeader>
+      {/* <CardHeader>
         <CardTitle className={`md:text-xl text-lg font-normal ${isDarkMode ? 'text-white' : 'text-black'}`}>
           Aggregated Scores For All {title}
         </CardTitle>
-      </CardHeader>
+      </CardHeader> */}
       <CardContent className="py-4 px-0">
         <ChartContainer
           config={Object.fromEntries(
@@ -61,15 +61,16 @@ export default function BarChart2({ results, mode, title }) {
               { label: item.name, color: item.color }
             ])
           )}
-          className={`h-[350px] w-full capitalize ${isDarkMode ? 'bg-transparent' : ''}`}
+          className={`h-[300px] w-full capitalize ${isDarkMode ? 'bg-transparent' : ''}`}
         >
-          <ResponsiveContainer width="80%" height="80%">
+          <ResponsiveContainer width="100%" height="100%">
             <BarChart
               data={chartData}
-              margin={{ top: 20, right: 10, left: 0, bottom: 20 }}
-              barSize={35}
-              barGap={6}
+              margin={{ top: 20, right: 50, left: 0, bottom: 10 }}
+              barSize={40}
+              barGap={0}
             >
+
               <CartesianGrid
                 stroke={isDarkMode ? "rgba(255,255,255,0.08)" : "hsl(var(--border))"}
                 strokeDasharray="3 3"
@@ -101,7 +102,7 @@ export default function BarChart2({ results, mode, title }) {
               />
               <ChartTooltip
                 cursor={false}
-                content={<ChartTooltipContent hideLabel />}
+                content={<ChartTooltipContent />}
               />
               <Bar dataKey="value" radius={[4, 4, 0, 0]}>
                 {chartData.map((item, index) => (

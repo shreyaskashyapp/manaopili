@@ -103,15 +103,12 @@ export default function SurveyPage() {
         const res = await axios.post("https://backend-manaopili.onrender.com/insights", {
             "data": raw
         })
-        console.log(res?.data)
-        console.log(res?.data?.data)
         const aiInsightsData = res?.data?.data
         setAiInsights(aiInsightsData)
         sessionStorage.setItem('aiInsightsData', JSON.stringify(aiInsightsData));
     }
 
     const handleSubmit = async () => {
-        getAiInsights()
         setIsLoading(true)
         sessionStorage.setItem('rawData', JSON.stringify(moduleRatings));
         const calculatedImplementedResults = {}
@@ -123,7 +120,6 @@ export default function SurveyPage() {
         setResults(calculatedImplementedResults)
         setAllModulesResults(calculatedAllModulesResults)
         setSubmitted(true)
-        // console.log(calculatedImplementedResults)
     }
 
     const handleNextTier = () => {
@@ -133,7 +129,6 @@ export default function SurveyPage() {
     }
 
     const handlePreviousTier = () => {
-        console.log("wait what")
         if (currentTierIndex > 0) {
             setCurrentTierIndex(currentTierIndex - 1)
         }
@@ -151,8 +146,6 @@ export default function SurveyPage() {
         sessionStorage.setItem('graphData', JSON.stringify(results));
         sessionStorage.setItem('allModulesGraphData', JSON.stringify(allModulesResults));
         const aiInsightsData = JSON.parse(sessionStorage.getItem("aiInsightsData"));
-        console.log(aiInsightsData)
-        // console.log("Storing Graph results in localStorage", results);
         if (graphRef.current) {
             const barChart = await convertHtmlToBase64(graphRef.current)
             const barChart2 = await convertHtmlToBase64(graphRef2.current)
@@ -170,7 +163,6 @@ export default function SurveyPage() {
             setIsLoading(false)
             router.push('/survey-results')
             try {
-                console.log(payload)
                 const res = await axios.post('https://backend-manaopili.onrender.com/generate-pdf-v2', payload, {
                     responseType: 'arraybuffer',
                 });
@@ -212,7 +204,6 @@ export default function SurveyPage() {
     useEffect(() => {
         if (hasSubmitted) {
             topScroll()
-            console.log("Working")
         }
     }, [hasSubmitted])
 
