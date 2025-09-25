@@ -1,14 +1,15 @@
 import React, { useState, useRef } from 'react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent, CardDescription, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { ArrowDownIcon } from 'lucide-react';
 import LoadingIndicator from './loader';
 import { sampleCompanies } from '../../../constant';
+import HeroSection from './hero-section';
 
 
-const BlogsEmailCollection = ({ onGettingEmail , title = 'Take a look at our articles' , subtitle = 'Fill out your email address to access our articles.'}) => {
+const BlogsEmailCollection = ({ onGettingEmail, title = 'Access Expert Insights', subtitle = 'Fill out your email address to access our articles.' }) => {
     const [email, setEmail] = useState("");
     const [organization, setOrganization] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
@@ -22,6 +23,7 @@ const BlogsEmailCollection = ({ onGettingEmail , title = 'Take a look at our art
         )
         : [];
 
+
     const handleSubmit = async (e) => {
         setIsLoading(true);
         e.preventDefault();
@@ -30,7 +32,7 @@ const BlogsEmailCollection = ({ onGettingEmail , title = 'Take a look at our art
             return;
         }
         try {
-            const response = await fetch('https://manaopili-dashboard.vercel.app/api/data-collection', {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}data-collection`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, organization }),
@@ -45,78 +47,92 @@ const BlogsEmailCollection = ({ onGettingEmail , title = 'Take a look at our art
         } catch (error) {
             console.error('Error submitting form:', error);
         }
-        finally{
+        finally {
             setIsLoading(false)
         }
     };
 
-    return (
-        <div className="flex justify-center md:items-center w-full py-24 md:py-0 px-2 md:h-[100vh] h-full ">
-        {isLoading && <LoadingIndicator size="large" color="lime" />}
-            <Card className="w-full max-w-3xl border-none bg-zinc-900 rounded-lg md:p-10 p-2">
-                <CardHeader className="py-6 text-center">
-                    <h2 className="text-3xl md:text-4xl font-medium text-white">{title}</h2>
-                    <p className="text-md text-[#deff00] mt-6">{subtitle}</p>
-                </CardHeader>
-                <CardContent>
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                        <div>
-                            <Label htmlFor="email" className="text-white">Email Address</Label>
-                            <Input
-                                id="email"
-                                type="email"
-                                placeholder="Email Address*"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                className="bg-zinc-900 border-gray-600 focus:border-[#deff00] focus:ring-[#deff00] text-white"
-                            />
-                        </div>
-                        <div className="relative" ref={dropdownRef}>
-                            <Label htmlFor="organization" className="text-white">Organization Name</Label>
-                            <Input
-                                id="organization"
-                                type="text"
-                                placeholder="Search Organization Name*"
-                                value={searchTerm || organization}
-                                onChange={(e) => {
-                                    const value = e.target.value;
-                                    setOrganization(e.target.value)
-                                    setSearchTerm(value);
-                                    if (!value) setOrganization(""); // Clear organization if input is emptied
-                                    setIsDropdownOpen(true);
-                                }}
-                                onFocus={() => setIsDropdownOpen(true)}
-                                className="bg-zinc-900 border-gray-600 focus:border-[#deff00] focus:ring-[#deff00] text-white"
-                            />
-                            {isDropdownOpen && filteredCompanies.length > 0 && (
-                                <div className="absolute z-10 w-full bg-white border rounded-md shadow-md mt-1 max-h-60 overflow-y-auto">
-                                    {filteredCompanies.map((company, index) => (
-                                        <div
-                                            key={index}
-                                            className="p-3 hover:bg-gray-200 cursor-pointer"
-                                            onClick={() => {
-                                                setOrganization(company);
-                                                setSearchTerm("");
-                                                setIsDropdownOpen(false);
-                                            }}
-                                        >
-                                            {company}
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
+    const data = {
+        title: "Expert Guides",
+        description: (
+            <>
+                Explore our latest blogs and videos for <span className='text-[#deff00]'>expert tips, best practices, and insights</span> on maximizing ServiceNow.
+            </>
+        )
+    }
 
-                        <Button 
-                      
-                            type="submit"
-                            className="w-full bg-white hover:bg-[#deff00] text-black font-medium transition-all"
-                        >
-                            NEXT
-                        </Button>
-                    </form>
-                </CardContent>
-            </Card>
+    return (
+        <div className=" ">
+            {isLoading && <LoadingIndicator size="large" color="lime" />}
+            <HeroSection data={data} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
+            <div className='flex justify-center items-center w-full py-6 px-2 h-full'>
+                <Card className="border-none w-full max-w-3xl bg-zinc-800/30 rounded-2xl pt-4 pb-10 px-4">
+                    <CardHeader className="space-y-3 text-center relative">
+                        <h2 className="text-3xl font-semibold text-white tracking-wide">{title}</h2>
+                        <CardDescription className="text-zinc-400 text-base">
+                            {subtitle}
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent className="pb-4 px-8">
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                            <div>
+                                <Label htmlFor="email" className="text-sm pb-2 text-white flex items-center gap-2">Email Address</Label>
+                                <Input
+                                    id="email"
+                                    type="email"
+                                    placeholder="Email Address*"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    className="bg-zinc-900 border-gray-600 focus:border-[#deff00] focus:ring-[#deff00] text-white"
+                                />
+                            </div>
+                            <div className="relative" ref={dropdownRef}>
+                                <Label htmlFor="organization" className="text-sm pb-2 text-white flex items-center gap-2">Organization Name</Label>
+                                <Input
+                                    id="organization"
+                                    type="text"
+                                    placeholder="Search Organization Name*"
+                                    value={searchTerm || organization}
+                                    onChange={(e) => {
+                                        const value = e.target.value;
+                                        setOrganization(e.target.value)
+                                        setSearchTerm(value);
+                                        if (!value) setOrganization(""); // Clear organization if input is emptied
+                                        setIsDropdownOpen(true);
+                                    }}
+                                    onFocus={() => setIsDropdownOpen(true)}
+                                    className="bg-zinc-900 border-gray-600 focus:border-[#deff00] focus:ring-[#deff00] text-white"
+                                />
+                                {isDropdownOpen && filteredCompanies.length > 0 && (
+                                    <div className="absolute z-10 w-full bg-white border rounded-md shadow-md mt-1 max-h-60 overflow-y-auto">
+                                        {filteredCompanies.map((company, index) => (
+                                            <div
+                                                key={index}
+                                                className="p-3 hover:bg-gray-200 cursor-pointer"
+                                                onClick={() => {
+                                                    setOrganization(company);
+                                                    setSearchTerm("");
+                                                    setIsDropdownOpen(false);
+                                                }}
+                                            >
+                                                {company}
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+
+                            <Button
+
+                                type="submit"
+                                className="w-full bg-white hover:bg-[#deff00] text-black font-medium transition-all"
+                            >
+                                NEXT
+                            </Button>
+                        </form>
+                    </CardContent>
+                </Card>
+            </div>
         </div>
     );
 };

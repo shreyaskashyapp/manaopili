@@ -19,8 +19,7 @@ export default function ContactFormV2({formFields,serviceOptions}) {
         e.preventDefault()
         setIsLoading(true) 
         try {
-            const res = await axios.post('https://manaopili-dashboard.vercel.app/api/lead-collection', formData)
-            console.log(formData)
+            const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}contact-leads`, formData)
             if (res?.status === 200) {
                setSubmitSuccess(true)
             }
@@ -57,7 +56,7 @@ export default function ContactFormV2({formFields,serviceOptions}) {
                     </Button>
                 </div>
             ):
-            <Card className='bg-gray-200/10 border-gray-400 w-full h-full max-w-3xl flex flex-col p-2 '>
+            <Card className='bg-gray-400/10 border-gray-100/20 w-full h-full rounded-xl shadow-[#141414]/40 shadow-md max-w-3xl flex flex-col p-2 '>
                 <CardHeader className='text-white text-2xl'>
                     Connect with us
                 </CardHeader>
@@ -65,12 +64,12 @@ export default function ContactFormV2({formFields,serviceOptions}) {
                     <form onSubmit={handleSubmit} className="space-y-8">
                         <div className="grid md:grid-cols-2 gap-6">
                             {formFields.map((item) => (
-                                <div key={item.id} className="flex flex-col gap-2">
+                                <div key={item.id} className={`flex flex-col ${item.id === 'message' ? 'md:col-span-full' : ''} gap-2`}>
                                     <Label className='text-[#deff00]'>{item.label}{item.isRequired ? "*" : ''}</Label>
                                     {item.isSelection ? (
                                             <Select onValueChange={(value) => setFormData({ ...formData, [item.id]: value })}> 
-                                                <SelectTrigger className="bg-transparent  text-white border-gray-400">
-                                                    <SelectValue placeholder="Select Service" className="placeholder:text-zinc-200"/>
+                                                <SelectTrigger className="bg-transparent  text-white border-gray-100/40">
+                                                    <SelectValue placeholder="Select Service" className="placeholder:text-zinc-200 "/>
                                                 </SelectTrigger>
                                                 <SelectContent className="bg-blue-200">
                                                 {serviceOptions.map((item,idx)=>(
@@ -79,17 +78,17 @@ export default function ContactFormV2({formFields,serviceOptions}) {
                                                 </SelectContent>
                                             </Select>
                                     ) :
-                                        <Input onChange={(e) => setFormData({ ...formData, [item.id]: e.target.value })} type={item.text} placeholder={item.placeholder} required={item.isRequired} className='bg-transparent placeholder:text-zinc-200 text-sm text-white border-gray-400'></Input>
+                                        <Input onChange={(e) => setFormData({ ...formData, [item.id]: e.target.value })} type={item.text} placeholder={item.placeholder} required={item.isRequired} className='bg-transparent placeholder:text-zinc-200 text-sm text-white border-gray-100/40'></Input>
                                     }
                                 </div>
                             ))}
                         </div>
-                        <div className="bg-gradient-to-r from-transparent to-green-400/10 border border-white/20 rounded-lg p-4">
+                        {/* <div className="bg-gradient-to-r from-transparent to-green-400/10 border border-white/20 rounded-lg p-4">
                             <p className="text-white text-sm">
                                 <span className="font-semibold text-[#deff00]">Fast Response Guarantee:</span>{" "}
                                 {"We'll contact you within 2 business hours to discuss your digital transformation needs."}
                             </p>
-                        </div>
+                        </div> */}
                         <Button type='submit' className="w-full bg-blue-200 font-semibold hover:bg-[#deff00] text-black transition-all">Get Started Now </Button>
                     </form>
                 </CardContent>

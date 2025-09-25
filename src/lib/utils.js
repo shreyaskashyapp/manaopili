@@ -93,19 +93,22 @@ export function getNumberOfZeros(data, key) {
 export const checkIfMobile = () => {
   const userAgent = window.navigator.userAgent;
   const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-  console.log(mobile)
   return mobile;
 };
 
 export async function activateServer() {
-  try{
-    const response = await axios.get('https://backend-manaopili.onrender.com/')
+  try {
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}`)
     if (response.status === 200) {
       console.log("Server activated", response.status)
     }
   }
-  catch(err){
+  catch (err) {
     console.error(err.message)
   }
   return null;
+}
+
+export function topScroll() {
+  window.scrollTo(0, 0)
 }

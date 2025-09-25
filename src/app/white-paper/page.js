@@ -85,8 +85,17 @@ const WhitePaper = () => {
         'top-technologies': {
             file: '/pdfs/Top 10 Technologies ServiceNow ITOM Won\'t Discover  v1.01.pdf',
             title: 'Top 10 Technologies ServiceNow ITOM Won\'t Discover'
+        },
+        'csdm-migration-5': {
+            file: '/pdfs/Best Practices Implementing & Migration to CSDM 5 v1.0.pdf',
+            title: 'Best Practice Implementing and Migrating to CSDM 5'
+        },
+        'cybersecurity-excellence': {
+            file: '/pdfs/Cybersecurity Excellence - ServiceNow SecOps, IRM, & Tanium  v1.00.pdf',
+            title: 'Cybersecurity Excellence - ServiceNow SecOps, IRM, & Tanium'
         }
     };
+    
 
     useEffect(() => {
         if (paper && data[paper]) {
@@ -99,7 +108,7 @@ const WhitePaper = () => {
         <div className="min-h-screen p-8 text-white mt-20">
             <h1 className="text-4xl mb-4 text-white">{documentTitle}</h1>
             {article ? (
-                <div className="w-full h-[80vh] border-2 border-[#deff00] rounded-lg overflow-hidden">
+                <div className="w-full h-[80vh] border-2 border-zinc-500 rounded-lg overflow-hidden">
                     <iframe
                         src={article}
                         title={documentTitle}

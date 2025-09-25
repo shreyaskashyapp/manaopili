@@ -3,6 +3,7 @@
 import React, { useRef, useState } from 'react';
 import LoadingIndicator from '../components/loader';
 import HeroSection from '../components/hero-section';
+import axios from 'axios';
 
 const fieldsWithTypes = [
   { name: "Name", type: "text", placeholder: "Enter your full name", isRequired: true },
@@ -69,15 +70,11 @@ const Careers = () => {
     setIsLoading(true);
     
     try {
-      const response = await fetch('https://manaopili-dashboard.vercel.app/api/job-application', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}job-application`, 
+        formData,
+      );
 
-      if(response.ok) {
+      if(response.status === 200) {
         setSubmitSuccess(true);
       } else {
         setError('Failed to submit application. Please try again later.');

@@ -1,14 +1,14 @@
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 
-export default function SurveyButton({data,title}) {
+export default function SurveyButton({ url, title }) {
     return (
-        <div>
-            <a
-                href={data.link}
-                className="inline-flex items-center px-6 py-3 text-base font-medium text-zinc-800 bg-blue-100 hover:bg-[#deff00] rounded-full transition-all duration-300"
-            >
-                {data.text}
-            </a>
-        </div>
+        <Link href={url} target="_blank">
+            <button className="flex hover:text-white border-gray-300 bg-transparent hover:bg-[#455cff] hover:border-[#455cff] text-gray-300 font-thin text-xl items-center gap-2 rounded-lg py-3 px-4 border-2">
+                <p className="text-lg">{title}</p>
+                <img src="/arrow_white.png" alt="Arrow" width={13} height={13} />
+            </button>
+        </Link>
     )
 }
