@@ -166,7 +166,7 @@ export default function Survey() {
       try {
         setGeneratingPdf(true)
         router.push('/survey-results')
-        const res = await axios.post('https://backend-manaopili.onrender.com/generate-pdf', payload, {
+        const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}generate-pdf`, payload, {
           responseType: 'arraybuffer', // <-- Important to handle raw binary PDF response
         });
         const blob = new Blob([res.data], { type: 'application/pdf' });
@@ -185,7 +185,7 @@ export default function Survey() {
           'status': 'error',
           'error': err.message
         }
-        await axios.post('https://backend-manaopili.onrender.com/survey-data-collection', surveyDataPayload);
+        await axios.post('${process.env.NEXT_PUBLIC_BACKEND_URL}survey-data-collection', surveyDataPayload);
         console.error("PDF failed to download", err);
         setPdfError(true)
       }

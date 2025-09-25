@@ -32,7 +32,7 @@ const BlogsEmailCollection = ({ onGettingEmail, title = 'Access Expert Insights'
             return;
         }
         try {
-            const response = await fetch('https://backend-manaopili.onrender.com/data-collection', {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}data-collection`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, organization }),

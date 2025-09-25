@@ -100,7 +100,7 @@ export default function SurveyPage() {
     const getAiInsights = async () => {
         sessionStorage.removeItem("aiInsightsData");
         const raw = JSON.stringify(moduleRatings)
-        const res = await axios.post("https://backend-manaopili.onrender.com/insights", {
+        const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}insights`, {
             "data": raw
         })
         const aiInsightsData = res?.data?.data
@@ -183,7 +183,7 @@ export default function SurveyPage() {
                     'status': 'error',
                     'error': err.message
                 }
-                await axios.post('https://backend-manaopili.onrender.com/survey-data-collection', surveyDataPayload);
+                await axios.post('${process.env.NEXT_PUBLIC_BACKEND_URL}survey-data-collection', surveyDataPayload);
                 console.error("PDF failed to download", err);
             }
             finally {

@@ -98,7 +98,7 @@ export const checkIfMobile = () => {
 
 export async function activateServer() {
   try {
-    const response = await axios.get('https://backend-manaopili.onrender.com/')
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}`)
     if (response.status === 200) {
       console.log("Server activated", response.status)
     }
