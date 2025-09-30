@@ -70,7 +70,7 @@ export default function WhyManaopiliWheel() {
     return (
         <section className="bg-transparent flex flex-col lg:flex-row py-10">
             <div className="container mx-auto lg:w-1/2">
-                <div className="flex justify-center items-center">
+                <div className="flex justify-center items-center lg:pl-12">
                     <div className="relative w-[250px] h-[250px] md:w-[400px] md:h-[400px] mx-auto mb-[5%] my-[7%]">
                         {/* Outer circle */}
                         <div className="absolute top-0 left-0 w-full h-full rounded-full border border-white"></div>
@@ -171,7 +171,7 @@ export default function WhyManaopiliWheel() {
                 </div>
             </div>
             <div className=" pt-8 lg:pt-0 lg:w-1/2">
-                <div className="space-y-6 px-4">
+                <div className="space-y-6 px-4 pl-6 lg:pl-20 xl:pl-6">
                     {/* <p className="text-[#e2e2e2] text-md md:text-lg  leading-relaxed font-light">
                     At Mana'o Pili, we bring measurable impact. Our approach combines deep ServiceNow expertise with a customer-first mindset to ensure every transformation creates lasting value.
                   </p> */}
