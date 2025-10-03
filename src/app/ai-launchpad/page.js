@@ -1,6 +1,7 @@
 import { Compass, DollarSign, HelpCircle } from "lucide-react";
 import Introduction from "../components/ai-introduction";
 import HeroSection from "../components/hero-section";
+import { FeatureDelimitedSection } from "./components/feature-delimeter";
 
 const hero = {
     title: "AI LaunchPad",
@@ -10,20 +11,31 @@ const hero = {
         </>
     )
 }
-const painPoints = [
-    {
-        icon: DollarSign,
-        text: "Worried about Cost of Implementing AI",
+const painPoints = {
+    hero: {
+        title: "Mana'o Pili Transforms ServiceNow AI",
+        subtitle: "from Complexity into Clarity",
     },
-    {
-        icon: Compass,
-        text: "Don't know where and how to start the journey",
+    painPoints: [
+        {
+            id: 1,
+            text: "Worried about Cost of Implementing AI",
+        },
+        {
+            id: 2,
+            text: "Don't know where and how to start the journey",
+        },
+        {
+            id: 3,
+            text: "Not sure if you're ready for AI in your organization",
+        },
+    ],
+    cta: {
+        statement: "Statement of executing AI with a fraction of the investment and time but realizing value immediately",
+        buttonText: "Link to SN AI Starter",
+        buttonLink: "#",
     },
-    {
-        icon: HelpCircle,
-        text: "Not sure if you're ready for AI in your organization",
-    },
-];
+}
 
 
 
@@ -31,6 +43,7 @@ export default function AiLaunchPad() {
     return (
         <div>
             <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
+            <div className="px-20 ">
             <div className="flex flex-col items-center justify-center pt-4 pb-10">
                 <div className="w-full max-w-5xl px-10 py-4 flex flex-col gap-6 ">
                     {/* <Image src='/non-profit/nonprofit_1.png' alt="Beach" className="w-full" width={500} height={500} /> */}
@@ -44,6 +57,10 @@ export default function AiLaunchPad() {
                 </div>
             </div>
             <Introduction />
+            <div>
+                <FeatureDelimitedSection data={painPoints} />
+            </div>
+            </div>
         </div>
     )
 }

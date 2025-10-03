@@ -22,7 +22,7 @@ const features = [
 export default function Introduction() {
     return (
         <section className="py-10 md:py-16 px-4">
-            <div className="max-w-7xl mx-auto">
+            <div className="">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
                         {/* <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#455cff]/10 border border-[#455cff]/20 mb-6">
