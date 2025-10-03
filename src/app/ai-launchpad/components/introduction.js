@@ -21,7 +21,7 @@ const features = [
 
 export default function Introduction() {
     return (
-        <section className="py-10 md:py-16 px-4">
+        <section className="py-10 md:py-16">
             <div className="">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
