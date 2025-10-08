@@ -12,7 +12,7 @@ export default function CTA({ data }) {
                             <h2 className="text-3xl md:text-5xl font-semibold text-[#ffffff] leading-tight">
                                 {data?.title}
                             </h2>
-                            <p className="text-xl md:text-2xl text-gray-400 font-normal max-w-3xl mx-auto leading-relaxed">
+                            <p className="text-md md:text-2xl text-gray-400 font-normal max-w-3xl mx-auto leading-relaxed">
                                 {data?.subTitle}
                             </p>
                             <div className="flex justify-center">

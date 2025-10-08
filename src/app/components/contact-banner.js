@@ -2,10 +2,10 @@ import { Card } from "@/components/ui/card";
 import SurveyButton from "./surveyButton";
 import { CheckCircle } from "lucide-react";
 
-export default function ContactBanner() {
+export default function ContactBanner({ color="[#deff00]" }) {
   const content = {
     title: <>
-      Ready to Transform Your <span className="text-[#deff00]">ServiceNow</span> Journey?
+      Ready to Transform Your <span className={`text-${color}`}>ServiceNow</span> Journey?
     </>,
     subtitle:
       "Let our experts guide you through every step of your ServiceNow transformation. From discovery to ongoing innovation, we're here to help you succeed.",
@@ -18,7 +18,7 @@ export default function ContactBanner() {
 
   return (
 
-    <section className="w-full pb-10 px-6">
+    <section className="w-full pb-10">
       <div className="max-w-6xl mx-auto">
         <Card className="bg-gradient-to-r from-zinc-900 via-[#141414] to-zinc-900 border border-zinc-800 shadow-md shadow-zinc-900 p-8 md:p-12 relative overflow-hidden">
           <div className="relative z-10 grid lg:grid-cols-3 gap-8 items-center">
@@ -48,7 +48,7 @@ export default function ContactBanner() {
                 <div className="space-y-4">
                   {content?.features?.map((feature, index) => (
                     <div key={index} className="flex items-center gap-3">
-                      <CheckCircle className="h-5 w-5 text-[#deff00] flex-shrink-0" />
+                      <CheckCircle className={`h-5 w-5 text-${color} flex-shrink-0`} />
                       <span className="text-gray-300 md:text-base text-sm">{feature}</span>
                     </div>
                   ))}

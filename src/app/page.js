@@ -216,7 +216,9 @@ export default function HomePage() {
           </div>
         </div>
         {/* Contact us banner */}
-        <ContactBanner />
+        <div className="px-6">
+          <ContactBanner />
+        </div>
       </div>
     </div>
   )
