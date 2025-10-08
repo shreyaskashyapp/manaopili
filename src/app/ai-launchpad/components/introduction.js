@@ -25,7 +25,7 @@ export default function Introduction({data}) {
                                 key={index}
                                 className="flex items-center gap-4 p-2 md:p-4 rounded-xl bg-gradient-to-b from-zinc-900 to-[#141414] border border-zinc-900 hover:border-[#455cff]/20 transition-all duration-300 group"
                             >
-                                <div className="w-12 h-12 rounded-lg bg-[#455cff]/10 flex items-center justify-center flex-shrink-0">
+                                <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
                                     <feature.icon className="w-6 h-6 text-[#455cff]" />
                                 </div>
                                 <p className="md:text-base text-sm font-semibold text-gray-400">
