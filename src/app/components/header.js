@@ -28,6 +28,7 @@ export default function Header() {
 
     const navItems = [
         { href: "/services", label: "SERVICES" },
+        { href: "/ai-launchpad", label: "AI LAUNCHPAD" },
         { href: "/about", label: "ABOUT" },
         { href: "/non-profit", label: "NON-PROFIT" },
         { href: "/expert-guides", label: "EXPERT GUIDES" },
