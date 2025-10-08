@@ -19,7 +19,7 @@ export default function PricingCards({data}) {
                         >
                             {tier?.recommended && (
                                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#9a9998] text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">
-                                    BEST VALUE
+                                    POPULAR
                                 </div>
                             )}
 

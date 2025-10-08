@@ -33,7 +33,14 @@ export default function Products({data}) {
                 <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
                     <TabsList className="flex w-full mb-8 bg-gradient-to-b from-zinc-900 to-[#141414] border border-zinc-900 ">
                         {data?.categories?.map((cat) => (
-                            <TabsTrigger key={cat} value={cat} className="flex-1 data-[state=active]:bg-[#455cff]/10 data-[state=active]:text-white text-sm sm:text-base">
+                            <TabsTrigger
+                                key={cat}
+                                value={cat}
+                                className={`flex-1 data-[state=active]:bg-[#455cff]/10 data-[state=active]:text-white text-sm sm:text-base relative
+                                    ${activeTab === cat ? "after:content-[''] after:absolute after:left-0 after:right-0 after:-bottom-1 after:h-1 after:bg-[#455cff] after:rounded-t" : ""}
+                                `}
+                                style={{ position: "relative" }}
+                            >
                                 {cat}
                             </TabsTrigger>
                         ))}
@@ -46,7 +53,7 @@ export default function Products({data}) {
                                     <Card key={service?.id} className="hover:border-[#455cff]/20 transition-all bg-gradient-to-b from-zinc-900 to-[#141414] border border-zinc-900 duration-300 cursor-pointer group">
                                         <CardHeader>
                                             <div className="flex items-start justify-between mb-2 ">
-                                                <span className="text-xs font-semibold px-2 py-1 rounded bg-[#455cff]/10 text-[#455cff]">
+                                                <span className="text-xs font-semibold px-2 py-1 rounded text-[#455cff]">
                                                     {service?.category}
                                                 </span>
                                             </div>
