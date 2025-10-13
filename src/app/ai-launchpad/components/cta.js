@@ -1,6 +1,7 @@
 import SurveyButton from "@/app/components/surveyButton";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function CTA({ data }) {
     return (
@@ -16,10 +17,12 @@ export default function CTA({ data }) {
                                 {data?.subTitle}
                             </p>
                             <div className="flex justify-center">
-                                <Button size="lg" className="px-10 py-7 text-lg border border-gray-400 hover:bg-[#455cff] hover:border-[#455cff] rounded-lg group relative overflow-hidden">
-                                    <p className="relative">Link to SN AI Starter</p>
-                                    <ArrowRight className="relative ml-2 group-hover:translate-x-2 transition-transform" />
-                                </Button>
+                                <Link href={data?.url} target="_blank">
+                                    <Button size="lg" className="px-10 py-7 text-lg border border-gray-400 hover:bg-[#455cff] hover:border-[#455cff] rounded-lg group relative overflow-hidden">
+                                        <p className="relative">Link to SN AI Starter</p>
+                                        <ArrowRight className="relative ml-2 group-hover:translate-x-2 transition-transform" />
+                                    </Button>
+                                </Link>
                             </div>
                         </div>
                     </div>

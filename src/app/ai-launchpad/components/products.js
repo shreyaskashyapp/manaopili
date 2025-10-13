@@ -3,9 +3,6 @@ import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/ca
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
 
-
-const categories = ["Platform", "ITSM/CSM", "ITOM"]
-
 export default function Products({data}) {
 
     const [activeTab, setActiveTab] = useState("Platform");

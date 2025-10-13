@@ -8,6 +8,7 @@ import PricingCards from "./components/pricing-cards";
 import SurveyButton from "../components/surveyButton";
 import ContactBanner from "../components/contact-banner";
 import { Sparkles, Zap, TrendingUp, Shield, Rocket, Target } from "lucide-react";
+import Media from "./components/media";
 
 const data = {
     hero: {
@@ -71,10 +72,9 @@ const data = {
 
     },
     cta: {
-        url: "",
+        url: "https://www.servicenow.com/now-platform.html",
         title: <>Your Clear Path to <span className="text-[#455cff]">AI Success.</span></>,
         subTitle: <>Execute AI in a fraction of the cost <span className="text-[#455cff]">investment</span> and <span className="text-[#455cff]">time</span>, start realizing value today.</>
-
     },
     products: {
         services: [
@@ -98,12 +98,6 @@ const data = {
                 description: "Query and get answers on Incidents, Case, CI or Asset Records"
             },
             {
-                id: "agent-assist",
-                category: "Platform",
-                title: "Agent Assist",
-                description: "Get suggested response for agents"
-            },
-            {
                 id: "kb-drafts",
                 category: "Platform",
                 title: "KB Drafts",
@@ -115,18 +109,6 @@ const data = {
                 category: "ITSM/CSM",
                 title: "Triage",
                 description: "Automated categorization and routing"
-            },
-            {
-                id: "virtual-agent",
-                category: "ITSM/CSM",
-                title: "Virtual Agent",
-                description: "Virtual Agent with Generative Enhancements"
-            },
-            {
-                id: "predicted-resolution",
-                category: "ITSM/CSM",
-                title: "Predicted Resolution",
-                description: "Predict resolution based on KB articles or historical tickets"
             },
             {
                 id: "customer-sentiment",
@@ -159,18 +141,6 @@ const data = {
                 title: "Lifecycle Notifications",
                 description: "Suggest maintenance, starting renewal negotiations"
             },
-            {
-                id: "predictive-service-health",
-                category: "ITOM",
-                title: "Predictive Service Health",
-                description: "Issue detection and early warning"
-            },
-            {
-                id: "risk-compliance",
-                category: "ITOM",
-                title: "Risk & Compliance",
-                description: "sdsd"
-            }
         ],
         categories:
             ["Platform", "ITSM/CSM", "ITOM"]
@@ -206,48 +176,51 @@ const data = {
     tiers: [
         {
             name: 'Bronze',
+            pricing: "$10,000",
             duration: '2 weeks',
             level: 'Starter',
             features: [
-                'Enablement of 3 AI Starter Solutions',
+                ' Enablement of up to 3 AI Starter Solutions',
                 'AI Readiness Assessment',
                 'AI Solution Driven Roadmap'
             ],
-            color:'text-[#CE8946]',
-            border:'border-[#CE8946]',
-            bg:'bg-[#CE8946]',
+            color: 'text-[#CE8946]',
+            border: 'border-[#CE8946]',
+            bg: 'bg-[#CE8946]',
         },
         {
             name: 'Silver',
+            pricing: "$25,000",
             duration: '4 weeks',
             level: 'Professional',
             recommended: true,
             features: [
-                'Enablement of 3 AI Starter Solutions',
+                ' Enablement of up to 3 AI Starter Solutions',
                 'AI Readiness Assessment',
                 'AI data cleanup and normalization',
                 'AI Model Training',
                 'AI Solution Driven Roadmap'
             ],
-            color:'text-[#C4C4C4]',
-            border:'border-[#C4C4C4]',
-            bg:'bg-[#9a9998]',
+            color: 'text-[#C4C4C4]',
+            border: 'border-[#C4C4C4]',
+            bg: 'bg-[#9a9998]',
         },
         {
             name: 'Gold',
+            pricing: "$50,000+",
             duration: '8 weeks',
             level: 'Enterprise',
             features: [
-                'Enablement of 5 AI Starter Solutions',
+                ' Enablement of up to 5 AI Starter Solutions',
                 'AI Readiness Assessment',
                 'AI data cleanup and normalization',
                 'AI Model Training',
                 'AI Solution Driven Roadmap',
                 'AI Tuning and Optimization'
             ],
-            color:'text-[#D3AF37]',
-            border:'border-[#D3AF37]',
-            bg:'bg-[#D3AF37]',
+            color: 'text-[#D3AF37]',
+            border: 'border-[#D3AF37]',
+            bg: 'bg-[#D3AF37]',
         }
     ],
 }
@@ -257,17 +230,8 @@ export default function AiLaunchPad() {
         <div>
             <HeroSection data={data?.hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
             <div className="w-full max-w-7xl px-6 mx-auto">
-                <div className="flex flex-col items-center justify-center pt-4 md:pb-10">
-                    <div className="w-full max-w-5xl md:px-10 py-4 flex flex-col gap-6 ">
-                        {/* <Image src='/non-profit/nonprofit_1.png' alt="Beach" className="w-full" width={500} height={500} /> */}
-                        <iframe
-                            src="https://www.youtube.com/embed/VvHlJ7Ei_es?si=nww4wEZqwkdDv9bO"
-                            title="wait"
-                            className="w-full aspect-video rounded-xl"
-                            allow=""
-                            allowFullScreen
-                        />
-                    </div>
+                <div>
+                    <Media url="https://www.youtube.com/embed/VvHlJ7Ei_es?si=nww4wEZqwkdDv9bO"/>
                 </div>
                 <div className="py-10">
                     <Introduction data={data?.introduction} />

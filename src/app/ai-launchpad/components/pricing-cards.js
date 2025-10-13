@@ -1,6 +1,6 @@
 import { Check, Sparkles } from 'lucide-react';
 
-export default function PricingCards({data}) {
+export default function PricingCards({ data }) {
     return (
         <div className="py-10 px-4">
             <div className="mx-auto">
@@ -25,6 +25,7 @@ export default function PricingCards({data}) {
 
                             <div className="flex flex-col gap-2 md:pt-4 text-center mb-4">
                                 <h3 className={`md:text-5xl text-3xl font-bold ${tier.color} mb-1`}>{tier?.name}</h3>
+                                <p className={`md:text-3xl font-normal ${tier.color} mb-1`}>{tier?.pricing}</p>
                                 {/* <h3 className="text-5xl font-bold text-[#455cff] mb-1">5</h3> */}
                                 <p className="text-zinc-400 text-sm mb-2">{tier?.level}</p>
                                 <p className={`${tier.color} text-sm mb-2`}>Duration - {tier?.duration}</p>

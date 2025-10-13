@@ -57,7 +57,7 @@ export default function Header() {
                             </Link>
                         ))}
                         <Link href={'/survey-list'}>
-                            <Button className="hover:text-white hover:bg-[#455cff]  text-white font-thin text-xl flex items-center gap-2 rounded-lg px-4 bg-transparent border border-[#deff00] ">
+                            <Button className="hover:text-white hover:bg-[#455cff] hover:border-[#455cff] text-white font-thin text-xl flex items-center gap-2 rounded-lg px-4 bg-transparent border border-[#deff00] ">
                                 SURVEY
                                 <Image src="/arrow_yellow.png" alt="Arrow" width={15} height={15} />
                             </Button>
@@ -92,7 +92,7 @@ export default function Header() {
                             </Link>
                         ))}
                         <Link href={'/survey-list'}>
-                            <Button onClick={() => setIsMenuOpen(false)} className="flex hover:text-[#deff00] hover:bg-[#455cff] text-white font-thin text-xl items-center gap-2 rounded-lg px-4 bg-transparent border-[#deff00] border-2">
+                            <Button onClick={() => setIsMenuOpen(false)} className="flex hover:text-[#deff00] hover:border-[#455cff] hover:bg-[#455cff] text-white font-thin text-xl items-center gap-2 rounded-lg px-4 bg-transparent border-[#deff00] border-2">
                                 SURVEY
                                 <Image src="/arrow_yellow.png" alt="Arrow" width={15} height={15} />
                             </Button>
