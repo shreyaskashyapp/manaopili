@@ -230,9 +230,6 @@ export default function AiLaunchPad() {
         <div>
             <HeroSection data={data?.hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
             <div className="w-full max-w-7xl px-6 mx-auto">
-                <div>
-                    <Media url="https://www.youtube.com/embed/VvHlJ7Ei_es?si=nww4wEZqwkdDv9bO"/>
-                </div>
                 <div className="py-10">
                     <Introduction data={data?.introduction} />
                 </div>
@@ -242,6 +239,9 @@ export default function AiLaunchPad() {
                 <div>
                     <FeatureDelimitedSection data={data?.painPoints} />
                     <CTA data={data?.cta} />
+                </div>
+                <div>
+                    <Media url="https://www.youtube.com/embed/VvHlJ7Ei_es?si=nww4wEZqwkdDv9bO" />
                 </div>
                 <div>
                     <Products data={data?.products} />

@@ -49,8 +49,8 @@ export default function Products({data}) {
                                 {getServicesByCategory(category)?.map((service) => (
                                     <Card key={service?.id} className="hover:border-[#455cff]/20 transition-all bg-gradient-to-b from-zinc-900 to-[#141414] border border-zinc-900 duration-300 cursor-pointer group">
                                         <CardHeader>
-                                            <div className="flex items-start justify-between mb-2 ">
-                                                <span className="text-xs font-semibold px-2 py-1 rounded text-[#455cff]">
+                                            <div className="flex items-start justify-between ">
+                                                <span className="text-xs font-semibold px-2 py-1 text-[#455cff] bg-[#455cff]/10 rounded-full" >
                                                     {service?.category}
                                                 </span>
                                             </div>
