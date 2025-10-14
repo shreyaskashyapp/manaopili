@@ -1,4 +1,5 @@
-import { Compass, DollarSign, HelpCircle } from "lucide-react";
+'use client'
+import { Bell, BookOpen, Calendar, Compass, DollarSign, FileSignature, FileText, GitBranch, Heart, HelpCircle, MessageSquare, Search } from "lucide-react";
 import Introduction from "./components/introduction";
 import HeroSection from "../components/hero-section";
 import { FeatureDelimitedSection } from "./components/feature-delimeter";
@@ -9,6 +10,7 @@ import SurveyButton from "../components/surveyButton";
 import ContactBanner from "../components/contact-banner";
 import { Sparkles, Zap, TrendingUp, Shield, Rocket, Target } from "lucide-react";
 import Media from "./components/media";
+import SnAssistSection from "./components/sn-assist-section";
 
 const data = {
     hero: {
@@ -83,67 +85,76 @@ const data = {
                 id: "summarizations",
                 category: "Platform",
                 title: "Summarizations",
-                description: "Incident, Case, Alert Summarization"
+                description: "Incident, Case, Alert Summarization",
+                icon: FileText
             },
             {
                 id: "ai-search",
                 category: "Platform",
                 title: "AI Search",
-                description: "Natural Language Search"
+                description: "Natural Language Search",
+                icon: Search
             },
             {
                 id: "ai-query",
                 category: "Platform",
                 title: "AI Query",
-                description: "Query and get answers on Incidents, Case, CI or Asset Records"
+                description: "Query and get answers on Incidents, Case, CI or Asset Records",
+                icon: MessageSquare
             },
             {
                 id: "kb-drafts",
                 category: "Platform",
                 title: "KB Drafts",
-                description: "Knowledge Article Drafting & Improvement Suggestions"
+                description: "Knowledge Article Drafting & Improvement Suggestions",
+                icon: BookOpen
             },
             // ITSM/CSM
             {
                 id: "triage",
                 category: "ITSM/CSM",
                 title: "Triage",
-                description: "Automated categorization and routing"
+                description: "Automated categorization and routing",
+                icon: GitBranch
             },
             {
                 id: "customer-sentiment",
                 category: "CSM",
                 title: "Customer Sentiment",
-                description: "Analyze customer feedback and escalate"
+                description: "Analyze customer feedback and escalate",
+                icon: Heart
             },
             {
                 id: "proactive-support",
                 category: "CSM",
                 title: "Proactive Support",
-                description: "Predict potential service issues and trigger notifications"
+                description: "Predict potential service issues and trigger notifications",
+                icon: Bell
             },
             // ITOM
             {
                 id: "contract-renewals",
                 category: "ITOM",
                 title: "Contract Renewals",
-                description: "Predict at risk Contracts"
+                description: "Predict at risk Contracts",
+                icon: FileSignature
             },
             {
                 id: "warranty-management",
                 category: "ITOM",
                 title: "Warranty Management",
-                description: "Suggest renewal terms, discounts or escalation."
+                description: "Suggest renewal terms, discounts or escalation.",
+                icon: Shield
             },
             {
                 id: "lifecycle-notifications",
                 category: "ITOM",
                 title: "Lifecycle Notifications",
-                description: "Suggest maintenance, starting renewal negotiations"
+                description: "Suggest maintenance, starting renewal negotiations",
+                icon: Calendar
             },
         ],
-        categories:
-            ["Platform", "ITSM/CSM", "ITOM"]
+        categories: ["Platform", "ITSM/CSM", "ITOM"]
     },
     valuePoints: {
         hero: {
@@ -229,7 +240,7 @@ export default function AiLaunchPad() {
     return (
         <div>
             <HeroSection data={data?.hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
-            <div className="w-full max-w-7xl px-6 mx-auto">
+            <div className="w-full  md:px-20 px-4 mx-auto">
                 <div className="py-10">
                     <Introduction data={data?.introduction} />
                 </div>
@@ -241,7 +252,7 @@ export default function AiLaunchPad() {
                     <CTA data={data?.cta} />
                 </div>
                 <div>
-                    <Media url="https://www.youtube.com/embed/VvHlJ7Ei_es?si=nww4wEZqwkdDv9bO" />
+                    <Media url="https://www.youtube.com/embed/BAAjoBdJ2ww?si=AxyS6btAYci-I5rg" />
                 </div>
                 <div>
                     <Products data={data?.products} />
@@ -251,6 +262,9 @@ export default function AiLaunchPad() {
                 </div>
                 <div>
                     <FeatureDelimitedSection data={data?.valuePoints} />
+                </div>
+                <div>
+                    <SnAssistSection />
                 </div>
                 <div>
                     <PricingCards data={data.tiers} />

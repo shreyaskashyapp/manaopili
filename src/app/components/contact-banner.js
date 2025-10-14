@@ -29,7 +29,7 @@ export default function ContactBanner({ color="[#deff00]" }) {
                 <h2 className="text-3xl md:text-5xl font-semibold text-[#ffffff] leading-tight">
                   {content.title}
                 </h2>
-                <p className="md:text-lg text-muted-foreground">
+                <p className="md:text-lg text-gray-300">
                   {content.subtitle}
                 </p>
               </div>

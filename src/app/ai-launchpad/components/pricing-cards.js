@@ -8,7 +8,7 @@ export default function PricingCards({ data }) {
                     <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">AI Starter Solutions for ITOM and ITSM/CSM</h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-auto">
                     {data?.map((tier) => (
                         <div
                             key={tier?.name}

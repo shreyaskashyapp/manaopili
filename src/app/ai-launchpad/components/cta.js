@@ -18,8 +18,8 @@ export default function CTA({ data }) {
                             </p>
                             <div className="flex justify-center">
                                 <Link href={data?.url} target="_blank">
-                                    <Button size="lg" className="px-10 py-7 text-lg border border-gray-400 hover:bg-[#455cff] hover:border-[#455cff] rounded-lg group relative overflow-hidden">
-                                        <p className="relative">Link to SN AI Starter</p>
+                                    <Button size="lg" className="md:px-10 px-5 py-7 text-lg border border-gray-400 hover:bg-[#455cff] hover:border-[#455cff] rounded-lg group relative overflow-hidden">
+                                        <p className="relative">Learn More about ServiceNow AI</p>
                                         <ArrowRight className="relative ml-2 group-hover:translate-x-2 transition-transform" />
                                     </Button>
                                 </Link>

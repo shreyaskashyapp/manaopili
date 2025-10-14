@@ -11,7 +11,7 @@ export default function Introduction({ data }) {
             </h2>
             <div className="grid lg:grid-cols-2 gap-6 items-center">
                 <div className="order-2 lg:order-1">
-                    <p className="text-md md:text-lg text-muted-foreground leading-relaxed">
+                    <p className="text-md md:text-lg text-gray-400 leading-relaxed">
                         {data.description}
                     </p>
                     <div className="pt-6 space-y-4 ">
