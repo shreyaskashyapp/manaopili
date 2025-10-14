@@ -25,8 +25,8 @@ const data = {
         title: "What is AI Launchpad?",
         description: `Mana'o Pili's AI Launchpad helps organizations unlock ServiceNow AI.
             Leveraging ServiceNow AI Starter Pack available for up to 25 licensed users,
-            you can test real GenAI use cases and realize quick outcomes — without the
-            need for a full- scale investment.AI Launchpad introduces AI with clarity,
+            you can test real GenAI use cases and realize quick outcomes - without the
+            need for a full-scale investment. AI Launchpad introduces AI with clarity,
             purpose, and measurable impact.`,
         features: [
             {

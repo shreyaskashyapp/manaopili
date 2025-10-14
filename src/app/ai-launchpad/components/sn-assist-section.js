@@ -4,7 +4,7 @@ export default function SnAssistSection() {
 
     const data = {
         title: "Deliver the right response for every Al-powered request.",
-        description: "Use ServiceNow Al Starter to power Al Launchpad with smart workflows, role-based routing, and automated escalations-getting each request to the right team fast. Built-in visibility and tracking ensure issues are resolved with speed and accountability."
+        description: "Use ServiceNow Al Starter to power Al Launchpad with smart workflows, role-based routing, and automated escalations - getting each request to the right team fast. Built-in visibility and tracking ensure issues are resolved with speed and accountability."
     }
     return (
         <section className="relative md:py-16 py-10 ">
