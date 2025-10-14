@@ -14,12 +14,12 @@ function Circle({ label, icon: Icon, size = "lg", className }) {
 
     return (
         <div
-            className={`grid place-items-center bg-gradient-to-br from-zinc-800 to-[#141414]  border-gray-400 hover:border-[#455cff] rounded-full bg-red- border ${sizes} ${className} transition-all duration-300 cursor-pointer group`}
+            className={`grid place-items-center bg-gradient-to-br from-zinc-800 to-[#141414]  border-gray-400 hover:border-[#63DF4E] rounded-full bg-red- border ${sizes} ${className} transition-all duration-300 cursor-pointer group`}
         >
             {Icon ? (
-                <Icon className="lg:h-5 lg:w-5 w-3 h-3 text-[#455cff] group-hover:scale-110 transition-all duration-300" />
+                <Icon className="lg:h-5 lg:w-5 w-3 h-3 text-[#63DF4E] group-hover:scale-110 transition-all duration-300" />
             ) : (
-                <h2 className="px-3 text-center lg:text-3xl font-semibold text-lg text-[#455cff] transition-colors duration-300">
+                <h2 className="px-3 text-center lg:text-3xl font-semibold text-lg text-[#63DF4E] transition-colors duration-300">
                     {label}
                 </h2>
             )}
@@ -47,7 +47,7 @@ function ArrowLabel() {
 
 function BenefitPill({ title, img }) {
     return (
-        <div className="rounded-lg bg-gradient-to-br from-zinc-800 to-zinc-900 p-2 lg:p-4 border border-gray-900 hover:border-[#455cff] lg:pr-5 pr-1.5">
+        <div className="rounded-lg bg-gradient-to-br from-zinc-800 to-zinc-900 p-2 lg:p-4 border border-gray-900 hover:border-[#63DF4E] lg:pr-5 pr-1.5">
             <div className="flex items-center gap-2 lg:gap-4">
                 {/* <img
                     src={img}
@@ -77,7 +77,7 @@ export default function ServiceNowAssistDiagram() {
 
     // Benefits array
     const benefits = [
-        { id: 1, title: <>Decrease  Impact</>, img: "/ai-launchpad/decrease.png" },
+        { id: 1, title: <>Reduce Resolution Time</>, img: "/ai-launchpad/decrease.png" },
         { id: 2, title: <>Optimize Responses</>, img: "/ai-launchpad/optimize-responses.png" },
         { id: 3, title: <>Streamline Workflows</>, img: "/ai-launchpad/streamline-workflows.png" },
         { id: 4, title: <>Increase Productivity</>, img: "/ai-launchpad/increase-productivity.png" },
@@ -89,7 +89,7 @@ export default function ServiceNowAssistDiagram() {
     const angleStep = (endAngle - startAngle) / (features.length - 1)
 
     return (
-        <div className="flex items-center lg:gap-10 justify-center">
+        <div className="flex items-center lg:gap-16 justify-center">
             {/* Orbit + Main Circle */}
             <div className="relative w-[270px] h-[300px] lg:w-[450px] lg:h-[500px] flex items-center justify-center">
 
@@ -113,13 +113,13 @@ export default function ServiceNowAssistDiagram() {
                                 {
                                     f?.top
                                     &&
-                                    <p className="lg:text-sm text-xs pb-2 text-gray-300 group-hover:text-[#455cff] transition-colors duration-300">{f.label}</p>
+                                    <p className="lg:text-sm text-xs pb-2 text-gray-300 group-hover:text-[#63DF4E] transition-colors duration-300">{f.label}</p>
                                 }
                                 <Circle label={f.label} size="sm" icon={f.Icon} />
                                 {
                                     !f?.top
                                     &&
-                                    <p className="lg:text-sm text-xs pt-2 text-gray-300 group-hover:text-[#455cff] transition-colors duration-300">{f.label}</p>
+                                    <p className="lg:text-sm text-xs pt-2 text-gray-300 group-hover:text-[#63DF4E] transition-colors duration-300">{f.label}</p>
                                 }
                             </div>
                         )
