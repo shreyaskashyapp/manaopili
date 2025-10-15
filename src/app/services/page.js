@@ -160,7 +160,7 @@ const data = {
         color: 'rounded-full w-3 h-3 bg-green-500'
       }
     ],
-  "Service Now Partners": [
+  "ServiceNow Partners": [
     {
       title: "SAVINGS UPTO",
       value: 30,
@@ -223,7 +223,7 @@ const data = {
 
 const companies = [
   "Mana'o Pili",
-  "Service Now Partners",
+  "ServiceNow Partners",
   "GSI",
 ]
 
