@@ -64,7 +64,7 @@ export default function ServiceNowAssistDiagram() {
     const [radius, setRadius] = useState(180);
 
     useEffect(() => {
-        setRadius(window.innerWidth > 1024 ? 180 : 100)
+        setRadius(window.innerWidth >= 1024 ? 180 : 100)
     },[])
 
     const features = [
