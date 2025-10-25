@@ -1,5 +1,5 @@
 'use client'
-import { Bell, BookOpen, Calendar, Compass, DollarSign, FileSignature, FileText, GitBranch, Heart, HelpCircle, MessageSquare, Search } from "lucide-react";
+import { AlertCircle, Bell, BookOpen, Calendar, Compass, DollarSign, FileSignature, FileText, GitBranch, Heart, HelpCircle, Merge, MessageSquare, Search, SearchCheck } from "lucide-react";
 import Introduction from "./components/introduction";
 import HeroSection from "../components/hero-section";
 import { FeatureDelimitedSection } from "./components/feature-delimeter";
@@ -133,25 +133,25 @@ const data = {
             },
             // ITOM
             {
-                id: "contract-renewals",
+                id: "alert-analysis",
                 category: "ITOM",
-                title: "Contract Renewals",
-                description: "Predict at risk Contracts",
-                icon: FileSignature
+                title: "Alert Analysis",
+                description: "Summarizes alerts, highlights root causes, and suggests next steps.",
+                icon: AlertCircle
             },
             {
-                id: "warranty-management",
+                id: "alert-investigation",
                 category: "ITOM",
-                title: "Warranty Management",
-                description: "Suggest renewal terms, discounts or escalation.",
-                icon: Shield
+                title: "Alert Investigation",
+                description: "Surfaces historical fixes and context for faster resolution.",
+                icon: SearchCheck
             },
             {
-                id: "lifecycle-notifications",
+                id: "ci-de-duplication",
                 category: "ITOM",
-                title: "Lifecycle Notifications",
-                description: "Suggest maintenance, starting renewal negotiations",
-                icon: Calendar
+                title: "CI De-Duplication",
+                description: "Automatically detects and consolidates duplicate configuration items in the CMDB, recommending merges and cleanup.",
+                icon: Merge
             },
         ],
         categories: ["Platform", "ITSM/CSM", "ITOM"]
