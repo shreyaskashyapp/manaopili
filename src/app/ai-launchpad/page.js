@@ -1,5 +1,5 @@
 'use client'
-import { AlertCircle, Bell, BookOpen, Calendar, Compass, DollarSign, FileSignature, FileText, GitBranch, Heart, HelpCircle, Merge, MessageSquare, Search, SearchCheck } from "lucide-react";
+import { AlertCircle, Bell, BookOpen, Calendar, Compass, DollarSign, FileSignature, FileText, GitBranch, Heart, HelpCircle, Mail, Merge, MessageSquare, Phone, Search, SearchCheck } from "lucide-react";
 import Introduction from "./components/introduction";
 import HeroSection from "../components/hero-section";
 import { FeatureDelimitedSection } from "./components/feature-delimeter";
@@ -109,27 +109,106 @@ const data = {
                 description: "Knowledge Article Drafting & Improvement Suggestions",
                 icon: BookOpen
             },
-            // ITSM/CSM
+            // ITSM
             {
-                id: "triage",
-                category: "ITSM/CSM",
-                title: "Triage",
-                description: "Automated categorization and routing",
-                icon: GitBranch
+                id: "incident-summarization",
+                category: "ITSM",
+                title: "Incident Summarization",
+                description: "Summarizes key incident details instantly.",
+                icon: FileText
             },
             {
-                id: "customer-sentiment",
-                category: "CSM",
-                title: "Customer Sentiment",
-                description: "Analyze customer feedback and escalate",
-                icon: Heart
+                id: "change-request-summarization",
+                category: "ITSM",
+                title: "Change Request Summarization",
+                description: "Condenses change records into quick overviews.",
+                icon: FileText
             },
             {
-                id: "proactive-support",
+                id: "resolution-notes-generation-itsm",
+                category: "ITSM",
+                title: "Resolution Notes Generation",
+                description: "Drafts closure notes automatically.",
+                icon: FileText
+            },
+            {
+                id: "chat-summarization-itsm",
+                category: "ITSM",
+                title: "Chat Summarization",
+                description: "Captures chat highlights in one view.",
+                icon: MessageSquare
+            },
+            {
+                id: "chat-reply-recommendation",
+                category: "ITSM",
+                title: "Chat Reply Recommendation",
+                description: "Suggests quick, context-aware replies.",
+                icon: MessageSquare
+            },
+            {
+                id: "kb-article-generation-itsm",
+                category: "ITSM",
+                title: "KB Article Generation",
+                description: "Creates draft knowledge articles from records.",
+                icon: BookOpen
+            },
+            {
+                id: "sidebar-discussion-summarization-itsm",
+                category: "ITSM",
+                title: "Sidebar Discussion Summarization",
+                description: "Summarizes internal team discussions.",
+                icon: MessageSquare
+            },
+
+            // CSM
+            {
+                id: "case-summarization",
                 category: "CSM",
-                title: "Proactive Support",
-                description: "Predict potential service issues and trigger notifications",
-                icon: Bell
+                title: "Case Summarization",
+                description: "Generates concise case overviews.",
+                icon: FileText
+            },
+            {
+                id: "resolution-notes-generation-csm",
+                category: "CSM",
+                title: "Resolution Notes Generation",
+                description: "Auto-creates closure summaries.",
+                icon: FileText
+            },
+            {
+                id: "chat-summarization-csm",
+                category: "CSM",
+                title: "Chat Summarization",
+                description: "Recaps customer chat sessions.",
+                icon: MessageSquare
+            },
+            {
+                id: "email-reply-recommendation",
+                category: "CSM",
+                title: "Email Reply Recommendation",
+                description: "Suggests personalized email responses.",
+                icon: Mail
+            },
+            {
+                id: "voice-call-summarization",
+                category: "CSM",
+                title: "Voice Call Summarization",
+                description: "Summarizes customer voice interactions.",
+                icon: Phone
+            },
+            {
+                id: "kb-article-generation-csm",
+                category: "CSM",
+                title: "KB Article Generation",
+                description: "Builds articles from case insights.",
+                icon: BookOpen
+            },
+            {
+                id: "sidebar-discussion-summarization-csm",
+                category: "CSM",
+                title: "Sidebar Discussion Summarization",
+                description: "Summarizes internal agent discussions.",
+                icon: MessageSquare
             },
             // ITOM
             {
@@ -154,7 +233,7 @@ const data = {
                 icon: Merge
             },
         ],
-        categories: ["Platform", "ITSM/CSM", "ITOM"]
+        categories: ["Platform", "ITSM", "CSM", "ITOM"]
     },
     valuePoints: {
         hero: {
