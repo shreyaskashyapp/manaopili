@@ -93,6 +93,10 @@ const WhitePaper = () => {
         'cybersecurity-excellence': {
             file: '/pdfs/Cybersecurity Excellence - ServiceNow SecOps, IRM, & Tanium  v1.00.pdf',
             title: 'Cybersecurity Excellence - ServiceNow SecOps, IRM, & Tanium'
+        },
+        'preventing-duplicate-ticket-strategies': {
+            file: '/pdfs/Preventing Duplicate Ticket Strategies v1.0.pdf',
+            title: 'Preventing Duplicate Ticket Strategies'
         }
     };
     
