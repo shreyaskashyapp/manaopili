@@ -170,7 +170,8 @@ const blogPosts = [
         slug: "csdm-migration-5",
         link: "pdfs/Cybersecurity Excellence - ServiceNow SecOps, IRM, & Tanium  v1.00.pdf",
         category: "CSDM"
-    }, {
+    },
+    {
         id: 19,
         title: "Cybersecurity Excellence - ServiceNow SecOps, IRM, & Tanium",
         description: "Learn how ServiceNow and Tanium unite to deliver faster remediation, stronger compliance, and real-time cybersecurity.",
@@ -178,6 +179,15 @@ const blogPosts = [
         slug: "cybersecurity-excellence",
         link: "pdfs/Cybersecurity Excellence - ServiceNow SecOps, IRM, & Tanium v1.00.pdf",
         category: "CyberSecurity"
+    },
+    {
+        id: 20,
+        title: "Preventing Duplicate Ticket Strategies",
+        description: "Learn how to reduce duplicate incidents in ServiceNow using intake deflection, correlation, ITOM, and AI-driven matching to improve MTTR and operational efficiency.",
+        image: "/articles/Preventing Duplicate Ticket Strategies.png",
+        slug: "preventing-duplicate-ticket-strategies",
+        link: "pdfs/Preventing Duplicate Ticket Strategies v1.0.pdf",
+        category: "Strategies"
     },
 ];
 
