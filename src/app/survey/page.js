@@ -207,7 +207,6 @@ export default function Survey() {
       modules: configs?.[surveyModule]?.types,
       survey: surveyModule
     };
-    console.log("Storing survey results in localStorage", surveyResults);
     sessionStorage.setItem('surveyResults', JSON.stringify(surveyResults));
 
   }

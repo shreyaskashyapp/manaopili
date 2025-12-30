@@ -30,7 +30,7 @@ export default function Canvas() {
             <div className="flex items-center justify-center min-h-screen">
                 <div className="text-center px-6 max-w-xl">
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Page Under Construction</h1>
-                    <p className="text-lg text-slate-300 mb-2">We're working hard to bring you something amazing.</p>
+                    <p className="text-lg text-slate-300 mb-2">We are working hard to bring you something amazing.</p>
                     <p className="text-slate-400 mb-8">This page is still being built. Please check back soon for updates!</p>
                     <div className="flex justify-center gap-2">
                         <div className="w-3 h-3 bg-[#DEFF00] rounded-full animate-bounce"></div>
@@ -52,7 +52,6 @@ export default function Canvas() {
                 }
                 else if (res?.data?.isActive === false) {
                     setIsInactive(true)
-                    console.log(res?.data?.isActive)
                 }
                 else {
                     router.push('/not-found')
