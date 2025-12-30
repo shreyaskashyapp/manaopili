@@ -54,7 +54,7 @@ export default function ContentBlock({
           }`}
         >
           <h2
-            className={`${titleClass} font-medium text-white tracking-tight text-balance`}
+            className={`${titleClass} font-medium text-white text-balance`}
           >
             {title}
           </h2>

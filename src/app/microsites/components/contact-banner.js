@@ -64,7 +64,7 @@ export default function ContactBanner({
             <div className="space-y-6 lg:col-span-2">
               <div className="space-y-4">
                 <h2
-                  className={`${titleClass} font-semibold leading-tight text-gray-200`}
+                  className={`${titleClass} font-semibold text-gray-200`}
                 >
                   {title}
                 </h2>

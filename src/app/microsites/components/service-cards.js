@@ -90,7 +90,7 @@ export default function ServicesCards({
         {/* Section header */}
         <div className="max-w-3xl mx-auto text-center space-y-4 mb-10 animate-in fade-in slide-in-from-top-6 duration-1000">
           <h2
-            className={`${titleClass} font-medium text-white tracking-tight text-balance`}
+            className={`${titleClass} font-medium text-white text-balance`}
           >
             {title}
           </h2>

@@ -76,7 +76,7 @@ export default function TestimonialsSection({
       <div className="container relative z-10 px-4 mx-auto">
         {/* Section header */}
         <div className="max-w-3xl mx-auto text-center space-y-4 mb-12 animate-in fade-in slide-in-from-top-6 duration-1000">
-          <h2 className={`${titleClass} font-medium text-white tracking-tight text-balance`}>
+          <h2 className={`${titleClass} font-medium text-white text-balance`}>
             {title}
           </h2>
           <p className={`${subtitleClass} text-gray-400 text-pretty leading-relaxed`}>

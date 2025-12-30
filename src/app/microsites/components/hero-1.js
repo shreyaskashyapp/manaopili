@@ -21,7 +21,7 @@ export default function HeroSection({
     return (
         <div className="w-full h-[70vh] flex justify-start items-center bg-gradient-to-b from-[#455CFF] to-[#141414]">
             <div className={`px-8 ${containerMargin} max-w-5xl flex flex-col gap-5`}>
-                <h2 className={`font-heading text-white leading-tight ${headingSize}`}>
+                <h2 className={`font-heading text-white ${headingSize}`}>
                     {title}
                 </h2>
                 <p className={`text-gray-200 ${subtitleSize} leading-relaxed flex-1`}>

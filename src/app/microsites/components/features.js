@@ -5,10 +5,10 @@ import { useEffect, useState } from "react"
 
 export function FeatureSection({
     title = "Mana'o Pili Transforms ServiceNow AI",
-    Points = [
-        { id: 1, text: "Worried about Cost of Implementing AI" },
-        { id: 2, text: "Don't know where and how to start the journey" },
-        { id: 3, text: "Not sure if you're ready for AI in your organization" },
+    points = [
+        { number: 1, text: "Worried about Cost of Implementing AI" },
+        { number: 2, text: "Don't know where and how to start the journey" },
+        { number: 3, text: "Not sure if you're ready for AI in your organization" },
     ],
     viewport,
 }) {
@@ -22,10 +22,10 @@ export function FeatureSection({
 
     const titleClass =
         viewport === "mobile"
-            ? "text-3xl mb-2 leading-snug"
+            ? "text-3xl mb-2"
             : viewport === "tablet"
-                ? "text-4xl mb-10 leading-tight"
-                : "text-3xl md:text-4xl lg:text-5xl mb-2 md:mb-8 lg:mb-10 leading-snug md:leading-tight"
+                ? "text-4xl mb-10 "
+                : "text-3xl md:text-4xl lg:text-5xl mb-2 md:mb-8 lg:mb-10"
 
     const flexDirection =
         viewport === "mobile"
@@ -76,8 +76,8 @@ export function FeatureSection({
             <div
                 className={`flex ${flexDirection} justify-between px-4 gap-4 pt-4 group`}
             >
-                {Points.map(({ id, text, value }, index) => {
-                    const isLast = index === Points.length - 1
+                {points.map(({ id, text, number }, index) => {
+                    const isLast = index === points.length - 1
 
                     return (
                         <div
@@ -95,10 +95,10 @@ export function FeatureSection({
                                         className={`${textSize} text-gray-400 hover:text-gray-200 pl-1 leading-relaxed ${viewport !== "mobile" ? "text-left md:text-center" : ""
                                             } hover:translate-x-1 transition-all duration-300`}
                                     >
-                                        {value && (
+                                        {number && (
                                             <>
                                                 <span className={`${valueSize} text-[#455cff]`}>
-                                                    {value}
+                                                    {number}
                                                 </span>
                                                 <br />
                                             </>

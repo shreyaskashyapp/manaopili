@@ -86,7 +86,7 @@ export default function AccordionSection({
                 {/* Section header */}
                 <div className="text-center space-y-4 mb-12 animate-in fade-in slide-in-from-top-6 duration-1000">
                     <h2
-                        className={`${titleSize} font-medium text-white tracking-tight text-balance`}
+                        className={`${titleSize} font-medium text-white text-balance`}
                     >
                         {title}
                     </h2>

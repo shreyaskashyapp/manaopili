@@ -41,7 +41,7 @@ export const COMPONENTS = {
         <FeatureSection
             key={index}
             title={props?.title}
-            Points={props?.Points}
+            points={props?.points}
             viewport={props?.viewport}
         />,
     accordionSection: (props, index) =>
