@@ -189,6 +189,24 @@ const blogPosts = [
         link: "pdfs/Preventing Duplicate Ticket Strategies v1.0.pdf",
         category: "Strategies"
     },
+    {
+        id: 21,
+        title: "Operationalizing 21 CFR Part 11 in ServiceNow",
+        description: "A practical guide to implementing audit-defensible electronic records, signatures, and workflows in ServiceNow to meet 21 CFR Part 11 compliance requirements.",
+        image: "/articles/operationalizing-fda-21-cfr.gif",
+        slug: "operationalizing-21-cfr-part-11-servicenow",
+        link: "pdfs/Operationalizing 21 CFR Part 11 in ServiceNow v1.0.pdf",
+        category: "Compliance"
+    },
+    {
+        id: 22,
+        title: "ITSM Modernization in Healthcare with ServiceNow",
+        description: "Learn how healthcare organizations modernize ITSM using a Transform-in-Place approach—stabilizing CMDB, improving MTTR, and enabling ITOM without disruption.",
+        image: "/articles/servicenow-itsm-modernization.gif",
+        slug: "itsm-modernization-healthcare-servicenow",
+        link: "pdfs/ITSM Modernization Use Case (Healthcare) v1.3.pdf",
+        category: "Use Case"
+    },
 ];
 
 
