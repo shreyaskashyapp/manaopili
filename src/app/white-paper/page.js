@@ -97,9 +97,17 @@ const WhitePaper = () => {
         'preventing-duplicate-ticket-strategies': {
             file: '/pdfs/Preventing Duplicate Ticket Strategies v1.0.pdf',
             title: 'Preventing Duplicate Ticket Strategies'
+        },
+        'operationalizing-21-cfr-part-11-servicenow': {
+            file: '/pdfs/Operationalizing 21 CFR Part 11 in ServiceNow  v1.0.pdf',
+            title: 'Operationalizing 21 CFR Part 11 in ServiceNow'
+        },
+        'itsm-modernization-healthcare-servicenow': {
+            file: '/pdfs/ITSM Modernization Use Case (Healthcare) v1.3.pdf',
+            title: 'ITSM Modernization in Healthcare with ServiceNow'
         }
     };
-    
+
 
     useEffect(() => {
         if (paper && data[paper]) {
