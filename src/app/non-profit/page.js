@@ -169,7 +169,7 @@ export default function NonProfit() {
                 <ImageContentBlock data={CRBSectionData} />
                 <div>
                     <h2 className="font-display text-center text-3xl md:text-5xl font-semibold text-[#E2E2E2] mb-4 md:mb-6 lg:mb-10 leading-tight">
-                        What's At Stake?
+                        What{`'`}s At Stake?
                     </h2>
                     <NonProfitContentBlock />
                 </div>

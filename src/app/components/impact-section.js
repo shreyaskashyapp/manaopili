@@ -10,7 +10,7 @@ const ImpactSection = ({ data }) => {
                         </h2>
                         <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-lg">
                             Every contribution creates tangible, measurable impact. Your
-                            support flows directly toward protecting Hawaii's sacred lands
+                            support flows directly toward protecting Hawaii{`'`}s sacred lands
                             and ecosystems.
                         </p>
                     </div>
