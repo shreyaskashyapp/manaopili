@@ -48,7 +48,9 @@ const Careers = () => {
           
           setFormData({
             ...formData,
-            resume: base64Data
+            resume: base64Data,
+            resumeFileName: file.name,
+            resumeMimeType: file.type
           });
         };
         
