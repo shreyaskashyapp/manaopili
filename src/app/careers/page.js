@@ -1,196 +1,105 @@
-'use client';  
+'use client';
 
-import React, { useRef, useState } from 'react';
-import LoadingIndicator from '../components/loader';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight, MapPin, Briefcase } from 'lucide-react';
+import Link from 'next/link';
 import HeroSection from '../components/hero-section';
-import axios from 'axios';
-
-const fieldsWithTypes = [
-  { name: "Name", type: "text", placeholder: "Enter your full name", isRequired: true },
-  { name: "Email", type: "email", placeholder: "Enter your email address", isRequired: true },
-];
-
-const data = {
-    title: "Careers",
-    description: (
-        <>
-            We&apos;re always looking for <span className="text-[#deff00]">talented</span> individuals to join our team. Submit your <span className="text-[#deff00]">resume</span> for future consideration.
+import { jobOpenings, deptColors } from './jobData';
 
 
-        </>
-    )
+const heroData = {
+  title: 'Careers',
+  description: (
+    <>
+      At <span className="text-[#DEFF00]">Mana&apos;o Pili</span>, we believe in finding the{' '}
+      <span className="text-[#DEFF00]">right talent</span> and empowering{' '}
+      <span className="text-[#DEFF00]">curious minds</span> and{' '}
+      <span className="text-[#DEFF00]">strong builders</span> to thrive. If that sounds like you,{' '}
+      <span className="text-[#DEFF00]">explore our open roles</span>.
+    </>
+  ),
+};
+
+
+function JobCard({ job, index }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: index * 0.06 }}
+      className="group bg-gradient-to-br from-zinc-900 to-[#141414] border border-zinc-800 hover:border-[#DEFF00]/40 rounded-2xl p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(222,255,0,0.07)]"
+    >
+      <div className="flex items-center justify-start gap-3 mb-5">
+        <span className="text-xs text-zinc-400 bg-zinc-800/70 px-3 py-1 rounded-full border border-zinc-700/50 whitespace-nowrap">
+          {job.type}
+        </span>
+      </div>
+
+      <h3 className="text-white font-heading text-xl font-semibold mb-3 group-hover:text-[#DEFF00] transition-colors duration-200 leading-snug">
+        {job.title}
+      </h3>
+
+      <div className="flex flex-col gap-2 mb-5">
+        <div className="flex items-center gap-2 text-zinc-400 text-xs">
+          <MapPin size={13} className="shrink-0 text-zinc-500" />
+          <span>{job.location}</span>
+        </div>
+        {job.experienceLevel && (
+          <div className="flex items-center gap-2 text-zinc-400 text-xs">
+            <Briefcase size={13} className="shrink-0 text-zinc-500" />
+            <span>{job.experienceLevel.join(' · ')}</span>
+          </div>
+        )}
+      </div>
+
+      {job.tags?.length > 0 && (
+        <div className="flex flex-wrap gap-1.5 mb-6">
+          {job.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-[11px] text-zinc-400 bg-zinc-800/60 border border-zinc-700/40 px-2.5 py-0.5 rounded-full"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+
+      <div className="mt-auto pt-5 border-t border-zinc-800/80">
+        <Link
+          href={`/careers/${job.id}`}
+          className="inline-flex items-center gap-2 text-sm font-medium text-[#DEFF00] hover:gap-3 transition-all duration-200"
+        >
+          View Details
+          <ArrowRight
+            size={14}
+            className="group-hover:translate-x-1 transition-transform duration-200"
+          />
+        </Link>
+      </div>
+    </motion.div>
+  );
 }
 
+
 const Careers = () => {
-  const [formData, setFormData] = useState({});
-  const [resumeFileName, setResumeFileName] = useState('');
-  const resumeInput = useRef(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [error, setError] = useState(null);
-
-  function handleInput(event, type) {
-    setFormData({...formData, [type]: event?.target?.value});
-  }
-  
-  function handleFileUpload(event) {
-    const file = event.target.files?.[0];
-    
-    if (file) {
-      setResumeFileName(file.name);
-      
-      if (file.type === 'application/pdf' || file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
-        const reader = new FileReader();
-        
-        reader.onload = () => {
-          const base64String = reader.result;
-          const base64Data = base64String.split(',')[1];
-          
-          setFormData({
-            ...formData,
-            resume: base64Data,
-            resumeFileName: file.name,
-            resumeMimeType: file.type
-          });
-        };
-        
-        reader.onerror = (error) => {
-          console.error("Error converting file to base64:", error);
-        };
-        
-        reader.readAsDataURL(file);
-      } else {
-        console.error("Please upload a PDF or DOCX file");
-        setError("Please upload a PDF or DOCX file");
-      }
-    }
-  }
-
-  async function handleSubmit(event) {
-    event.preventDefault();
-    setError(null);
-    setIsLoading(true);
-    
-    try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}job-application`, 
-        formData,
-      );
-
-      if(response.status === 200) {
-        setSubmitSuccess(true);
-      } else {
-        setError('Failed to submit application. Please try again later.');
-      }
-    } catch (err) {
-      console.error('Error submitting application:', err);
-      setError('An error occurred while submitting your application. Please try again later.');
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
-  function handleNewSubmission() {
-    setSubmitSuccess(false);
-    setFormData({});
-    setResumeFileName('');
-    setError(null);
-  }
-
-  const SuccessPage = () => (
-    <div className="bg-zinc-900 text-white p-8 max-w-3xl mx-auto rounded-lg text-center">
-      <div className="mb-6 flex justify-center">
-        <div className="h-24 w-24 rounded-full bg-[#DEFF00] flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-      </div>
-      <h1 className="text-3xl font-bold mb-4">Application Submitted!</h1>
-      <p className="text-lg mb-8 text-gray-300">
-        Thank you for your interest in joining our team. We&apos;ve received your application and will review it shortly.
-      </p>
-      <p className="text-md mb-8 text-gray-400">
-        If your qualifications match our needs, we&apos;ll be in touch with you soon.
-      </p>
-      <button
-        onClick={handleNewSubmission}
-        className="bg-white text-black py-3 px-6 rounded-md font-medium inline-block mt-4 hover:bg-[#deff00] transition-colors"
-      >
-        Submit Another Application
-      </button>
-    </div>
-  );
-
   return (
-    <div>
-      {isLoading && <LoadingIndicator size='large' color='lime'/>}
-      <div className="min-h-screen bg-[#141414] text-white">
-      <HeroSection data={data} bgColor={`from-[#455CFF] to-[#141414]`} />
-        <div className="container mx-auto px-4 py-10">
-          <div className="max-w-3xl mx-auto">  
-            {submitSuccess ? (
-              <SuccessPage />
-            ) : (
-              <div className="bg-zinc-900 text-white p-8 max-w-3xl mx-auto rounded-lg">
-                <h1 className="text-3xl font-medium mb-8">Submit Your Application</h1>
-                {error && (
-                  <div className="bg-red-900/50 border border-red-500 text-red-100 px-4 py-3 rounded mb-6">
-                    {error}
-                  </div>
-                )}
-                <form onSubmit={handleSubmit}>
-                  {fieldsWithTypes.map((field) => (
-                    <div key={field.name} className="mb-6">
-                      <label className="block mb-2">{`${field.name} ${field.isRequired ? '*' : ''}`}</label>
-                      <input
-                        onChange={(event) => handleInput(event, field.name)}
-                        type={field.type}
-                        required={field.isRequired}
-                        placeholder={field.placeholder}
-                        className="w-full bg-transparent border border-gray-600 rounded-md py-3 px-4 mb-2 focus:outline-none focus:border-[#DEFF00] transition-colors"
-                      />
-                    </div>
-                  ))}
-                  <div className="mb-6">
-                    <label className="block mb-2">Resume (PDF or DOCX) *</label>
-                    <div className="border border-gray-600 border-dashed rounded-md p-6 text-center cursor-pointer hover:border-[#DEFF00] transition-colors">
-                      <div className="flex flex-col items-center" onClick={() => resumeInput.current && resumeInput.current.click()}>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#DEFF00] mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                        </svg>
-                        <p>{resumeFileName || 'Click to upload or drag and drop'}</p>
-                        <input
-                          type="file"
-                          ref={resumeInput}
-                          className="hidden"
-                          accept=".pdf,.docx"
-                          required
-                          onChange={handleFileUpload}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mb-6">
-                    <label className="block mb-2">Message (Optional)</label>
-                    <textarea
-                      placeholder="Tell us a bit about yourself and why you're interested in joining our team"
-                      className="w-full bg-transparent border border-gray-600 rounded-md py-3 px-4 min-h-32 focus:outline-none focus:border-[#DEFF00] transition-colors"
-                      onChange={(event) => handleInput(event, 'message')}
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full bg-white text-black py-4 rounded-md font-medium flex justify-center items-center mt-6 hover:bg-[#deff00] transition-colors"
-                  >
-                    Submit Application
-                  </button>
-                </form>
-              </div>
-            )}
-          </div>
+    <div className="min-h-screen bg-[#141414] text-white">
+      <HeroSection data={heroData} bgColor="from-[#455CFF] to-[#141414]" />
+
+      <section className="container mx-auto px-4 md:px-10 lg:px-20 py-16">
+        <h2 className="font-heading text-4xl md:text-5xl text-white mb-10">
+          Open Positions
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {jobOpenings.map((job, i) => (
+            <JobCard key={job.id} job={job} index={i} />
+          ))}
         </div>
-      </div>
-     </div>
+      </section>
+    </div>
   );
 };
 
