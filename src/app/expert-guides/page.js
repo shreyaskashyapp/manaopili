@@ -195,7 +195,7 @@ const blogPosts = [
         description: "A practical guide to implementing audit-defensible electronic records, signatures, and workflows in ServiceNow to meet 21 CFR Part 11 compliance requirements.",
         image: "/articles/operationalizing-fda-21-cfr.gif",
         slug: "operationalizing-21-cfr-part-11-servicenow",
-        link: "pdfs/Operationalizing 21 CFR Part 11 in ServiceNow v1.0.pdf",
+        link: "pdfs/Operationalizing 21 CFR Part 11 in ServiceNow  v1.0.pdf",
         category: "Compliance"
     },
     {

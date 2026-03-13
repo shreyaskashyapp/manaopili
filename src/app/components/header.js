@@ -33,6 +33,7 @@ export default function Header() {
         { href: "/non-profit", label: "NON-PROFIT" },
         { href: "/expert-guides", label: "EXPERT GUIDES" },
         { href: "/contact", label: "CONTACT US" },
+        { href: "/careers", label: "CAREERS" },
 
     ]
 
