@@ -78,6 +78,7 @@ const CRBSectionData = {
     image: {
         src: "/non-profit/crb-1.jpg",
         alt: "Coconut Rhinoceros Beetle",
+        credit: "CRB Response",
     },
     description:
         "The CRB is an invasive species native to Southeast Asia. It was first discovered in Hawaii in December 2013 and has been devastating our palm populations ever since.",
@@ -101,34 +102,6 @@ const CRBSectionData = {
     ],
 };
 
-const AnahuluSectionData = {
-    label: "Our Partner",
-    title: "Anahulu Valley Preservation Fund",
-    image: {
-        src: "/non-profit/nonprofit_2.png",
-        alt: "Anahulu Valley scenic view",
-    },
-    description: [
-        "Nestled in the heart of Hawaii, the Anahulu Valley Preservation Fund is dedicated to protecting the sacred lands, cultural treasures, and natural beauty of our cherished valley.",
-        "Mana'o Pili partners with the Anahulu Valley Preservation Fund. Each month, a portion of our proceeds is directed toward restoring, safeguarding, and preserving the valley's rich history - from ancient fish ponds to historic burial grounds that tell the stories of our ancestors.",
-        "Together, we honor Hawaii's cultural heritage and ensure that future generations can experience the natural beauty and historical depth of the Anahulu Valley. Join us in our mission to protect, preserve, and celebrate Hawaii’s sacred land.",
-    ],
-}
-
-const CoconutTreeSectionData = {
-    label: "Sacred Symbol",
-    title: "The Coconut Tree",
-    subTitle: 'The "Tree of Life"',
-    description: [
-        "The coconut tree is more than just a food source—it's a sacred, life-sustaining symbol of adaptation, creativity, and unity with nature.",
-        "For Native Hawaiians and Pacific Islanders, it truly earns the title \"Tree of Life\" because it sustains the body, spirit, and culture.",
-    ],
-    image: {
-        src: "/non-profit/coconut-tree.jpg",
-        alt: "Healthy coconut tree",
-    },
-    reverse: true, // 👈 THIS handles the order
-};
 
 
 export default function NonProfit() {
@@ -154,7 +127,7 @@ export default function NonProfit() {
                         <div className="relative rounded-lg overflow-hidden">
                             <div className="aspect-[21/9]">
                                 <img
-                                    src="/non-profit/hawaii.jpg"
+                                    src="/non-profit/hawai-cover-image.png"
                                     alt="Beautiful Hawaiian islands aerial view"
                                     className="w-full h-full object-cover opacity-70"
                                 />

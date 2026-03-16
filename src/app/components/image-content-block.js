@@ -13,6 +13,11 @@ export default function ImageContentBlock({ data }) {
                                 className="w-full h-full object-cover opacity-80"
                             />
                         </div>
+                        {data?.image?.credit && (
+                            <p className="text-zinc-500 text-xs mt-2 text-right">
+                                Photo credit: {data.image.credit}
+                            </p>
+                        )}
                     </div>
 
                     {/* Content */}

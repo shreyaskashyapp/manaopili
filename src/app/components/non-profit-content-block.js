@@ -2,7 +2,7 @@ const nonProfitContent = [
   {
     id: "coconut-tree",
     image: {
-      src: "/non-profit/coconut-tree.webp",
+      src: "/non-profit/hawai-coconut-tree.png",
       alt: "Sacred coconut palm tree silhouette against Hawaiian sunset"
     },
     eyebrow: {
@@ -18,7 +18,8 @@ const nonProfitContent = [
     id: "anahulu-valley",
     image: {
       src: "/non-profit/nonprofit_1.png",
-      alt: "Lush green Anahulu Valley in Hawaii"
+      alt: "Lush green Anahulu Valley in Hawaii",
+      credit: "CRB Response"
     },
     eyebrow: {
       label: "About the",
@@ -49,6 +50,11 @@ export default function NonProfitContentBlock() {
                   className="w-full h-full object-cover"
                 />
               </div>
+              {item.image.credit && (
+                <p className="text-zinc-500 text-xs mt-2 text-right px-2 md:px-12">
+                  Photo credit: {item.image.credit}
+                </p>
+              )}
 
               {/* Content */}
               <div className="py-4 px-2 md:px-12 lg:py-12">
@@ -71,6 +77,10 @@ export default function NonProfitContentBlock() {
           ))}
         </div>
       </div>
+      <p className="text-zinc-500 text-xs mt-4 text-center">
+        If you have any questions or would like to request different photos please reach out to{" "}
+        <a href="mailto:info@crbhawaii.org" className="underline hover:text-zinc-300">info@crbhawaii.org</a>.
+      </p>
     </section>
   );
 }
