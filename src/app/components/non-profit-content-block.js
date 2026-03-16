@@ -1,43 +1,9 @@
-const nonProfitContent = [
-  {
-    id: "coconut-tree",
-    image: {
-      src: "/non-profit/hawai-coconut-tree.png",
-      alt: "Sacred coconut palm tree silhouette against Hawaiian sunset"
-    },
-    eyebrow: {
-      label: "About the",
-      highlight: "Coconut Tree"
-    },
-    title: "The Tree of Life",
-    description:
-      "The coconut tree is more than just a food source—it's a sacred, life-sustaining symbol of adaptation, creativity, and unity with nature. For Native Hawaiians and Pacific Islanders, it truly earns the title \"Tree of Life\" because it sustains the body, spirit, and culture.",
-    bordered: true
-  },
-  {
-    id: "anahulu-valley",
-    image: {
-      src: "/non-profit/nonprofit_1.png",
-      alt: "Lush green Anahulu Valley in Hawaii",
-      credit: "CRB Response"
-    },
-    eyebrow: {
-      label: "About the",
-      highlight: "Anahulu Valley"
-    },
-    title: "Anahulu Valley",
-    description:
-      "Nestled in the heart of Hawaii, the Anahulu Valley Preservation Fund is dedicated to protecting the sacred lands, cultural treasures, and natural beauty of our cherished valley. Mana'o Pili partners with the Anahulu Valley Preservation Fund. Each month, a portion of our proceeds is directed toward restoring, safeguarding, and preserving the valley's rich history.",
-    bordered: false
-  }
-];
-
-export default function NonProfitContentBlock() {
+export default function NonProfitContentBlock({ data }) {
   return (
     <section className="bg-[#141414]">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-          {nonProfitContent.map((item) => (
+          {data.items.map((item) => (
             <div
               key={item.id}
               className={item.bordered ? "lg:border-r border-border/30" : ""}
@@ -78,8 +44,8 @@ export default function NonProfitContentBlock() {
         </div>
       </div>
       <p className="text-zinc-500 text-xs mt-4 text-center">
-        If you have any questions or would like to request different photos please reach out to{" "}
-        <a href="mailto:info@crbhawaii.org" className="underline hover:text-zinc-300">info@crbhawaii.org</a>.
+        {data.footerNote.text}{" "}
+        <a href={`mailto:${data.footerNote.email}`} className="underline hover:text-zinc-300">{data.footerNote.email}</a>.
       </p>
     </section>
   );

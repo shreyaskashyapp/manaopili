@@ -1,29 +1,10 @@
 import HeroSection from "../components/hero-section";
 import { Leaf, Droplets, Sprout, Heart } from "lucide-react"
 import ImageContentBlock from "../components/image-content-block";
-import NonProfitAccordion from "../components/non-profit-accordion";
 import ImpactSection from "../components/impact-section";
 import NonProfitContentBlock from "../components/non-profit-content-block";
 
 
-const NonProfitData = [
-    {
-        title: "About Anahulu Valley Preservation Fund",
-        text: "Nestled in the heart of Hawaii, the Anahulu Valley Preservation Fund is dedicated to protecting the sacred lands, cultural treasures, and natural beauty of our cherished valley. Mana’o Pili partners with the Anahulu Valley Preservation fund. Each month, a portion of our proceeds is directed toward restoring, safeguarding, and preserving the valley’s rich history, from ancient fish ponds to historic burial grounds that tell the stories of our ancestors. By supporting the Anahulu Valley Preservation Fund, you’re not just helping to maintain this land’s unique ecosystems but also contributing to the legacy and history that shape our island identity. Together, we honor Hawaii’s cultural heritage and ensure that future generations can experience the natural beauty and historical depth of the Anahulu Valley. Join us in our mission to protect, preserve, and celebrate Hawaii’s sacred land.",
-    },
-    {
-        title: "Historical Significance of Anahulu Valley",
-        text: "Historically, the Anahulu Valley served as a thriving agricultural and aquacultural hub, where Native Hawaiians cultivated crops and developed innovative fishpond systems that sustained entire communities. The burial grounds here are a testament to the valley's spiritual significance, honoring ancestors who shaped the culture and identity of Hawaii itself.",
-    },
-    {
-        title: "Threats and Preservation Efforts",
-        text: "Yet today, these lands face increasing threats from modernization, environmental change, and erosion, risking the loss of this irreplaceable heritage. The Anahulu Valley Preservation Fund is committed to actively restoring these lands and educating our community about the valley’s cultural and environmental importance. Monthly, a portion of our proceeds goes directly into preserving these spaces: clearing invasive species, maintaining fish ponds, and creating interpretive sites to share the valley’s story.",
-    },
-    {
-        title: "Our Vision for the Future",
-        text: "We envision a future where the Anahulu Valley continues to thrive, preserving its legacy for all who come after.",
-    },
-];
 
 const hero = {
     title: "To Protect the Land",
@@ -44,32 +25,81 @@ export const metadata = {
     },
 };
 
-const impacts = [
-    {
-        title: "Preserve Coconut Trees",
-        description:
-            "Direct support toward restoring and protecting Hawaii's native coconut trees from the Coconut Rhinoceros Beetle.",
-        icon: Leaf,
+const impacts = {
+    heading: "What Supporting Makes Possible",
+    description: "Every contribution creates tangible, measurable impact. Your support flows directly toward protecting Hawaii's sacred lands and ecosystems.",
+    items: [
+        {
+            title: "Preserve Coconut Trees",
+            description:
+                "Direct support toward restoring and protecting Hawaii's native coconut trees from the Coconut Rhinoceros Beetle.",
+            icon: Leaf,
+        },
+        {
+            title: "Irrigation & Infrastructure",
+            description:
+                "Funds go toward irrigation systems, water pumps, and infrastructure needed to maintain the Anahulu Valley Coconut Farm.",
+            icon: Droplets,
+        },
+        {
+            title: "Tree Replacement Programs",
+            description:
+                "Support replanting efforts to restore coconut trees across affected areas of Hawaii and revive ecosystems.",
+            icon: Sprout,
+        },
+        {
+            title: "Cultural & Community Healing",
+            description:
+                "Preserve the sacred connection between Hawaiian communities and their land for generations to come.",
+            icon: Heart,
+        },
+    ]
+}
+
+const nonProfitContent = {
+  footerNote: {
+    text: "If you have any questions or would like to request different photos please reach out to",
+    email: "info@crbhawaii.org",
+  },
+  items: [
+  {
+    id: "coconut-tree",
+    image: {
+      src: "/non-profit/hawai-coconut-tree.png",
+      alt: "Sacred coconut palm tree silhouette against Hawaiian sunset"
     },
-    {
-        title: "Irrigation & Infrastructure",
-        description:
-            "Funds go toward irrigation systems, water pumps, and infrastructure needed to maintain the Anahulu Valley Coconut Farm.",
-        icon: Droplets,
+    eyebrow: {
+      label: "About the",
+      highlight: "Coconut Tree"
     },
-    {
-        title: "Tree Replacement Programs",
-        description:
-            "Support replanting efforts to restore coconut trees across affected areas of Hawaii and revive ecosystems.",
-        icon: Sprout,
+    title: "The Tree of Life",
+    description:
+      "The coconut tree is more than just a food source—it's a sacred, life-sustaining symbol of adaptation, creativity, and unity with nature. For Native Hawaiians and Pacific Islanders, it truly earns the title \"Tree of Life\" because it sustains the body, spirit, and culture.",
+    bordered: true
+  },
+  {
+    id: "anahulu-valley",
+    image: {
+      src: "/non-profit/nonprofit_1.png",
+      alt: "Lush green Anahulu Valley in Hawaii",
+      credit: "CRB Response"
     },
-    {
-        title: "Cultural & Community Healing",
-        description:
-            "Preserve the sacred connection between Hawaiian communities and their land for generations to come.",
-        icon: Heart,
+    eyebrow: {
+      label: "About the",
+      highlight: "Anahulu Valley"
     },
-]
+    title: "Anahulu Valley",
+    description:
+      "Nestled in the heart of Hawaii, the Anahulu Valley Preservation Fund is dedicated to protecting the sacred lands, cultural treasures, and natural beauty of our cherished valley. Mana'o Pili partners with the Anahulu Valley Preservation Fund. Each month, a portion of our proceeds is directed toward restoring, safeguarding, and preserving the valley's rich history.",
+    bordered: false
+  }
+  ]
+};
+
+const quote = {
+    text: "By supporting the Anahulu Valley Preservation Fund, you're not just helping to maintain this land's unique ecosystems but also contributing to the legacy and history that shape our island identity. Together, we honor Hawaii's cultural heritage and ensure that future generations can experience the natural beauty and historical depth of the Anahulu Valley. Join us in our mission to protect, preserve, and celebrate Hawaii's sacred land.",
+    attribution: "Anahulu Valley Preservation Fund",
+};
 
 const CRBSectionData = {
     label: "The Threat",
@@ -144,7 +174,7 @@ export default function NonProfit() {
                     <h2 className="font-display text-center text-3xl md:text-5xl font-semibold text-[#E2E2E2] mb-4 md:mb-6 lg:mb-10 leading-tight">
                         What{`'`}s At Stake?
                     </h2>
-                    <NonProfitContentBlock />
+                    <NonProfitContentBlock data={nonProfitContent} />
                 </div>
                 <div className="">
                     <div className="max-w-5xl mx-auto px-2">
@@ -154,16 +184,12 @@ export default function NonProfit() {
                             </svg>
 
                             <p className="text-lg leading-relaxed text-gray-300 mb-6">
-                                By supporting the Anahulu Valley Preservation Fund, you{`'`}re not just helping to maintain this land{`'`}s
-                                unique ecosystems but also contributing to the legacy and history that shape our island identity. Together,
-                                we honor Hawaii{`'`}s cultural heritage and ensure that future generations can experience the natural beauty
-                                and historical depth of the Anahulu Valley. Join us in our mission to protect, preserve, and celebrate
-                                Hawaii{`'`}s sacred land.
+                                {quote.text}
                             </p>
 
                             <div className="flex items-center gap-3">
                                 <div className="w-1 h-8 bg-[#DEFF00]" />
-                                <p className="text-[#DEFF00] font-semibold">Anahulu Valley Preservation Fund</p>
+                                <p className="text-[#DEFF00] font-semibold">{quote.attribution}</p>
                             </div>
                         </div>
                     </div>
@@ -171,21 +197,7 @@ export default function NonProfit() {
                 <div className="p-6 md:p-12 lg:p-20 ">
                     <ImpactSection data={impacts} />
                 </div>
-                {/* <NonProfitAccordion data1={NonProfitData} /> */}
             </div>
         </div>
-
     )
 }
-
-{/* <div className="flex flex-col items-center justify-center pt-4 pb-10">
-                <h2 className="flex italic justify-center text-3xl px-2  md:text-4xl max-w-5xl text-gray-300 text-center ">
-                    By supporting Mana’o Pili you are supporting the Anahulu
-                    Valley Preservation.
-                </h2>
-                <div className="w-full md:px-28 md:py-10 px-4 py-4 flex flex-col gap-6 ">
-                    <Image src='/non-profit/nonprofit_1.png' alt="Beach" className="w-full" width={500} height={500} />
-                </div>
-            </div> */}
-{/* <NonProfitAccordion data1={NonProfitData} />
- */}
