@@ -3,7 +3,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 export default function NonProfitAccordion({ data1 }) {
     return (
         <div className="pb-6">
-            <Accordion type="single" defaultValue={data1[0]} collapsible className="w-full md:px-28 px-10">
+            <Accordion type="single" defaultValue={data1[0]} collapsible className="w-full">
                 {
                     data1.map((item, index) => (
                         <AccordionItem key={index}  value={item} className="border-gray-700 py-6">
