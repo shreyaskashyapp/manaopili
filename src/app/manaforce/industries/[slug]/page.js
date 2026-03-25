@@ -6,12 +6,12 @@ const industries = {
   "life-sciences-pharma": {
     name: "Life Sciences & Pharmaceutical",
     description: "Protecting validated systems, clinical data, and regulated processes in one of the most compliance-intensive sectors.",
-    frameworks: ["21 CFR Part 11", "GxP / CSV / CSA", "ISO 27001"],
+    frameworks: ["21 CFR Part 11", "GxP (GMP, GCP, GLP)", "EU Annex 11", "SOC 2"],
     focusAreas: [
       {
         icon: ShieldCheck,
         title: "Compliance Requirements",
-        body: "Life sciences organizations must meet 21 CFR Part 11 for electronic records and GxP/CSV/CSA frameworks governing validated systems. Security controls must align without disrupting validation status.",
+        body: "Life sciences organizations must meet 21 CFR Part 11 for electronic records, GxP frameworks (GMP, GCP, GLP) governing validated systems, EU Annex 11 for computerized systems, and SOC 2 for service organization controls. Security controls must align without disrupting validation status.",
       },
       {
         icon: Server,
@@ -21,7 +21,7 @@ const industries = {
       {
         icon: Lock,
         title: "Identity & Access Governance",
-        body: "Controlling who can access validated systems — and proving it to auditors — is critical. Role-based access, MFA enforcement, and fully auditable access records are non-negotiable.",
+        body: "Controlling who can access validated systems - and proving it to auditors - is critical. Role-based access, MFA enforcement, and fully auditable access records are non-negotiable.",
       },
       {
         icon: AlertTriangle,
@@ -33,12 +33,12 @@ const industries = {
   "healthcare": {
     name: "Healthcare",
     description: "Securing patient data, clinical systems, and healthcare operations under one of the strictest regulatory environments.",
-    frameworks: ["HIPAA", "NIST", "ISO 27001"],
+    frameworks: ["HIPAA", "HITECH Act", "HITRUST CSF", "SOC 2", "NIST"],
     focusAreas: [
       {
         icon: ShieldCheck,
         title: "Compliance Requirements",
-        body: "HIPAA mandates strict controls over protected health information (PHI). Organizations must implement administrative, physical, and technical safeguards, with breach notification obligations and audit controls.",
+        body: "HIPAA mandates strict controls over protected health information (PHI). The HITECH Act strengthens HIPAA enforcement and breach notification requirements. HITRUST CSF provides a certifiable framework that unifies HIPAA, NIST, and ISO controls. SOC 2 attestation is increasingly required by healthcare business associates.",
       },
       {
         icon: Server,
@@ -60,12 +60,12 @@ const industries = {
   "energy-utilities": {
     name: "Energy & Utilities",
     description: "Protecting critical infrastructure and operational technology environments in an increasingly targeted sector.",
-    frameworks: ["NIST", "IEC 62443", "ISO 27001"],
+    frameworks: ["NERC CIP", "NIST", "ISO/IEC 27001", "SOC 2"],
     focusAreas: [
       {
         icon: ShieldCheck,
         title: "Compliance Requirements",
-        body: "Energy and utilities operators must align with NIST Cybersecurity Framework and IEC 62443 for industrial control systems. Regulatory obligations vary by geography and asset criticality.",
+        body: "Energy and utilities operators must comply with NERC CIP standards for bulk electric system cyber security - one of the most prescriptive regulatory frameworks in any industry. ISO/IEC 27001 and NIST Cybersecurity Framework provide additional governance structure, while SOC 2 is required by many service providers in the sector.",
       },
       {
         icon: Server,
@@ -87,12 +87,12 @@ const industries = {
   "finance-insurance": {
     name: "Finance & Insurance",
     description: "Managing cyber risk and regulatory compliance across financial services and insurance operations.",
-    frameworks: ["SOX", "NIST", "ISO 27001"],
+    frameworks: ["SOX", "GLBA", "PCI DSS", "SOC 2"],
     focusAreas: [
       {
         icon: ShieldCheck,
         title: "Compliance Requirements",
-        body: "SOX mandates internal controls over financial reporting systems. Financial institutions also face GLBA, state-level regulations, and increasing SEC cybersecurity disclosure requirements.",
+        body: "SOX mandates internal controls over financial reporting systems. GLBA requires financial institutions to protect customer data with safeguards programs. PCI DSS governs any environment handling cardholder data. SOC 2 is a baseline expectation for financial service providers and insurers handling sensitive data.",
       },
       {
         icon: Server,
@@ -114,12 +114,12 @@ const industries = {
   "regulated-manufacturing": {
     name: "Regulated Manufacturing",
     description: "Securing production environments and quality systems in manufacturing sectors operating under regulatory oversight.",
-    frameworks: ["ISO 27001", "NIST", "IEC 62443"],
+    frameworks: ["ISO 9001", "ISO 27001", "OSHA Regulations", "SOC 2"],
     focusAreas: [
       {
         icon: ShieldCheck,
         title: "Compliance Requirements",
-        body: "Regulated manufacturers must demonstrate security controls that protect quality systems, production data, and intellectual property. ISO 27001 provides the governance foundation.",
+        body: "Regulated manufacturers must satisfy ISO 9001 quality management requirements alongside ISO 27001 information security controls. OSHA regulations govern workplace safety systems that increasingly intersect with cyber risk. SOC 2 is required where manufacturers operate as service providers or handle customer data.",
       },
       {
         icon: Server,
@@ -141,12 +141,12 @@ const industries = {
   "public-sector": {
     name: "Public Sector / Government",
     description: "Helping government agencies meet federal cybersecurity mandates and protect citizen-facing systems.",
-    frameworks: ["FedRAMP", "FISMA", "NIST"],
+    frameworks: ["NIST RMF", "FISMA", "FedRAMP", "SOC 2"],
     focusAreas: [
       {
         icon: ShieldCheck,
         title: "Compliance Requirements",
-        body: "Federal agencies and contractors must comply with FedRAMP for cloud services, FISMA for information security, and NIST SP 800-53 control families covering the full security lifecycle.",
+        body: "Federal agencies must operate within the NIST Risk Management Framework (RMF) and comply with FISMA for information security program management. FedRAMP authorization is mandatory for cloud services used by federal agencies. SOC 2 reports are required from contractors and service providers operating within government environments.",
       },
       {
         icon: Server,
@@ -168,12 +168,12 @@ const industries = {
   "telecommunications": {
     name: "Telecommunications",
     description: "Protecting network infrastructure and customer data across highly targeted telecom environments.",
-    frameworks: ["ISO 27001", "NIST", "CPNI"],
+    frameworks: ["ISO 27001", "GDPR", "PCI DSS", "SOC 2"],
     focusAreas: [
       {
         icon: ShieldCheck,
         title: "Compliance Requirements",
-        body: "Telecom operators face CPNI regulations, data protection obligations, and where publicly traded, SOX requirements. Network security standards increasingly align with NIST and ISO 27001.",
+        body: "Telecom operators must comply with ISO 27001 for information security management, GDPR for customer data privacy across European operations, and PCI DSS wherever billing and payment systems are in scope. SOC 2 attestation is required by enterprise customers and regulators assessing third-party risk.",
       },
       {
         icon: Server,
@@ -198,91 +198,57 @@ export function generateStaticParams() {
   return Object.keys(industries).map((slug) => ({ slug }))
 }
 
-export function generateMetadata({ params }) {
-  const industry = industries[params.slug]
+export async function generateMetadata({ params }) {
+  const { slug } = await params
+  const industry = industries[slug]
   if (!industry) return {}
   return { title: `${industry.name} | ManaForce`, description: industry.description }
 }
 
-export default function ManaForceIndustryPage({ params }) {
-  const industry = industries[params.slug]
+export default async function ManaForceIndustryPage({ params }) {
+  const { slug } = await params
+  const industry = industries[slug]
   if (!industry) notFound()
 
   return (
-    <div className="min-h-screen bg-[#141414] text-white">
+    <div className="min-h-screen text-white">
 
-      {/* Hero — full width with glow */}
+      {/* ── Hero ── */}
       <div className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0" style={{
-          background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(69,92,255,0.2) 0%, transparent 70%)"
-        }} />
-        <div className="relative pt-28 pb-20 px-6 max-w-6xl mx-auto">
-          <Link href="/manaforce" className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-300 transition-colors mb-12">
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{ background: "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(69,92,255,0.14) 0%, transparent 70%)" }}
+        />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{ backgroundImage: "radial-gradient(rgba(69,92,255,0.05) 1px, transparent 1px)", backgroundSize: "28px 28px" }}
+        />
+
+        <div className="relative pt-28 pb-24 px-6 max-w-7xl mx-auto flex flex-col items-center text-center">
+
+          <Link
+            href="/manaforce"
+            className="self-start inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-300 transition-colors duration-200 mb-14"
+          >
             <ArrowLeft size={14} /> ManaForce
           </Link>
+          <h1
+            className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#e2e2e2] leading-[1.02] mb-6"
+            style={{ letterSpacing: "-0.03em" }}
+          >
+            {industry.name}
+          </h1>
 
-          <div className="max-w-3xl">
-            <p className="text-xs uppercase tracking-widest text-[#455CFF] mb-5">Industry Focus</p>
-            <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 leading-[1.02]" style={{ letterSpacing: "-0.03em" }}>
-              {industry.name}
-            </h1>
-            <p className="text-zinc-400 text-xl leading-relaxed mb-10">{industry.description}</p>
+          <p className="text-zinc-300 text-lg md:text-xl leading-relaxed max-w-5xl mb-10">
+            {industry.description}
+          </p>
 
-            {/* Framework pills */}
-            <div className="flex flex-wrap gap-2">
-              {industry.frameworks.map((fw) => (
-                <span key={fw} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#455CFF]/10 border border-[#455CFF]/25 text-[#455CFF] text-xs font-medium tracking-wide">
-                  <span className="w-1 h-1 rounded-full bg-[#455CFF]" />
-                  {fw}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Focus areas — 2×2 visual grid */}
-      <div className="px-6 pb-8 max-w-6xl mx-auto">
-        <p className="text-xs uppercase tracking-widest text-zinc-500 mb-8">Key Focus Areas</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {industry.focusAreas.map((area, i) => {
-            const Icon = area.icon
-            return (
-              <div
-                key={i}
-                className="group relative rounded-2xl border border-zinc-800 bg-zinc-900/30 hover:bg-[#455CFF]/[0.06] p-8 overflow-hidden hover:border-[#455CFF]/40 transition-all duration-300"
-              >
-                {/* Background glow on hover */}
-                <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ background: "radial-gradient(circle, rgba(69,92,255,0.15), transparent 70%)" }} />
-
-                {/* Icon */}
-                <div className="relative w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                  style={{ background: "rgba(69,92,255,0.12)", border: "1px solid rgba(69,92,255,0.25)" }}>
-                  <Icon size={24} style={{ color: "#455CFF" }} />
-                </div>
-
-                <h3 className="text-white font-bold text-xl mb-3 relative" style={{ letterSpacing: "-0.01em" }}>
-                  {area.title}
-                </h3>
-                <p className="text-zinc-400 text-sm leading-relaxed relative">{area.body}</p>
-
-                {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#455CFF]/0 to-transparent group-hover:via-[#455CFF]/50 transition-all duration-500" />
-              </div>
-            )
-          })}
-        </div>
-      </div>
-
-      {/* Frameworks visual strip */}
-      <div className="px-6 py-12 max-w-6xl mx-auto">
-        <div className="rounded-2xl border border-zinc-800 bg-zinc-900/20 px-8 py-7 flex flex-col sm:flex-row sm:items-center gap-6">
-          <p className="text-zinc-500 text-sm font-medium flex-shrink-0">Compliance Frameworks</p>
-          <div className="h-px sm:h-8 w-px bg-zinc-800 flex-shrink-0 hidden sm:block" />
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2 justify-center">
             {industry.frameworks.map((fw) => (
-              <span key={fw} className="text-sm text-white font-medium px-4 py-1.5 rounded-lg bg-zinc-800 border border-zinc-700">
+              <span
+                key={fw}
+                className="text-[11px] px-3 py-1.5 rounded-full border border-[#455CFF]/20 bg-[#455CFF]/[0.05] text-[#455CFF]/80 tracking-wide"
+              >
                 {fw}
               </span>
             ))}
@@ -290,26 +256,85 @@ export default function ManaForceIndustryPage({ params }) {
         </div>
       </div>
 
-      {/* CTA */}
-      <div className="px-6 pb-24 max-w-6xl mx-auto">
-        <div className="relative rounded-2xl overflow-hidden"
-          style={{ background: "linear-gradient(135deg, rgba(69,92,255,0.15) 0%, rgba(20,20,20,0.95) 60%)", border: "1px solid rgba(69,92,255,0.2)" }}>
-          <div className="pointer-events-none absolute -top-20 -right-20 w-72 h-72 rounded-full"
-            style={{ background: "radial-gradient(circle, rgba(69,92,255,0.2), transparent 70%)", filter: "blur(40px)" }} />
-          <div className="relative px-10 py-14 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
-            <div>
-              <p className="text-white text-3xl font-bold mb-2" style={{ letterSpacing: "-0.02em" }}>
-                Ready to secure your<br />{industry.name.split(" ")[0]} operations?
-              </p>
-              <p className="text-zinc-400 text-base">Let&apos;s discuss your compliance requirements and cybersecurity challenges.</p>
-            </div>
-            <Link
-              href="/contact"
-              className="flex-shrink-0 inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#455CFF] text-white text-sm font-semibold hover:bg-[#3449e8] transition-colors"
+      {/* ── Focus Areas ── */}
+      <div className="py-10 px-6 max-w-7xl mx-auto">
+
+        <div className="text-center mb-12">
+          <h2
+            className="text-3xl md:text-4xl font-bold text-white"
+            style={{ letterSpacing: "-0.02em" }}
+          >
+            Key Focus Areas
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {industry.focusAreas.map((area, i) => {
+            const Icon = area.icon
+            return (
+              <div
+                key={i}
+                className="group relative flex flex-col gap-4 rounded-2xl p-8 border border-white/[0.07] bg-[#0d0d1a] hover:border-[#455CFF]/30 hover:shadow-[0_0_40px_rgba(69,92,255,0.07)] transition-all duration-300 overflow-hidden"
+              >
+                {/* Top accent line */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-[1px] rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{ background: "linear-gradient(90deg, transparent, #455CFF, transparent)" }}
+                />
+                <Icon
+                  size={22}
+                  className="text-[#455CFF] opacity-50 group-hover:opacity-100 transition-opacity duration-300"
+                  strokeWidth={1.5}
+                />
+                <h3
+                  className="text-white font-bold text-xl leading-snug"
+                  style={{ letterSpacing: "-0.02em" }}
+                >
+                  {area.title}
+                </h3>
+                <p className="text-zinc-500 text-sm leading-relaxed">{area.body}</p>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* ── CTA ── */}
+      <div className="pb-24 pt-12 px-6 max-w-5xl mx-auto">
+        <div className="relative rounded-2xl overflow-hidden border border-[#455CFF]/20 bg-[#0d0d1a] text-center px-10 py-16">
+
+          {/* Radial glow */}
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{ background: "radial-gradient(ellipse 70% 60% at 50% 100%, rgba(69,92,255,0.10), transparent)" }}
+          />
+          {/* Top accent line */}
+          <div
+            className="absolute top-0 left-1/4 right-1/4 h-[1px]"
+            style={{ background: "linear-gradient(90deg, transparent, #455CFF, transparent)" }}
+          />
+
+          <div className="relative flex flex-col items-center gap-6">
+            <p className="text-zinc-500 text-xs uppercase tracking-widest">Get started</p>
+            <h2
+              className="text-3xl md:text-4xl font-bold text-white max-w-xl leading-snug"
+              style={{ letterSpacing: "-0.02em" }}
             >
-              Talk to us <ArrowRight size={14} />
-            </Link>
+              Let&apos;s talk about securing your {industry.name} operations.
+            </h2>
+            <p className="text-zinc-500 text-base max-w-md leading-relaxed">
+              Our team will assess your environment and design a path forward.
+            </p>
+            <div className="flex flex-wrap gap-3 justify-center mt-2">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#455CFF] text-white text-sm font-semibold hover:bg-[#455CFF]/80 transition-colors"
+              >
+                Talk to us <ArrowRight size={14} />
+              </Link>
+            </div>
           </div>
+
         </div>
       </div>
 

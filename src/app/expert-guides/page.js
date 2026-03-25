@@ -201,7 +201,7 @@ const blogPosts = [
     {
         id: 22,
         title: "ITSM Modernization in Healthcare with ServiceNow",
-        description: "Learn how healthcare organizations modernize ITSM using a Transform-in-Place approach—stabilizing CMDB, improving MTTR, and enabling ITOM without disruption.",
+        description: "Learn how healthcare organizations modernize ITSM using a Transform-in-Place approach-stabilizing CMDB, improving MTTR, and enabling ITOM without disruption.",
         image: "/articles/servicenow-itsm-modernization.gif",
         slug: "itsm-modernization-healthcare-servicenow",
         link: "pdfs/ITSM Modernization Use Case (Healthcare) v1.3.pdf",

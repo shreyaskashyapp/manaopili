@@ -10,8 +10,10 @@ import SurveyButton from "./components/surveyButton"
 import Timeline from "./components/journey-map"
 import SplitScreen from "./components/split-screen"
 import ContactBanner from "./components/contact-banner"
+import ContactFormV2 from "./components/contact-form-v2"
 import { ArrowRight, Award, Calendar, Check, CheckCircle, DollarSign, Heart, MessageSquare, RefreshCw, Shield, Users, Zap } from "lucide-react"
 import { Card } from "@/components/ui/card"
+import ManaForceTransitionLink from "./components/manaforce-transition-link"
 
 const data = {
   hero: {
@@ -162,33 +164,49 @@ export default function HomePage() {
     <div className="bg-[#141414] text-[#e2e2e2]">
       <div className="w-full">
         <div className="">
-          <div className="relative min-h-[100vh] bg-gradient-to-b from-[#455CFF] to-[#141414] w-full flex flex-col justify-center items-center overflow-hidden px-6">
-            <div className="relative pt-[100px] pb-20 flex flex-col items-center text-center max-w-4xl mx-auto">
-              <h1 className="text-5xl md:text-7xl  text-[#e2e2e2] mb-6 leading-tight">
-                {data.hero.title}
-              </h1>
-              <p className="text-lg md:text-xl text-zinc-300 mb-6 max-w-2xl leading-relaxed">
-                {data.hero.subtitle}
-              </p>
-              <p className="text-sm text-blue-200 mb-10 tracking-wide">
-                {data.hero.manaforceIntro}
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Link href="/contact">
-                  <Button size="lg" className="bg-transparent text-yellow-100 hover:text-black border border-[#deff00] hover:bg-[#deff00] font-semibold px-10 py-6 text-base rounded-lg transition-all duration-300">
-                    Talk to an Expert
-                  </Button>
-                </Link>
-                <Link
-                  href="/manaforce"
+          <div className="relative min-h-screen bg-gradient-to-b from-[#455CFF] to-[#141414] w-full flex items-center overflow-hidden">
 
+            {/* Left fade so form side doesn't clash */}
+            <div className="pointer-events-none absolute inset-0" style={{ background: "linear-gradient(90deg, transparent 45%, rgba(20,20,20,0.35) 100%)" }} />
+
+            <div className="relative z-10 w-full mx-auto px-8 md:px-16 lg:px-24 pt-32 pb-20 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+              {/* Left: headline + CTAs */}
+              <div className="flex flex-col gap-6">
+                <h1
+                  className="text-[clamp(52px,8vw,80px)] text-white leading-[0.92]"
+                  style={{ letterSpacing: "0.01em" }}
                 >
-                  <Button size="lg" className="bg-transparent text-yellow-100 bg-[#455cff] hover:text-white border border-[#455cff] hover:bg-[#455cff]/20 font-semibold px-10 py-6 text-base rounded-lg transition-all duration-300">
-                    Enter ManaForce <ArrowRight className="w-4 h-4" />
-                  </Button>
+                  Achieve
+                  Digital<br />
+                  Transformation
+                  with <br />
+                  <span className="text-[#deff00] italic">Mana'o Pili</span>
+                </h1>
 
-                </Link>
+                <p className="text-zinc-200 text-base md:text-lg leading-relaxed max-w-3xl">
+                  {data.hero.subtitle}
+                </p>
+                <p className="text-sm text-blue-200 tracking-wide">
+                  {data.hero.manaforceIntro}
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <ManaForceTransitionLink href="/manaforce">
+                    <Button size="lg" className="bg-transparent text-white hover:text-white border border-white hover:border-[#455cff] hover:bg-[#455cff]/80 font-semibold px-10 py-6 text-base rounded-lg transition-all duration-300">
+                      Enter ManaForce <ArrowRight className="w-4 h-4 ml-1" />
+                    </Button>
+                  </ManaForceTransitionLink>
+                </div>
               </div>
+
+              {/* Right: contact form */}
+              <div className="w-full">
+                <ContactFormV2
+                  formFields={data.formFields}
+                  serviceOptions={data.serviceOptions}
+                />
+              </div>
+
             </div>
           </div>
           {/* Transformm your business  */}
