@@ -181,7 +181,7 @@ export default function HomePage() {
                   Digital<br />
                   Transformation
                   with <br />
-                  <span className="text-[#deff00] italic">Mana'o Pili</span>
+                  <span className="text-[#deff00] italic">{"Mana`o Pili"}</span>
                 </h1>
 
                 <p className="text-zinc-200 text-base md:text-lg leading-relaxed max-w-3xl">
