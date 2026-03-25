@@ -6,21 +6,20 @@ import Cards from './components/homecards'
 import WhyManaopiliWheel from './components/wheel'
 import { useEffect } from "react"
 import { activateServer } from "@/lib/utils"
-import ContactFormV2 from "./components/contact-form-v2"
 import SurveyButton from "./components/surveyButton"
 import Timeline from "./components/journey-map"
+import SplitScreen from "./components/split-screen"
 import ContactBanner from "./components/contact-banner"
-import { ArrowRight, Award, Calendar, Check, CheckCircle, DollarSign, Heart, MessageSquare, RefreshCw, Users, Zap } from "lucide-react"
+import ContactFormV2 from "./components/contact-form-v2"
+import { ArrowRight, Award, Calendar, Check, CheckCircle, DollarSign, Heart, MessageSquare, RefreshCw, Shield, Users, Zap } from "lucide-react"
 import { Card } from "@/components/ui/card"
+import ManaForceTransitionLink from "./components/manaforce-transition-link"
 
 const data = {
   hero: {
-    title: "Achieve Digital Transformation with",
-    subtitle: (
-      <>
-        {"With Mana'o Pili's"} <span className="text-[#deff00]">Digital Trip</span> approach, we help you unlock the full potential of <span className="text-[#deff00]">Service Now</span>, creating value at every step.
-      </>
-    ),
+    title: <>Achieve Digital Transformation with <br /><span className="text-[#deff00] italic"> Mana&apos;o Pili</span></>,
+    subtitle: <>From <span className="text-[#deff00]">ServiceNow-powered</span> workflows to <span className="text-[#deff00]">Zero Trust Cybersecurity</span> with <span className="text-[#deff00]">ManaForce</span>, we help regulated organizations operate securely and at scale.</>,
+    manaforceIntro: "Introducing ManaForce - our cybersecurity practice focused on Zero Trust architecture.",
   },
   sections: [
     {
@@ -165,28 +164,49 @@ export default function HomePage() {
     <div className="bg-[#141414] text-[#e2e2e2]">
       <div className="w-full">
         <div className="">
-          <div className="relative h-full md:h-[100vh] bg-gradient-to-b from-[#455CFF] to-[#141414] w-full flex flex-col justify-center items-center overflow-hidden">
-            <div className="relative pt-[100px] md:pt-0 flex flex-col md:flex-row">
-              <div className="relative z-10 px-6 lg:px-10 flex flex-col md:w-1/2 justify-center items-center">
-                <h1 className="text-4xl md:text-6xl lg:text-7xl text-center md:text-left text-[#e2e2e2] mb-6 font-normal leading-tight">
-                  {data.hero.title}
-                  <br className="hidden sm:inline" />
-                  <span className="text-[#deff00] italic"> {`Mana'o Pili`}</span>
+          <div className="relative min-h-screen bg-gradient-to-b from-[#455CFF] to-[#141414] w-full flex items-center overflow-hidden">
+
+            {/* Left fade so form side doesn't clash */}
+            <div className="pointer-events-none absolute inset-0" style={{ background: "linear-gradient(90deg, transparent 45%, rgba(20,20,20,0.35) 100%)" }} />
+
+            <div className="relative z-10 w-full mx-auto px-8 md:px-16 lg:px-24 pt-32 pb-20 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+              {/* Left: headline + CTAs */}
+              <div className="flex flex-col gap-6">
+                <h1
+                  className="text-[clamp(52px,8vw,80px)] text-white leading-[0.92]"
+                  style={{ letterSpacing: "0.01em" }}
+                >
+                  Achieve
+                  Digital<br />
+                  Transformation
+                  with <br />
+                  <span className="text-[#deff00] italic">{"Mana`o Pili"}</span>
                 </h1>
-                <p className="text-lg md:text-xl  md:text-left text-center text-gray-300 mb-10  mx-auto">
+
+                <p className="text-zinc-200 text-base md:text-lg leading-relaxed max-w-3xl">
                   {data.hero.subtitle}
                 </p>
-                <div className="">
-                  {/* <Link href="/survey-list">
-                    <Button size="lg" variant="outline" className="text-[#455CFF]  bg-blue-200 font-heading hover:bg-[#deff00] px-20 py-6 text-2xl rounded-full shadow-md hover:shadow-lg transition-all duration-300">
-                      Get Started
+                <p className="text-sm text-blue-200 tracking-wide">
+                  {data.hero.manaforceIntro}
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <ManaForceTransitionLink href="/manaforce">
+                    <Button size="lg" className="bg-transparent text-white hover:text-white border border-white hover:border-[#455cff] hover:bg-[#455cff]/80 font-semibold px-10 py-6 text-base rounded-lg transition-all duration-300">
+                      Enter ManaForce <ArrowRight className="w-4 h-4 ml-1" />
                     </Button>
-                  </Link> */}
+                  </ManaForceTransitionLink>
                 </div>
               </div>
-              <div className="relative px-4 md:w-1/2 md:pr-6">
-                <ContactFormV2 formFields={data?.formFields} serviceOptions={data?.serviceOptions} />
+
+              {/* Right: contact form */}
+              <div className="w-full">
+                <ContactFormV2
+                  formFields={data.formFields}
+                  serviceOptions={data.serviceOptions}
+                />
               </div>
+
             </div>
           </div>
           {/* Transformm your business  */}
@@ -198,8 +218,11 @@ export default function HomePage() {
             <Cards data={data?.sections} />
           </div>
           <div>
-            <Timeline data={data?.journeyMap} />
+            <SplitScreen />
           </div>
+          {/* <div>
+            <Timeline data={data?.journeyMap} />
+          </div> */}
           {/* Why manaopili section */}
           <div className="">
             <div className="flex justify-center items-center md:gap-2 gap-0 px-3 pt-10">
@@ -209,7 +232,6 @@ export default function HomePage() {
             <div className="w-full">
               <WhyManaopiliWheel />
             </div>
-
             <div className="flex justify-center items-center pb-10">
               <SurveyButton title="Book Consultation" url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} />
             </div>

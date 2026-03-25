@@ -37,14 +37,14 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#141414]`}
       >
         <Suspense>
+          <Header />
           <div className="">
             {children}
           </div>
           <FooterPage />
+          <FloaterCTA />
+          <SocialCTA />
         </Suspense>
-        <Header />  
-        <FloaterCTA/>
-        <SocialCTA/>
         <GoogleAnalytics gaId={`${process.env.NEXT_PUBLIC_GA_ID}`}/>
       </body>
     </html>

@@ -2,8 +2,8 @@ import { Card } from "@/components/ui/card";
 import SurveyButton from "./surveyButton";
 import { CheckCircle } from "lucide-react";
 
-export default function ContactBanner({ color="[#deff00]" }) {
-  const content = {
+export default function ContactBanner({ color = "[#deff00]", content, bgGradient }) {
+  content = content ?? {
     title: <>
       Ready to Transform Your <span className={`text-${color}`}>ServiceNow</span> Journey?
     </>,
@@ -20,7 +20,7 @@ export default function ContactBanner({ color="[#deff00]" }) {
 
     <section className="w-full pb-10">
       <div className="max-w-6xl mx-auto">
-        <Card className="bg-gradient-to-r from-zinc-900 via-[#141414] to-zinc-900 border border-zinc-800 shadow-md shadow-zinc-900 p-8 md:p-12 relative overflow-hidden">
+        <Card className={`${bgGradient ?? "bg-gradient-to-r from-zinc-900 via-[#141414] to-zinc-900"} border border-zinc-800 shadow-md shadow-zinc-900 p-8 md:p-12 relative overflow-hidden`}>
           <div className="relative z-10 grid lg:grid-cols-3 gap-8 items-center">
 
             {/* Left Content */}

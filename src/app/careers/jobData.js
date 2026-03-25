@@ -8,7 +8,7 @@ export const deptColors = {
 export const jobOpenings = [
   {
     id: 1,
-    title: 'Principal Security Architect — Zero Trust & Platform Operations',
+    title: 'Principal Security Architect - Zero Trust & Platform Operations',
     dept: 'Security',
     type: 'Contract (C2C)',
     location: 'Remote (United States / Canada)',
