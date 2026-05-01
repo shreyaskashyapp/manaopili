@@ -7,6 +7,11 @@ export default function HeroSection({data, bgColor}) {
                     {data?.title}
                 </h2>
                 <p className="text-gray-200 md:text-xl text-base leading-relaxed flex-1">{data.description}</p>
+                {data?.cta && (
+                    <div className="flex flex-wrap gap-4 pt-2">
+                        {data.cta}
+                    </div>
+                )}
             </div>
         </div>
     )

@@ -15,12 +15,21 @@ import { Card } from "@/components/ui/card"
 
 const data = {
   hero: {
-    title: "Achieve Digital Transformation with",
-    subtitle: (
+    title: (
       <>
-        {"With Mana'o Pili's"} <span className="text-[#deff00]">Digital Trip</span> approach, we help you unlock the full potential of <span className="text-[#deff00]">Service Now</span>, creating value at every step.
+        Make <span className="text-[#deff00]">ServiceNow</span> Work in Regulated Environments
       </>
     ),
+    subtitle: (
+      <>
+        We <span className="text-[#deff00]">stabilize ServiceNow platforms</span>, streamline operations, and turn <span className="text-[#deff00]">compliance into a continuous process</span>.
+      </>
+    ),
+    bullets: [
+      "20+ years on ServiceNow, leading 100+ implementations",
+      "Reduced audit cycles from weeks to hours",
+      "Built for regulated and high-risk environments",
+    ],
   },
   sections: [
     {
@@ -113,8 +122,6 @@ const data = {
     { id: "name", label: "Name", type: "text", placeholder: "Your name", isRequired: true },
     { id: "email", label: "Email", type: "email", placeholder: "Your email", isRequired: true },
     { id: "company", label: "Company Name", type: "text", placeholder: "Your company", isRequired: true },
-    { id: "service", label: "Service Needed", isSelection: true, isRequired: true },
-    { id: "message", label: "Message", type: "message", placeholder: "Your message", isRequired: true },
   ],
 
 
@@ -166,26 +173,25 @@ export default function HomePage() {
       <div className="w-full">
         <div className="">
           <div className="relative h-full md:h-[100vh] bg-gradient-to-b from-[#455CFF] to-[#141414] w-full flex flex-col justify-center items-center overflow-hidden">
-            <div className="relative pt-[100px] md:pt-0 flex flex-col md:flex-row">
-              <div className="relative z-10 px-6 lg:px-10 flex flex-col md:w-1/2 justify-center items-center">
-                <h1 className="text-4xl md:text-6xl lg:text-7xl text-center md:text-left text-[#e2e2e2] mb-6 font-normal leading-tight">
+            <div className="relative pt-[100px] md:pt-0 flex flex-col md:flex-row items-center gap-8 px-6 lg:px-20 w-full">
+              <div className="relative z-10 flex flex-col md:w-1/2 justify-center items-start">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl text-left text-[#e2e2e2] mb-6 font-normal leading-tight">
                   {data.hero.title}
-                  <br className="hidden sm:inline" />
-                  <span className="text-[#deff00] italic"> {`Mana'o Pili`}</span>
                 </h1>
-                <p className="text-lg md:text-xl  md:text-left text-center text-gray-300 mb-10  mx-auto">
+                <p className="text-lg md:text-xl text-left text-gray-300 mb-6 mx-auto">
                   {data.hero.subtitle}
                 </p>
-                <div className="">
-                  {/* <Link href="/survey-list">
-                    <Button size="lg" variant="outline" className="text-[#455CFF]  bg-blue-200 font-heading hover:bg-[#deff00] px-20 py-6 text-2xl rounded-full shadow-md hover:shadow-lg transition-all duration-300">
-                      Get Started
-                    </Button>
-                  </Link> */}
-                </div>
+                <ul className="space-y-2 mb-10">
+                  {data.hero.bullets.map((b) => (
+                    <li key={b} className="flex items-start gap-3 text-gray-300 text-base md:text-lg">
+                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-gray-300 shrink-0" />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className="relative px-4 md:w-1/2 md:pr-6">
-                <ContactFormV2 formFields={data?.formFields} serviceOptions={data?.serviceOptions} />
+              <div className="relative md:w-1/2">
+                <ContactFormV2 formFields={data?.formFields} serviceOptions={data?.serviceOptions} title="Start with a 1 Week Operational Assessment" buttonText="Get My Assessment" />
               </div>
             </div>
           </div>
