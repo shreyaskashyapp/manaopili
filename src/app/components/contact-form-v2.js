@@ -39,7 +39,7 @@ export default function ContactFormV2({ formFields, serviceOptions, title = "Con
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                         </svg>
                     </div>
-                    <h3 className="text-xl text-white font-normal">You're on the list</h3>
+                    <h3 className="text-xl text-white font-normal">You&apos;re on the list</h3>
                     <p className="text-gray-300 text-sm leading-relaxed">
                         Thank you for reaching out. Our team will review your message and get back to you shortly.
                     </p>
