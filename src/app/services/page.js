@@ -12,7 +12,8 @@ import HeroSection from '../components/hero-section'
 import ServicesAccordion from '../components/services-accordion'
 import SurveyButton from '../components/surveyButton'
 import { activateServer } from '@/lib/utils'
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 
 const categories = ["IMPLEMENTATIONS", "CONSULTING", "MANAGED SERVICES", "ENHANCEMENTS"]
 
@@ -241,6 +242,12 @@ const buttonData = {
 }
 
 
+function ServicesContent() {
+  const searchParams = useSearchParams()
+  const section = searchParams.get("section")
+  return <ServicesAccordion services={services} categories={categories} defaultSection={section} />
+}
+
 export default function Component() {
   useEffect(() => {
     activateServer()
@@ -251,7 +258,9 @@ export default function Component() {
         {/* //hero */}
         <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
         <div className="container mx-auto px-4 pt-4 pb-10">
-          <ServicesAccordion services={services} categories={categories} />
+          <Suspense fallback={<ServicesAccordion services={services} categories={categories} />}>
+            <ServicesContent />
+          </Suspense>
 
           <div className="text-center">
             <p className="text-lg md:text-xl text-zinc-300 py-8 px-4">
