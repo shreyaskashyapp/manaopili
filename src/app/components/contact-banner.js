@@ -18,7 +18,7 @@ export default function ContactBanner({ color="[#deff00]" }) {
 
   return (
 
-    <section className="w-full pb-10">
+    <section className="w-full">
       <div className="max-w-6xl mx-auto">
         <Card className="bg-gradient-to-r from-zinc-900 via-[#141414] to-zinc-900 border border-zinc-800 shadow-md shadow-zinc-900 p-8 md:p-12 relative overflow-hidden">
           <div className="relative z-10 grid lg:grid-cols-3 gap-8 items-center">
@@ -26,7 +26,7 @@ export default function ContactBanner({ color="[#deff00]" }) {
             {/* Left Content */}
             <div className="lg:col-span-2 space-y-6">
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-5xl font-semibold text-[#ffffff] leading-tight">
+                <h2 className="font-heading text-3xl md:text-5xl font-normal text-[#e2e2e2] leading-tight">
                   {content.title}
                 </h2>
                 <p className="md:text-lg text-gray-300">

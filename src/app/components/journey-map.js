@@ -93,23 +93,11 @@ export default function Timeline({ data }) {
 
   return (
     <section
-      className="w-full py-8 md:py-10"
+      className="w-full"
       ref={containerRef}
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="text-center space-y-6 ">
-            <h2 className="flex justify-center items-center gap-0 md:gap-2 text-4xl md:text-5xl font-normal text-[#e2e2e2] leading-tight">
-              {data.header.title}
-            </h2>
-            {/* <p className="text-base md:text-lg text-gray-400 max-w-4xl mx-auto leading-relaxed mb-6">
-              {data.header.subtitle}
-            </p> */}
-            {/* <p className="text-lg text-gray-400 max-w-4xl mx-auto leading-relaxed mb-6">{data.header.description}</p>
-            <p className="text-base text-gray-400 max-w-4xl mx-auto leading-relaxed">{data.header.additionalInfo}</p> */}
-          </div>
-
           {/* Timeline Section */}
           <div className="">
             <div ref={ref} className="relative">
@@ -122,19 +110,19 @@ export default function Timeline({ data }) {
                       </div>
                     </div>
                     <div className="hidden md:block md:pl-20">
-                      <h3 className="text-sm font-medium text-gray-500 mb-1">{step.step}</h3>
+                      <h3 className="text-sm font-medium tracking-[0.18em] uppercase text-[#deff00]/80 mb-1">{step.step}</h3>
                       <h4 className="text-xl md:text-2xl font-bold text-white">{step.title}</h4>
                     </div>
                   </div>
 
                   <div className="relative pl-20 pr-4 md:pl-4 w-full">
                     <div className="md:hidden mb-4">
-                      <h3 className="text-sm font-medium text-gray-500 mb-1">{step.step}</h3>
+                      <h3 className="text-sm font-medium tracking-[0.18em] uppercase text-[#deff00]/80 mb-1">{step.step}</h3>
                       <h4 className="text-xl font-bold text-white">{step.title}</h4>
                     </div>
 
 
-                    <div className="bg-gradient-to-br from-[#141414] to-zinc-900 border-gray-600/20 border rounded-xl p-4 md:p-5 hover:shadow-lg hover:shadow-zinc-800/20 transition-all duration-300">
+                    <div className="bg-gradient-to-br from-zinc-900 to-[#141414] border border-zinc-800 rounded-xl p-4 md:p-5 transition-all duration-500 hover:border-[#DEFF00]/40 hover:shadow-[0_18px_30px_-20px_rgba(255,223,100,0.4)]">
                       <p className="text-gray-300 text-sm md:text-lg leading-relaxed mb-4">{step.description}</p>
 
 

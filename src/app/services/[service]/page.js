@@ -6,6 +6,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { useParams } from 'next/navigation'
+import Reveal from "../../components/reveal"
 
 const services = {
     "technology-workflows": {
@@ -340,7 +341,7 @@ export default function ServicePage() {
     return (
         <div className="min-h-screen  pt-8">
             {/* Hero Section */}
-            <div className="container mx-auto px-4 pt-20 pb-16 text-center">
+            <Reveal className="container mx-auto px-4 pt-20 pb-16 text-center">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
                     {service.title}
                 </h1>
@@ -368,10 +369,10 @@ export default function ServicePage() {
                         <Link href="/contact">Contact Us</Link>
                     </Button>
                 </div>
-            </div>
+            </Reveal>
 
             {/* Features and Benefits */}
-            <div className="container mx-auto px-4 py-8">
+            <Reveal className="container mx-auto px-4 py-8">
                 <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                     <Card className="bg-gray-800/50 border-gray-700">
                         <CardContent className="p-6">
@@ -400,11 +401,11 @@ export default function ServicePage() {
                         </CardContent>
                     </Card>
                 </div>
-            </div>
+            </Reveal>
 
             {/* CTA Section */}
             {service.surveyCheck &&
-            <div className="container mx-auto px-4 py-16 text-center">
+            <Reveal className="container mx-auto px-4 py-16 text-center">
                 <div className="bg-gray-800/50 border border-gray-700 rounded-2xl p-8 max-w-4xl mx-auto">
                     <h2 className="text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
                     <p className="text-gray-300 mb-8">
@@ -420,7 +421,7 @@ export default function ServicePage() {
                         </Link>
                     </Button>
                 </div>
-            </div>
+            </Reveal>
             }
         </div>
     )

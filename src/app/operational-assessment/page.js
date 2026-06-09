@@ -2,6 +2,7 @@
 
 import HeroSection from "../components/hero-section"
 import SurveyButton from "../components/surveyButton"
+import Reveal from "../components/reveal"
 
 const hero = {
   title: "Operational Assessment",
@@ -85,7 +86,7 @@ export default function OperationalAssessmentPage() {
       <HeroSection data={hero} bgColor="from-[#455CFF] to-[#141414]" height="[70vh]" />
 
       {/* ── THE PROBLEM — two-column: heading left, list right ── */}
-      <section className="py-16">
+      <Reveal as="section" className="py-16">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           <div>
             <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] leading-tight mb-6">
@@ -105,10 +106,10 @@ export default function OperationalAssessmentPage() {
             ))}
           </ul>
         </div>
-      </section>
+      </Reveal>
 
       {/* ── OUR MODEL — statement section ── */}
-      <section className="bg-zinc-900/40 py-16">
+      <Reveal as="section" className="bg-zinc-900/40 py-16">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] text-center leading-tight mb-4">
             Digital Transformation in Place
@@ -139,10 +140,10 @@ export default function OperationalAssessmentPage() {
             We stabilize, simplify, and scale the platform while it continues to operate.
           </p>
         </div>
-      </section>
+      </Reveal>
 
       {/* ── OUR APPROACH — centered heading + card grid ── */}
-      <section id="approach" className="py-16">
+      <Reveal as="section" id="approach" className="py-16">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] text-center leading-tight mb-12">
             Our Approach
@@ -157,10 +158,10 @@ export default function OperationalAssessmentPage() {
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
       {/* ── PLATFORM FOCUS — two-column: heading left, pills right ── */}
-      <section className="bg-zinc-900/40 py-16">
+      <Reveal as="section" className="bg-zinc-900/40 py-16">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           <div>
             <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] leading-tight mb-6">
@@ -179,10 +180,10 @@ export default function OperationalAssessmentPage() {
             ))}
           </ul>
         </div>
-      </section>
+      </Reveal>
 
       {/* ── WHY MANA'O PILI — centered heading + card grid ── */}
-      <section className="py-16">
+      <Reveal as="section" className="py-16">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] text-center leading-tight mb-12">
             Why Mana&apos;o Pili
@@ -196,10 +197,10 @@ export default function OperationalAssessmentPage() {
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
       {/* ── OUTCOMES — two-column: heading left, list right ── */}
-      <section className="bg-zinc-900/40 py-16">
+      <Reveal as="section" className="bg-zinc-900/40 py-16">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           <div>
             <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] leading-tight mb-6">
@@ -218,10 +219,10 @@ export default function OperationalAssessmentPage() {
             ))}
           </ul>
         </div>
-      </section>
+      </Reveal>
 
       {/* ── BOTTOM CTA ── */}
-      <section className="py-20 text-center">
+      <Reveal as="section" className="py-20 text-center">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] leading-tight mb-6">
             Start with clarity, not a transformation program
@@ -233,7 +234,7 @@ export default function OperationalAssessmentPage() {
             <SurveyButton title="Schedule an Assessment" url="/survey-list" />
           </div>
         </div>
-      </section>
+      </Reveal>
 
     </div>
   )

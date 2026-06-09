@@ -4,6 +4,7 @@ import Founders from "../components/founders-cards";
 import GlobalImage from "../components/global-image";
 import HeroSection from "../components/hero-section";
 import SurveyButton from "../components/surveyButton";
+import Reveal from "../components/reveal";
 
 const data = {
   "resources": {
@@ -76,7 +77,7 @@ export default function About() {
       {/* hero section */}
       <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
       {/* resources */}
-      <div className="lg:px-32 px-6 pt-4 pb-10">
+      <Reveal className="lg:px-32 px-6 pt-4 pb-10">
         <div className="w-full  rounded-2xl  bg-gradient-t0-b from-[#141414] to-zinc-900">
           <h1 className='text-4xl md:text-5xl font-normal text-[#e2e2e2]  text-center pb-10 '>
             Our team resources
@@ -88,9 +89,9 @@ export default function About() {
         </div>
 
 
-      </div>
+      </Reveal>
       {/* founders */}
-      <div>
+      <Reveal>
         <h2 className='text-4xl md:text-5xl  font-normal text-[#e2e2e2] text-center '>
           Founders
         </h2>
@@ -98,9 +99,11 @@ export default function About() {
         <div className='flex justify-center items-center'>
           <SurveyButton title='Schedule a meeting!' url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} />
         </div>
-      </div>
+      </Reveal>
       {/* global presence */}
-      <GlobalImage data={data.globalPresence} />
+      <Reveal>
+        <GlobalImage data={data.globalPresence} />
+      </Reveal>
     </div>
 
   )

@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useState } from "react";
 import BlogsEmailCollection from "../components/blog-email-collection";
+import Reveal from "../components/reveal";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -392,7 +393,7 @@ export default function BlogAndVideosPage() {
                 <div className="min-h-screen bg-1414 py-28 px-4 sm:px-6 lg:px-8">
                     <div className="max-w-7xl mx-auto">
                         {/* Blog Section */}
-                        <section className="mb-16">
+                        <Reveal as="section" className="mb-16">
                             <div className="flex justify-between items-center mb-8">
                                 <h2 className="text-4xl font-bold text-white relative">
                                     Latest Blog Posts
@@ -404,10 +405,10 @@ export default function BlogAndVideosPage() {
                                     <BlogCard key={post.id} post={post} />
                                 ))}
                             </div>
-                        </section>
+                        </Reveal>
 
                         {/* Videos Section */}
-                        <section>
+                        <Reveal as="section">
                             <div className="flex justify-between items-center mb-8">
                                 <h2 className="text-3xl font-bold text-white relative">
                                     Featured Videos
@@ -419,7 +420,7 @@ export default function BlogAndVideosPage() {
                                     <VideoCard key={video.id} video={video} />
                                 ))}
                             </div>
-                        </section>
+                        </Reveal>
                     </div>
                 </div>
             ) : (

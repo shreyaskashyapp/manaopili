@@ -31,7 +31,7 @@ export default function ContactFormV2({ formFields, serviceOptions, title = "Con
     }
 
     return (
-        <Card className='bg-gray-400/10 border-gray-100/20 w-full rounded-xl shadow-[#141414]/40 shadow-md flex flex-col p-2'>
+        <Card className='bg-white/[0.03] border-white/10 ring-1 ring-white/[0.06] backdrop-blur-xl w-full rounded-2xl shadow-2xl shadow-black/50 flex flex-col p-2'>
             {submitSuccess ? (
                 <div className="flex flex-col items-center justify-center py-10 px-6 text-center gap-4">
                     <div className="h-16 w-16 rounded-full bg-[#deff00] flex items-center justify-center shrink-0">
@@ -57,7 +57,7 @@ export default function ContactFormV2({ formFields, serviceOptions, title = "Con
                                         <Label className='text-[#deff00]'>{item.label}{item.isRequired ? "*" : ''}</Label>
                                         {item.isSelection ? (
                                             <Select onValueChange={(value) => setFormData({ ...formData, [item.id]: value })}>
-                                                <SelectTrigger className="bg-transparent text-white border-gray-100/40">
+                                                <SelectTrigger className="bg-white/[0.02] text-white border-white/15 focus:ring-[#deff00]/40 focus:border-[#deff00]/50">
                                                     <SelectValue placeholder="Select Service" className="placeholder:text-zinc-200" />
                                                 </SelectTrigger>
                                                 <SelectContent className="bg-blue-200">
@@ -72,7 +72,7 @@ export default function ContactFormV2({ formFields, serviceOptions, title = "Con
                                                 type={item.type}
                                                 placeholder={item.placeholder}
                                                 required={item.isRequired}
-                                                className='bg-transparent placeholder:text-zinc-400 text-sm text-white border-gray-100/40'
+                                                className='bg-white/[0.02] placeholder:text-zinc-500 text-sm text-white border-white/15 focus-visible:ring-[#deff00]/40 focus-visible:border-[#deff00]/50 transition-colors'
                                             />
                                         )}
                                     </div>
@@ -84,7 +84,7 @@ export default function ContactFormV2({ formFields, serviceOptions, title = "Con
                             <Button
                                 type='submit'
                                 disabled={isLoading}
-                                className="w-full bg-blue-200 font-semibold hover:bg-[#deff00] text-black transition-all disabled:opacity-60"
+                                className="w-full bg-[#deff00] font-semibold text-black tracking-wide shadow-[0_0_30px_-4px_rgba(222,255,0,0.5)] hover:bg-white hover:shadow-[0_0_38px_-2px_rgba(222,255,0,0.65)] transition-all disabled:opacity-60"
                             >
                                 {isLoading ? "Submitting…" : buttonText}
                             </Button>

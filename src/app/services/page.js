@@ -11,6 +11,7 @@ import CompareCard from '../components/comparisionCards'
 import HeroSection from '../components/hero-section'
 import ServicesAccordion from '../components/services-accordion'
 import SurveyButton from '../components/surveyButton'
+import Reveal from '../components/reveal'
 import { activateServer } from '@/lib/utils'
 import { useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
@@ -262,31 +263,31 @@ export default function Component() {
             <ServicesContent />
           </Suspense>
 
-          <div className="text-center">
+          <Reveal className="text-center">
             <p className="text-lg md:text-xl text-zinc-300 py-8 px-4">
               {`Ready to experience the Mana'o Pili difference?`}
             </p>
             <div className='flex justify-center items-center'>
               <SurveyButton title='Book Consultation' url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} />
             </div>
-          </div>
+          </Reveal>
           {/* comparision section */}
           {/* <Comparison/> */}
-          <div className='mt-16 text-center'>
+          <Reveal className='mt-16 text-center'>
             <h2 className='text-4xl md:text-5xl font-normal text-[#e2e2e2] text-center'>
               Why Choose Us?
             </h2>
             <CompareCard data={data} companies={companies} />
-          </div>
+          </Reveal>
 
-          <div className="text-center">
+          <Reveal className="text-center">
             <p className="text-lg md:text-xl text-zinc-300 mb-6 md:mb-8 px-4">
               {`Ready to experience the Mana'o Pili difference?`}
             </p>
             <div className='flex justify-center items-center'>
               <SurveyButton title='Book Consultation' url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} />
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </div>

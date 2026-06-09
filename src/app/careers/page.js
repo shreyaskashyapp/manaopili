@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, MapPin, Briefcase } from 'lucide-react';
 import Link from 'next/link';
 import HeroSection from '../components/hero-section';
+import Reveal from '../components/reveal';
 import { jobOpenings, deptColors } from './jobData';
 
 
@@ -89,9 +90,9 @@ const Careers = () => {
       <HeroSection data={heroData} bgColor="from-[#455CFF] to-[#141414]" />
 
       <section className="container mx-auto px-4 md:px-10 lg:px-20 py-16">
-        <h2 className="font-heading text-4xl md:text-5xl text-white mb-10">
+        <Reveal as="h2" className="font-heading text-4xl md:text-5xl text-white mb-10">
           Open Positions
-        </h2>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {jobOpenings.map((job, i) => (

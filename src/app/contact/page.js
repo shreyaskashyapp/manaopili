@@ -1,5 +1,6 @@
 import ContactForm from "../components/contact-form";
 import HeroSection from "../components/hero-section";
+import Reveal from "../components/reveal";
 import Image from "next/image";
 
 const data = {
@@ -20,9 +21,9 @@ export default function Contact() {
     return (
         <div>
             <HeroSection data={data} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
-            <div className="pb-10">
+            <Reveal className="pb-10">
                 <ContactForm />
-            </div>
+            </Reveal>
 
         </div>
     )

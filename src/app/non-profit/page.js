@@ -3,6 +3,7 @@ import { Leaf, Droplets, Sprout, Heart } from "lucide-react"
 import ImageContentBlock from "../components/image-content-block";
 import ImpactSection from "../components/impact-section";
 import NonProfitContentBlock from "../components/non-profit-content-block";
+import Reveal from "../components/reveal";
 
 
 
@@ -140,7 +141,7 @@ export default function NonProfit() {
             <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
             <div className="max-w-7xl mx-auto flex flex-col gap-20 px-4">
                 {/* Hawaii Image Section */}
-                <section className="">
+                <Reveal as="section" className="">
                     <div className="mx-auto">
                         <div className="text-center mb-8">
                             <p className="text-[#DEFF00] md:text-sm text-xs font-medium tracking-widest uppercase mb-2">
@@ -167,15 +168,17 @@ export default function NonProfit() {
                             But something is slowly killing this beauty - an invasive species threatening the very trees that define our island paradise.
                         </p>
                     </div>
-                </section>
+                </Reveal>
                 {/* Threat CRB Section */}
-                <ImageContentBlock data={CRBSectionData} />
-                <div>
+                <Reveal>
+                    <ImageContentBlock data={CRBSectionData} />
+                </Reveal>
+                <Reveal>
                     <h2 className="font-display text-center text-3xl md:text-5xl font-semibold text-[#E2E2E2] mb-4 md:mb-6 lg:mb-10 leading-tight">
                         What{`'`}s At Stake?
                     </h2>
                     <NonProfitContentBlock data={nonProfitContent} />
-                </div>
+                </Reveal>
                 <div className="">
                     <div className="max-w-5xl mx-auto px-2">
                         <div className="rounded-lg p-10 border border-[#DEFF00]/10">
@@ -194,9 +197,9 @@ export default function NonProfit() {
                         </div>
                     </div>
                 </div>
-                <div className="p-6 md:p-12 lg:p-20 ">
+                <Reveal className="p-6 md:p-12 lg:p-20 ">
                     <ImpactSection data={impacts} />
-                </div>
+                </Reveal>
             </div>
         </div>
     )
