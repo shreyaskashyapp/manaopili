@@ -18,11 +18,11 @@ export default function Cards({ data }) {
                                 {/* Thin accent line along the top edge */}
                                 <span
                                     aria-hidden
-                                    className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-transparent to-transparent transition-all duration-500 group-hover:via-[#deff00]/70"
+                                    className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-transparent to-transparent transition-all duration-500 group-hover:via-[#455cff]/70"
                                 />
 
                                 <CardHeader className="relative z-10">
-                                    <CardTitle className='text-xl md:text-3xl font-normal leading-snug text-[#deff00]'>
+                                    <CardTitle className='text-xl md:text-3xl font-normal leading-snug text-[#455cff]'>
                                         {section.title}
                                     </CardTitle>
                                 </CardHeader>
@@ -33,7 +33,7 @@ export default function Cards({ data }) {
                                 </CardContent>
                                 <CardFooter className='relative z-10 flex justify-end'>
                                     <Image
-                                        src="/arrow_yellow.png"
+                                        src="/arrow_blue.png"
                                         alt="Arrow"
                                         width={20}
                                         height={20}

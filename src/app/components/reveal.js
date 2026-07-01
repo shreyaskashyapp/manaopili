@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 
 /**
  * Subtle scroll-reveal wrapper.
@@ -24,6 +24,16 @@ export default function Reveal({
   ...rest
 }) {
   const MotionTag = motion[as] || motion.div
+  const reduceMotion = useReducedMotion()
+
+  // Honor prefers-reduced-motion: render final state immediately, no transform/fade.
+  if (reduceMotion) {
+    return (
+      <MotionTag className={className} {...rest}>
+        {children}
+      </MotionTag>
+    )
+  }
 
   return (
     <MotionTag

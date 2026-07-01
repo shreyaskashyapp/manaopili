@@ -30,13 +30,13 @@ const headings = ['Company', 'Legal', 'Connect']
 
 export default function Footer() {
   return (
-    <footer className="relative bg-gradient-to-r via-[#455cff]/80  to-[#141414] from-[#141414] text-zinc-300 border-t border-zinc-800">
+    <footer className="relative bg-gradient-to-b via-[#455cff]/20  to-[#141414] from-[#141414] text-zinc-300 border-t border-zinc-800">
       <div className="flex flex-col gap-6 md:flex-row justify-between max-w-7xl mx-auto py-7 px-5 ">
       {/* logo */}
         <div className="flex flex-col flex-1 gap-3">
           <div>
             <h1 className="md:text-3xl text-2xl font-thin italic text-white">Transform your business with</h1>
-            <h1 className="text-[#deff00] font-thin text-4xl md:text-5xl italic">{`Mana'o Pili`}</h1>
+            <h1 className="text-[#455CFF] font-thin text-4xl md:text-5xl italic">{`Mana'o Pili`}</h1>
           </div>
           <div>
             <SurveyButton title="Take Our Survey" url="/survey-list" />
@@ -50,7 +50,7 @@ export default function Footer() {
             {links[item].map((link, idx) => (
               <div key={idx} className="">
                 <a href={link.href} target={item==="Connect" ? "_blank" : ""}>
-                  <p className="text-base text-zinc-300 hover:text-[#deff00] items-center">
+                  <p className="text-base text-zinc-300 hover:text-[#455CFF] items-center">
                     {link.icon && link.icon}
                     {link.name}
                   </p>

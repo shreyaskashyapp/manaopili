@@ -5,12 +5,12 @@ export default function HeroSection({data, bgColor}) {
     return (
         <div className={`w-full h-[70vh] flex justify-start items-center bg-gradient-to-b ${bgColor} `}>
             <div className=" px-8 md:mx-20 lg:mx-44 max-w-5xl flex flex-col gap-5">
-                <Reveal as="h2" className="text-5xl md:text-6xl lg:text-8xl font text-white leading-tight">
+                <Reveal as="h2" className="text-5xl md:text-6xl lg:text-2xl font text-white leading-tight">
                     {data?.title}
                 </Reveal>
                 <Reveal as="p" delay={0.1} className="text-gray-200 md:text-xl text-base leading-relaxed flex-1">{data.description}</Reveal>
                 {data?.cta && (
-                    <Reveal delay={0.2} className="flex flex-wrap gap-4 pt-2">
+                   <Reveal delay={0.2} className="flex flex-wrap gap-4 pt-2">
                         {data.cta}
                     </Reveal>
                 )}

@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import SurveyButton from "./surveyButton";
 import { CheckCircle } from "lucide-react";
 
-export default function ContactBanner({ color="[#deff00]" }) {
+export default function ContactBanner({ color="[#455CFF]" }) {
   const content = {
     title: <>
       Ready to Transform Your <span className={`text-${color}`}>ServiceNow</span> Journey?

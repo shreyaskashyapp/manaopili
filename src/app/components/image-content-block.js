@@ -17,6 +17,7 @@ export default function ImageContentBlock({ data }) {
                             <p className="text-zinc-500 text-xs mt-2 text-right">
                                 Photo credit: {data.image.credit}
                             </p>
+                            
                         )}
                     </div>
 

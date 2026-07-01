@@ -4,17 +4,20 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Cards from './components/homecards'
 import WhyManaopiliWheel from './components/wheel'
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import { activateServer } from "@/lib/utils"
 import ContactFormV2 from "./components/contact-form-v2"
 import SurveyButton from "./components/surveyButton"
-import Timeline from "./components/journey-map"
 import ContactBanner from "./components/contact-banner"
-import { ArrowRight, Award, Calendar, Check, CheckCircle, DollarSign, Heart, MessageSquare, RefreshCw, Users, Zap } from "lucide-react"
+import Differentiators from "./components/differentiators"
+import Solutions from "./components/solutions"
+import { ArrowRight, ArrowUpRight, ArrowDown, Award, Calendar, Check, CheckCircle, DollarSign, Heart, MessageSquare, RefreshCw, Users, Zap } from "lucide-react"
 import { Card } from "@/components/ui/card"
-import { motion } from "framer-motion"
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion"
 import Reveal from "./components/reveal"
 import SectionHeading from "./components/section-heading"
+import WordReveal from "./components/word-reveal"
+import GlossyButton from "./components/glossy-button"
 
 // Hero load orchestration
 const heroStagger = {
@@ -29,14 +32,16 @@ const heroFadeUp = {
 
 const data = {
   hero: {
-    title: (
-      <>
-        Make <span className="text-[#deff00]">ServiceNow</span> Work in Regulated Environments
-      </>
-    ),
+    titleWords: [
+      { text: "Enable" },
+      { text: "ServiceNow", accent: true },
+      { text: "for" },
+      { text: "Regulated" },
+      { text: "Environments" },
+    ],
     subtitle: (
       <>
-        We <span className="text-[#deff00]">stabilize ServiceNow platforms</span>, streamline operations, and turn <span className="text-[#deff00]">compliance into a continuous process</span>.
+        We <span className="text-[#455CFF]">stabilize ServiceNow platforms</span>, streamline operations, and turn <span className="text-[#455CFF]">compliance into a continuous process</span>.
       </>
     ),
     bullets: [
@@ -62,6 +67,83 @@ const data = {
       link: "/about",
     },
   ],
+  differentiators: {
+    title: "A Different Kind of ServiceNow Consulting Firm",
+    intro: "We pair deep regulated-industry experience with senior, architect-led delivery — built to maximize what you already run.",
+    cards: [
+      {
+        title: "Regulated Industry Experts",
+        lead: "Deep experience across regulated, high-stakes sectors.",
+        points: ["Healthcare", "Life Sciences", "Manufacturing", "Government", "Financial Services"],
+      },
+      {
+        title: "Transform-in-Place",
+        lead: "Maximize what you've already built.",
+        points: ["Maximize investment", "Reduce technical debt", "Accelerate adoption", "Prepare for AI"],
+      },
+      {
+        title: "Architect-Led Delivery",
+        lead: "Outcome-driven partnerships.",
+        points: ["Senior architects", "Enterprise governance", "Long-term partnerships", "Outcome focused"],
+      },
+    ],
+  },
+  solutions: {
+    title: "Solutions We Deliver",
+    items: [
+      {
+        title: "Enterprise Operations",
+        description: "Optimize services and assets to keep your business running.",
+        capabilities: [
+          "IT Service Management (ITSM)",
+          "Customer Service Management (CSM)",
+          "IT Asset Management (ITAM)",
+          "Hardware & Software Asset Management (HAM Pro / SAM Pro)",
+        ],
+      },
+      {
+        title: "Platform & Data",
+        description: "Build a trusted digital foundation that scales with your organization.",
+        capabilities: [
+          "CMDB & CSDM",
+          "IT Operations Management (ITOM)",
+          "Integrations & APIs",
+          "App Engine & Platform Extensibility",
+        ],
+      },
+      {
+        title: "Security & Compliance",
+        description: "Embed governance, security, and compliance into every workflow.",
+        capabilities: [
+          "Security Incident Response (SIR)",
+          "Vulnerability Response (VR)",
+          "Integrated Risk Management (IRM)",
+          "Governance, Risk & Compliance (GRC)",
+        ],
+      },
+      {
+        title: "Strategy & Portfolio",
+        description: "Align technology investments with business priorities.",
+        capabilities: [
+          "Strategic Portfolio Management (SPM)",
+          "Demand Management",
+          "Project & Agile Management",
+          "Enterprise Architecture",
+        ],
+      },
+      {
+        title: "AI & Intelligent Automation",
+        description: "Transform work with responsible AI and intelligent automation.",
+        capabilities: [
+          "Now Assist",
+          "AI Agents & Copilots",
+          "AI Governance",
+          "Workflow Automation",
+          "Intelligent Knowledge",
+        ],
+      },
+    ],
+  },
   journeyMap: {
     header: {
       title: "How We Can Help?",
@@ -179,6 +261,24 @@ const pillars = [
 
 
 export default function HomePage() {
+  const heroRef = useRef(null)
+  const reduceMotion = useReducedMotion()
+
+  // Subtle background parallax as the hero scrolls away.
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] })
+  const bgY = useTransform(scrollYProgress, [0, 1], [0, 90])
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 60])
+
+  // Helper: per-element entrance (fade + lift), skipped under reduced-motion.
+  const appear = (delay = 0) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 24 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay },
+        }
+
   useEffect(() => {
     activateServer()
   }, [])
@@ -186,71 +286,111 @@ export default function HomePage() {
     <div className="bg-[#141414] text-[#e2e2e2]">
       <div className="w-full">
         <div className="">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="relative min-h-[100svh] w-full overflow-hidden bg-[#0a0a0a] flex flex-col justify-center items-center"
+          {/* Hero — sleek, centered, full-bleed Honolulu wireframe backdrop */}
+          <section
+            ref={heroRef}
+            className="relative min-h-[100svh] w-full overflow-hidden bg-[#141414] flex flex-col"
           >
-
-            {/* Ambient blue glow behind the headline */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute left-1/3 top-[-15%] h-[60rem] w-[60rem] -translate-x-1/2 rounded-full bg-[#455CFF] opacity-[0.6] blur-[150px]"
-            />
-            {/* Secondary blue depth glow, lower right */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute bottom-[-10%] right-[-5%] h-[40rem] w-[40rem] rounded-full bg-[#455CFF] opacity-[0.16] blur-[150px]"
-            />
-
-            {/* Oversized logo-wave watermark bleeding off the right edge */}
-            <svg
-              aria-hidden
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 48 46"
-              className="pointer-events-none absolute -right-32 md:-right-24 top-1/2 -translate-y-1/2 w-[40rem] lg:w-[52rem] text-white opacity-[0.01]"
-              fill="currentColor"
-            >
-              <path d="M25.3644 42.0497C22.2775 39.942 19.4949 39.6364 17.2599 41.0498C15.4662 42.1853 14.83 43.8822 15.4233 45.4796H0.655518C1.47288 45.3717 2.3013 45.1892 3.1477 44.925C9.28135 43.0123 13.884 37.4512 20.6386 37.7624C23.3479 37.8869 24.7393 39.068 25.3658 42.0497H25.3644Z" />
-              <path d="M47.5437 0.264893V37.7154C45.7984 38.0722 44.0572 38.4415 42.2883 38.6476C38.3854 39.0998 34.5683 38.8121 31.1039 36.7722C27.8414 34.8498 27.4666 30.9677 30.1883 28.34C31.9959 26.596 34.8076 26.1894 37.3108 27.2875C38.7713 27.9279 39.9621 28.9707 41.2939 29.8585C40.5789 27.7149 39.2567 26.0428 37.4146 24.8078C32.6045 21.584 27.5164 21.5812 22.3467 23.7526C17.8961 25.621 14.5299 29.0564 10.876 32.0506C7.5056 34.8125 3.99137 38.5978 0 40.8687V0.264893L23.7712 13.232L47.5423 0.264893H47.5437Z" />
-            </svg>
-
-            {/* Film grain */}
-            <div aria-hidden className="hero-grain pointer-events-none absolute inset-0 z-[1]" />
-
-            {/* Bottom fade into the page */}
-            <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#141414] z-[1]" />
-
+            {/* Background image (parallax + slow Ken Burns zoom-in) */}
             <motion.div
-              variants={heroStagger}
-              initial="hidden"
-              animate="show"
-              className="relative z-10 pt-[120px] pb-16 md:pt-0 md:pb-0 flex flex-col md:flex-row items-center gap-10 lg:gap-16 px-6 lg:px-20 w-full max-w-9xl"
+              aria-hidden
+              className="absolute inset-0"
+              style={reduceMotion ? undefined : { y: bgY }}
             >
-              <motion.div variants={heroStagger} className="flex flex-col md:w-1/2 justify-center items-start">
-                <motion.h1 variants={heroFadeUp} className="text-5xl md:text-6xl lg:text-[5rem] text-left text-white mb-6 font-normal tracking-tight leading-[0.95]">
-                  {data.hero.title}
-                </motion.h1>
-                <motion.p variants={heroFadeUp} className="text-lg md:text-xl text-left text-zinc-400 mb-8 max-w-xl leading-relaxed">
-                  {data.hero.subtitle}
-                </motion.p>
-                <motion.ul variants={heroFadeUp} className="space-y-3.5 mb-2">
-                  {data.hero.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-3 text-zinc-200 text-base md:text-lg">
-                      <span className="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full shrink-0">
-                        <Check className="h-3 w-3 text-[#deff00]" strokeWidth={3} />
-                      </span>
-                      {b}
-                    </li>
-                  ))}
-                </motion.ul>
-              </motion.div>
-              <motion.div variants={heroFadeUp} className="relative md:w-1/2 w-full">
-                <ContactFormV2 formFields={data?.formFields} serviceOptions={data?.serviceOptions} title="Start with a 1 Week Operational Assessment" buttonText="Get My Assessment" />
+              <motion.div
+                className="absolute inset-0"
+                {...(reduceMotion
+                  ? {}
+                  : { initial: { scale: 1.08 }, animate: { scale: 1 }, transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] } })}
+              >
+                <Image
+                  src="/digital-assets/honalulu-2-hero.png"
+                  alt=""
+                  aria-hidden
+                  fill
+                  priority
+                  sizes="100vw"
+                  className="object-cover object-bottom opacity-50"
+                />
               </motion.div>
             </motion.div>
-          </motion.div>
+
+            {/* Legibility overlays (opacity of existing colors only — no new palette) */}
+            <div aria-hidden className="pointer-events-none absolute inset-0 bg-[#141414]/30" />
+            <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#141414]/70 via-transparent to-[#141414]" />
+            {/* Film grain */}
+            <div aria-hidden className="hero-grain pointer-events-none absolute inset-0 z-[1]" />
+            {/* Aurora — drifting blue depth glow behind the headline */}
+            {reduceMotion ? (
+              <div
+                aria-hidden
+                className="pointer-events-none absolute left-1/2 top-[42%] z-[1] h-[42rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#455CFF] opacity-[0.14] blur-[170px]"
+              />
+            ) : (
+              <>
+                <motion.div
+                  aria-hidden
+                  className="pointer-events-none absolute left-1/2 top-[40%] z-[1] h-[40rem] w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#455CFF] opacity-[0.16] blur-[170px]"
+                  animate={{ x: [0, 70, -50, 0], y: [0, -40, 30, 0], scale: [1, 1.12, 0.95, 1] }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+                />
+                <motion.div
+                  aria-hidden
+                  className="pointer-events-none absolute left-[42%] top-[55%] z-[1] h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#455CFF] opacity-[0.10] blur-[150px]"
+                  animate={{ x: [0, -60, 40, 0], y: [0, 30, -20, 0], scale: [1, 0.9, 1.1, 1] }}
+                  transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
+                />
+              </>
+            )}
+            {/* Depth vignette */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_center,transparent_45%,#141414_100%)]"
+            />
+
+            {/* Centered content */}
+            <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 py-28 text-center">
+              <motion.div
+                className="mx-auto flex max-w-5xl flex-col items-center"
+                style={reduceMotion ? undefined : { y: contentY }}
+              >
+                <WordReveal
+                  words={data.hero.titleWords}
+                  trigger="load"
+                  delayChildren={0.15}
+                  className="text-white text-6xl md:text-8xl font-light  leading-[1.05]"
+                />
+
+                <motion.p
+                  {...appear(0.8)}
+                  className="mt-7 max-w-2xl text-base md:text-xl leading-relaxed text-zinc-300"
+                >
+                  {data.hero.subtitle}
+                </motion.p>
+
+                <motion.div {...appear(1.05)} className="mt-10">
+                  <GlossyButton href={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK || "#"}>
+                    Book a Consultation
+                  </GlossyButton>
+                </motion.div>
+
+                {/* Proof points */}
+                <motion.div
+                  {...appear(1.25)}
+                  className="mt-14 flex flex-col items-center divide-y divide-white/10 sm:flex-row sm:items-stretch sm:divide-y-0 sm:divide-x"
+                >
+                  {data.hero.bullets.map((p) => (
+                    <p
+                      key={p}
+                      className="max-w-[16rem] px-7 py-3 text-sm leading-relaxed text-zinc-400 sm:py-0"
+                    >
+                      {p}
+                    </p>
+                  ))}
+                </motion.div>
+              </motion.div>
+            </div>
+          </section>
           {/* What we do */}
           <section className="py-20 md:py-28">
             <Reveal className="container mx-auto">
@@ -259,29 +399,36 @@ export default function HomePage() {
             </Reveal>
           </section>
 
-          {/* Our process — faint wash panel */}
-          <section className="bg-white/[0.015] py-20 md:py-28">
+          {/* A Different Kind of ServiceNow Consulting Firm — faint wash panel */}
+          <section className="bg-white/[0.015] px-10 py-20 md:py-28">
+            <Differentiators data={data?.differentiators} />
+          </section>
+
+          {/* Solutions We Deliver */}
+          <section className="py-20 md:py-28">
             <Reveal>
-              <SectionHeading title="How We Can Help?" className="mb-10 md:mb-14" />
-              <Timeline data={data?.journeyMap} />
+              <SectionHeading title="Solutions We Deliver" className="mb-12 md:mb-16" />
             </Reveal>
+            <Solutions data={data?.solutions} />
           </section>
 
           {/* Why Mana'o Pili */}
-          <section className="py-20 md:py-28">
+          <section className="py-20 bg-white/[0.015]  md:py-28">
             <Reveal>
               <SectionHeading title={`Why Mana'o Pili?`} className="mb-8 md:mb-12" />
               <div className="w-full">
                 <WhyManaopiliWheel />
               </div>
               <div className="flex justify-center items-center pt-2">
-                <SurveyButton title="Book Consultation" url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} />
+                <GlossyButton href={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK || "#"}>
+                  Book a Consultation
+                </GlossyButton>
               </div>
             </Reveal>
           </section>
         </div>
         {/* Contact us banner — faint wash panel */}
-        <section className="bg-white/[0.015] py-20 md:py-28">
+        <section className="py-20 md:py-28">
           <Reveal className="px-6">
             <ContactBanner />
           </Reveal>
