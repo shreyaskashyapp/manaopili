@@ -1,8 +1,7 @@
 "use client"
 
-import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
-import { motion, useInView, useReducedMotion, useScroll, useTransform } from "framer-motion"
+import { motion, useInView, useReducedMotion } from "framer-motion"
 
 function CountUp({ to, suffix = "", duration = 1.8 }) {
   const [value, setValue] = useState(0)
@@ -37,39 +36,11 @@ export default function StatsStrip() {
   const reduceMotion = useReducedMotion()
   const sectionRef = useRef(null)
 
-  // Scroll-driven parallax so the palms drift up as the section scrolls through
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  })
-  const palmY = useTransform(scrollYProgress, [0, 1], [40, -40])
-
   return (
     <section
       ref={sectionRef}
       className="relative overflow-hidden border-y border-white/[0.05] bg-[#141414] py-20 md:py-28"
     >
-      {/* Palm trees — screen blend on the motion.div so the transform doesn't trap the blend mode */}
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={reduceMotion ? undefined : { y: palmY, mixBlendMode: "screen" }}
-      >
-        <Image
-          src="/digital-assets/palm-trees-long.png"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover object-center"
-          style={{ opacity: 0.28 }}
-        />
-      </motion.div>
-
-      {/* Soft top/bottom fades so the palms bleed into the surrounding dark sections */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#141414] via-transparent to-[#141414]"
-      />
       {/* Blue center glow lifts the numbers */}
       <div
         aria-hidden
