@@ -18,6 +18,8 @@ import Reveal from "./components/reveal"
 import SectionHeading from "./components/section-heading"
 import WordReveal from "./components/word-reveal"
 import GlossyButton from "./components/glossy-button"
+import StatsStrip from "./components/stats-strip"
+import VolcanoSection from "./components/volcano-section"
 
 // Hero load orchestration
 const heroStagger = {
@@ -264,7 +266,7 @@ export default function HomePage() {
   const heroRef = useRef(null)
   const reduceMotion = useReducedMotion()
 
-  // Subtle background parallax as the hero scrolls away.
+  // Scroll-driven parallax as the hero exits
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] })
   const bgY = useTransform(scrollYProgress, [0, 1], [0, 90])
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 60])
@@ -391,6 +393,9 @@ export default function HomePage() {
               </motion.div>
             </div>
           </section>
+          {/* Stats strip */}
+          <StatsStrip />
+
           {/* What we do */}
           <section className="py-20 md:py-28">
             <Reveal className="container mx-auto">
@@ -399,9 +404,26 @@ export default function HomePage() {
             </Reveal>
           </section>
 
-          {/* A Different Kind of ServiceNow Consulting Firm — faint wash panel */}
-          <section className="bg-white/[0.015] px-10 py-20 md:py-28">
-            <Differentiators data={data?.differentiators} />
+          {/* A Different Kind of ServiceNow Consulting Firm */}
+          <section className="relative overflow-hidden bg-white/[0.015] px-10 py-20 md:py-28">
+            {/* Hawaiian Islands — screen blend on container; black dissolves, neon archipelago remains */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{ mixBlendMode: "screen" }}
+            >
+              <Image
+                src="/digital-assets/hi-islands.png"
+                alt=""
+                fill
+                sizes="100vw"
+                className="object-cover object-center"
+                style={{ opacity: 0.18 }}
+              />
+            </div>
+            <div className="relative z-10">
+              <Differentiators data={data?.differentiators} />
+            </div>
           </section>
 
           {/* Solutions We Deliver */}
@@ -412,20 +434,8 @@ export default function HomePage() {
             <Solutions data={data?.solutions} />
           </section>
 
-          {/* Why Mana'o Pili */}
-          <section className="py-20 bg-white/[0.015]  md:py-28">
-            <Reveal>
-              <SectionHeading title={`Why Mana'o Pili?`} className="mb-8 md:mb-12" />
-              <div className="w-full">
-                <WhyManaopiliWheel />
-              </div>
-              <div className="flex justify-center items-center pt-2">
-                <GlossyButton href={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK || "#"}>
-                  Book a Consultation
-                </GlossyButton>
-              </div>
-            </Reveal>
-          </section>
+          {/* Why Mana'o Pili — volcano section */}
+          <VolcanoSection />
         </div>
         {/* Contact us banner — faint wash panel */}
         <section className="py-20 md:py-28">

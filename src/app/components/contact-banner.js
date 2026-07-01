@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import SurveyButton from "./surveyButton";
 import { CheckCircle } from "lucide-react";
@@ -21,6 +22,26 @@ export default function ContactBanner({ color="[#455CFF]" }) {
     <section className="w-full">
       <div className="max-w-6xl mx-auto">
         <Card className="bg-gradient-to-r from-zinc-900 via-[#141414] to-zinc-900 border border-zinc-800 shadow-md shadow-zinc-900 p-8 md:p-12 relative overflow-hidden">
+          {/* Tiki guardians */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -bottom-4 right-0 h-[115%] w-[44%]"
+            style={{ mixBlendMode: "screen" }}
+          >
+            <Image
+              src="/digital-assets/tiki-long.png"
+              alt=""
+              fill
+              sizes="44vw"
+              className="object-contain object-right-bottom"
+              style={{ opacity: 0.55 }}
+            />
+          </div>
+          {/* Glow behind the tikis */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute bottom-0 right-[10%] h-64 w-64 rounded-full bg-[#455CFF] opacity-[0.07] blur-[80px]"
+          />
           <div className="relative z-10 grid lg:grid-cols-3 gap-8 items-center">
 
             {/* Left Content */}

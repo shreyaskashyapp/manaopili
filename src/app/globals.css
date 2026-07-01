@@ -144,3 +144,23 @@ body {
   mix-blend-mode: overlay;
 }
 
+/* ── Volcano ember particles ───────────────────────────────── */
+
+@keyframes ember-float {
+  0%   { transform: translateY(0px) scale(1);   opacity: 0.85; }
+  60%  { opacity: 0.5; }
+  100% { transform: translateY(-210px) scale(0.1); opacity: 0; }
+}
+
+@keyframes ember-float-l {
+  0%   { transform: translateY(0px) translateX(0px) scale(1);       opacity: 0.85; }
+  60%  { opacity: 0.45; }
+  100% { transform: translateY(-190px) translateX(-28px) scale(0.1); opacity: 0; }
+}
+
+@keyframes ember-float-r {
+  0%   { transform: translateY(0px) translateX(0px) scale(1);       opacity: 0.85; }
+  60%  { opacity: 0.45; }
+  100% { transform: translateY(-190px) translateX(28px) scale(0.1);  opacity: 0; }
+}
+
