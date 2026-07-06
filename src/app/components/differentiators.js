@@ -27,13 +27,6 @@ function ContentTile({ card, index }) {
     <div
       className={`relative flex h-full w-full flex-col justify-between overflow-hidden rounded-3xl border border-white/10 p-8 shadow-[0_20px_80px_rgba(69,92,255,0.14)] md:p-12 lg:p-14 ${TILE_BG[index % TILE_BG.length]}`}
     >
-      {/* Ghost ordinal watermark */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -top-6 right-6 select-none font-heading text-8xl font-light leading-none text-white/[0.07] md:text-9xl lg:text-[11rem]"
-      >
-        0{index + 1}
-      </span>
 
       {/* Heading + lead */}
       <div className="relative max-w-2xl">

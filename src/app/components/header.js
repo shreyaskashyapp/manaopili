@@ -150,7 +150,7 @@ export default function Header() {
 
             {/* Services accordion */}
             <button
-              className="flex items-center justify-between w-full text-xs tracking-widest text-zinc-100 py-3 hover:text-[#455CFF] transition-colors"
+              className="flex items-center justify-between w-full text-sm tracking-widest text-zinc-100 py-3 hover:text-[#455CFF] transition-colors"
               onClick={() => setMobileServicesOpen((v) => !v)}
             >
               SERVICES
@@ -181,7 +181,7 @@ export default function Header() {
 
             {/* About accordion */}
             <button
-              className="flex items-center justify-between w-full text-xs tracking-widest text-zinc-100 py-3 hover:text-[#455CFF] transition-colors"
+              className="flex items-center justify-between w-full text-sm tracking-widest text-zinc-100 py-3 hover:text-[#455CFF] transition-colors"
               onClick={() => setMobileAboutOpen((v) => !v)}
             >
               ABOUT
