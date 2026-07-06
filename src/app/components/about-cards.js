@@ -1,19 +1,20 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import Reveal from "./reveal"
 
+/**
+ * Editorial resource rows — no card boxes; blue accent bar + type scale
+ * carry the hierarchy (matches the differentiators language).
+ */
 export default function AboutCards({ data }) {
     return (
-        <div className="lg:px-10 grid md:grid-cols-2 gap-10">
+        <div className="mx-auto grid max-w-5xl gap-x-14 gap-y-12 md:grid-cols-2">
             {data.map((section, index) => (
-                <Card key={index} className="w-full h-full px-4 border-none bg-gradient-to-b from- to-[#141414] shadow-lg rounded-xl ">
-                    <CardHeader>
-                        <CardTitle className="text-[#deff00] font-normal">{section.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <CardDescription className="text-gray-400 text-base " >
-                            {section.description}
-                        </CardDescription>
-                    </CardContent>
-                </Card>
+                <Reveal key={section.title} delay={index * 0.08}>
+                    <span aria-hidden className="mb-5 block h-1 w-12 rounded-full bg-[#455CFF]" />
+                    <h3 className="font-heading text-2xl leading-snug text-white md:text-3xl">
+                        {section.title}
+                    </h3>
+                    <p className="mt-3 leading-relaxed text-zinc-400">{section.description}</p>
+                </Reveal>
             ))}
         </div>
     )

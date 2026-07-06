@@ -11,7 +11,7 @@ const hero = {
     title: "To Protect the Land",
     description: (
         <>
-            <span className="text-[#deff00]">Our Mission is Simple</span>
+            <span className="text-[#455CFF]">Our Mission is Simple</span>
         </>
     ),
 };
@@ -144,7 +144,7 @@ export default function NonProfit() {
                 <Reveal as="section" className="">
                     <div className="mx-auto">
                         <div className="text-center mb-8">
-                            <p className="text-[#DEFF00] md:text-sm text-xs font-medium tracking-widest uppercase mb-2">
+                            <p className="text-[#455CFF] md:text-sm text-xs font-medium tracking-[0.25em] uppercase mb-2">
                                 A Paradise at Risk
                             </p>
                             <h2 className="font-display text-3xl md:text-5xl font-semibold text-[#E2E2E2] mb-4 leading-tight">
@@ -181,8 +181,8 @@ export default function NonProfit() {
                 </Reveal>
                 <div className="">
                     <div className="max-w-5xl mx-auto px-2">
-                        <div className="rounded-lg p-10 border border-[#DEFF00]/10">
-                            <svg className="w-12 h-12 text-[#DEFF00] mb-6" fill="currentColor" viewBox="0 0 24 24">
+                        <div className="rounded-lg p-10 border border-white/10 bg-white/[0.02]">
+                            <svg className="w-12 h-12 text-[#455CFF] mb-6" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M3 21c3 0 7-1 7-8V5c0-1.25-4.716-5-7-5-6 0-6 5.338-6 8c0 7 0 8 6 8z" />
                             </svg>
 
@@ -191,8 +191,8 @@ export default function NonProfit() {
                             </p>
 
                             <div className="flex items-center gap-3">
-                                <div className="w-1 h-8 bg-[#DEFF00]" />
-                                <p className="text-[#DEFF00] font-semibold">{quote.attribution}</p>
+                                <div className="w-1 h-8 bg-[#455CFF]" />
+                                <p className="text-[#455CFF] font-semibold">{quote.attribution}</p>
                             </div>
                         </div>
                     </div>

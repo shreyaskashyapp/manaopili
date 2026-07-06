@@ -5,16 +5,16 @@ export default function PricingCards({ data }) {
         <div className="py-10 px-4">
             <div className="mx-auto">
                 <div className="text-center md:mb-20">
-                    <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">AI Starter Solutions for ITOM and ITSM/CSM</h2>
+                    <h2 className="font-heading text-3xl md:text-5xl font-light mb-6 text-white">Choose Your Launch Tier</h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-auto">
                     {data?.map((tier) => (
                         <div
                             key={tier?.name}
-                            className={`relative bg-gradient-to-b from-zinc-900 to-[#141414] border ${tier?.border} rounded-2xl p-8 transition-all duration-300 ${tier.recommended
-                                ? ' shadow-lg shadow-[#9a9998]/20 scale-105 md:scale-110'
-                                : 'hover:scale-105 shadow-lg shadow-yellow-800/20'
+                            className={`relative bg-white/[0.03] backdrop-blur-sm border ${tier?.border} rounded-2xl p-8 transition-all duration-300 ${tier.recommended
+                                ? ' ring-1 ring-[#455CFF]/30 shadow-lg shadow-[#455CFF]/15 scale-105 md:scale-110'
+                                : 'hover:-translate-y-1 hover:shadow-lg hover:shadow-black/30'
                                 }`}
                         >
                             {tier?.recommended && (

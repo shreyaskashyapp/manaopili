@@ -3,24 +3,24 @@
 import { useRef } from "react"
 import { motion, useScroll, useReducedMotion, useInView } from "framer-motion"
 import { Check, Server, Database, ShieldCheck, Target, Sparkles } from "lucide-react"
-import Reveal from "./reveal"
 
 const ICONS = [Server, Database, ShieldCheck, Target, Sparkles]
 
 const listVar = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } }
 const itemVar = {
-  hidden: { opacity: 0, y: 8 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { y: "100%" },
+  show: { y: "0%", transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } },
 }
 
 /**
  * A single timeline row. In-view detection lights its rail node + title as it
- * reaches the middle of the viewport. No cards — just spaced editorial content.
+ * reaches the middle of the viewport, and brightens the content into a glass
+ * card — the same lighting boolean drives both, no extra scroll listeners.
  */
 function Row({ item, Icon, reduceMotion }) {
   const rowRef = useRef(null)
   const inView = useInView(rowRef, { margin: "-45% 0px -45% 0px" })
-  const active = inView
+  const active = reduceMotion || inView
 
   return (
     <div
@@ -53,9 +53,22 @@ function Row({ item, Icon, reduceMotion }) {
         </div>
       </div>
 
-      {/* Content — no card, just spaced text */}
-      <div className="md:flex-1">
-        <Reveal>
+      {/* Content — glass card that brightens/lifts when its node is lit */}
+      <div className="md:flex-1 md:pb-4">
+        <motion.div
+          animate={
+            reduceMotion
+              ? undefined
+              : {
+                  scale: active ? 1.02 : 1,
+                  boxShadow: active ? "0 10px 25px rgba(69,92,255,0.14)" : "0 0px 0px rgba(69,92,255,0)",
+                }
+          }
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className={`rounded-2xl border p-7 bg-gradient-to-br from-zinc-900 to-[#141414] backdrop-blur-sm transition-colors duration-500 md:p-9 ${
+            active ? "border-[#455CFF]/35" : "border-white/[0.07]"
+          }`}
+        >
           <p className="max-w-2xl text-base leading-relaxed text-zinc-300 md:text-lg">{item.description}</p>
           <motion.ul
             className="mt-7 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2 md:mt-9"
@@ -65,17 +78,18 @@ function Row({ item, Icon, reduceMotion }) {
             viewport={{ once: true, amount: 0.3 }}
           >
             {item.capabilities.map((c) => (
-              <motion.li
-                key={c}
-                variants={reduceMotion ? undefined : itemVar}
-                className="flex items-start gap-3 text-base text-zinc-300"
-              >
+              <li key={c} className="flex items-start gap-3 text-base text-zinc-300">
                 <Check className="mt-1 h-4 w-4 shrink-0 text-[#455CFF]" strokeWidth={3} />
-                <span>{c}</span>
-              </motion.li>
+                {/* Mask-rise text — matches the WordReveal language */}
+                <span className="inline-block overflow-hidden pb-[0.1em] -mb-[0.1em] align-bottom">
+                  <motion.span variants={reduceMotion ? undefined : itemVar} className="inline-block">
+                    {c}
+                  </motion.span>
+                </span>
+              </li>
             ))}
           </motion.ul>
-        </Reveal>
+        </motion.div>
       </div>
     </div>
   )
@@ -83,7 +97,7 @@ function Row({ item, Icon, reduceMotion }) {
 
 /**
  * "Solutions We Deliver" — sleek journey-map timeline: a scroll-linked blue rail,
- * sticky category titles with icons, and spaced editorial content.
+ * sticky category titles with icons, and glass cards that light up as they're read.
  */
 export default function Solutions({ data }) {
   const items = data.items

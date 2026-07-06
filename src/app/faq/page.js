@@ -1,5 +1,4 @@
 import HeroSection from "@/app/components/hero-section";
-import NonProfit from "../non-profit/page";
 import NonProfitAccordion from "../components/non-profit-accordion";
 import Reveal from "../components/reveal";
 

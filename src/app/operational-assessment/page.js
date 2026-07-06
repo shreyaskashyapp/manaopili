@@ -1,29 +1,32 @@
 "use client"
 
+import { useRef } from "react"
+import { motion, useScroll, useInView, useReducedMotion } from "framer-motion"
+import { Check } from "lucide-react"
 import HeroSection from "../components/hero-section"
 import SurveyButton from "../components/surveyButton"
 import Reveal from "../components/reveal"
+import SectionHeading from "../components/section-heading"
 
 const hero = {
   title: "Operational Assessment",
   description: (
     <>
       Mana&apos;o Pili helps organizations improve ServiceNow maturity, governance, and outcomes{" "}
-      <span className="text-[#deff00]">using the systems and investments already in place</span>.
+      <span className="text-[#455CFF]">using the systems and investments already in place</span>.
     </>
   ),
   cta: (
     <>
       <a
         href="/survey-list"
-className="flex hover:text-white border-gray-300 bg-transparent hover:bg-[#455cff] hover:border-[#455cff] text-gray-300 font-thin text-xl items-center gap-2 rounded-lg py-3 px-4 border-2"
+        className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.06] px-7 py-3 text-sm tracking-wide text-white backdrop-blur-md ring-1 ring-inset ring-white/10 shadow-lg shadow-black/20 transition-all duration-300 hover:border-[#455CFF]/70 hover:bg-[#455CFF]/15 hover:ring-[#455CFF]/30 md:text-base"
       >
-        <span className="text-lg">Start a Digital Trip Assessment</span>
-        <img src="/arrow_white.png" alt="" width={13} height={13} />
+        Start a Digital Trip Assessment
       </a>
       <a
         href="#approach"
-        className="flex items-center gap-2 text-gray-300 hover:text-[#deff00] text-lg font-thin transition-colors py-3 px-2"
+        className="flex items-center gap-2 py-3 px-2 text-lg font-thin text-gray-300 transition-colors hover:text-[#455CFF]"
       >
         See how it works →
       </a>
@@ -79,6 +82,73 @@ const outcomes = [
   "Foundation for AI and automation",
 ]
 
+/** One phase row on the scroll-lit rail — node + ghost ordinal light as it centers. */
+function PhaseRow({ phase }) {
+  const rowRef = useRef(null)
+  const inView = useInView(rowRef, { margin: "-45% 0px -45% 0px" })
+
+  return (
+    <div ref={rowRef} className="relative flex flex-col gap-2 pl-12 pt-14 first:pt-4 md:flex-row md:gap-12 md:pl-16 md:pt-20">
+      {/* Node */}
+      <span
+        aria-hidden
+        className={`absolute left-3 top-16 h-3 w-3 -translate-x-1/2 rounded-full bg-[#455CFF] transition-all duration-300 md:top-24 ${
+          inView
+            ? "scale-125 shadow-[0_0_0_4px_rgba(69,92,255,0.18),0_0_18px_3px_rgba(69,92,255,0.65)]"
+            : "opacity-40"
+        }`}
+      />
+
+      <div className="flex items-baseline gap-5 md:w-1/3 md:max-w-xs md:shrink-0">
+        <span
+          aria-hidden
+          className={`font-heading select-none text-5xl font-light leading-none transition-colors duration-300 md:text-6xl ${
+            inView ? "text-[#455CFF]/40" : "text-white/[0.07]"
+          }`}
+        >
+          {phase.number}
+        </span>
+        <h3
+          className={`font-heading text-2xl leading-tight transition-colors duration-300 md:text-3xl ${
+            inView ? "text-white" : "text-zinc-500"
+          }`}
+        >
+          {phase.name}
+        </h3>
+      </div>
+
+      <Reveal className="md:flex-1 md:pt-2">
+        <p className="max-w-2xl text-base leading-relaxed text-zinc-400 md:text-lg">{phase.description}</p>
+      </Reveal>
+    </div>
+  )
+}
+
+function PhaseRail() {
+  const containerRef = useRef(null)
+  const reduceMotion = useReducedMotion()
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 15%", "end 85%"],
+  })
+
+  return (
+    <div ref={containerRef} className="relative mx-auto max-w-5xl">
+      <div aria-hidden className="absolute left-3 top-2 bottom-2 w-px bg-white/10" />
+      <motion.div
+        aria-hidden
+        style={{ scaleY: reduceMotion ? 1 : scrollYProgress, transformOrigin: "top" }}
+        className="absolute left-3 top-2 bottom-2 w-px bg-gradient-to-b from-[#455CFF] via-[#455CFF] to-[#455CFF]/20"
+      />
+      <div className="flex flex-col pb-4">
+        {phases.map((phase) => (
+          <PhaseRow key={phase.number} phase={phase} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function OperationalAssessmentPage() {
   return (
     <div className="bg-[#141414] w-full">
@@ -86,12 +156,13 @@ export default function OperationalAssessmentPage() {
       <HeroSection data={hero} bgColor="from-[#455CFF] to-[#141414]" height="[70vh]" />
 
       {/* ── THE PROBLEM — two-column: heading left, list right ── */}
-      <Reveal as="section" className="py-16">
+      <Reveal as="section" className="py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           <div>
+            <span aria-hidden className="mb-6 block h-1 w-12 rounded-full bg-[#455CFF]" />
             <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] leading-tight mb-6">
               Most programs fail because they try to do{" "}
-              <span className="text-[#deff00]">too much at once</span>
+              <span className="text-[#455CFF]">too much at once</span>
             </h2>
             <p className="text-white/60 md:text-lg text-base leading-relaxed">
               What we typically walk into when we engage a new client.
@@ -100,7 +171,7 @@ export default function OperationalAssessmentPage() {
           <ul className="space-y-4 pt-2">
             {problems.map((p) => (
               <li key={p} className="flex items-start gap-4 text-white/70 md:text-lg text-base">
-                <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-[#deff00] shrink-0" />
+                <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-[#455CFF] shrink-0" />
                 {p}
               </li>
             ))}
@@ -109,11 +180,9 @@ export default function OperationalAssessmentPage() {
       </Reveal>
 
       {/* ── OUR MODEL — statement section ── */}
-      <Reveal as="section" className="bg-zinc-900/40 py-16">
+      <Reveal as="section" className="bg-white/[0.015] py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] text-center leading-tight mb-4">
-            Digital Transformation in Place
-          </h2>
+          <SectionHeading title="Digital Transformation in Place" className="mb-4" />
           <p className="text-white/60 md:text-lg text-base text-center max-w-2xl mx-auto leading-relaxed mb-12">
             A practical model for modernization. We improve what already exists instead of replacing it.
           </p>
@@ -125,8 +194,8 @@ export default function OperationalAssessmentPage() {
               { negative: "Disruption to the business", positive: "We work alongside live operations" },
               { negative: "Multi-year reset",            positive: "We deliver outcomes in weeks"      },
             ].map(({ negative, positive }, i) => (
-              <div key={negative} className={`grid grid-cols-2 gap-6 md:gap-16 py-6 border-b border-zinc-700/50 ${i > 0 ? "border-t border-zinc-700/50" : ""}`}>
-                <span className="text-lg md:text-2xl font-normal text-white/30 line-through decoration-[#deff00] decoration-2 leading-tight">
+              <div key={negative} className={`grid grid-cols-2 gap-6 md:gap-16 py-6 border-b border-white/10 ${i > 0 ? "border-t border-white/10" : ""}`}>
+                <span className="text-lg md:text-2xl font-normal text-white/30 line-through decoration-[#455CFF] decoration-2 leading-tight">
                   {negative}
                 </span>
                 <span className="text-lg md:text-2xl font-normal text-[#e2e2e2] leading-tight">
@@ -142,28 +211,21 @@ export default function OperationalAssessmentPage() {
         </div>
       </Reveal>
 
-      {/* ── OUR APPROACH — centered heading + card grid ── */}
-      <Reveal as="section" id="approach" className="py-16">
+      {/* ── OUR APPROACH — scroll-lit phase rail ── */}
+      <section id="approach" className="py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] text-center leading-tight mb-12">
-            Our Approach
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {phases.map((phase) => (
-              <div key={phase.number} className="rounded-2xl bg-gradient-to-b from-[#141414] to-zinc-900 p-8 border border-zinc-800/60 hover:border-[#deff00]/20 transition-colors">
-                <p className="text-[#deff00] text-sm tracking-widest font-mono mb-3">{phase.number}</p>
-                <h3 className="text-2xl font-normal text-[#e2e2e2] mb-3">{phase.name}</h3>
-                <p className="text-white/60 md:text-lg text-base leading-relaxed">{phase.description}</p>
-              </div>
-            ))}
-          </div>
+          <Reveal>
+            <SectionHeading title="Our Approach" className="mb-12 md:mb-16" />
+          </Reveal>
+          <PhaseRail />
         </div>
-      </Reveal>
+      </section>
 
       {/* ── PLATFORM FOCUS — two-column: heading left, pills right ── */}
-      <Reveal as="section" className="bg-zinc-900/40 py-16">
+      <Reveal as="section" className="bg-white/[0.015] py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           <div>
+            <span aria-hidden className="mb-6 block h-1 w-12 rounded-full bg-[#455CFF]" />
             <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] leading-tight mb-6">
               Platform Focus Areas
             </h2>
@@ -182,27 +244,29 @@ export default function OperationalAssessmentPage() {
         </div>
       </Reveal>
 
-      {/* ── WHY MANA'O PILI — centered heading + card grid ── */}
-      <Reveal as="section" className="py-16">
+      {/* ── WHY MANA'O PILI — editorial grid, no card boxes ── */}
+      <section className="py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] text-center leading-tight mb-12">
-            Why Mana&apos;o Pili
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {whyCards.map((card) => (
-              <div key={card.title} className="rounded-2xl bg-gradient-to-b from-[#141414] to-zinc-900 p-8 border border-zinc-800/60 hover:border-[#deff00]/20 transition-colors">
-                <h3 className="text-xl font-normal text-[#deff00] mb-3">{card.title}</h3>
-                <p className="text-white/60 md:text-lg text-base leading-relaxed">{card.description}</p>
-              </div>
+          <Reveal>
+            <SectionHeading title="Why Mana'o Pili" className="mb-12 md:mb-16" />
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-12">
+            {whyCards.map((card, i) => (
+              <Reveal key={card.title} delay={i * 0.08}>
+                <span aria-hidden className="mb-5 block h-1 w-12 rounded-full bg-[#455CFF]" />
+                <h3 className="font-heading text-2xl leading-snug text-white md:text-3xl">{card.title}</h3>
+                <p className="mt-3 text-white/60 md:text-lg text-base leading-relaxed">{card.description}</p>
+              </Reveal>
             ))}
           </div>
         </div>
-      </Reveal>
+      </section>
 
       {/* ── OUTCOMES — two-column: heading left, list right ── */}
-      <Reveal as="section" className="bg-zinc-900/40 py-16">
+      <Reveal as="section" className="bg-white/[0.015] py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           <div>
+            <span aria-hidden className="mb-6 block h-1 w-12 rounded-full bg-[#455CFF]" />
             <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] leading-tight mb-6">
               What Changes After Engagement
             </h2>
@@ -213,7 +277,7 @@ export default function OperationalAssessmentPage() {
           <ul className="space-y-4 pt-2">
             {outcomes.map((item) => (
               <li key={item} className="flex items-start gap-4 text-white/70 md:text-lg text-base">
-                <span className="mt-1 text-[#deff00] font-bold text-lg leading-snug">✓</span>
+                <Check className="mt-1 h-4 w-4 shrink-0 text-[#455CFF]" strokeWidth={3} />
                 {item}
               </li>
             ))}
@@ -222,7 +286,7 @@ export default function OperationalAssessmentPage() {
       </Reveal>
 
       {/* ── BOTTOM CTA ── */}
-      <Reveal as="section" className="py-20 text-center">
+      <Reveal as="section" className="py-20 md:py-28 text-center">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] leading-tight mb-6">
             Start with clarity, not a transformation program

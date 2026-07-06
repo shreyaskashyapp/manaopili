@@ -18,7 +18,7 @@ const data = {
         title: "AI LaunchPad",
         description: (
             <>
-                <span className="text-[#deff00]">Start small, scale fast</span> - Launchpad makes ServiceNow AI adoption clear, practical, and effortless.
+                <span className="text-[#455CFF]">Start small, scale fast</span> - Launchpad makes ServiceNow AI adoption clear, practical, and effortless.
             </>
         )
     },

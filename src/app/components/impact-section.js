@@ -19,7 +19,7 @@ const ImpactSection = ({ data }) => {
                             const Icon = item.icon;
                             return (
                                 <div key={index} className="flex items-center gap-6 md:gap-8">
-                                    <Icon className="w-10 h-10 text-[#DEFF00]" />
+                                    <Icon className="w-10 h-10 text-[#455CFF]" />
                                     <div className="">
                                         <h3 className="text-xl md:text-2xl lg:text-3xl text-white uppercase tracking-wide leading-tight">
                                             {item.title}

@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import BlogsEmailCollection from "../components/blog-email-collection";
-import Reveal from "../components/reveal";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -260,26 +260,19 @@ const BlogCard = ({ post }) => {
 
     return (
 
-        <div className="bg-zinc-900 relative border-none h-full rounded-2xl overflow-hidden hover:-translate-y-2 group shadow-lg transition-all duration-300">
-            <div className="relative h-48 w-full">
+        <div className="bg-white/[0.03] border border-white/[0.08] hover:border-[#455CFF]/40 relative h-full rounded-2xl overflow-hidden hover:-translate-y-2 group shadow-lg hover:shadow-[0_12px_40px_rgba(69,92,255,0.12)] transition-all duration-300">
+            <div className="relative h-48 w-full overflow-hidden">
                 <Image
                     src={post.image || "https://via.placeholder.com/300x200"}
                     alt={post.title}
-                    className="object-fill opacity-80 group-hover:scale-105 transition-all duration-300"
+                    className="object-fill opacity-80 group-hover:scale-105 transition-all duration-500"
                     layout="fill"
                 />
             </div>
             <div className="p-4 space-y-3 flex flex-col ">
                 {/* <p className="text-sm text-gray-400 mb-1">{post.date}</p> */}
-                <div className="">
-                    <span
-                        className="px-3 py-1 text-xs font-bold rounded-full text-black"
-                        style={{ backgroundColor: "#deff00" }}
-                    >
-                        {post?.category}
-                    </span>
-                </div>
-                <h3 className="text-xl font-semibold group-hover:text-[#deff00] text-white">{post.title}</h3>
+                <p className="text-[11px] uppercase tracking-[0.2em] text-[#455CFF]">{post?.category}</p>
+                <h3 className="font-heading text-xl font-semibold group-hover:text-white text-zinc-200 transition-colors duration-200">{post.title}</h3>
                 <p className="text-gray-500 text-sm md:text-base  line-clamp-2 pb-20">{post.description}</p>
                 {isMobile ? (
                     <a
@@ -287,13 +280,13 @@ const BlogCard = ({ post }) => {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <button className="px-4 py-2 rounded text-sm font-medium bg-[#141414] text-[#deff00] border border-[#deff00] hover:bg-[#deff00] hover:text-black transition-colors duration-300">
+                        <button className="px-4 py-2 rounded-full text-sm font-medium bg-white/[0.06] text-white border border-white/20 hover:border-[#455CFF]/70 hover:bg-[#455CFF]/15 transition-colors duration-300">
                             Download
                         </button>
                     </a>
                 ) : (
 
-                    <button onClick={() => router.push(`/white-paper?paper=${post.slug}`)} className="text-[#deff00] bottom-5 absolute flex items-start font-medium text-sm md:text-lg group-hover:underline">
+                    <button onClick={() => router.push(`/white-paper?paper=${post.slug}`)} className="text-[#455CFF] bottom-5 absolute flex items-start font-medium text-sm md:text-lg underline-offset-4 group-hover:underline">
                         Read More
                     </button>
 
@@ -307,7 +300,7 @@ const BlogCard = ({ post }) => {
 // Video Card Component
 const VideoCard = ({ video }) => {
     return (
-        <div className="bg-zinc-900/50 relative border-none h-full rounded-xl overflow-hidden hover:-translate-y-2 group shadow-md transition-all duration-300">
+        <div className="bg-white/[0.03] border border-white/[0.08] hover:border-[#455CFF]/40 relative h-full rounded-xl overflow-hidden hover:-translate-y-2 group shadow-md transition-all duration-300">
             <div className="relative aspect-video w-full">
                 <iframe
                     src={`https://www.youtube.com/embed/${video.videoId}`}
@@ -318,7 +311,7 @@ const VideoCard = ({ video }) => {
                 ></iframe>
             </div>
             <div className="p-3">
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-[#deff00] text-white">{video.title}</h3>
+                <h3 className="font-heading text-xl font-semibold mb-2 group-hover:text-white text-zinc-200 transition-colors duration-200">{video.title}</h3>
                 <p className="text-sm text-zinc-500">{video.channel}</p>
                 {video.views && video.date && (
                     <p className="text-xs text-gray-400">
@@ -357,6 +350,105 @@ function usePlatform() {
 
 
 
+// ── Content hub (shown after the email gate) ──────────────────────────────
+const gridContainer = { hidden: {}, show: { transition: { staggerChildren: 0.05 } } };
+const gridItem = {
+    hidden: { opacity: 0, y: 18 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+};
+
+function ContentHub() {
+    const reduceMotion = useReducedMotion();
+    const [tab, setTab] = useState("articles");
+
+    // Cards animate in on MOUNT (not whileInView) so the first screenful is
+    // always visible immediately — this is the fix for "loads only after scroll".
+    const Grid = ({ items, render }) =>
+        reduceMotion ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                {items.map(render)}
+            </div>
+        ) : (
+            <motion.div
+                variants={gridContainer}
+                initial="hidden"
+                animate="show"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+            >
+                {items.map((item) => (
+                    <motion.div key={item.id} variants={gridItem}>
+                        {render(item)}
+                    </motion.div>
+                ))}
+            </motion.div>
+        );
+
+    const tabs = [
+        { id: "articles", label: "Articles", count: blogPosts.length },
+        { id: "videos", label: "Videos", count: videos.length },
+    ];
+
+    return (
+        <div className="min-h-screen bg-[#141414]">
+            {/* Compact header */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-6 md:pt-32">
+                <p className="text-[11px] uppercase tracking-[0.25em] text-[#455CFF] mb-3">Resources</p>
+                <h1 className="font-heading text-4xl md:text-6xl font-light text-white leading-tight">Expert Guides</h1>
+                <p className="mt-4 max-w-2xl text-zinc-400 leading-relaxed">
+                    Articles, playbooks, and videos on getting more out of your ServiceNow investment.
+                </p>
+            </div>
+
+            {/* Sticky tab switch */}
+            <div className="sticky top-20 z-30 bg-[#141414]/70 backdrop-blur-md">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                    <div className="flex items-baseline gap-8">
+                        {tabs.map((t) => (
+                            <button
+                                key={t.id}
+                                onClick={() => setTab(t.id)}
+                                className={`font-heading text-xl md:text-2xl tracking-wide transition-colors ${
+                                    tab === t.id ? "text-white" : "text-zinc-600 hover:text-zinc-300"
+                                }`}
+                            >
+                                {t.label}
+                                <span className="ml-1.5 align-top text-[11px] text-zinc-600">{t.count}</span>
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Panels */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+                <AnimatePresence mode="wait">
+                    {tab === "articles" ? (
+                        <motion.div
+                            key="articles"
+                            initial={reduceMotion ? false : { opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={reduceMotion ? undefined : { opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                        >
+                            <Grid items={blogPosts} render={(post) => <BlogCard key={post.id} post={post} />} />
+                        </motion.div>
+                    ) : (
+                        <motion.div
+                            key="videos"
+                            initial={reduceMotion ? false : { opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={reduceMotion ? undefined : { opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                        >
+                            <Grid items={videos} render={(video) => <VideoCard key={video.id} video={video} />} />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
+        </div>
+    );
+}
+
 export default function BlogAndVideosPage() {
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const router = useRouter();
@@ -390,39 +482,7 @@ export default function BlogAndVideosPage() {
     return (
         <div>
             {hasSubmitted ? (
-                <div className="min-h-screen bg-1414 py-28 px-4 sm:px-6 lg:px-8">
-                    <div className="max-w-7xl mx-auto">
-                        {/* Blog Section */}
-                        <Reveal as="section" className="mb-16">
-                            <div className="flex justify-between items-center mb-8">
-                                <h2 className="text-4xl font-bold text-white relative">
-                                    Latest Blog Posts
-                                </h2>
-                            </div>
-
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10 gap-6">
-                                {blogPosts.map((post) => (
-                                    <BlogCard key={post.id} post={post} />
-                                ))}
-                            </div>
-                        </Reveal>
-
-                        {/* Videos Section */}
-                        <Reveal as="section">
-                            <div className="flex justify-between items-center mb-8">
-                                <h2 className="text-3xl font-bold text-white relative">
-                                    Featured Videos
-                                </h2>
-                            </div>
-
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10 gap-6">
-                                {videos.map((video) => (
-                                    <VideoCard key={video.id} video={video} />
-                                ))}
-                            </div>
-                        </Reveal>
-                    </div>
-                </div>
+                <ContentHub />
             ) : (
                 <BlogsEmailCollection onGettingEmail={handleSubmit} />
             )}

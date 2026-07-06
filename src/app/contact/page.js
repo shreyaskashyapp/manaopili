@@ -7,9 +7,9 @@ const data = {
     title: "Contact Us",
     description: (
         <>
-            Let’s <span className="text-[#deff00]">connect</span> with some ideas. Fill out the contact form to have someone on our team <span className="text-[#deff00]">contact</span> you.
+            Let’s <span className="text-[#455CFF]">connect</span> with some ideas. Fill out the contact form to have someone on our team <span className="text-[#455CFF]">contact</span> you.
             You can also book some time with our team directly using&nbsp;
-            <a href={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} target="_blank" className="text-[#deff00] underline">
+            <a href={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} target="_blank" className="text-[#455CFF] underline underline-offset-4 hover:text-white transition-colors">
                 Online Booking!
             </a>
         </>

@@ -1,8 +1,8 @@
 'use client'
-import { LineChart, Settings, Users, Zap, Server, Headphones, Shield, BrainCircuit, FolderKanban, Terminal, UserCircle } from 'lucide-react'
+import { LineChart, Settings, Zap, Server, Headphones, Shield, BrainCircuit, FolderKanban, Terminal, UserCircle, ArrowUpRight } from 'lucide-react'
 import Link from "next/link";
 import HeroSection from "../components/hero-section";
-import Image from 'next/image';
+import Reveal from "../components/reveal";
 import { useEffect } from 'react';
 import { activateServer } from '@/lib/utils';
 
@@ -10,8 +10,8 @@ const data = {
     'title': "Take Our Survey",
     'description': (
         <>
-            <span className="text-[#deff00]">Digital Trip (Digital Transformation In Place)</span> helps optimize underutilized ServiceNow entitlements by assessing current usage, providing a tailored roadmap, identifying quick wins, and unlocking valuable features.
-            Digital Trip offers product assessments, tailored roadmaps, quick wins, and insights to <span className="text-[#deff00]">Maximize ServiceNow Value</span>.
+            <span className="text-[#455CFF]">Digital Trip (Digital Transformation In Place)</span> helps optimize underutilized ServiceNow entitlements by assessing current usage, providing a tailored roadmap, identifying quick wins, and unlocking valuable features.
+            Digital Trip offers product assessments, tailored roadmaps, quick wins, and insights to <span className="text-[#455CFF]">Maximize ServiceNow Value</span>.
         </>
     )
 }
@@ -36,21 +36,30 @@ export default function SurveyList() {
     return (
         <div>
             <HeroSection data={data} bgColor="from-[#455CFF] to-[#141414]" height={`[70vh]`} />
-            <div className="flex flex-col justify-center items-center gap-8 pt-4 pb-10">
-                <h2 className="text-3xl md:text-4xl text-gray-300 text-center italic">
-                    Select a Digital Trip Survey below by ServiceNow Product Line.
-                </h2>
-                <div className="flex flex-col w-full max-w-7xl  bg-gradient-to-r from-[#141414] via-zinc-900 to-[#141414] px-10">
+            <div className="flex flex-col justify-center items-center gap-10 pt-4 pb-16 md:pb-24">
+                <Reveal>
+                    <h2 className="font-heading text-3xl md:text-4xl font-light text-gray-300 text-center px-6">
+                        Select a Digital Trip Survey below by ServiceNow Product Line.
+                    </h2>
+                </Reveal>
+                <div className="flex w-full max-w-5xl flex-col border-b border-white/10 px-6 md:px-10">
                     {modules.map((module, index) => (
-                        <Link href={`/new-survey?survey=${module?.slug}`} key={index} className="border-b border-zinc-800 py-8 text-xl text-zinc-400 hover:text-white hover:bg-gradient-to-r from-[#141414] via-zinc-900 to-[#141414]">
-                            <div className="flex justify-between items-center">
-                                <div className='flex'>
-                                    <div className='w-8 h-8 mr-3 text-[#deff00] bg-zinc-800 rounded-full p-1.5'>{module.icon}</div>
-                                    <span>{module.name}</span>
+                        <Reveal key={module.slug} delay={Math.min(index * 0.05, 0.35)} className="border-t border-white/10">
+                            <Link
+                                href={`/new-survey?survey=${module?.slug}`}
+                                className="group flex items-center justify-between gap-4 py-7 md:py-8"
+                            >
+                                <div className="flex items-center gap-5">
+                                    <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#455CFF]/25 bg-[#455CFF]/10 text-[#455CFF] transition-colors duration-300 group-hover:border-[#455CFF]/50 group-hover:bg-[#455CFF]/20">
+                                        {module.icon}
+                                    </span>
+                                    <span className="font-heading text-xl text-zinc-400 transition-colors duration-300 group-hover:text-white md:text-2xl">
+                                        {module.name}
+                                    </span>
                                 </div>
-                                <Image src="/arrow_yellow.png" alt="Arrow" width={20} height={20} />
-                            </div>
-                        </Link>
+                                <ArrowUpRight className="h-5 w-5 shrink-0 text-zinc-600 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#455CFF]" />
+                            </Link>
+                        </Reveal>
                     ))}
                 </div>
             </div>

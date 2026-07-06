@@ -56,7 +56,7 @@ const BlogsEmailCollection = ({ onGettingEmail, title = 'Access Expert Insights'
         title: "Expert Guides",
         description: (
             <>
-                Explore our latest blogs and videos for <span className='text-[#deff00]'>expert tips, best practices, and insights</span> on maximizing ServiceNow.
+                Explore our latest blogs and videos for <span className='text-[#455CFF]'>expert tips, best practices, and insights</span> on maximizing ServiceNow.
             </>
         )
     }
@@ -66,9 +66,9 @@ const BlogsEmailCollection = ({ onGettingEmail, title = 'Access Expert Insights'
             {isLoading && <LoadingIndicator size="large" color="lime" />}
             <HeroSection data={data} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
             <div className='flex justify-center items-center w-full py-6 px-2 h-full'>
-                <Card className="border-none w-full max-w-3xl bg-zinc-800/30 rounded-2xl pt-4 pb-10 px-4">
+                <Card className="border border-white/10 w-full max-w-3xl bg-white/[0.03] backdrop-blur-xl rounded-2xl pt-4 pb-10 px-4">
                     <CardHeader className="space-y-3 text-center relative">
-                        <h2 className="text-3xl font-semibold text-white tracking-wide">{title}</h2>
+                        <h2 className="font-heading text-3xl md:text-4xl font-light text-white tracking-wide">{title}</h2>
                         <CardDescription className="text-zinc-400 text-base">
                             {subtitle}
                         </CardDescription>
@@ -83,7 +83,7 @@ const BlogsEmailCollection = ({ onGettingEmail, title = 'Access Expert Insights'
                                     placeholder="Email Address*"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className="bg-zinc-900 border-gray-600 focus:border-[#deff00] focus:ring-[#deff00] text-white"
+                                    className="bg-white/[0.03] border-white/10 focus:border-[#455CFF] focus:ring-[#455CFF]/40 text-white rounded-lg"
                                 />
                             </div>
                             <div className="relative" ref={dropdownRef}>
@@ -101,7 +101,7 @@ const BlogsEmailCollection = ({ onGettingEmail, title = 'Access Expert Insights'
                                         setIsDropdownOpen(true);
                                     }}
                                     onFocus={() => setIsDropdownOpen(true)}
-                                    className="bg-zinc-900 border-gray-600 focus:border-[#deff00] focus:ring-[#deff00] text-white"
+                                    className="bg-white/[0.03] border-white/10 focus:border-[#455CFF] focus:ring-[#455CFF]/40 text-white rounded-lg"
                                 />
                                 {isDropdownOpen && filteredCompanies.length > 0 && (
                                     <div className="absolute z-10 w-full bg-white border rounded-md shadow-md mt-1 max-h-60 overflow-y-auto">
@@ -125,7 +125,7 @@ const BlogsEmailCollection = ({ onGettingEmail, title = 'Access Expert Insights'
                             <Button
 
                                 type="submit"
-                                className="w-full bg-white hover:bg-[#deff00] text-black font-medium transition-all"
+                                className="w-full rounded-full border border-white/20 bg-white/[0.06] text-white font-medium backdrop-blur-md ring-1 ring-inset ring-white/10 transition-all duration-300 hover:border-[#455CFF]/70 hover:bg-[#455CFF]/15 hover:ring-[#455CFF]/30"
                             >
                                 NEXT
                             </Button>

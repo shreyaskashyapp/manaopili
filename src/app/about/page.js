@@ -5,6 +5,7 @@ import GlobalImage from "../components/global-image";
 import HeroSection from "../components/hero-section";
 import SurveyButton from "../components/surveyButton";
 import Reveal from "../components/reveal";
+import SectionHeading from "../components/section-heading";
 
 const data = {
   "resources": {
@@ -57,7 +58,7 @@ const hero = {
   title: "About Us",
   description: (
     <>
-      Mana’o Pili, meaning <span className="text-[#deff00]">“connecting ideas”</span> in native Hawaiian, was founded in 2024 on the <span className="text-[#deff00]">“customer first”</span> idea of providing customers with an efficient and cost-effective approach to maximizing their ServiceNow investment. Too often, technology investments are underutilized with customers left struggling to maintain their implementations, let alone achieving outcomes. Look no further, Mana’o Pili is here to help.    </>
+      Mana’o Pili, meaning <span className="text-[#455CFF]">“connecting ideas”</span> in native Hawaiian, was founded in 2024 on the <span className="text-[#455CFF]">“customer first”</span> idea of providing customers with an efficient and cost-effective approach to maximizing their ServiceNow investment. Too often, technology investments are underutilized with customers left struggling to maintain their implementations, let alone achieving outcomes. Look no further, Mana’o Pili is here to help.    </>
   )
 }
 
@@ -77,33 +78,32 @@ export default function About() {
       {/* hero section */}
       <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
       {/* resources */}
-      <Reveal className="lg:px-32 px-6 pt-4 pb-10">
-        <div className="w-full  rounded-2xl  bg-gradient-t0-b from-[#141414] to-zinc-900">
-          <h1 className='text-4xl md:text-5xl font-normal text-[#e2e2e2]  text-center pb-10 '>
-            Our team resources
-          </h1>
-          <AboutCards data={data.resources.data} />
-        </div>
-        <div className="flex justify-center items-center pt-10">
+      <section className="px-6 py-16 md:py-24 lg:px-32">
+        <Reveal>
+          <SectionHeading title="Our Team Resources" className="mb-12 md:mb-16" />
+        </Reveal>
+        <AboutCards data={data.resources.data} />
+        <Reveal className="flex justify-center items-center pt-14">
           <SurveyButton title='Book Consultation' url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} />
-        </div>
-
-
-      </Reveal>
+        </Reveal>
+      </section>
       {/* founders */}
-      <Reveal>
-        <h2 className='text-4xl md:text-5xl  font-normal text-[#e2e2e2] text-center '>
-          Founders
-        </h2>
+      <section className="bg-white/[0.015] py-16 md:py-24">
+        <Reveal>
+          <SectionHeading title="Founders" className="mb-4" />
+        </Reveal>
         <Founders team={data.founders.teamMembers} />
-        <div className='flex justify-center items-center'>
+        <Reveal className='flex justify-center items-center'>
           <SurveyButton title='Schedule a meeting!' url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} />
-        </div>
-      </Reveal>
+        </Reveal>
+      </section>
       {/* global presence */}
-      <Reveal>
+      <section className="py-16 md:py-24">
+        <Reveal>
+          <SectionHeading title="Global Presence" className="mb-10" />
+        </Reveal>
         <GlobalImage data={data.globalPresence} />
-      </Reveal>
+      </section>
     </div>
 
   )

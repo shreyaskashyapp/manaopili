@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Introduction({ data }) {
     return (
         <section className="relative">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 lg:mb-0 text-white">
+            <h2 className="font-heading text-3xl md:text-5xl font-light mb-4 lg:mb-0 text-white">
                 {data.title}
             </h2>
             <div className="grid lg:grid-cols-2 gap-6 items-center">

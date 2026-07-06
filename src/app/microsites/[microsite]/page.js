@@ -33,9 +33,9 @@ export default function Canvas() {
                     <p className="text-lg text-slate-300 mb-2">We are working hard to bring you something amazing.</p>
                     <p className="text-slate-400 mb-8">This page is still being built. Please check back soon for updates!</p>
                     <div className="flex justify-center gap-2">
-                        <div className="w-3 h-3 bg-[#DEFF00] rounded-full animate-bounce"></div>
-                        <div className="w-3 h-3 bg-[#DEFF00] rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
-                        <div className="w-3 h-3 bg-[#DEFF00] rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
+                        <div className="w-3 h-3 bg-[#455CFF] rounded-full animate-bounce"></div>
+                        <div className="w-3 h-3 bg-[#455CFF] rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
+                        <div className="w-3 h-3 bg-[#455CFF] rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
                     </div>
                 </div>
             </div>

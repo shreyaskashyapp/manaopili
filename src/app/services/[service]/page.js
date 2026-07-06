@@ -1,12 +1,12 @@
 "use client"
 
-import { ArrowRight, CheckCircle } from 'lucide-react'
-import Link from "next/link"
-
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Check } from 'lucide-react'
 import { useParams } from 'next/navigation'
 import Reveal from "../../components/reveal"
+import WordReveal from "../../components/word-reveal"
+import GlossyButton from "../../components/glossy-button"
+import ContactBanner from "../../components/contact-banner"
+import { motion, useReducedMotion } from "framer-motion"
 
 const services = {
     "technology-workflows": {
@@ -324,105 +324,133 @@ const services = {
     }
 }
 
+function TickColumn({ heading, items, delay = 0 }) {
+    return (
+        <Reveal delay={delay} className="px-2 py-10 md:px-12 md:py-4">
+            <span aria-hidden className="mb-5 block h-1 w-12 rounded-full bg-[#455CFF]" />
+            <h2 className="font-heading text-2xl leading-snug text-white md:text-3xl">{heading}</h2>
+            <ul className="mt-7 space-y-3.5">
+                {items.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-zinc-300 md:text-base">
+                        <Check className="mt-1 h-3.5 w-3.5 shrink-0 text-[#455CFF]" strokeWidth={3} />
+                        <span>{item}</span>
+                    </li>
+                ))}
+            </ul>
+        </Reveal>
+    )
+}
+
 export default function ServicePage() {
     const params = useParams();
     const service = services[params?.service]
+    const reduceMotion = useReducedMotion()
+
+    const appear = (delay = 0) =>
+        reduceMotion
+            ? {}
+            : {
+                  initial: { opacity: 0, y: 24 },
+                  animate: { opacity: 1, y: 0 },
+                  transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay },
+              }
 
     if (!service) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-gray-800">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
-                    Coming Soon
-                </h1>
+            <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#141414]">
+                <div
+                    aria-hidden
+                    className="pointer-events-none absolute left-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#455CFF] opacity-[0.12] blur-[150px]"
+                />
+                <WordReveal
+                    words="Coming Soon"
+                    trigger="load"
+                    className="relative z-10 text-5xl font-light text-white md:text-7xl"
+                />
             </div>
         )
     }
 
     return (
-        <div className="min-h-screen  pt-8">
-            {/* Hero Section */}
-            <Reveal className="container mx-auto px-4 pt-20 pb-16 text-center">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                    {service.title}
-                </h1>
-                <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-                    {service.description}
-                </p>
-                <div className="flex flex-wrap justify-center gap-4">
-                    <Button
-                        asChild
-                        size="lg"
-                        className="bg-blue-600 hover:bg-blue-700 text-white rounded-full"
-                    >
-                        {service.surveyCheck && 
-                            <Link href={`/new-survey?survey=${params?.service}`}>
-                            Take Survey <ArrowRight className="ml-2 h-5 w-5" />
-                        </Link>
-                        }
-                    </Button>
-                    <Button
-                        asChild
-                        variant="outline"
-                        size="lg"
-                        className="bg-transparent text-white border-white hover:bg-white/10 rounded-full"
-                    >
-                        <Link href="/contact">Contact Us</Link>
-                    </Button>
-                </div>
-            </Reveal>
+        <div className="min-h-screen bg-[#141414] text-[#e2e2e2]">
+            {/* Hero — homepage character: aurora, grain, assembling title */}
+            <section className="relative flex min-h-[70vh] items-center overflow-hidden">
+                <div
+                    aria-hidden
+                    className="pointer-events-none absolute left-1/2 top-[55%] h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#455CFF] opacity-[0.14] blur-[160px]"
+                />
+                <div aria-hidden className="hero-grain pointer-events-none absolute inset-0 z-[1]" />
+                <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_center,transparent_50%,#141414_100%)]"
+                />
 
-            {/* Features and Benefits */}
-            <Reveal className="container mx-auto px-4 py-8">
-                <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                    <Card className="bg-gray-800/50 border-gray-700">
-                        <CardContent className="p-6">
-                            <h2 className="text-2xl font-bold text-white mb-6">Key Features</h2>
-                            <ul className="space-y-4">
-                                {service.features.map((feature, index) => (
-                                    <li key={index} className="flex items-start gap-3 text-gray-300">
-                                        <CheckCircle className="h-6 w-6 text-blue-500 flex-shrink-0" />
-                                        <span>{feature}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </CardContent>
-                    </Card>
-                    <Card className="bg-gray-800/50 border-gray-700">
-                        <CardContent className="p-6">
-                            <h2 className="text-2xl font-bold text-white mb-6">Benefits</h2>
-                            <ul className="space-y-4">
-                                {service.benefits.map((benefit, index) => (
-                                    <li key={index} className="flex items-start gap-3 text-gray-300">
-                                        <CheckCircle className="h-6 w-6 text-blue-500 flex-shrink-0" />
-                                        <span>{benefit}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </CardContent>
-                    </Card>
-                </div>
-            </Reveal>
-
-            {/* CTA Section */}
-            {service.surveyCheck &&
-            <Reveal className="container mx-auto px-4 py-16 text-center">
-                <div className="bg-gray-800/50 border border-gray-700 rounded-2xl p-8 max-w-4xl mx-auto">
-                    <h2 className="text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
-                    <p className="text-gray-300 mb-8">
-                        Take our quick survey to help us understand your needs and provide the best solution for your organization.
-                    </p>
-                    <Button
-                        asChild
-                        size="lg"
-                        className="bg-blue-600 hover:bg-blue-700 text-white rounded-full"
+                <div className="container relative z-10 mx-auto px-6 pb-16 pt-28 text-center">
+                    <WordReveal
+                        words={service.title}
+                        trigger="load"
+                        delayChildren={0.1}
+                        className="mx-auto max-w-4xl text-4xl font-light leading-[1.1] text-white md:text-6xl lg:text-7xl"
+                    />
+                    <motion.p
+                        {...appear(0.55)}
+                        className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-zinc-300 md:text-xl"
                     >
-                        <Link href={`/survey?survey=${params?.service}`}>
-                            Take Survey Now <ArrowRight className="ml-2 h-5 w-5" />
-                        </Link>
-                    </Button>
+                        {service.description}
+                    </motion.p>
+                    <motion.div {...appear(0.75)} className="mt-10 flex flex-wrap justify-center gap-4">
+                        {service.surveyCheck && (
+                            <GlossyButton href={`/new-survey?survey=${params?.service}`}>
+                                Take Survey
+                            </GlossyButton>
+                        )}
+                        <GlossyButton href="/contact">Contact Us</GlossyButton>
+                    </motion.div>
                 </div>
-            </Reveal>
-            }
+            </section>
+
+            {/* Features & Benefits — editorial split, no cards */}
+            <section className="py-14 md:py-24">
+                <div className="container mx-auto max-w-6xl px-6">
+                    <div className="grid divide-y divide-white/10 md:grid-cols-2 md:divide-x md:divide-y-0">
+                        <TickColumn heading="Key Features" items={service.features} />
+                        <TickColumn heading="Benefits" items={service.benefits} delay={0.12} />
+                    </div>
+                </div>
+            </section>
+
+            {/* Closing CTA */}
+            {service.surveyCheck ? (
+                <section className="relative overflow-hidden py-16 md:py-24">
+                    <div
+                        aria-hidden
+                        className="pointer-events-none absolute left-1/2 top-1/2 h-[26rem] w-[26rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#455CFF] opacity-[0.10] blur-[150px]"
+                    />
+                    <div className="container relative z-10 mx-auto max-w-3xl px-6 text-center">
+                        <WordReveal
+                            as="h2"
+                            trigger="inView"
+                            words="Ready to Get Started?"
+                            className="font-heading text-3xl font-light leading-tight text-white md:text-5xl"
+                        />
+                        <Reveal delay={0.15}>
+                            <p className="mx-auto mt-5 max-w-xl leading-relaxed text-zinc-400">
+                                Take our quick survey to help us understand your needs and provide the best
+                                solution for your organization.
+                            </p>
+                        </Reveal>
+                        <Reveal delay={0.25} className="mt-9 flex justify-center">
+                            <GlossyButton href={`/survey?survey=${params?.service}`}>
+                                Take Survey Now
+                            </GlossyButton>
+                        </Reveal>
+                    </div>
+                </section>
+            ) : (
+                <div className="pb-14 md:pb-20">
+                    <ContactBanner />
+                </div>
+            )}
         </div>
     )
 }

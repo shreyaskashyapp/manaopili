@@ -1,36 +1,18 @@
 'use client'
-import { Button } from "@/components/ui/button"
-import Link from 'next/link'
 import Image from 'next/image'
 import Cards from './components/homecards'
 import WhyManaopiliWheel from './components/wheel'
 import { useEffect, useRef } from "react"
 import { activateServer } from "@/lib/utils"
-import ContactFormV2 from "./components/contact-form-v2"
-import SurveyButton from "./components/surveyButton"
 import ContactBanner from "./components/contact-banner"
 import Differentiators from "./components/differentiators"
 import Solutions from "./components/solutions"
-import { ArrowRight, ArrowUpRight, ArrowDown, Award, Calendar, Check, CheckCircle, DollarSign, Heart, MessageSquare, RefreshCw, Users, Zap } from "lucide-react"
-import { Card } from "@/components/ui/card"
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion"
 import Reveal from "./components/reveal"
 import SectionHeading from "./components/section-heading"
 import WordReveal from "./components/word-reveal"
 import GlossyButton from "./components/glossy-button"
-import StatsStrip from "./components/stats-strip"
-import VolcanoSection from "./components/volcano-section"
-
-// Hero load orchestration
-const heroStagger = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.15 } },
-}
-
-const heroFadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
-}
+import Marquee from "./components/marquee"
 
 const data = {
   hero: {
@@ -71,7 +53,7 @@ const data = {
   ],
   differentiators: {
     title: "A Different Kind of ServiceNow Consulting Firm",
-    intro: "We pair deep regulated-industry experience with senior, architect-led delivery — built to maximize what you already run.",
+    intro: "We pair deep regulated-industry experience with senior, architect-led delivery, built to maximize what you already run.",
     cards: [
       {
         title: "Regulated Industry Experts",
@@ -146,127 +128,14 @@ const data = {
       },
     ],
   },
-  journeyMap: {
-    header: {
-      title: "How We Can Help?",
-      subtitle:
-        "Every digital transformation is a journey. At Mana'o Pili, we guide you through each step — from strategy to sustained success — ensuring your ServiceNow investment delivers measurable business impact.",
-      description: "",
-      additionalInfo: "",
-    },
-    timeline: {
-      title: "Journey Stages",
-      steps: [
-        {
-          id: 1,
-          step: "STEP 1",
-          title: "Discovery & Assessment",
-          description: "We begin by understanding your business needs, current processes, and challenges.",
-          highlights: ["Identify gaps in workflows", "Define success metrics", "Prioritize initiatives"],
-          imageSpace: true,
-        },
-        {
-          id: 2,
-          step: "STEP 2",
-          title: "Strategy & Roadmap",
-          description: "A clear blueprint tailored to your organization.",
-          highlights: [
-            "Align IT and business goals",
-            "Build a transformation roadmap",
-            "Establish timelines & milestones",
-          ],
-          imageSpace: true,
-        },
-        {
-          id: 3,
-          step: "STEP 3",
-          title: "Implementation & Optimization",
-          description: "Hands-on deployment by our expert team.",
-          highlights: [
-            "Configure and customize ServiceNow modules",
-            "Integrate with existing systems",
-            "Optimize workflows for efficiency",
-          ],
-          imageSpace: true,
-        },
-        {
-          id: 4,
-          step: "STEP 4",
-          title: "Enablement & Adoption",
-          description: "Driving value through people and processes.",
-          highlights: [
-            "Train your teams for smooth adoption",
-            "Provide user-friendly knowledge resources",
-            "Change management support",
-          ],
-          imageSpace: true,
-        },
-        {
-          id: 5,
-          step: "STEP 5",
-          title: "Ongoing Support & Innovation",
-          description: "Long-term partnership for continuous improvement.",
-          highlights: [
-            "Proactive monitoring & managed services",
-            "Regular enhancements and upgrades",
-            "AI & GenAI-driven innovation to stay ahead",
-          ],
-          imageSpace: true,
-        },
-      ],
-    },
-  },
-  formFields: [
-    { id: "name", label: "Name", type: "text", placeholder: "Your name", isRequired: true },
-    { id: "email", label: "Email", type: "email", placeholder: "Your email", isRequired: true },
-    { id: "company", label: "Company Name", type: "text", placeholder: "Your company", isRequired: true },
-  ],
-
-
-  serviceOptions: [
-    { value: "general-inquiry", label: "General Inquiry" },
-    { value: "strategy-roadmap", label: "ServiceNow Strategy & Roadmap Consulting Services" },
-    { value: "implementation", label: "ServiceNow Implementation Services" },
-    { value: "custom-app-dev", label: "ServiceNow Custom Application Development (AppEngine) Services" },
-    { value: "managed-services", label: "ServiceNow Managed Services" },
-    { value: "careers", label: "Careers with Mana'o Pili" },
-  ],
 };
-
-const pillars = [
-  {
-    title: "Savings",
-    description: "Delivering cost efficiencies through optimized processes.",
-    icon: DollarSign,
-  },
-  {
-    title: "Experience",
-    description: "Enhancing user and employee experiences across the enterprise.",
-    icon: Users,
-  },
-  {
-    title: "Customer Centric",
-    description: "Tailoring every solution to your unique needs and goals.",
-    icon: Heart,
-  },
-  {
-    title: "Transform in Place",
-    description: "Driving change without disrupting your business.",
-    icon: RefreshCw,
-  },
-  {
-    title: "Technical Expertise",
-    description: "Leveraging proven skills and innovation for ServiceNow success.",
-    icon: Zap,
-  },
-]
 
 
 export default function HomePage() {
   const heroRef = useRef(null)
   const reduceMotion = useReducedMotion()
 
-  // Scroll-driven parallax as the hero exits
+  // Subtle background parallax as the hero scrolls away.
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] })
   const bgY = useTransform(scrollYProgress, [0, 1], [0, 90])
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 60])
@@ -351,7 +220,7 @@ export default function HomePage() {
             />
 
             {/* Centered content */}
-            <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 py-28 text-center">
+            <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-5 py-24 text-center sm:px-6 sm:py-28">
               <motion.div
                 className="mx-auto flex max-w-5xl flex-col items-center"
                 style={reduceMotion ? undefined : { y: contentY }}
@@ -360,17 +229,17 @@ export default function HomePage() {
                   words={data.hero.titleWords}
                   trigger="load"
                   delayChildren={0.15}
-                  className="text-white text-6xl md:text-8xl font-light  leading-[1.05]"
+                  className="text-white text-[2.6rem] leading-[1.1] sm:text-6xl sm:leading-[1.05] md:text-8xl font-light"
                 />
 
                 <motion.p
                   {...appear(0.8)}
-                  className="mt-7 max-w-2xl text-base md:text-xl leading-relaxed text-zinc-300"
+                  className="mt-5 max-w-md text-sm leading-relaxed text-zinc-300 sm:mt-7 sm:max-w-2xl sm:text-base md:text-xl"
                 >
                   {data.hero.subtitle}
                 </motion.p>
 
-                <motion.div {...appear(1.05)} className="mt-10">
+                <motion.div {...appear(1.05)} className="mt-8 sm:mt-10">
                   <GlossyButton href={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK || "#"}>
                     Book a Consultation
                   </GlossyButton>
@@ -379,12 +248,12 @@ export default function HomePage() {
                 {/* Proof points */}
                 <motion.div
                   {...appear(1.25)}
-                  className="mt-14 flex flex-col items-center divide-y divide-white/10 sm:flex-row sm:items-stretch sm:divide-y-0 sm:divide-x"
+                  className="mt-10 flex w-full max-w-sm flex-col items-center divide-y divide-white/10 sm:mt-14 sm:w-auto sm:max-w-none sm:flex-row sm:items-stretch sm:divide-y-0 sm:divide-x"
                 >
                   {data.hero.bullets.map((p) => (
                     <p
                       key={p}
-                      className="max-w-[16rem] px-7 py-3 text-sm leading-relaxed text-zinc-400 sm:py-0"
+                      className="max-w-[17rem] px-6 py-2.5 text-[13px] leading-relaxed text-zinc-400 sm:max-w-[16rem] sm:px-7 sm:py-0 sm:text-sm"
                     >
                       {p}
                     </p>
@@ -393,9 +262,6 @@ export default function HomePage() {
               </motion.div>
             </div>
           </section>
-          {/* Stats strip */}
-          <StatsStrip />
-
           {/* What we do */}
           <section className="py-20 md:py-28">
             <Reveal className="container mx-auto">
@@ -404,26 +270,12 @@ export default function HomePage() {
             </Reveal>
           </section>
 
-          {/* A Different Kind of ServiceNow Consulting Firm */}
-          <section className="relative overflow-hidden bg-white/[0.015] px-10 py-20 md:py-28">
-            {/* Hawaiian Islands — screen blend on container; black dissolves, neon archipelago remains */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0"
-              style={{ mixBlendMode: "screen" }}
-            >
-              <Image
-                src="/digital-assets/hi-islands.png"
-                alt=""
-                fill
-                sizes="100vw"
-                className="object-cover object-center"
-                style={{ opacity: 0.18 }}
-              />
-            </div>
-            <div className="relative z-10">
-              <Differentiators data={data?.differentiators} />
-            </div>
+          {/* Ghost capability ticker — texture beat between sections */}
+          <Marquee />
+
+          {/* A Different Kind of ServiceNow Consulting Firm — pinned horizontal gallery */}
+          <section>
+            <Differentiators data={data?.differentiators} />
           </section>
 
           {/* Solutions We Deliver */}
@@ -434,8 +286,20 @@ export default function HomePage() {
             <Solutions data={data?.solutions} />
           </section>
 
-          {/* Why Mana'o Pili — volcano section */}
-          <VolcanoSection />
+          {/* Why Mana'o Pili */}
+          <section className="py-20 bg-white/[0.015]  md:py-28">
+            <Reveal>
+              <SectionHeading title={`Why Mana'o Pili?`} className="mb-8 md:mb-12" />
+              <div className="w-full">
+                <WhyManaopiliWheel />
+              </div>
+              <div className="flex justify-center items-center pt-2">
+                <GlossyButton href={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK || "#"}>
+                  Book a Consultation
+                </GlossyButton>
+              </div>
+            </Reveal>
+          </section>
         </div>
         {/* Contact us banner — faint wash panel */}
         <section className="py-20 md:py-28">

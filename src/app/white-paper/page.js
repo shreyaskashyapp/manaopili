@@ -117,10 +117,11 @@ const WhitePaper = () => {
     }, [paper]);
 
     return (
-        <div className="min-h-screen p-8 text-white mt-20">
-            <h1 className="text-4xl mb-4 text-white">{documentTitle}</h1>
+        <div className="min-h-screen bg-[#141414] p-8 text-white pt-28 md:pt-32">
+            <p className="mb-2 text-[11px] uppercase tracking-[0.25em] text-[#455CFF]">White Paper</p>
+            <h1 className="font-heading mb-6 text-3xl font-light leading-tight text-white md:text-4xl">{documentTitle}</h1>
             {article ? (
-                <div className="w-full h-[80vh] border-2 border-zinc-500 rounded-lg overflow-hidden">
+                <div className="h-[80vh] w-full overflow-hidden rounded-xl border border-white/10 shadow-lg shadow-black/30">
                     <iframe
                         src={article}
                         title={documentTitle}
@@ -129,9 +130,15 @@ const WhitePaper = () => {
                     />
                 </div>
             ) : (
-                <div className="flex flex-col items-center justify-center h-[80vh] mt-0 text-white text-center">
-                    <h2 className="text-4xl mb-6">Oops! Document not found</h2>
-                    <p className="text-md">The requested white paper could not be found.</p>
+                <div className="mt-0 flex h-[70vh] flex-col items-center justify-center text-center text-white">
+                    <h2 className="font-heading mb-6 text-4xl font-light">Oops! Document not found</h2>
+                    <p className="text-md mb-8 text-zinc-400">The requested white paper could not be found.</p>
+                    <a
+                        href="/expert-guides"
+                        className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.06] px-7 py-3 text-sm tracking-wide text-white backdrop-blur-md ring-1 ring-inset ring-white/10 transition-all duration-300 hover:border-[#455CFF]/70 hover:bg-[#455CFF]/15"
+                    >
+                        Browse Expert Guides
+                    </a>
                 </div>
             )}
         </div>

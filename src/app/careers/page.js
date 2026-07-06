@@ -13,11 +13,11 @@ const heroData = {
   title: 'Careers',
   description: (
     <>
-      At <span className="text-[#DEFF00]">Mana&apos;o Pili</span>, we believe in finding the{' '}
-      <span className="text-[#DEFF00]">right talent</span> and empowering{' '}
-      <span className="text-[#DEFF00]">curious minds</span> and{' '}
-      <span className="text-[#DEFF00]">strong builders</span> to thrive. If that sounds like you,{' '}
-      <span className="text-[#DEFF00]">explore our open roles</span>.
+      At <span className="text-[#455CFF]">Mana&apos;o Pili</span>, we believe in finding the{' '}
+      <span className="text-[#455CFF]">right talent</span> and empowering{' '}
+      <span className="text-[#455CFF]">curious minds</span> and{' '}
+      <span className="text-[#455CFF]">strong builders</span> to thrive. If that sounds like you,{' '}
+      <span className="text-[#455CFF]">explore our open roles</span>.
     </>
   ),
 };
@@ -26,18 +26,24 @@ const heroData = {
 function JobCard({ job, index }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.06 }}
-      className="group bg-gradient-to-br from-zinc-900 to-[#141414] border border-zinc-800 hover:border-[#DEFF00]/40 rounded-2xl p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(222,255,0,0.07)]"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6, delay: index * 0.07, ease: [0.16, 1, 0.3, 1] }}
+      className="group relative overflow-hidden bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] hover:border-[#455CFF]/40 rounded-2xl p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(69,92,255,0.12)]"
     >
+      {/* Corner glow on hover */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#455CFF] opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-20"
+      />
       <div className="flex items-center justify-start gap-3 mb-5">
-        <span className="text-xs text-zinc-400 bg-zinc-800/70 px-3 py-1 rounded-full border border-zinc-700/50 whitespace-nowrap">
+        <span className="text-xs text-zinc-400 bg-white/[0.04] px-3 py-1 rounded-full border border-white/10 whitespace-nowrap">
           {job.type}
         </span>
       </div>
 
-      <h3 className="text-white font-heading text-xl font-semibold mb-3 group-hover:text-[#DEFF00] transition-colors duration-200 leading-snug">
+      <h3 className="text-white font-heading text-xl font-semibold mb-3 transition-colors duration-200 leading-snug">
         {job.title}
       </h3>
 
@@ -59,7 +65,7 @@ function JobCard({ job, index }) {
           {job.tags.map((tag) => (
             <span
               key={tag}
-              className="text-[11px] text-zinc-400 bg-zinc-800/60 border border-zinc-700/40 px-2.5 py-0.5 rounded-full"
+              className="text-[11px] text-zinc-400 bg-white/[0.04] border border-white/[0.08] px-2.5 py-0.5 rounded-full"
             >
               {tag}
             </span>
@@ -67,10 +73,10 @@ function JobCard({ job, index }) {
         </div>
       )}
 
-      <div className="mt-auto pt-5 border-t border-zinc-800/80">
+      <div className="mt-auto pt-5 border-t border-white/[0.07]">
         <Link
           href={`/careers/${job.id}`}
-          className="inline-flex items-center gap-2 text-sm font-medium text-[#DEFF00] hover:gap-3 transition-all duration-200"
+          className="inline-flex items-center gap-2 text-sm font-medium text-[#455CFF] hover:gap-3 transition-all duration-200"
         >
           View Details
           <ArrowRight

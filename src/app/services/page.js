@@ -10,6 +10,7 @@ import {
 import CompareCard from '../components/comparisionCards'
 import HeroSection from '../components/hero-section'
 import ServicesAccordion from '../components/services-accordion'
+import SectionHeading from '../components/section-heading'
 import SurveyButton from '../components/surveyButton'
 import Reveal from '../components/reveal'
 import { activateServer } from '@/lib/utils'
@@ -233,7 +234,7 @@ const hero = {
   title: "Services",
   description: (
     <>
-      Empowering your business with end-to-end <span className="text-[#deff00]">ServiceNow</span> solutions, driven by expert professionals to maximize <span className="text-[#deff00]">platform value</span>.
+      Empowering your business with end-to-end <span className="text-[#455CFF]">ServiceNow</span> solutions, driven by expert professionals to maximize <span className="text-[#455CFF]">platform value</span>.
     </>
   )
 }
@@ -273,12 +274,14 @@ export default function Component() {
           </Reveal>
           {/* comparision section */}
           {/* <Comparison/> */}
-          <Reveal className='mt-16 text-center'>
-            <h2 className='text-4xl md:text-5xl font-normal text-[#e2e2e2] text-center'>
-              Why Choose Us?
-            </h2>
-            <CompareCard data={data} companies={companies} />
-          </Reveal>
+          <div className='mt-16'>
+            <Reveal>
+              <SectionHeading title="Why Choose Us?" className="mb-4" />
+            </Reveal>
+            <Reveal delay={0.1}>
+              <CompareCard data={data} companies={companies} />
+            </Reveal>
+          </div>
 
           <Reveal className="text-center">
             <p className="text-lg md:text-xl text-zinc-300 mb-6 md:mb-8 px-4">
