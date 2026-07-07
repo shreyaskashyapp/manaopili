@@ -8,18 +8,30 @@ import Reveal from "./reveal"
 
 /**
  * Editorial services index — numbered category rows with hairline dividers;
- * rows expand (one at a time) into a list of service links.
+ * rows expand into a list of service links. Rows toggle independently and stay
+ * open until explicitly closed, so opening one never collapses another (which
+ * would shift the viewport out from under the reader).
  * Same props/behavior as the old Radix accordion: `?section=` deep link opens
  * and scrolls to a category.
  */
 export default function ServicesAccordion({ services, categories, defaultSection }) {
-  const [open, setOpen] = useState(defaultSection || "IMPLEMENTATIONS")
+  // A Set of every currently-open category — multiple can be open at once.
+  const [openSet, setOpenSet] = useState(() => new Set([defaultSection || "IMPLEMENTATIONS"]))
   const ref = useRef(null)
   const reduceMotion = useReducedMotion()
 
+  const toggle = (category) =>
+    setOpenSet((prev) => {
+      const next = new Set(prev)
+      if (next.has(category)) next.delete(category)
+      else next.add(category)
+      return next
+    })
+
   useEffect(() => {
     if (!defaultSection) return
-    setOpen(defaultSection)
+    // Deep link just adds its section to the open set (doesn't close others).
+    setOpenSet((prev) => new Set(prev).add(defaultSection))
     const timer = setTimeout(() => {
       ref.current?.scrollIntoView({ behavior: "smooth", block: "start" })
     }, 100)
@@ -30,12 +42,12 @@ export default function ServicesAccordion({ services, categories, defaultSection
     <div ref={ref} className="mx-auto max-w-5xl scroll-mt-24 px-2 py-10 md:py-4">
       <div className="border-b border-white/10">
         {categories.map((category, index) => {
-          const isOpen = open === category
+          const isOpen = openSet.has(category)
           return (
             <Reveal key={category} delay={index * 0.06} className="border-t border-white/10">
               {/* Category row */}
               <button
-                onClick={() => setOpen(isOpen ? null : category)}
+                onClick={() => toggle(category)}
                 aria-expanded={isOpen}
                 className="group flex w-full items-center gap-5 py-7 text-left md:gap-8 md:py-9"
               >

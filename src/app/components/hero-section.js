@@ -23,7 +23,7 @@ export default function HeroSection({
   data,
   bgColor,
   height = "[70vh]",
-  bgImage = "/digital-assets/hi-islands.png",
+  bgImage = "/digital-assets/hi-islands.webp",
 }) {
   const reduceMotion = useReducedMotion()
   const sectionRef = useRef(null)

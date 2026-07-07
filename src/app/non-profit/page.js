@@ -66,7 +66,7 @@ const nonProfitContent = {
   {
     id: "coconut-tree",
     image: {
-      src: "/non-profit/hawai-coconut-tree.png",
+      src: "/non-profit/hawai-coconut-tree.webp",
       alt: "Sacred coconut palm tree silhouette against Hawaiian sunset"
     },
     eyebrow: {
@@ -81,7 +81,7 @@ const nonProfitContent = {
   {
     id: "anahulu-valley",
     image: {
-      src: "/non-profit/nonprofit_1.png",
+      src: "/non-profit/nonprofit_1.webp",
       alt: "Lush green Anahulu Valley in Hawaii",
       credit: "CRB Response"
     },
@@ -107,7 +107,7 @@ const CRBSectionData = {
     title: "The Coconut Rhinoceros Beetle",
     subTitle: "Oryctes rhinoceros",
     image: {
-        src: "/non-profit/crb-1.jpg",
+        src: "/non-profit/crb-1.webp",
         alt: "Coconut Rhinoceros Beetle",
         credit: "CRB Response",
     },
@@ -158,7 +158,7 @@ export default function NonProfit() {
                         <div className="relative rounded-lg overflow-hidden">
                             <div className="aspect-[21/9]">
                                 <img
-                                    src="/non-profit/hawai-cover-image.png"
+                                    src="/non-profit/hawai-cover-image.webp"
                                     alt="Beautiful Hawaiian islands aerial view"
                                     className="w-full h-full object-cover opacity-70"
                                 />

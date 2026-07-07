@@ -175,7 +175,7 @@ export default function HomePage() {
                   : { initial: { scale: 1.08 }, animate: { scale: 1 }, transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] } })}
               >
                 <Image
-                  src="/digital-assets/honalulu-2-hero.png"
+                  src="/digital-assets/honalulu-2-hero.webp"
                   alt=""
                   aria-hidden
                   fill

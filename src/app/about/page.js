@@ -51,7 +51,7 @@ const data = {
   "globalPresence": {
     "title": "Global Presence, Local Expertise",
     "description": "With offices in Los Angeles, Honolulu, and Bangalore, we're strategically positioned to serve you across time zones. Our global footprint is expanding - stay tuned for more locations coming soon.",
-    "imagePath": "/about/globalPresence.png"
+    "imagePath": "/about/globalPresence.webp"
   }
 }
 const hero = {

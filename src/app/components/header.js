@@ -16,6 +16,7 @@ const servicesDropdown = [
 ]
 
 const aboutDropdown = [
+  { label: "ABOUT US", href: "/about" },
   { label: "ANAHULU VALLEY PRESERVATION FUND", href: "/non-profit" },
   { label: "CAREERS", href: "/careers" },
   { label: "CONTACT US", href: "/contact" },

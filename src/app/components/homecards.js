@@ -33,7 +33,7 @@ export default function Cards({ data }) {
                                 </CardContent>
                                 <CardFooter className='relative z-10 flex justify-end'>
                                     <Image
-                                        src="/arrow_blue.png"
+                                        src="/arrow_blue.webp"
                                         alt="Arrow"
                                         width={20}
                                         height={20}
