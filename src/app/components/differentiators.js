@@ -25,7 +25,7 @@ const TILE_BG = [
 function ContentTile({ card, index }) {
   return (
     <div
-      className={`relative flex h-full w-full flex-col justify-between overflow-hidden rounded-3xl border border-white/10 p-8 shadow-[0_20px_80px_rgba(69,92,255,0.14)] md:p-12 lg:p-14 ${TILE_BG[index % TILE_BG.length]}`}
+      className={`relative flex h-full w-full flex-col justify-between overflow-hidden rounded-3xl border border-white/10 p-8 shadow-[0_20px_80px_rgba(69,92,255,0.14)] md:p-12 lg:p-14 xl:p-16 ${TILE_BG[index % TILE_BG.length]}`}
     >
 
       {/* Heading + lead */}
@@ -39,9 +39,11 @@ function ContentTile({ card, index }) {
         </p>
       </div>
 
-      {/* Keypoints — the tile's second voice: big type, blue indices */}
+      {/* Keypoints — the tile's second voice: big type, blue indices.
+          Grid is capped (max-w) so both columns stay grouped on the left
+          instead of flying to the far edges on wide tiles. */}
       <div className="relative mt-8 border-t border-white/10 pt-6 md:pt-8">
-        <ul className="grid grid-cols-1 gap-x-10 gap-y-4 sm:grid-cols-2 md:gap-y-5">
+        <ul className="grid max-w-3xl grid-cols-1 gap-x-10 gap-y-4 sm:grid-cols-2 md:gap-y-5">
           {card.points.map((p, i) => (
             <li key={p} className="flex items-baseline gap-3.5">
               <span
@@ -88,7 +90,9 @@ function Gallery({ data }) {
   const [index, setIndex] = useState(1)
 
   const { scrollYProgress } = useScroll({ target: outerRef, offset: ["start start", "end end"] })
-  const smooth = useSpring(scrollYProgress, { stiffness: 90, damping: 28, mass: 0.4 })
+  // Light spring smooths the horizontal track on native scroll — kept snappy so
+  // the tiles stay locked to the scroll rather than trailing behind ("laggy").
+  const smooth = useSpring(scrollYProgress, { stiffness: 160, damping: 34, mass: 0.25 })
   const x = useTransform(smooth, [0, 1], [0, -maxX])
 
   // Measure how far the track must travel; re-measure on resize so the scrub
@@ -119,8 +123,8 @@ function Gallery({ data }) {
           className="flex w-max items-center gap-[7vw] px-[8vw] will-change-transform"
         >
           {/* Slide 0 — intro: the section headline, editorial and assembling */}
-          <div className="w-[55vw] shrink-0">
-            
+          <div className="w-[55vw] max-w-[680px] shrink-0">
+
             <WordReveal
               as="h2"
               trigger="inView"
@@ -138,7 +142,7 @@ function Gallery({ data }) {
           {data.cards.map((card, i) => (
             <div
               key={card.title}
-              className="relative h-[62vh] w-[70vw] shrink-0 lg:w-[58vw]"
+              className="relative h-[62vh] max-h-[600px] w-[70vw] max-w-[860px] shrink-0 lg:w-[56vw] xl:w-[48vw]"
             >
               <ContentTile card={card} index={i} />
             </div>
@@ -146,7 +150,7 @@ function Gallery({ data }) {
         </motion.div>
 
         {/* Bottom chrome — progress bar + counter + caption */}
-        <div className="absolute bottom-9 left-1/2 w-[62vw] -translate-x-1/2">
+        <div className="absolute bottom-9 left-1/2 w-[62vw] max-w-[1100px] -translate-x-1/2">
           <div className="relative h-px w-full bg-zinc-800">
             <motion.div
               style={{ scaleX: smooth, transformOrigin: "left" }}

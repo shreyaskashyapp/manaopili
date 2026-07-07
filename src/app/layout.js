@@ -6,7 +6,6 @@ import { Suspense } from "react";
 import { GoogleAnalytics } from '@next/third-parties/google'
 import FloaterCTA from "./components/floater-cta";
 import SocialCTA from "./components/social-cta";
-import SmoothScroll from "./components/smooth-scroll";
 
 
 
@@ -37,7 +36,6 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#141414]`}
       >
-        <SmoothScroll />
         <Suspense>
           <div className="">
             {children}
