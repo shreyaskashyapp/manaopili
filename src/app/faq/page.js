@@ -1,6 +1,6 @@
 import HeroSection from "@/app/components/hero-section";
-import NonProfit from "../non-profit/page";
 import NonProfitAccordion from "../components/non-profit-accordion";
+import Reveal from "../components/reveal";
 
 const data = {
     title: "FAQ",
@@ -50,9 +50,9 @@ export default function FAQ() {
     return(
         <div className="w-full " >
             <HeroSection data={data} bgColor={`from-[#455CFF] to-[#141414]`} height={'[50vh]'}/>
-            <div className="md:px-14">
+            <Reveal className="md:px-14">
             <NonProfitAccordion data1={faqData}/>
-            </div>
+            </Reveal>
         </div>
     )
 }

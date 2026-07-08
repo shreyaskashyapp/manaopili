@@ -11,13 +11,14 @@ import ContactBanner from "../components/contact-banner";
 import { Sparkles, Zap, TrendingUp, Shield, Rocket, Target } from "lucide-react";
 import Media from "./components/media";
 import SnAssistSection from "./components/sn-assist-section";
+import Reveal from "../components/reveal";
 
 const data = {
     hero: {
         title: "AI LaunchPad",
         description: (
             <>
-                <span className="text-[#deff00]">Start small, scale fast</span> - Launchpad makes ServiceNow AI adoption clear, practical, and effortless.
+                <span className="text-[#455CFF]">Start small, scale fast</span> - Launchpad makes ServiceNow AI adoption clear, practical, and effortless.
             </>
         )
     },
@@ -320,37 +321,37 @@ export default function AiLaunchPad() {
         <div>
             <HeroSection data={data?.hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
             <div className="w-full  md:px-20 px-4 mx-auto">
-                <div className="py-10">
+                <Reveal className="py-10">
                     <Introduction data={data?.introduction} />
-                </div>
+                </Reveal>
                 <div className="flex justify-center items-center py-4">
                     <SurveyButton title="Book Consultation" url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} />
                 </div>
-                <div>
+                <Reveal>
                     <FeatureDelimitedSection data={data?.painPoints} />
                     <CTA data={data?.cta} />
-                </div>
-                <div>
+                </Reveal>
+                <Reveal>
                     <Media url="https://www.youtube.com/embed/BAAjoBdJ2ww?si=AxyS6btAYci-I5rg" />
-                </div>
-                <div>
+                </Reveal>
+                <Reveal>
                     <Products data={data?.products} />
-                </div>
+                </Reveal>
                 <div className="flex justify-center items-center py-6">
                     <SurveyButton title="Book Consultation" url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} />
                 </div>
-                <div>
+                <Reveal>
                     <FeatureDelimitedSection data={data?.valuePoints} />
-                </div>
-                <div>
+                </Reveal>
+                <Reveal>
                     <SnAssistSection />
-                </div>
-                <div>
+                </Reveal>
+                <Reveal>
                     <PricingCards data={data.tiers} />
-                </div>
-                <div className="md:py-16 py-10">
+                </Reveal>
+                <Reveal className="md:py-16 py-10">
                     <ContactBanner color="[#455cff]" />
-                </div>
+                </Reveal>
             </div>
         </div>
     )

@@ -17,13 +17,14 @@ export default function ImageContentBlock({ data }) {
                             <p className="text-zinc-500 text-xs mt-2 text-right">
                                 Photo credit: {data.image.credit}
                             </p>
+                            
                         )}
                     </div>
 
                     {/* Content */}
                     <div className="space-y-6">
                         <div>
-                            <p className="text-[#deff00] md:text-sm text-xs font-medium tracking-widest uppercase mb-2">
+                            <p className="text-[#455CFF] md:text-sm text-xs font-medium tracking-[0.25em] uppercase mb-2">
                                 {data?.label}
                             </p>
                             <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-4">
@@ -55,9 +56,9 @@ export default function ImageContentBlock({ data }) {
                         {data?.infoBlocks?.map((block, index) => (
                             <div
                                 key={index}
-                                className="bg-zinc-900 rounded-xl p-5 border border-zinc-800"
+                                className="bg-white/[0.03] rounded-xl p-5 border border-white/[0.08]"
                             >
-                                <h3 className="font-medium text-[#DEFF00] mb-3">
+                                <h3 className="font-medium text-[#455CFF] mb-3">
                                     {block?.heading}
                                 </h3>
 

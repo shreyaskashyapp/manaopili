@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
 import { Menu, X, ChevronDown } from 'lucide-react'
 import Image from "next/image"
+import GlossyButton from "./glossy-button"
 
 const servicesDropdown = [
   { label: "IMPLEMENTATIONS",       href: "/services?section=IMPLEMENTATIONS" },
@@ -15,6 +16,7 @@ const servicesDropdown = [
 ]
 
 const aboutDropdown = [
+  { label: "ABOUT US", href: "/about" },
   { label: "ANAHULU VALLEY PRESERVATION FUND", href: "/non-profit" },
   { label: "CAREERS", href: "/careers" },
   { label: "CONTACT US", href: "/contact" },
@@ -26,7 +28,7 @@ function DropdownMenu({ items, align = "left", open }) {
       className={`
         absolute top-full ${align === "right" ? "right-0" : "left-0"}
         mt-2 min-w-[220px] z-50
-        rounded-xl bg-[#141414]/95 backdrop-blur-md
+        rounded-xl bg-[#141414]/95 
         ring-1 ring-zinc-800/60 shadow-xl shadow-black/50
         transition-all duration-200 ease-out origin-top
         ${open ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"}
@@ -37,7 +39,7 @@ function DropdownMenu({ items, align = "left", open }) {
           <Link
             key={item.href + item.label}
             href={item.href}
-            className="block rounded-lg px-4 py-2.5 text-xs tracking-widest font-normal text-zinc-400 hover:text-[#deff00] hover:bg-[#deff00]/5 transition-colors whitespace-nowrap"
+            className="block rounded-lg px-4 py-2.5 text-xs tracking-widest font-normal text-zinc-400 hover:text-[#455CFF] hover:bg-[#455CFF]/5 transition-colors whitespace-nowrap"
           >
             {item.label}
           </Link>
@@ -74,7 +76,7 @@ function NavDropdown({ label, items, align }) {
       onMouseLeave={close_}
     >
       <button
-        className="flex items-center gap-1 font-sans text-xs tracking-widest font-normal text-zinc-100 hover:text-[#deff00] transition-colors py-2"
+        className="flex items-center gap-1 font-sans text-xs tracking-widest font-normal text-zinc-100 hover:text-[#455CFF] transition-colors py-2"
         onClick={() => setOpen((v) => !v)}
       >
         {label}
@@ -116,7 +118,7 @@ export default function Header() {
             <NavDropdown label="SERVICES" items={servicesDropdown} align="left" />
             <Link
               href="/expert-guides"
-              className="text-xs tracking-widest font-normal text-zinc-100 hover:text-[#deff00] transition-colors"
+              className="text-xs tracking-widest font-normal text-zinc-100 hover:text-[#455CFF] transition-colors"
             >
               EXPERT GUIDES
             </Link>
@@ -124,13 +126,12 @@ export default function Header() {
           </div>
 
           {/* CTA */}
-          <Link
+          <GlossyButton
             href="/operational-assessment"
-            className="hidden lg:flex items-center gap-2 border border-[#deff00] text-white text-xs tracking-widest px-4 py-2 hover:bg-[#deff00] hover:text-black transition-colors"
+            className="hidden lg:inline-flex px-5 py-2.5 text-[11px] md:text-[11px] tracking-widest"
           >
             GET 1 WEEK OPERATIONAL ASSESSMENT
-            <Image src="/arrow_yellow.png" alt="" width={14} height={14} />
-          </Link>
+          </GlossyButton>
 
           {/* Mobile hamburger */}
           <button
@@ -150,7 +151,7 @@ export default function Header() {
 
             {/* Services accordion */}
             <button
-              className="flex items-center justify-between w-full text-xs tracking-widest text-zinc-100 py-3 hover:text-[#deff00] transition-colors"
+              className="flex items-center justify-between w-full text-sm tracking-widest text-zinc-100 py-3 hover:text-[#455CFF] transition-colors"
               onClick={() => setMobileServicesOpen((v) => !v)}
             >
               SERVICES
@@ -162,7 +163,7 @@ export default function Header() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="text-xs tracking-widest text-zinc-400 hover:text-[#deff00] transition-colors py-2"
+                    className="text-xs tracking-widest text-zinc-400 hover:text-[#455CFF] transition-colors py-2"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
@@ -173,7 +174,7 @@ export default function Header() {
 
             <Link
               href="/expert-guides"
-              className="text-xs tracking-widest text-zinc-100 hover:text-[#deff00] transition-colors py-3"
+              className="text-xs tracking-widest text-zinc-100 hover:text-[#455CFF] transition-colors py-3"
               onClick={() => setIsMenuOpen(false)}
             >
               EXPERT GUIDES
@@ -181,7 +182,7 @@ export default function Header() {
 
             {/* About accordion */}
             <button
-              className="flex items-center justify-between w-full text-xs tracking-widest text-zinc-100 py-3 hover:text-[#deff00] transition-colors"
+              className="flex items-center justify-between w-full text-sm tracking-widest text-zinc-100 py-3 hover:text-[#455CFF] transition-colors"
               onClick={() => setMobileAboutOpen((v) => !v)}
             >
               ABOUT
@@ -193,7 +194,7 @@ export default function Header() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="text-xs tracking-widest text-zinc-400 hover:text-[#deff00] transition-colors py-2"
+                    className="text-xs tracking-widest text-zinc-400 hover:text-[#455CFF] transition-colors py-2"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
@@ -203,14 +204,13 @@ export default function Header() {
             )}
 
             <div className="pt-2">
-              <Link
+              <GlossyButton
                 href="/operational-assessment"
-                className="flex items-center gap-2 border border-[#deff00] text-white text-xs tracking-widest px-4 py-3 hover:bg-[#deff00] hover:text-black transition-colors w-full justify-center"
                 onClick={() => setIsMenuOpen(false)}
+                className="w-full justify-center px-4 py-3 text-xs md:text-xs tracking-widest"
               >
                 GET 1 WEEK OPERATIONAL ASSESSMENT
-                <Image src="/arrow_yellow.png" alt="" width={14} height={14} />
-              </Link>
+              </GlossyButton>
             </div>
           </nav>
         </div>

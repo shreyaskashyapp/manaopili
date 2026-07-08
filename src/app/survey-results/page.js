@@ -102,7 +102,7 @@ export default function SurveyResultsPage() {
     return (
       <div className="space-y-10 max-w-7xl mx-auto">
         {/* Main Insights Card */}
-        <div className="bg-gradient-to-br from-[#141414] via-zinc-900 to-[#141414]  border border-gray-800 rounded-xl p-8 mb-3 md:mb-6 backdrop-blur-sm transition-all duration-500">
+        <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-8 mb-3 md:mb-6 backdrop-blur-sm transition-all duration-500">
           <div className="text-center mb-6">
 
             <p className="text-[#e2e2e2] text-md md:text-xl max-w-4xl mx-auto">{aiInsights?.title}</p>
@@ -114,7 +114,7 @@ export default function SurveyResultsPage() {
               return (
                 <div
                   key={index}
-                  className="bg-gradient-to-br to-zinc-900 from-zinc-900 via-[#141414] border border-gray-700/50 rounded-xl p-8 hover:border-[#455cff]/30 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-lg hover:shadow-[#455cff]/10 text-center"
+                  className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-8 hover:border-[#455cff]/30 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-lg hover:shadow-[#455cff]/10 text-center"
                 >
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gray-900/50 border border-gray-700 mb-4">
                     <CheckCircle className="w-6 h-6 text-green-500" />
@@ -141,7 +141,7 @@ export default function SurveyResultsPage() {
             <div className="bg-gray-900/50 rounded-xl p-8 border border-gray-700/50">
               <div className="text-center mb-8">
                 <div className="flex justify-center mb-4">
-                  <div className="p-3 bg-gray-800 rounded-xl">
+                  <div className="p-3 bg-white/[0.06] rounded-xl">
                     <Zap className="w-7 h-7 text-yellow-400" />
                   </div>
                 </div>
@@ -149,7 +149,7 @@ export default function SurveyResultsPage() {
               </div>
               <div className="space-y-4 max-w-4xl mx-auto">
                 {quick_wins.map((win, index) => (
-                  <div key={index} className="flex items-center justify-center gap-4 p-4 bg-gray-800/30 rounded-lg">
+                  <div key={index} className="flex items-center justify-center gap-4 p-4 bg-white/[0.04] rounded-lg">
                     <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
                     <p className="text-gray-300 text-center">{win}</p>
                   </div>
@@ -169,7 +169,7 @@ export default function SurveyResultsPage() {
         )} */}
 
         {/* Disclaimer */}
-        <div className="bg-gradient-to-r from-zinc-900 via-[#141414] to-zinc-900 rounded-xl p-6 border border-gray-800 max-w-5xl mx-auto">
+        <div className="bg-white/[0.03] rounded-xl p-6 border border-white/[0.08] max-w-5xl mx-auto">
           <p className="text-sm text-gray-400 leading-relaxed text-center">
             <span className="font-medium text-[#455cff]">Disclaimer:</span> {`These insights and estimated savings are
             based on AI analysis and industry benchmarks. Actual results may vary based on your organization's unique
@@ -198,12 +198,12 @@ export default function SurveyResultsPage() {
       content: (
         <>
           Your scores reflect current Digital Transformation investment levels. Lower scores are common without{" "}
-          <span className="text-[#deff00]">Service Improvement Programs (SIPs)</span> or{" "}
-          <span className="text-[#deff00]">Continual Service Improvement (CSI)</span> initiatives.
+          <span className="text-[#455CFF]">Service Improvement Programs (SIPs)</span> or{" "}
+          <span className="text-[#455CFF]">Continual Service Improvement (CSI)</span> initiatives.
           <br />
           <br /> Organizations rarely exceed scores of 3-4 without significant investment across all three areas. Use
-          these results for <span className="text-[#deff00]">strategic planning</span> and{" "}
-          <span className="text-[#deff00]">identifying improvement opportunities.</span>
+          these results for <span className="text-[#455CFF]">strategic planning</span> and{" "}
+          <span className="text-[#455CFF]">identifying improvement opportunities.</span>
         </>
       ),
     },
@@ -212,7 +212,7 @@ export default function SurveyResultsPage() {
       content: (
         <>
           Use this report to prioritize improvement areas. Schedule a complimentary expert consultation to discuss your{" "}
-          <span className="text-[#deff00]">Digital Transformation roadmap</span>.
+          <span className="text-[#455CFF]">Digital Transformation roadmap</span>.
           {` Mana'o Pili offers tailored recommendation plans focused on specific processes or modules.`}
         </>
       ),
@@ -351,7 +351,7 @@ export default function SurveyResultsPage() {
                     return (
                       <article
                         key={index}
-                        className="rounded-xl p-6 bg-gradient-to-br from-zinc-900 via-[#141414] to-zinc-900 border border-gray-800 hover:border-[#455cff]/30  hover:transform hover:scale-105 hover:shadow-lg hover:shadow-[#455cff]/10 transition-all duration-300"
+                        className="rounded-xl p-6 bg-white/[0.03] border border-white/[0.08] hover:border-[#455cff]/30  hover:transform hover:scale-105 hover:shadow-lg hover:shadow-[#455cff]/10 transition-all duration-300"
                       >
                         <div className="mb-3 flex items-center gap-2">
                           <AlertTriangle className="h-6 w-6 text-red-400 flex-shrink-0" />
@@ -386,7 +386,7 @@ export default function SurveyResultsPage() {
               {digitalTransformationInfo.map((item, index) => (
                 <Card
                   key={index}
-                  className="bg-gradient-to-br from-zinc-900 via-[#141414] to-zinc-900 border border-gray-800 transition-all duration-300 h-full"
+                  className="bg-white/[0.03] border border-white/[0.08] transition-all duration-300 h-full"
                 >
                   <CardHeader className="p-8 ">
                     <CardTitle className="text-xl text-white">{item.title}</CardTitle>

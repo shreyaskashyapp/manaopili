@@ -48,13 +48,13 @@ function ApplicationForm({ jobTitle, onClose, formData, setFormData, resumeFileN
       exit={{ opacity: 0, y: 16 }}
       transition={{ duration: 0.35, ease: 'easeOut' }}
     >
-      <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 md:p-10 max-w-2xl mx-auto">
+      <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-8 md:p-10 max-w-2xl mx-auto">
         <div className="flex items-start justify-between mb-8">
           <div>
             <h2 className="font-heading text-2xl md:text-3xl font-semibold text-white">
               Apply for this Role
             </h2>
-            <p className="text-[#DEFF00] text-sm mt-1">{jobTitle}</p>
+            <p className="text-[#455CFF] text-sm mt-1">{jobTitle}</p>
           </div>
           <button
             onClick={onClose}
@@ -82,7 +82,7 @@ function ApplicationForm({ jobTitle, onClose, formData, setFormData, resumeFileN
                 required
                 placeholder="Mike Yee"
                 onChange={(e) => handleInput(e, 'Name')}
-                className="w-full bg-zinc-800/50 border border-zinc-700 rounded-lg py-3 px-4 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#DEFF00]/60 transition-colors"
+                className="w-full bg-white/[0.03] border border-white/10 rounded-lg py-3 px-4 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#455CFF]/70 transition-colors"
               />
             </div>
             <div>
@@ -94,7 +94,7 @@ function ApplicationForm({ jobTitle, onClose, formData, setFormData, resumeFileN
                 required
                 placeholder="mike.yee@manaopili.com"
                 onChange={(e) => handleInput(e, 'Email')}
-                className="w-full bg-zinc-800/50 border border-zinc-700 rounded-lg py-3 px-4 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#DEFF00]/60 transition-colors"
+                className="w-full bg-white/[0.03] border border-white/10 rounded-lg py-3 px-4 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#455CFF]/70 transition-colors"
               />
             </div>
           </div>
@@ -105,15 +105,15 @@ function ApplicationForm({ jobTitle, onClose, formData, setFormData, resumeFileN
             </label>
             <div
               onClick={() => resumeInput.current?.click()}
-              className="group border border-dashed border-zinc-700 hover:border-[#DEFF00]/50 rounded-xl p-8 text-center cursor-pointer transition-colors duration-200"
+              className="group border border-dashed border-white/15 hover:border-[#455CFF]/60 rounded-xl p-8 text-center cursor-pointer transition-colors duration-200"
             >
               <Upload
                 size={22}
-                className="text-zinc-500 group-hover:text-[#DEFF00] mx-auto mb-3 transition-colors duration-200"
+                className="text-zinc-500 group-hover:text-[#455CFF] mx-auto mb-3 transition-colors duration-200"
               />
               <p className="text-sm text-zinc-400">
                 {resumeFileName ? (
-                  <span className="text-[#DEFF00]">{resumeFileName}</span>
+                  <span className="text-[#455CFF]">{resumeFileName}</span>
                 ) : (
                   <>
                     <span className="text-white font-medium">Click to upload</span>{' '}
@@ -141,14 +141,14 @@ function ApplicationForm({ jobTitle, onClose, formData, setFormData, resumeFileN
             <textarea
               placeholder="Tell us a bit about yourself and why you're excited about this role…"
               onChange={(e) => handleInput(e, 'message')}
-              className="w-full bg-zinc-800/50 border border-zinc-700 rounded-lg py-3 px-4 text-sm text-white placeholder-zinc-500 min-h-[120px] focus:outline-none focus:border-[#DEFF00]/60 transition-colors resize-none"
+              className="w-full bg-white/[0.03] border border-white/10 rounded-lg py-3 px-4 text-sm text-white placeholder-zinc-500 min-h-[120px] focus:outline-none focus:border-[#455CFF]/70 transition-colors resize-none"
             />
           </div>
 
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-[#DEFF00] text-black py-3.5 rounded-lg font-semibold text-sm hover:bg-white transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full rounded-full border border-white/20 bg-white/[0.06] py-3.5 text-sm font-semibold tracking-wide text-white backdrop-blur-md ring-1 ring-inset ring-white/10 shadow-lg shadow-black/20 transition-all duration-300 hover:border-[#455CFF]/70 hover:bg-[#455CFF]/15 hover:ring-[#455CFF]/30 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? 'Submitting…' : 'Submit Application'}
           </button>
@@ -166,10 +166,10 @@ function SuccessState() {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4 }}
-        className="bg-zinc-900 p-10 max-w-md w-full rounded-2xl text-center border border-zinc-800"
+        className="bg-white/[0.03] p-10 max-w-md w-full rounded-2xl text-center border border-white/[0.08] backdrop-blur-xl"
       >
-        <div className="h-20 w-20 rounded-full bg-[#DEFF00] flex items-center justify-center mx-auto mb-6">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div className="h-20 w-20 rounded-full border border-[#455CFF]/40 bg-[#455CFF]/15 flex items-center justify-center mx-auto mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-[#455CFF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
           </svg>
         </div>
@@ -182,7 +182,7 @@ function SuccessState() {
         </p>
         <Link
           href="/careers"
-          className="inline-block bg-white text-black py-3 px-8 rounded-lg font-medium hover:bg-[#DEFF00] transition-colors duration-200"
+          className="inline-block rounded-full border border-white/20 bg-white/[0.06] py-3 px-8 font-medium text-white backdrop-blur-md ring-1 ring-inset ring-white/10 transition-all duration-300 hover:border-[#455CFF]/70 hover:bg-[#455CFF]/15"
         >
           Back to Careers
         </Link>
@@ -212,7 +212,7 @@ function BulletSection({ title, items }) {
 function MetaRow({ icon, label, value }) {
   return (
     <div className="flex items-start gap-3">
-      <span className="text-[#DEFF00] flex-shrink-0 mt-0.5">{icon}</span>
+      <span className="text-[#455CFF] flex-shrink-0 mt-0.5">{icon}</span>
       <div>
         <p className="text-xs text-gray-500">{label}</p>
         <p className="text-sm text-white leading-snug">{value}</p>
@@ -275,7 +275,7 @@ export default function JobDetail() {
       <div className="min-h-screen bg-[#141414] text-white flex items-center justify-center px-4">
         <div className="text-center">
           <p className="text-gray-400 mb-4">This position could not be found.</p>
-          <Link href="/careers" className="text-[#DEFF00] text-sm font-medium hover:underline">
+          <Link href="/careers" className="text-[#455CFF] text-sm font-medium hover:underline">
             ← Back to Careers
           </Link>
         </div>
@@ -297,7 +297,7 @@ export default function JobDetail() {
     <div className="min-h-screen bg-[#141414] text-white pt-10">
       {isLoading && <LoadingIndicator size="large" color="lime" />}
 
-      <div className="bg-gradient-to-b from-zinc-900/80 to-[#141414] border-b border-zinc-800/50">
+      <div className="bg-gradient-to-b from-zinc-900/80 to-[#141414] border-b border-white/[0.07]">
         <div className="container mx-auto px-4 md:px-10 lg:px-20 py-10 md:py-14">
           <Link
             href="/careers"
@@ -320,23 +320,23 @@ export default function JobDetail() {
 
           <div className="flex flex-wrap items-center gap-5 mb-8">
             <span className="flex items-center gap-1.5 text-sm text-gray-400">
-              <MapPin size={14} className="text-[#DEFF00]" />
+              <MapPin size={14} className="text-[#455CFF]" />
               {job.location}
             </span>
             <span className="h-1 w-1 rounded-full bg-zinc-700" />
             <span className="flex items-center gap-1.5 text-sm text-gray-400">
-              <Clock size={14} className="text-[#DEFF00]" />
+              <Clock size={14} className="text-[#455CFF]" />
               {job.type}
             </span>
             <span className="h-1 w-1 rounded-full bg-zinc-700" />
             <span className="flex items-center gap-1.5 text-sm text-gray-400">
-              <Briefcase size={14} className="text-[#DEFF00]" />
+              <Briefcase size={14} className="text-[#455CFF]" />
               {job.dept}
             </span>
             {job.compensation && (
               <>
                 <span className="h-1 w-1 rounded-full bg-zinc-700" />
-                <span className="flex items-center gap-1.5 text-sm text-[#DEFF00] font-medium">
+                <span className="flex items-center gap-1.5 text-sm text-[#455CFF] font-medium">
                   <DollarSign size={14} />
                   {job.compensation}
                 </span>
@@ -346,7 +346,7 @@ export default function JobDetail() {
 
           <button
             onClick={handleApplyClick}
-            className="bg-[#DEFF00] text-black px-8 py-3.5 rounded-lg font-semibold text-sm hover:bg-white transition-colors duration-200"
+            className="rounded-full border border-white/20 bg-white/[0.06] px-8 py-3.5 text-sm font-semibold tracking-wide text-white backdrop-blur-md ring-1 ring-inset ring-white/10 shadow-lg shadow-black/20 transition-all duration-300 hover:border-[#455CFF]/70 hover:bg-[#455CFF]/15 hover:ring-[#455CFF]/30"
           >
             Apply for this Role
           </button>
@@ -363,22 +363,22 @@ export default function JobDetail() {
               <p className="text-gray-300 text-sm leading-relaxed">{job.about}</p>
             </div>
 
-            <div className="h-px bg-zinc-800" />
+            <div className="h-px bg-white/[0.07]" />
             <BulletSection title="What You'll Do" items={job.responsibilities} />
 
-            <div className="h-px bg-zinc-800" />
+            <div className="h-px bg-white/[0.07]" />
             <BulletSection title="What We're Looking For" items={job.requirements} />
 
             {job.preferred?.length > 0 && (
               <>
-                <div className="h-px bg-zinc-800" />
+                <div className="h-px bg-white/[0.07]" />
                 <BulletSection title="Nice to Have" items={job.preferred} />
               </>
             )}
 
             {job.certifications?.length > 0 && (
               <>
-                <div className="h-px bg-zinc-800" />
+                <div className="h-px bg-white/[0.07]" />
                 <div>
                   <h2 className="font-heading text-2xl font-semibold text-white mb-5">
                     Certifications
@@ -387,9 +387,9 @@ export default function JobDetail() {
                     {job.certifications.map((cert, i) => (
                       <span
                         key={i}
-                        className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full bg-zinc-800 text-gray-300 border border-zinc-700"
+                        className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full bg-white/[0.04] text-gray-300 border border-white/10"
                       >
-                        <Award size={11} className="text-[#DEFF00]" />
+                        <Award size={11} className="text-[#455CFF]" />
                         {cert}
                       </span>
                     ))}
@@ -400,21 +400,21 @@ export default function JobDetail() {
 
             {(job.whyJoin?.length > 0 || job.perks?.length > 0 || job.growth) && (
               <>
-                <div className="h-px bg-zinc-800" />
+                <div className="h-px bg-white/[0.07]" />
                 <div>
                   <h2 className="font-heading text-2xl font-semibold text-white mb-5">Why Join Us</h2>
                   {job.whyJoin?.length > 0 && (
                     <ul className="space-y-3 mb-5">
                       {job.whyJoin.map((item, i) => (
                         <li key={i} className="flex items-start gap-3">
-                          <Star size={13} className="text-[#DEFF00] flex-shrink-0 mt-[3px]" />
+                          <Star size={13} className="text-[#455CFF] flex-shrink-0 mt-[3px]" />
                           <span className="text-gray-300 text-sm leading-relaxed">{item}</span>
                         </li>
                       ))}
                     </ul>
                   )}
                   {job.growth && (
-                    <p className="text-sm text-gray-400 italic border-l-2 border-[#DEFF00]/40 pl-4">
+                    <p className="text-sm text-gray-400 italic border-l-2 border-[#455CFF]/50 pl-4">
                       {job.growth}
                     </p>
                   )}
@@ -423,7 +423,7 @@ export default function JobDetail() {
                       {job.perks.map((perk, i) => (
                         <span
                           key={i}
-                          className="text-xs px-3 py-1.5 rounded-full bg-[#DEFF00]/10 text-[#DEFF00] border border-[#DEFF00]/20"
+                          className="text-xs px-3 py-1.5 rounded-full bg-[#455CFF]/10 text-[#455CFF] border border-[#455CFF]/25"
                         >
                           {perk}
                         </span>
@@ -438,7 +438,7 @@ export default function JobDetail() {
           <div className="lg:col-span-1">
             <div className="sticky top-8 space-y-5">
 
-              <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
+              <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6">
                 <p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">
                   Interested?
                 </p>
@@ -450,13 +450,13 @@ export default function JobDetail() {
                 </p>
                 <button
                   onClick={handleApplyClick}
-                  className="w-full bg-[#DEFF00] text-black py-3 rounded-lg font-semibold text-sm hover:bg-white transition-colors duration-200"
+                  className="w-full rounded-full border border-white/20 bg-white/[0.06] py-3 text-sm font-semibold tracking-wide text-white backdrop-blur-md ring-1 ring-inset ring-white/10 shadow-lg shadow-black/20 transition-all duration-300 hover:border-[#455CFF]/70 hover:bg-[#455CFF]/15 hover:ring-[#455CFF]/30"
                 >
                   Apply for this Role
                 </button>
               </div>
 
-              <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 space-y-4">
+              <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 space-y-4">
                 <p className="text-xs font-medium text-gray-500 uppercase tracking-wider">Job Details</p>
                 <div className="space-y-3">
                   <MetaRow icon={<MapPin size={14} />} label="Location" value={job.location} />
@@ -478,9 +478,9 @@ export default function JobDetail() {
               </div>
 
               {job.experienceLevel?.length > 0 && (
-                <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
+                <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6">
                   <div className="flex items-center gap-2 mb-3">
-                    <Layers size={13} className="text-[#DEFF00]" />
+                    <Layers size={13} className="text-[#455CFF]" />
                     <p className="text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Experience Levels
                     </p>
@@ -489,7 +489,7 @@ export default function JobDetail() {
                     {job.experienceLevel.map((level, i) => (
                       <span
                         key={i}
-                        className="text-xs px-3 py-1.5 rounded-full bg-zinc-800 text-gray-300 border border-zinc-700 text-center"
+                        className="text-xs px-3 py-1.5 rounded-full bg-white/[0.04] text-gray-300 border border-white/10 text-center"
                       >
                         {level}
                       </span>
@@ -511,7 +511,7 @@ export default function JobDetail() {
         <div className="mt-16 pt-10 border-t border-zinc-800">
           <Link
             href="/careers"
-            className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-[#DEFF00] transition-colors duration-200"
+            className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-[#455CFF] transition-colors duration-200"
           >
             <ArrowLeft size={14} />
             View all open positions

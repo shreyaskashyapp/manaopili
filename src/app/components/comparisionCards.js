@@ -19,8 +19,8 @@ export default function CompareCard({data,companies}) {
         {/* desktop view */}
             <div className="hidden md:flex justify-center w-full lg:gap-10 md:gap-4 xl:px-20 lg:py-10 md:px-10">
                 {companies.map((company, index) => (
-                    <Card key={index} className={`flex flex-col flex-grow bg-gray-900/50 border ${index === 0 ? 'border-[#455CFF]' : 'border-gray-800/50'} w-1/3`}>
-                        <CardHeader className={`${index === 0 ? 'bg-[#455CFF]' : 'bg-gray-800/50'} py-4 flex justify-center items-center rounded-t-md`}>
+                    <Card key={index} className={`flex flex-col flex-grow bg-white/[0.03] backdrop-blur-sm border ${index === 0 ? 'border-[#455CFF]/60 ring-1 ring-[#455CFF]/25 shadow-lg shadow-[#455CFF]/10' : 'border-white/10'} w-1/3`}>
+                        <CardHeader className={`${index === 0 ? 'bg-[#455CFF]' : 'bg-white/[0.04]'} py-4 flex justify-center items-center rounded-t-md`}>
                             <CardTitle className="flex justify-center items-center gap-2">
                             {index===0 && <Image src="/Logo_white.png" alt="Arrow" width={30} height={30} />}
                                 <h2 className='text-2xl font-semibold text-white '>
@@ -29,7 +29,7 @@ export default function CompareCard({data,companies}) {
                             </CardTitle>
                         </CardHeader>
                         {data[company].map((item, idx) => (
-                            <CardContent key={idx} className="flex flex-col gap-2 pt-5 border-t border-zinc-800">
+                            <CardContent key={idx} className="flex flex-col gap-2 pt-5 border-t border-white/[0.06]">
                                 <CardDescription className="text-gray-300">
                                     {item.title}
                                 </CardDescription>
@@ -61,8 +61,8 @@ export default function CompareCard({data,companies}) {
                         <Button
                             onClick={() => handleClick(company)}
                             key={index}
-                            className={`flex-1 w-full py-3  text-lg font-medium ${
-                            activeTab===company?' text-[#455CFF] bg-gray-900':'text-white'
+                            className={`flex-1 w-full py-3  text-lg font-medium transition-colors ${
+                            activeTab===company?' text-[#455CFF] bg-white/[0.06]':'text-white'
                             }`}>
                             {company}
                         </Button>
@@ -70,9 +70,9 @@ export default function CompareCard({data,companies}) {
                 </div>
                 <div className="w-full mx-auto flex flex-col gap-6 py-6 px-3">
                     {data[activeTab].map((item, idx) => (
-                        <Card key={idx} className="border-none  bg-gray-900/50 ">
-                        
-                            <CardHeader className="bg-gray-900 text-white py-3 rounded-t-lg">
+                        <Card key={idx} className="border border-white/10 bg-white/[0.03]">
+
+                            <CardHeader className="bg-white/[0.04] text-white py-3 rounded-t-lg">
                                 <CardTitle className="flex justify-start">
                                     <h2 className="text-lg">{item.title}</h2>
                                 </CardTitle>

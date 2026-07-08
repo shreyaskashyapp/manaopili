@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Introduction({ data }) {
     return (
         <section className="relative">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 lg:mb-0 text-white">
+            <h2 className="font-heading text-3xl md:text-5xl font-light mb-4 lg:mb-0 text-white">
                 {data.title}
             </h2>
             <div className="grid lg:grid-cols-2 gap-6 items-center">
@@ -31,7 +31,7 @@ export default function Introduction({ data }) {
                     </div>
                 </div>
                 <div className="relative w-full lg:h-[500px] md:h-[400px] h-[200px] order-1 lg:order-2">
-                    <Image src='/ai-launchpad/ai_launchpad.png' alt="Beach" className="opacity-50 object-cover rounded-lg" fill />
+                    <Image src='/ai-launchpad/ai_launchpad.webp' alt="Beach" className="opacity-50 object-cover rounded-lg" fill />
                 </div>
             </div>
         </section>

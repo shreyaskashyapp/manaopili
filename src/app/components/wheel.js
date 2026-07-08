@@ -6,6 +6,7 @@ export default function WhyManaopiliWheel() {
     const [rotation, setRotation] = useState(0);
     const [targetRotation, setTargetRotation] = useState(0);
     const [isRotating, setIsRotating] = useState(false);
+    const [activeId, setActiveId] = useState('savings');
 
     const labels = {
         savings: -110,
@@ -20,6 +21,11 @@ export default function WhyManaopiliWheel() {
         const diff = (newRotation - currentRotation + 540) % 360 - 180;
         setTargetRotation(rotation + diff);
         setIsRotating(true);
+    };
+
+    const selectPillar = (id) => {
+        setActiveId(id);
+        rotateToTarget(labels[id]);
     };
 
     useEffect(() => {
@@ -68,7 +74,7 @@ export default function WhyManaopiliWheel() {
 
 
     return (
-        <section className="bg-transparent flex flex-col lg:flex-row py-10">
+        <section className="bg-transparent flex flex-col lg:flex-row">
             <div className="container mx-auto lg:w-1/2">
                 <div className="flex justify-center items-center lg:pl-12">
                     <div className="relative w-[250px] h-[250px] md:w-[400px] md:h-[400px] mx-auto mb-[5%] my-[7%]">
@@ -98,8 +104,8 @@ export default function WhyManaopiliWheel() {
                         {/* Savings label */}
                         <div
                             className="absolute top-[-25px] md:top-[-40px] left-1/2 transform -translate-x-1/2 text-white text-center font-sans text-xs md:text-xl font-normal leading-none cursor-pointer hover:text-[#455cff]"
-                            onMouseEnter={() => rotateToTarget(labels.savings)}
-                            onTouchStart={() => rotateToTarget(labels.savings)}
+                            onMouseEnter={() => selectPillar('savings')}
+                            onTouchStart={() => selectPillar('savings')}
                         >
                             Savings
                         </div>
@@ -114,8 +120,8 @@ export default function WhyManaopiliWheel() {
                         {/* Experience label */}
                         <div
                             className="absolute top-[28%] md:top-[30%] right-[-87px] md:right-[-37%] transform -translate-x-1/2 text-white text-center font-sans text-xs md:text-xl font-normal leading-none cursor-pointer hover:text-[#455cff]"
-                            onMouseEnter={() => rotateToTarget(labels.experience)}
-                            onTouchStart={() => rotateToTarget(labels.experience)}
+                            onMouseEnter={() => selectPillar('experience')}
+                            onTouchStart={() => selectPillar('experience')}
                         >
                             Experience
                         </div>
@@ -130,8 +136,8 @@ export default function WhyManaopiliWheel() {
                         {/* Customer Centric label */}
                         <div
                             className="absolute top-[32%] left-[-55px] md:left-[-78px] transform -translate-y-1/2 text-white text-center font-sans text-xs md:text-xl font-normal leading-none cursor-pointer hover:text-[#455cff]"
-                            onMouseEnter={() => rotateToTarget(labels.customerCentric)}
-                            onTouchStart={() => rotateToTarget(labels.customerCentric)}
+                            onMouseEnter={() => selectPillar('customerCentric')}
+                            onTouchStart={() => selectPillar('customerCentric')}
                         >
                             Customer <br /> Centric
                         </div>
@@ -146,8 +152,8 @@ export default function WhyManaopiliWheel() {
                         {/* Transform in Place label */}
                         <div
                             className="absolute top-[85%] right-[-36px] md:right-[-60px] transform -translate-y-1/2 text-white text-center font-sans text-xs md:text-xl font-normal leading-none cursor-pointer hover:text-[#455cff]"
-                            onMouseEnter={() => rotateToTarget(labels.transform)}
-                            onTouchStart={() => rotateToTarget(labels.transform)}
+                            onMouseEnter={() => selectPillar('transform')}
+                            onTouchStart={() => selectPillar('transform')}
                         >
                             Transform <br /> in Place
                         </div>
@@ -162,37 +168,41 @@ export default function WhyManaopiliWheel() {
                         {/* Technical Expertise label */}
                         <div
                             className="absolute left-[-30px] md:left-[-48px] top-[80%] text-white text-center font-sans text-xs md:text-xl font-normal leading-none cursor-pointer hover:text-[#455cff]"
-                            onMouseEnter={() => rotateToTarget(labels.technical)}
-                            onTouchStart={() => rotateToTarget(labels.technical)}
+                            onMouseEnter={() => selectPillar('technical')}
+                            onTouchStart={() => selectPillar('technical')}
                         >
                             Technical <br /> Expertise
                         </div>
                     </div>
                 </div>
             </div>
-            <div className=" pt-8 lg:pt-0 lg:w-1/2">
-                <div className="space-y-6 px-4 pl-6 lg:pl-20 xl:pl-6">
-                    {/* <p className="text-[#e2e2e2] text-md md:text-lg  leading-relaxed font-light">
-                    At Mana'o Pili, we bring measurable impact. Our approach combines deep ServiceNow expertise with a customer-first mindset to ensure every transformation creates lasting value.
-                  </p> */}
-                    <div className="space-y-6">
-                        {pillars.map((pillar, index) => {
-                            const IconComponent = pillar.icon;
+            <div className="pt-8 lg:pt-0 lg:w-1/2 flex items-center">
+                <div className="w-full px-4 pl-6 lg:pl-20 xl:pl-6">
+                    <p className="text-zinc-300 text-base mb-8 leading-relaxed max-w-lg">
+                        Five ways we turn your ServiceNow investment into lasting value.
+                    </p>
+                    <div className="flex flex-col">
+                        {pillars.map((pillar) => {
+                            const active = activeId === pillar.id;
                             return (
-                                <div key={index} className="group relative ">
-                                    <div className="flex flex-col border-zinc-800 border-b group group-hover:border-zinc-700 space-y-3 pb-3">
-                                        <div className="flex items-center gap-2">
-                                            <div className="bg-zinc-400 border w-2 h-2  border-zinc-700 group-hover:border-[#455cff] group-hover:bg-[#455cff] rounded-full ">
-                                                {/* <IconComponent className="w-3 h-3 text-zinc-400 group-hover:text-[#455cff] transition-colors duration-300" /> */}
-                                            </div>
-                                            <p onMouseEnter={() => rotateToTarget(labels[pillar.id])} className="text-[#e2e2e2] font-medium text-base md:text-lg group-hover:text-[#455cff] transition-colors">
-                                                {pillar.title}
-                                            </p>
-                                        </div>
-                                        <p className="text-gray-300 text-sm md:text-base group-hover:text-gray-300 ">{pillar.description}</p>
-
+                                <button
+                                    key={pillar.id}
+                                    type="button"
+                                    onClick={() => selectPillar(pillar.id)}
+                                    onMouseEnter={() => selectPillar(pillar.id)}
+                                    className={`group w-full text-left border-l-2 pl-5 py-3.5 transition-all duration-300 ${active ? "border-[#455cff]" : "border-zinc-800 hover:border-zinc-700"}`}
+                                >
+                                    <p className={`font-heading text-xl md:text-2xl leading-snug transition-colors duration-300 ${active ? "text-[#455cff]" : "text-zinc-500 group-hover:text-[#e2e2e2]"}`}>
+                                        {pillar.title}
+                                    </p>
+                                    <div
+                                        className={`grid transition-all duration-500 ease-out ${active ? "grid-rows-[1fr] opacity-100 mt-2" : "grid-rows-[0fr] opacity-0"}`}
+                                    >
+                                        <p className="overflow-hidden text-sm md:text-base leading-relaxed text-gray-300">
+                                            {pillar.description}
+                                        </p>
                                     </div>
-                                </div>
+                                </button>
                             );
                         })}
                     </div>

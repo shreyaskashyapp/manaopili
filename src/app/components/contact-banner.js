@@ -1,63 +1,75 @@
-import { Card } from "@/components/ui/card";
-import SurveyButton from "./surveyButton";
-import { CheckCircle } from "lucide-react";
+import { Check } from "lucide-react"
+import WordReveal from "./word-reveal"
+import Reveal from "./reveal"
+import GlossyButton from "./glossy-button"
 
-export default function ContactBanner({ color="[#deff00]" }) {
-  const content = {
-    title: <>
-      Ready to Transform Your <span className={`text-${color}`}>ServiceNow</span> Journey?
-    </>,
-    subtitle:
-      "Let our experts guide you through every step of your ServiceNow transformation. From discovery to ongoing innovation, we're here to help you succeed.",
-    features: [
-      "Easy consultation process",
-      "Tailored to your specific needs",
-      "Expert guidance throughout",
-    ],
-  };
+const content = {
+  titleWords: [
+    { text: "Ready" },
+    { text: "to" },
+    { text: "Transform" },
+    { text: "Your" },
+    { text: "ServiceNow", accent: true },
+    { text: "Journey?" },
+  ],
+  subtitle:
+    "Let our experts guide you through every step of your ServiceNow transformation. From discovery to ongoing innovation, we're here to help you succeed.",
+  features: [
+    "Easy consultation process",
+    "Tailored to your specific needs",
+    "Expert guidance throughout",
+  ],
+}
 
+/**
+ * Full-width editorial CTA beat — no card box; scale, whitespace and one
+ * glossy action carry it. `color` kept for backwards compatibility.
+ */
+export default function ContactBanner({ color }) {
   return (
+    <section className="relative w-full overflow-hidden py-10 md:py-16">
+      {/* Blue aurora glow behind the headline — radial-gradient (no blur
+          filter) so it renders essentially free on WebKit/iOS. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[38rem] w-[38rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(69,92,255,0.11)_0%,transparent_70%)]"
+      />
 
-    <section className="w-full pb-10">
-      <div className="max-w-6xl mx-auto">
-        <Card className="bg-gradient-to-r from-zinc-900 via-[#141414] to-zinc-900 border border-zinc-800 shadow-md shadow-zinc-900 p-8 md:p-12 relative overflow-hidden">
-          <div className="relative z-10 grid lg:grid-cols-3 gap-8 items-center">
+      <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
+        <WordReveal
+          as="h2"
+          trigger="inView"
+          words={content.titleWords}
+          className="font-heading text-4xl font-light leading-[1.1] text-white md:text-6xl"
+        />
 
-            {/* Left Content */}
-            <div className="lg:col-span-2 space-y-6">
-              <div className="space-y-6">
-                <h2 className="text-3xl md:text-5xl font-semibold text-[#ffffff] leading-tight">
-                  {content.title}
-                </h2>
-                <p className="md:text-lg text-gray-300">
-                  {content.subtitle}
-                </p>
-              </div>
+        <Reveal delay={0.15}>
+          <p className="mx-auto mt-6 max-w-2xl leading-relaxed text-zinc-400 md:text-lg">
+            {content.subtitle}
+          </p>
+        </Reveal>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <SurveyButton
-                  title="Book Consultation"
-                  url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK}
-                />
-              </div>
-            </div>
+        <Reveal delay={0.25} className="mt-10 flex justify-center">
+          <GlossyButton href={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK || "/contact"}>
+            Book a Consultation
+          </GlossyButton>
+        </Reveal>
 
-            {/* Right Content */}
-            <div className="space-y-6">
-              <div className="flex flex-col gap-4 text-center">
-                <div className="space-y-4">
-                  {content?.features?.map((feature, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                      <CheckCircle className={`h-5 w-5 text-${color} flex-shrink-0`} />
-                      <span className="text-gray-300 md:text-base text-sm">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </Card>
+        <Reveal
+          delay={0.35}
+          className="mt-12 flex flex-col items-center divide-y divide-white/10 sm:flex-row sm:justify-center sm:divide-y-0 sm:divide-x"
+        >
+          {content.features.map((feature) => (
+            <span
+              key={feature}
+              className="flex items-center gap-2.5 px-6 py-3 text-sm text-zinc-400 sm:py-0"
+            >
+              <Check className="h-3.5 w-3.5 shrink-0 text-[#455CFF]" strokeWidth={3} />
+              {feature}
+            </span>
+          ))}
+        </Reveal>
       </div>
     </section>
-  );
+  )
 }

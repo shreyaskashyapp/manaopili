@@ -1,3 +1,4 @@
+
 export default function NonProfitContentBlock({ data }) {
   return (
     <section className="bg-[#141414]">
@@ -9,7 +10,7 @@ export default function NonProfitContentBlock({ data }) {
               className={item.bordered ? "lg:border-r border-border/30" : ""}
             >
               {/* Image */}
-              <div className="aspect-[16/9] overflow-hidden">
+              <div className="aspect-[16/9]">
                 <img
                   src={item.image.src}
                   alt={item.image.alt}
@@ -26,7 +27,7 @@ export default function NonProfitContentBlock({ data }) {
               <div className="py-4 px-2 md:px-12 lg:py-12">
                 <p className="text-gray-400 text-sm tracking-wide mb-6">
                   {item.eyebrow.label}{" "}
-                  <span className="font-semibold text-[#DEFF00]">
+                  <span className="font-semibold text-[#455CFF]">
                     {item.eyebrow.highlight}
                   </span>
                 </p>

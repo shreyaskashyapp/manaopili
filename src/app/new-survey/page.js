@@ -237,10 +237,10 @@ export default function SurveyPage() {
                                                 <span>Progress</span>
                                                 <span>{Math.round(progress)}%</span>
                                             </div>
-                                            <Progress value={progress} className="h-2 bg-zinc-800" />
+                                            <Progress value={progress} className="h-2 bg-white/10 [&>div]:bg-[#455CFF]" />
                                         </div>
                                         <Tabs value={currentTier?.name} onValueChange={handleTabChange} className="w-full px-2 md:px-4">
-                                            <TabsList className="grid w-full grid-cols-3 bg-gradient-to-b from-[#141414] to-zinc-900 shadow-lg rounded-xl p-1">
+                                            <TabsList className="grid w-full grid-cols-3 bg-white/[0.03] border border-white/10 shadow-lg rounded-xl p-1">
                                                 {configs?.[surveyModule]?.types?.map(
                                                     (
                                                         tierType,
@@ -266,7 +266,7 @@ export default function SurveyPage() {
                                                 </p> */}
                                                         <div className="grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-2">
                                                             {tier.modules.map((module, index) => (
-                                                                <Card key={module.slug} className={`group relative py-3 px-4 border bg-gradient-to-br from-[#141414] to-zinc-900 shadow-lg rounded-xl  transition-all duration-100 hover:scale-[1.01] ${moduleRatings[tier.name]?.[module.slug] == null ? "border-none" : "border-none"}`}>
+                                                                <Card key={module.slug} className={`group relative py-3 px-4 border border-white/[0.06] bg-white/[0.02] shadow-lg rounded-xl transition-all duration-200 hover:scale-[1.01] hover:border-[#455CFF]/30`}>
                                                                     <CardContent className="flex flex-col p-0 gap-3">
                                                                         <div className="flex justify-between items-center gap-2">
                                                                             <div className="flex items-center gap-2 overflow-hidden">
@@ -292,7 +292,7 @@ export default function SurveyPage() {
                                                                                     className={`md:w-9 md:h-9 w-7 h-7 rounded-full text-sm font-medium transition-colors
                                                               ${moduleRatings[tier.name]?.[module.slug] === rating
                                                                                             ? "bg-[#455CFF] text-white border-[#455CFF] shadow-blue-500/25   hover:text-white hover:bg-[#455CFF]"
-                                                                                            : "bg-transparent text-zinc-300 border-zinc-700 hover:text-[#455CFF] hover:bg-transparent hover:border-[#455CFF]"
+                                                                                            : "bg-transparent text-zinc-300 border-white/15 hover:text-[#455CFF] hover:bg-transparent hover:border-[#455CFF]"
                                                                                         }`}
 
                                                                                     onClick={() =>
@@ -321,7 +321,7 @@ export default function SurveyPage() {
                                                                 placeholder="Add any additional comments here..."
                                                                 value={tierComments[tier.name] || ""}
                                                                 onChange={handleCommentChange}
-                                                                className="bg-gradient-to-br from-[#141414] to-zinc-900 border-zinc-800 text-zinc-50 placeholder:text-zinc-500 focus:border-[#455CFF]"
+                                                                className="bg-white/[0.02] border-white/10 text-zinc-50 placeholder:text-zinc-500 focus:border-[#455CFF] rounded-lg"
                                                                 rows={3}
                                                             />
                                                         </div>
@@ -329,7 +329,7 @@ export default function SurveyPage() {
                                                 ),
                                             )}
                                         </Tabs>
-                                        <div className="flex flex-col sm:flex-row justify-between gap-4 pt-6 border-t border-zinc-800 px-4">
+                                        <div className="flex flex-col sm:flex-row justify-between gap-4 pt-6 border-t border-white/10 px-4">
                                             <Button
                                                 variant="outline"
                                                 onClick={() => {
@@ -338,7 +338,7 @@ export default function SurveyPage() {
                                                 }
                                                 }
                                                 disabled={currentTierIndex === 0}
-                                                className="bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border-zinc-700 w-full sm:w-auto"
+                                                className="bg-white/[0.06] hover:bg-white/[0.1] text-zinc-300 border-white/15 rounded-full w-full sm:w-auto"
                                             >
                                                 <ArrowLeft className="w-4 h-4 mr-2" />
                                                 Previous

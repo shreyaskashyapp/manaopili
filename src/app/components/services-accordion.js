@@ -1,22 +1,37 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from "react"
-
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
-import { LineChart, Settings, Users, Zap } from "lucide-react"
+import { ArrowUpRight, Plus } from "lucide-react"
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
+import Reveal from "./reveal"
 
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import Image from "next/image"
-
-const HIGHLIGHT_COLOR = "var(--highlight-color, #deff00)"
-
+/**
+ * Editorial services index — numbered category rows with hairline dividers;
+ * rows expand into a list of service links. Rows toggle independently and stay
+ * open until explicitly closed, so opening one never collapses another (which
+ * would shift the viewport out from under the reader).
+ * Same props/behavior as the old Radix accordion: `?section=` deep link opens
+ * and scrolls to a category.
+ */
 export default function ServicesAccordion({ services, categories, defaultSection }) {
-  const [value, setValue] = useState(defaultSection || "IMPLEMENTATIONS")
+  // A Set of every currently-open category — multiple can be open at once.
+  const [openSet, setOpenSet] = useState(() => new Set([defaultSection || "IMPLEMENTATIONS"]))
   const ref = useRef(null)
+  const reduceMotion = useReducedMotion()
+
+  const toggle = (category) =>
+    setOpenSet((prev) => {
+      const next = new Set(prev)
+      if (next.has(category)) next.delete(category)
+      else next.add(category)
+      return next
+    })
 
   useEffect(() => {
     if (!defaultSection) return
-    setValue(defaultSection)
+    // Deep link just adds its section to the open set (doesn't close others).
+    setOpenSet((prev) => new Set(prev).add(defaultSection))
     const timer = setTimeout(() => {
       ref.current?.scrollIntoView({ behavior: "smooth", block: "start" })
     }, 100)
@@ -24,50 +39,83 @@ export default function ServicesAccordion({ services, categories, defaultSection
   }, [defaultSection])
 
   return (
-    <div
-      ref={ref}
-      className="container mx-auto px-4 py-12 md:py-1 bg-[#141414]"
-      style={{ "--highlight-color": "#deff00" }}
-    >
-      <Accordion type="single" collapsible value={value} onValueChange={setValue} className="space-y-4">
-        {categories.map((category) => (
-          <AccordionItem
-            key={category}
-            value={category}
-            className="border border-zinc-900 rounded-lg overflow-hidden bg-zinc-900"
-          >
-            <AccordionTrigger className="px-4 py-5 md:px-6 md:py-6 text-lg md:text-xl font-semibold hover:no-underline data-[state=open]:text-[color:var(--highlight-color)] hover:text-[color:var(--highlight-color)]/80 text-zinc-300">
-              <span>{category}</span>
-              <div className="flex items-center">
-                <div className="w-5 h-5 transition-transform duration-300 data-[state=open]:rotate-180 text-zinc-400 data-[state=open]:text-[color:var(--highlight-color)]" />
-              </div>
-            </AccordionTrigger>
-            <AccordionContent className="px-0 pb-0 pt-0">
-              <div className="divide-y divide-zinc-700/50">
-                {services[category].map((service) => (
-                  <Link
-                    href={`/services/${service.slug}`}
-                    key={service.title}
-                    className="flex items-start py-4 px-4 md:px-6 hover:bg-zinc-900 transition-colors group"
+    <div ref={ref} className="mx-auto max-w-5xl scroll-mt-24 px-2 py-10 md:py-4">
+      <div className="border-b border-white/10">
+        {categories.map((category, index) => {
+          const isOpen = openSet.has(category)
+          return (
+            <Reveal key={category} delay={index * 0.06} className="border-t border-white/10">
+              {/* Category row */}
+              <button
+                onClick={() => toggle(category)}
+                aria-expanded={isOpen}
+                className="group flex w-full items-center gap-5 py-7 text-left md:gap-8 md:py-9"
+              >
+                <span
+                  aria-hidden
+                  className="font-heading w-12 select-none text-4xl font-light leading-none text-white/[0.08] transition-colors duration-300 group-hover:text-[#455CFF]/30 md:w-20 md:text-6xl"
+                >
+                  0{index + 1}
+                </span>
+                <span
+                  className={`font-heading flex-1 text-xl tracking-wide transition-colors duration-300 md:text-3xl ${
+                    isOpen ? "text-white" : "text-zinc-400 group-hover:text-white"
+                  }`}
+                >
+                  {category}
+                </span>
+                <span
+                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+                    isOpen
+                      ? "rotate-45 border-[#455CFF]/60 bg-[#455CFF]/15 text-white"
+                      : "border-white/15 text-zinc-400 group-hover:border-[#455CFF]/40 group-hover:text-white"
+                  }`}
+                >
+                  <Plus className="h-4 w-4" />
+                </span>
+              </button>
+
+              {/* Services list */}
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    key="content"
+                    initial={reduceMotion ? false : { height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={reduceMotion ? undefined : { height: 0, opacity: 0 }}
+                    transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden"
                   >
-                    <div className="flex-shrink-0 mr-4 p-2 rounded-full bg-zinc-800 text-[color:var(--highlight-color)]">{service.icon}</div>
-                    <div className="flex-grow min-w-0">
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-base font-medium text-white">{service.title}</h3>
-                        <span className="hidden sm:inline mr-1 md:flex items-center gap-2 text-white hover:text-[#deff00]">
-                          Learn More
-                          <Image src="/arrow_yellow.png" alt="Arrow" width={12} height={12} />
-                        </span>
+                    <div className="pb-8 md:pb-10 md:pl-28">
+                      <div className="divide-y divide-white/[0.06]">
+                        {services[category].map((service) => (
+                          <Link
+                            href={`/services/${service.slug}`}
+                            key={service.title}
+                            className="group/item flex items-center gap-4 py-4 md:py-5"
+                          >
+                            <div className="min-w-0 flex-1">
+                              <h3 className="text-base font-medium text-zinc-200 transition-colors duration-200 group-hover/item:text-white md:text-lg">
+                                {service.title}
+                              </h3>
+                              <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-zinc-500">
+                                {service.description}
+                              </p>
+                            </div>
+                            <ArrowUpRight
+                              className="h-4 w-4 shrink-0 text-zinc-600 transition-all duration-200 group-hover/item:translate-x-0.5 group-hover/item:-translate-y-0.5 group-hover/item:text-[#455CFF]"
+                            />
+                          </Link>
+                        ))}
                       </div>
-                      <p className="text-sm text-zinc-400 mt-1 line-clamp-2">{service.description}</p>
                     </div>
-                  </Link>
-                ))}
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </Reveal>
+          )
+        })}
+      </div>
     </div>
   )
 }

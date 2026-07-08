@@ -1,28 +1,31 @@
 'use client'
-import { Button } from "@/components/ui/button"
-import Link from 'next/link'
 import Image from 'next/image'
 import Cards from './components/homecards'
 import WhyManaopiliWheel from './components/wheel'
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import { activateServer } from "@/lib/utils"
-import ContactFormV2 from "./components/contact-form-v2"
-import SurveyButton from "./components/surveyButton"
-import Timeline from "./components/journey-map"
 import ContactBanner from "./components/contact-banner"
-import { ArrowRight, Award, Calendar, Check, CheckCircle, DollarSign, Heart, MessageSquare, RefreshCw, Users, Zap } from "lucide-react"
-import { Card } from "@/components/ui/card"
+import Differentiators from "./components/differentiators"
+import Solutions from "./components/solutions"
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion"
+import Reveal from "./components/reveal"
+import SectionHeading from "./components/section-heading"
+import WordReveal from "./components/word-reveal"
+import GlossyButton from "./components/glossy-button"
+import FocusAreas from "./components/focus-areas"
 
 const data = {
   hero: {
-    title: (
-      <>
-        Make <span className="text-[#deff00]">ServiceNow</span> Work in Regulated Environments
-      </>
-    ),
+    titleWords: [
+      { text: "Enable" },
+      { text: "ServiceNow", accent: true },
+      { text: "for" },
+      { text: "Regulated" },
+      { text: "Environments" },
+    ],
     subtitle: (
       <>
-        We <span className="text-[#deff00]">stabilize ServiceNow platforms</span>, streamline operations, and turn <span className="text-[#deff00]">compliance into a continuous process</span>.
+        We <span className="text-[#455CFF]">stabilize ServiceNow platforms</span>, streamline operations, and turn <span className="text-[#455CFF]">compliance into a continuous process</span>.
       </>
     ),
     bullets: [
@@ -48,123 +51,105 @@ const data = {
       link: "/about",
     },
   ],
-  journeyMap: {
-    header: {
-      title: "How We Can Help?",
-      subtitle:
-        "Every digital transformation is a journey. At Mana'o Pili, we guide you through each step — from strategy to sustained success — ensuring your ServiceNow investment delivers measurable business impact.",
-      description: "",
-      additionalInfo: "",
-    },
-    timeline: {
-      title: "Journey Stages",
-      steps: [
-        {
-          id: 1,
-          step: "STEP 1",
-          title: "Discovery & Assessment",
-          description: "We begin by understanding your business needs, current processes, and challenges.",
-          highlights: ["Identify gaps in workflows", "Define success metrics", "Prioritize initiatives"],
-          imageSpace: true,
-        },
-        {
-          id: 2,
-          step: "STEP 2",
-          title: "Strategy & Roadmap",
-          description: "A clear blueprint tailored to your organization.",
-          highlights: [
-            "Align IT and business goals",
-            "Build a transformation roadmap",
-            "Establish timelines & milestones",
-          ],
-          imageSpace: true,
-        },
-        {
-          id: 3,
-          step: "STEP 3",
-          title: "Implementation & Optimization",
-          description: "Hands-on deployment by our expert team.",
-          highlights: [
-            "Configure and customize ServiceNow modules",
-            "Integrate with existing systems",
-            "Optimize workflows for efficiency",
-          ],
-          imageSpace: true,
-        },
-        {
-          id: 4,
-          step: "STEP 4",
-          title: "Enablement & Adoption",
-          description: "Driving value through people and processes.",
-          highlights: [
-            "Train your teams for smooth adoption",
-            "Provide user-friendly knowledge resources",
-            "Change management support",
-          ],
-          imageSpace: true,
-        },
-        {
-          id: 5,
-          step: "STEP 5",
-          title: "Ongoing Support & Innovation",
-          description: "Long-term partnership for continuous improvement.",
-          highlights: [
-            "Proactive monitoring & managed services",
-            "Regular enhancements and upgrades",
-            "AI & GenAI-driven innovation to stay ahead",
-          ],
-          imageSpace: true,
-        },
-      ],
-    },
+  differentiators: {
+    title: "A Different Kind of ServiceNow Consulting Firm",
+    intro: "We pair deep regulated-industry experience with senior, architect-led delivery, built to maximize what you already run.",
+    cards: [
+      {
+        title: "Regulated Industry Experts",
+        lead: "Deep experience across regulated, high-stakes sectors.",
+        points: ["Healthcare", "Life Sciences", "Manufacturing", "Government", "Financial Services"],
+      },
+      {
+        title: "Transform-in-Place",
+        lead: "Maximize what you've already built.",
+        points: ["Maximize investment", "Reduce technical debt", "Accelerate adoption", "Prepare for AI"],
+      },
+      {
+        title: "Architect-Led Delivery",
+        lead: "Outcome-driven partnerships.",
+        points: ["Senior architects", "Enterprise governance", "Long-term partnerships", "Outcome focused"],
+      },
+    ],
   },
-  formFields: [
-    { id: "name", label: "Name", type: "text", placeholder: "Your name", isRequired: true },
-    { id: "email", label: "Email", type: "email", placeholder: "Your email", isRequired: true },
-    { id: "company", label: "Company Name", type: "text", placeholder: "Your company", isRequired: true },
-  ],
-
-
-  serviceOptions: [
-    { value: "general-inquiry", label: "General Inquiry" },
-    { value: "strategy-roadmap", label: "ServiceNow Strategy & Roadmap Consulting Services" },
-    { value: "implementation", label: "ServiceNow Implementation Services" },
-    { value: "custom-app-dev", label: "ServiceNow Custom Application Development (AppEngine) Services" },
-    { value: "managed-services", label: "ServiceNow Managed Services" },
-    { value: "careers", label: "Careers with Mana'o Pili" },
-  ],
+  solutions: {
+    title: "Solutions We Deliver",
+    items: [
+      {
+        title: "Enterprise Operations",
+        description: "Optimize services and assets to keep your business running.",
+        capabilities: [
+          "IT Service Management (ITSM)",
+          "Customer Service Management (CSM)",
+          "IT Asset Management (ITAM)",
+          "Hardware & Software Asset Management (HAM Pro / SAM Pro)",
+        ],
+      },
+      {
+        title: "Platform & Data",
+        description: "Build a trusted digital foundation that scales with your organization.",
+        capabilities: [
+          "CMDB & CSDM",
+          "IT Operations Management (ITOM)",
+          "Integrations & APIs",
+          "App Engine & Platform Extensibility",
+        ],
+      },
+      {
+        title: "Security & Compliance",
+        description: "Embed governance, security, and compliance into every workflow.",
+        capabilities: [
+          "Security Incident Response (SIR)",
+          "Vulnerability Response (VR)",
+          "Integrated Risk Management (IRM)",
+          "Governance, Risk & Compliance (GRC)",
+        ],
+      },
+      {
+        title: "Strategy & Portfolio",
+        description: "Align technology investments with business priorities.",
+        capabilities: [
+          "Strategic Portfolio Management (SPM)",
+          "Demand Management",
+          "Project & Agile Management",
+          "Enterprise Architecture",
+        ],
+      },
+      {
+        title: "AI & Intelligent Automation",
+        description: "Transform work with responsible AI and intelligent automation.",
+        capabilities: [
+          "Now Assist",
+          "AI Agents & Copilots",
+          "AI Governance",
+          "Workflow Automation",
+          "Intelligent Knowledge",
+        ],
+      },
+    ],
+  },
 };
-
-const pillars = [
-  {
-    title: "Savings",
-    description: "Delivering cost efficiencies through optimized processes.",
-    icon: DollarSign,
-  },
-  {
-    title: "Experience",
-    description: "Enhancing user and employee experiences across the enterprise.",
-    icon: Users,
-  },
-  {
-    title: "Customer Centric",
-    description: "Tailoring every solution to your unique needs and goals.",
-    icon: Heart,
-  },
-  {
-    title: "Transform in Place",
-    description: "Driving change without disrupting your business.",
-    icon: RefreshCw,
-  },
-  {
-    title: "Technical Expertise",
-    description: "Leveraging proven skills and innovation for ServiceNow success.",
-    icon: Zap,
-  },
-]
 
 
 export default function HomePage() {
+  const heroRef = useRef(null)
+  const reduceMotion = useReducedMotion()
+
+  // Subtle background parallax as the hero scrolls away.
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] })
+  const bgY = useTransform(scrollYProgress, [0, 1], [0, 90])
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 60])
+
+  // Helper: per-element entrance (fade + lift), skipped under reduced-motion.
+  const appear = (delay = 0) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 24 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay },
+        }
+
   useEffect(() => {
     activateServer()
   }, [])
@@ -172,59 +157,149 @@ export default function HomePage() {
     <div className="bg-[#141414] text-[#e2e2e2]">
       <div className="w-full">
         <div className="">
-          <div className="relative h-full md:h-[100vh] bg-gradient-to-b from-[#455CFF] to-[#141414] w-full flex flex-col justify-center items-center overflow-hidden">
-            <div className="relative pt-[100px] md:pt-0 flex flex-col md:flex-row items-center gap-8 px-6 lg:px-20 w-full">
-              <div className="relative z-10 flex flex-col md:w-1/2 justify-center items-start">
-                <h1 className="text-4xl md:text-6xl lg:text-7xl text-left text-[#e2e2e2] mb-6 font-normal leading-tight">
-                  {data.hero.title}
-                </h1>
-                <p className="text-lg md:text-xl text-left text-gray-300 mb-6 mx-auto">
+          {/* Hero — sleek, centered, full-bleed Honolulu wireframe backdrop */}
+          <section
+            ref={heroRef}
+            className="relative min-h-[100svh] w-full overflow-hidden bg-[#141414] flex flex-col"
+          >
+            {/* Background image (parallax + slow Ken Burns zoom-in) */}
+            <motion.div
+              aria-hidden
+              className="absolute inset-0"
+              style={reduceMotion ? undefined : { y: bgY }}
+            >
+              <motion.div
+                className="absolute inset-0"
+                {...(reduceMotion
+                  ? {}
+                  : { initial: { scale: 1.08 }, animate: { scale: 1 }, transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] } })}
+              >
+                <Image
+                  src="/digital-assets/honalulu-2-hero.webp"
+                  alt=""
+                  aria-hidden
+                  fill
+                  priority
+                  sizes="100vw"
+                  className="object-cover object-bottom opacity-50"
+                />
+              </motion.div>
+            </motion.div>
+
+            {/* Legibility overlays (opacity of existing colors only — no new palette) */}
+            <div aria-hidden className="pointer-events-none absolute inset-0 bg-[#141414]/30" />
+            <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#141414]/70 via-transparent to-[#141414]" />
+            {/* Film grain */}
+            <div aria-hidden className="hero-grain pointer-events-none absolute inset-0 z-[1]" />
+            {/* Aurora — blue depth glow behind the headline. Built from CSS
+                radial-gradients (not blur filters): a 170px gaussian blur pegs
+                WebKit/iOS, while a gradient renders essentially free and looks
+                near-identical. */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-1/2 top-[40%] z-[1] h-[50rem] w-[50rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(69,92,255,0.18)_0%,rgba(69,92,255,0.05)_40%,transparent_70%)]"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-[42%] top-[55%] z-[1] h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(69,92,255,0.11)_0%,transparent_70%)]"
+            />
+            {/* Depth vignette */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_center,transparent_45%,#141414_100%)]"
+            />
+
+            {/* Centered content */}
+            <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-5 py-24 text-center sm:px-6 sm:py-28">
+              <motion.div
+                className="mx-auto flex max-w-5xl flex-col items-center"
+                style={reduceMotion ? undefined : { y: contentY }}
+              >
+                <WordReveal
+                  words={data.hero.titleWords}
+                  trigger="load"
+                  delayChildren={0.15}
+                  className="text-white text-[2.6rem] leading-[1.1] sm:text-6xl sm:leading-[1.05] md:text-8xl font-light"
+                />
+
+                <motion.p
+                  {...appear(0.8)}
+                  className="mt-5 max-w-md text-sm leading-relaxed text-zinc-300 sm:mt-7 sm:max-w-2xl sm:text-base md:text-xl"
+                >
                   {data.hero.subtitle}
-                </p>
-                <ul className="space-y-2 mb-10">
-                  {data.hero.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-3 text-gray-300 text-base md:text-lg">
-                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-gray-300 shrink-0" />
-                      {b}
-                    </li>
+                </motion.p>
+
+                <motion.div {...appear(1.05)} className="mt-8 sm:mt-10">
+                  <GlossyButton href={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK || "#"}>
+                    Book a Consultation
+                  </GlossyButton>
+                </motion.div>
+
+                {/* Proof points */}
+                <motion.div
+                  {...appear(1.25)}
+                  className="mt-10 flex w-full max-w-sm flex-col items-center divide-y divide-white/10 sm:mt-14 sm:w-auto sm:max-w-none sm:flex-row sm:items-stretch sm:divide-y-0 sm:divide-x"
+                >
+                  {data.hero.bullets.map((p) => (
+                    <p
+                      key={p}
+                      className="max-w-[17rem] px-6 py-2.5 text-[13px] leading-relaxed text-zinc-400 sm:max-w-[16rem] sm:px-7 sm:py-0 sm:text-sm"
+                    >
+                      {p}
+                    </p>
                   ))}
-                </ul>
-              </div>
-              <div className="relative md:w-1/2">
-                <ContactFormV2 formFields={data?.formFields} serviceOptions={data?.serviceOptions} title="Start with a 1 Week Operational Assessment" buttonText="Get My Assessment" />
-              </div>
+                </motion.div>
+              </motion.div>
             </div>
-          </div>
-          {/* Transformm your business  */}
-          <div className="">
-            <div className='flex justify-center items-center py-10 pt-20 md:pt-10  md:gap-2 gap-0 px-3  '>
-              <h2 className="text-4xl md:text-5xl  font-normal text-[#e2e2e2] text-center">Transform your business.</h2>
-              {/* <Image src="/arrow_yellow.png" alt="Arrow" width={28} height={28} /> */}
-            </div>
-            <Cards data={data?.sections} />
-          </div>
-          <div>
-            <Timeline data={data?.journeyMap} />
-          </div>
-          {/* Why manaopili section */}
-          <div className="">
-            <div className="flex justify-center items-center md:gap-2 gap-0 px-3 pt-10">
-              <h2 className="text-4xl md:text-5xl font-normal text-[#e2e2e2] text-center">{`Why Mana'o Pili?`}</h2>
-            </div>
+          </section>
 
-            <div className="w-full">
-              <WhyManaopiliWheel />
-            </div>
+          {/* Areas we serve — compact keyword index, scrub-linked reveal */}
+          <section className="pt-12 pb-4 md:pt-16 md:pb-6">
+            <FocusAreas />
+          </section>
 
-            <div className="flex justify-center items-center pb-10">
-              <SurveyButton title="Book Consultation" url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} />
-            </div>
-          </div>
+          {/* What we do */}
+          <section className="py-20 md:py-28">
+            <Reveal className="container mx-auto">
+              <SectionHeading title="Transform your business." className="mb-12 md:mb-16" />
+              <Cards data={data?.sections} />
+            </Reveal>
+          </section>
+
+          {/* A Different Kind of ServiceNow Consulting Firm — drag/swipe carousel */}
+          <section>
+            <Differentiators data={data?.differentiators} />
+          </section>
+
+          {/* Solutions We Deliver */}
+          <section className="py-20 md:py-28">
+            <Reveal>
+              <SectionHeading title="Solutions We Deliver" className="mb-12 md:mb-16" />
+            </Reveal>
+            <Solutions data={data?.solutions} />
+          </section>
+
+          {/* Why Mana'o Pili */}
+          <section className="py-20 bg-gradient-to-r from-[#141414] via-zinc-900 to-[#141414]  md:py-28">
+            <Reveal>
+              <SectionHeading title={`Why Mana'o Pili?`} className="mb-8 md:mb-12" />
+              <div className="w-full">
+                <WhyManaopiliWheel />
+              </div>
+              <div className="flex justify-center items-center pt-2">
+                <GlossyButton href={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK || "#"}>
+                  Book a Consultation
+                </GlossyButton>
+              </div>
+            </Reveal>
+          </section>
         </div>
-        {/* Contact us banner */}
-        <div className="px-6">
-          <ContactBanner />
-        </div>
+        {/* Contact us banner — faint wash panel */}
+        <section className="py-20 md:py-28">
+          <Reveal className="px-6">
+            <ContactBanner />
+          </Reveal>
+        </section>
       </div>
     </div>
   )

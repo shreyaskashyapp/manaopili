@@ -3,6 +3,7 @@ import { Leaf, Droplets, Sprout, Heart } from "lucide-react"
 import ImageContentBlock from "../components/image-content-block";
 import ImpactSection from "../components/impact-section";
 import NonProfitContentBlock from "../components/non-profit-content-block";
+import Reveal from "../components/reveal";
 
 
 
@@ -10,7 +11,7 @@ const hero = {
     title: "To Protect the Land",
     description: (
         <>
-            <span className="text-[#deff00]">Our Mission is Simple</span>
+            <span className="text-[#455CFF]">Our Mission is Simple</span>
         </>
     ),
 };
@@ -65,7 +66,7 @@ const nonProfitContent = {
   {
     id: "coconut-tree",
     image: {
-      src: "/non-profit/hawai-coconut-tree.png",
+      src: "/non-profit/hawai-coconut-tree.webp",
       alt: "Sacred coconut palm tree silhouette against Hawaiian sunset"
     },
     eyebrow: {
@@ -80,7 +81,7 @@ const nonProfitContent = {
   {
     id: "anahulu-valley",
     image: {
-      src: "/non-profit/nonprofit_1.png",
+      src: "/non-profit/nonprofit_1.webp",
       alt: "Lush green Anahulu Valley in Hawaii",
       credit: "CRB Response"
     },
@@ -106,7 +107,7 @@ const CRBSectionData = {
     title: "The Coconut Rhinoceros Beetle",
     subTitle: "Oryctes rhinoceros",
     image: {
-        src: "/non-profit/crb-1.jpg",
+        src: "/non-profit/crb-1.webp",
         alt: "Coconut Rhinoceros Beetle",
         credit: "CRB Response",
     },
@@ -140,10 +141,10 @@ export default function NonProfit() {
             <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
             <div className="max-w-7xl mx-auto flex flex-col gap-20 px-4">
                 {/* Hawaii Image Section */}
-                <section className="">
+                <Reveal as="section" className="">
                     <div className="mx-auto">
                         <div className="text-center mb-8">
-                            <p className="text-[#DEFF00] md:text-sm text-xs font-medium tracking-widest uppercase mb-2">
+                            <p className="text-[#455CFF] md:text-sm text-xs font-medium tracking-[0.25em] uppercase mb-2">
                                 A Paradise at Risk
                             </p>
                             <h2 className="font-display text-3xl md:text-5xl font-semibold text-[#E2E2E2] mb-4 leading-tight">
@@ -157,7 +158,7 @@ export default function NonProfit() {
                         <div className="relative rounded-lg overflow-hidden">
                             <div className="aspect-[21/9]">
                                 <img
-                                    src="/non-profit/hawai-cover-image.png"
+                                    src="/non-profit/hawai-cover-image.webp"
                                     alt="Beautiful Hawaiian islands aerial view"
                                     className="w-full h-full object-cover opacity-70"
                                 />
@@ -167,19 +168,21 @@ export default function NonProfit() {
                             But something is slowly killing this beauty - an invasive species threatening the very trees that define our island paradise.
                         </p>
                     </div>
-                </section>
+                </Reveal>
                 {/* Threat CRB Section */}
-                <ImageContentBlock data={CRBSectionData} />
-                <div>
+                <Reveal>
+                    <ImageContentBlock data={CRBSectionData} />
+                </Reveal>
+                <Reveal>
                     <h2 className="font-display text-center text-3xl md:text-5xl font-semibold text-[#E2E2E2] mb-4 md:mb-6 lg:mb-10 leading-tight">
                         What{`'`}s At Stake?
                     </h2>
                     <NonProfitContentBlock data={nonProfitContent} />
-                </div>
+                </Reveal>
                 <div className="">
                     <div className="max-w-5xl mx-auto px-2">
-                        <div className="rounded-lg p-10 border border-[#DEFF00]/10">
-                            <svg className="w-12 h-12 text-[#DEFF00] mb-6" fill="currentColor" viewBox="0 0 24 24">
+                        <div className="rounded-lg p-10 border border-white/10 bg-white/[0.02]">
+                            <svg className="w-12 h-12 text-[#455CFF] mb-6" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M3 21c3 0 7-1 7-8V5c0-1.25-4.716-5-7-5-6 0-6 5.338-6 8c0 7 0 8 6 8z" />
                             </svg>
 
@@ -188,15 +191,15 @@ export default function NonProfit() {
                             </p>
 
                             <div className="flex items-center gap-3">
-                                <div className="w-1 h-8 bg-[#DEFF00]" />
-                                <p className="text-[#DEFF00] font-semibold">{quote.attribution}</p>
+                                <div className="w-1 h-8 bg-[#455CFF]" />
+                                <p className="text-[#455CFF] font-semibold">{quote.attribution}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="p-6 md:p-12 lg:p-20 ">
+                <Reveal className="p-6 md:p-12 lg:p-20 ">
                     <ImpactSection data={impacts} />
-                </div>
+                </Reveal>
             </div>
         </div>
     )

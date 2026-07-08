@@ -10,7 +10,9 @@ import {
 import CompareCard from '../components/comparisionCards'
 import HeroSection from '../components/hero-section'
 import ServicesAccordion from '../components/services-accordion'
+import SectionHeading from '../components/section-heading'
 import SurveyButton from '../components/surveyButton'
+import Reveal from '../components/reveal'
 import { activateServer } from '@/lib/utils'
 import { useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
@@ -232,7 +234,7 @@ const hero = {
   title: "Services",
   description: (
     <>
-      Empowering your business with end-to-end <span className="text-[#deff00]">ServiceNow</span> solutions, driven by expert professionals to maximize <span className="text-[#deff00]">platform value</span>.
+      End-to-end <span className="text-[#455CFF]">ServiceNow</span> expertise across Information Technology, Information Security, and Cybersecurity, purpose-built for <span className="text-[#455CFF]">regulated industries</span>.
     </>
   )
 }
@@ -257,36 +259,39 @@ export default function Component() {
       <div className="w-full">
         {/* //hero */}
         <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
+
         <div className="container mx-auto px-4 pt-4 pb-10">
           <Suspense fallback={<ServicesAccordion services={services} categories={categories} />}>
             <ServicesContent />
           </Suspense>
 
-          <div className="text-center">
+          <Reveal className="text-center">
             <p className="text-lg md:text-xl text-zinc-300 py-8 px-4">
               {`Ready to experience the Mana'o Pili difference?`}
             </p>
             <div className='flex justify-center items-center'>
               <SurveyButton title='Book Consultation' url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} />
             </div>
-          </div>
+          </Reveal>
           {/* comparision section */}
           {/* <Comparison/> */}
-          <div className='mt-16 text-center'>
-            <h2 className='text-4xl md:text-5xl font-normal text-[#e2e2e2] text-center'>
-              Why Choose Us?
-            </h2>
-            <CompareCard data={data} companies={companies} />
+          <div className='mt-16'>
+            <Reveal>
+              <SectionHeading title="Why Choose Us?" className="mb-4" />
+            </Reveal>
+            <Reveal delay={0.1}>
+              <CompareCard data={data} companies={companies} />
+            </Reveal>
           </div>
 
-          <div className="text-center">
+          <Reveal className="text-center">
             <p className="text-lg md:text-xl text-zinc-300 mb-6 md:mb-8 px-4">
               {`Ready to experience the Mana'o Pili difference?`}
             </p>
             <div className='flex justify-center items-center'>
               <SurveyButton title='Book Consultation' url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} />
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </div>

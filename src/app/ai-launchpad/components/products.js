@@ -17,7 +17,7 @@ export default function Products({data}) {
         <div className="md:py-10 py-4">
             <div className="space-y-10">
                 <header className="text-center space-y-4 md:mb-10 mb-6">
-                    <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight text-balance mb-1">
+                    <h1 className="font-heading text-3xl md:text-5xl font-light text-white leading-tight text-balance mb-1">
                         AI Starter Solutions for ITOM and ITSM/CSM
                     </h1>
                     {/* <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -28,7 +28,7 @@ export default function Products({data}) {
             {/* TABs */}
             <div className="w-full space-y-6">
                 <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                    <TabsList className="flex w-full mb-8 bg-gradient-to-b from-zinc-900 to-[#141414] border border-zinc-900 ">
+                    <TabsList className="flex w-full mb-8 bg-white/[0.03] backdrop-blur-sm border border-white/10 ">
                         {data?.categories?.map((cat) => (
                             <TabsTrigger
                                 key={cat}
@@ -47,7 +47,7 @@ export default function Products({data}) {
                         <TabsContent key={category} value={category}>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 ">
                                 {getServicesByCategory(category)?.map((service) => (
-                                    <Card key={service?.id} className="hover:border-[#455cff]/20 transition-all bg-gradient-to-b from-zinc-900 to-[#141414] border border-zinc-900 duration-300 cursor-pointer group">
+                                    <Card key={service?.id} className="hover:border-[#455cff]/40 hover:-translate-y-0.5 transition-all bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] duration-300 cursor-pointer group">
                                         <CardHeader>
                                             <div className="flex items-start justify-between ">
                                             <service.icon className="w-5 h-5 text-[#455cff]" />
