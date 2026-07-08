@@ -28,10 +28,11 @@ const content = {
 export default function ContactBanner({ color }) {
   return (
     <section className="relative w-full overflow-hidden py-10 md:py-16">
-      {/* Blue aurora glow behind the headline */}
+      {/* Blue aurora glow behind the headline — radial-gradient (no blur
+          filter) so it renders essentially free on WebKit/iOS. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[30rem] w-[30rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#455CFF] opacity-[0.10] blur-[150px]"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[38rem] w-[38rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(69,92,255,0.11)_0%,transparent_70%)]"
       />
 
       <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">

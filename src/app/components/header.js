@@ -28,7 +28,7 @@ function DropdownMenu({ items, align = "left", open }) {
       className={`
         absolute top-full ${align === "right" ? "right-0" : "left-0"}
         mt-2 min-w-[220px] z-50
-        rounded-xl bg-[#141414]/95 backdrop-blur-md
+        rounded-xl bg-[#141414]/95 
         ring-1 ring-zinc-800/60 shadow-xl shadow-black/50
         transition-all duration-200 ease-out origin-top
         ${open ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"}

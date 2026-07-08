@@ -5,10 +5,10 @@ import {
   motion,
   useScroll,
   useSpring,
-  useTransform,
   useMotionValueEvent,
   useReducedMotion,
 } from "framer-motion"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import Reveal from "./reveal"
 import WordReveal from "./word-reveal"
 
@@ -81,89 +81,143 @@ function Stacked({ data }) {
   )
 }
 
-/* ── Desktop: pinned horizontal gallery ────────────────────── */
+/* ── Desktop: user-driven horizontal scroller ──────────────────
+   Same layout as the pinned gallery (intro slide + 3 tiles), but the section
+   is normal height and NEVER pinned. Horizontal motion only happens when the
+   user scrolls the track sideways or taps an arrow — vertical page scroll is
+   always free, so nobody is trapped into viewing all three cards. */
 
 function Gallery({ data }) {
-  const outerRef = useRef(null)
   const trackRef = useRef(null)
-  const [maxX, setMaxX] = useState(0)
   const [index, setIndex] = useState(1)
+  const [atStart, setAtStart] = useState(true)
+  const [atEnd, setAtEnd] = useState(false)
 
-  const { scrollYProgress } = useScroll({ target: outerRef, offset: ["start start", "end end"] })
-  // Light spring smooths the horizontal track on native scroll — kept snappy so
-  // the tiles stay locked to the scroll rather than trailing behind ("laggy").
-  const smooth = useSpring(scrollYProgress, { stiffness: 160, damping: 34, mass: 0.25 })
-  const x = useTransform(smooth, [0, 1], [0, -maxX])
+  // Progress bar follows the track's OWN horizontal scroll — no page scroll
+  // is read or hijacked.
+  const { scrollXProgress } = useScroll({ container: trackRef, axis: "x" })
+  const smooth = useSpring(scrollXProgress, { stiffness: 200, damping: 40, mass: 0.3 })
 
-  // Measure how far the track must travel; re-measure on resize so the scrub
-  // always ends exactly at the last slide.
+  useMotionValueEvent(scrollXProgress, "change", (v) => {
+    const idx = Math.min(3, Math.max(1, Math.round(v * 3)))
+    setIndex((prev) => (prev !== idx ? idx : prev))
+  })
+
+  const updateEdges = (el) => {
+    setAtStart(el.scrollLeft <= 2)
+    setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 2)
+  }
+
+  // Initialise arrow enabled/disabled state on mount + resize.
   useEffect(() => {
-    const measure = () => {
-      if (trackRef.current) {
-        setMaxX(Math.max(0, trackRef.current.scrollWidth - window.innerWidth))
-      }
-    }
+    const el = trackRef.current
+    if (!el) return
+    const measure = () => updateEdges(el)
     measure()
     window.addEventListener("resize", measure)
     return () => window.removeEventListener("resize", measure)
   }, [])
 
-  useMotionValueEvent(scrollYProgress, "change", (v) => {
-    const idx = Math.min(3, Math.floor(v * 3) + 1)
-    if (idx !== index) setIndex(idx)
-  })
+  const step = (dir) => {
+    const el = trackRef.current
+    if (!el) return
+    el.scrollBy({ left: dir * el.clientWidth * 0.7, behavior: "smooth" })
+  }
 
   return (
-    <section ref={outerRef} className="relative h-[350vh]">
-      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden bg-[#141414]">
-        {/* Track */}
-        <motion.div
-          ref={trackRef}
-          style={{ x }}
-          className="flex w-max items-center gap-[7vw] px-[8vw] will-change-transform"
-        >
-          {/* Slide 0 — intro: the section headline, editorial and assembling */}
-          <div className="w-[55vw] max-w-[680px] shrink-0">
+    <section className="bg-[#141414] py-16 md:py-24">
+      {/* Track — native horizontal scroll (trackpad swipe / shift-wheel /
+          arrows). Scrollbar hidden; the peeking next tile + progress bar +
+          arrows are the affordances. */}
+      <div
+        ref={trackRef}
+        onScroll={(e) => updateEdges(e.currentTarget)}
+        className="flex snap-x snap-mandatory items-center gap-[7vw] overflow-x-auto scroll-pl-[8vw] scroll-pr-[8vw] px-[8vw] pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {/* Slide 0 — intro: the section headline, editorial and assembling */}
+        <div className="w-[55vw] max-w-[680px] shrink-0 snap-start">
 
-            <WordReveal
-              as="h2"
-              trigger="inView"
-              words={data.title}
-              className="font-heading max-w-2xl text-4xl leading-[1.08] text-white lg:text-5xl xl:text-6xl"
-            />
-            {data.intro && (
-              <p className="mt-6 max-w-lg leading-relaxed text-zinc-400 lg:text-lg">
-                {data.intro}
-              </p>
-            )}
-          </div>
-
-          {/* Slides 1–3 — content tiles */}
-          {data.cards.map((card, i) => (
-            <div
-              key={card.title}
-              className="relative h-[62vh] max-h-[600px] w-[70vw] max-w-[860px] shrink-0 lg:w-[56vw] xl:w-[48vw]"
+          <WordReveal
+            as="h2"
+            trigger="inView"
+            words={data.title}
+            className="font-heading max-w-2xl text-4xl leading-[1.08] text-white lg:text-5xl xl:text-6xl"
+          />
+          {data.intro && (
+            <p className="mt-6 max-w-lg leading-relaxed text-zinc-400 lg:text-lg">
+              {data.intro}
+            </p>
+          )}
+          {/* Directional cue: makes the horizontal mechanic obvious */}
+          <div className="mt-10 flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-zinc-500">
+            <span>Scroll to explore</span>
+            <motion.span
+              aria-hidden
+              animate={{ x: [0, 8, 0] }}
+              transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+              className="text-[#deff00]"
             >
-              <ContentTile card={card} index={i} />
-            </div>
-          ))}
-        </motion.div>
-
-        {/* Bottom chrome — progress bar + counter + caption */}
-        <div className="absolute bottom-9 left-1/2 w-[62vw] max-w-[1100px] -translate-x-1/2">
-          <div className="relative h-px w-full bg-zinc-800">
-            <motion.div
-              style={{ scaleX: smooth, transformOrigin: "left" }}
-              className="absolute inset-0 bg-zinc-400"
-            />
+              →
+            </motion.span>
           </div>
-          <div className="mt-3 flex items-baseline justify-between">
-            <span className="text-sm tracking-widest text-zinc-400">
-              {index}/3<span className="text-zinc-400">_</span>
-            </span>
-            <span className="text-[10px] uppercase tracking-[0.22em] text-zinc-500">
-              {data.title}
-            </span>
+        </div>
+
+        {/* Slides 1–3 — content tiles */}
+        {data.cards.map((card, i) => (
+          <div
+            key={card.title}
+            className="relative h-[62vh] max-h-[600px] w-[70vw] max-w-[860px] shrink-0 snap-center lg:w-[56vw] xl:w-[48vw]"
+          >
+            <ContentTile card={card} index={i} />
+          </div>
+        ))}
+      </div>
+
+      {/* Chrome — progress bar + counter + scroll cue + tiny arrows */}
+      <div className="mx-auto mt-8 w-[84vw] max-w-[1100px]">
+        <div className="relative h-px w-full bg-zinc-800">
+          <motion.div
+            style={{ scaleX: smooth, transformOrigin: "left" }}
+            className="absolute inset-0 bg-zinc-400"
+          />
+        </div>
+        <div className="mt-3 flex items-center justify-between">
+          <span className="text-sm tracking-widest text-zinc-400">
+            0{index} <span className="text-zinc-600">/ 03</span>
+          </span>
+          <div className="flex items-center gap-4">
+            <div className="hidden items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-zinc-500 sm:flex">
+              <span>Scroll</span>
+              <motion.span
+                aria-hidden
+                animate={{ x: [0, 6, 0] }}
+                transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+                className="text-[#deff00]"
+              >
+                →
+              </motion.span>
+            </div>
+            {/* Tiny arrow controls */}
+            <div className="flex items-center gap-1.5">
+              <button
+                type="button"
+                aria-label="Previous"
+                onClick={() => step(-1)}
+                disabled={atStart}
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 text-zinc-400 transition-colors duration-200 hover:border-[#455CFF]/40 hover:text-white disabled:opacity-30 disabled:hover:border-white/15 disabled:hover:text-zinc-400"
+              >
+                <ChevronLeft className="h-3.5 w-3.5" />
+              </button>
+              <button
+                type="button"
+                aria-label="Next"
+                onClick={() => step(1)}
+                disabled={atEnd}
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 text-zinc-400 transition-colors duration-200 hover:border-[#455CFF]/40 hover:text-white disabled:opacity-30 disabled:hover:border-white/15 disabled:hover:text-zinc-400"
+              >
+                <ChevronRight className="h-3.5 w-3.5" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -172,9 +226,10 @@ function Gallery({ data }) {
 }
 
 /**
- * "A Different Kind of ServiceNow Consulting Firm" — pinned horizontal gallery
- * where each slide is a content-forward tile: a real Degular heading, its lead,
- * and the keypoints set large with blue indices.
+ * "A Different Kind of ServiceNow Consulting Firm" — a user-driven horizontal
+ * scroller (desktop) / stacked list (mobile & reduced-motion). Each tile is a
+ * content-forward panel: a real Degular heading, its lead, and the keypoints
+ * set large with blue indices.
  */
 export default function Differentiators({ data }) {
   const reduceMotion = useReducedMotion()

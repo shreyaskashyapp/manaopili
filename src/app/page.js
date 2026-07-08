@@ -12,7 +12,7 @@ import Reveal from "./components/reveal"
 import SectionHeading from "./components/section-heading"
 import WordReveal from "./components/word-reveal"
 import GlossyButton from "./components/glossy-button"
-import Marquee from "./components/marquee"
+import FocusAreas from "./components/focus-areas"
 
 const data = {
   hero: {
@@ -191,28 +191,18 @@ export default function HomePage() {
             <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#141414]/70 via-transparent to-[#141414]" />
             {/* Film grain */}
             <div aria-hidden className="hero-grain pointer-events-none absolute inset-0 z-[1]" />
-            {/* Aurora — drifting blue depth glow behind the headline */}
-            {reduceMotion ? (
-              <div
-                aria-hidden
-                className="pointer-events-none absolute left-1/2 top-[42%] z-[1] h-[42rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#455CFF] opacity-[0.14] blur-[170px]"
-              />
-            ) : (
-              <>
-                <motion.div
-                  aria-hidden
-                  className="pointer-events-none absolute left-1/2 top-[40%] z-[1] h-[40rem] w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#455CFF] opacity-[0.16] blur-[170px]"
-                  animate={{ x: [0, 70, -50, 0], y: [0, -40, 30, 0], scale: [1, 1.12, 0.95, 1] }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-                />
-                <motion.div
-                  aria-hidden
-                  className="pointer-events-none absolute left-[42%] top-[55%] z-[1] h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#455CFF] opacity-[0.10] blur-[150px]"
-                  animate={{ x: [0, -60, 40, 0], y: [0, 30, -20, 0], scale: [1, 0.9, 1.1, 1] }}
-                  transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
-                />
-              </>
-            )}
+            {/* Aurora — blue depth glow behind the headline. Built from CSS
+                radial-gradients (not blur filters): a 170px gaussian blur pegs
+                WebKit/iOS, while a gradient renders essentially free and looks
+                near-identical. */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-1/2 top-[40%] z-[1] h-[50rem] w-[50rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(69,92,255,0.18)_0%,rgba(69,92,255,0.05)_40%,transparent_70%)]"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-[42%] top-[55%] z-[1] h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(69,92,255,0.11)_0%,transparent_70%)]"
+            />
             {/* Depth vignette */}
             <div
               aria-hidden
@@ -262,6 +252,12 @@ export default function HomePage() {
               </motion.div>
             </div>
           </section>
+
+          {/* Areas we serve — compact keyword index, scrub-linked reveal */}
+          <section className="pt-12 pb-4 md:pt-16 md:pb-6">
+            <FocusAreas />
+          </section>
+
           {/* What we do */}
           <section className="py-20 md:py-28">
             <Reveal className="container mx-auto">
@@ -270,10 +266,7 @@ export default function HomePage() {
             </Reveal>
           </section>
 
-          {/* Ghost capability ticker — texture beat between sections */}
-          <Marquee />
-
-          {/* A Different Kind of ServiceNow Consulting Firm — pinned horizontal gallery */}
+          {/* A Different Kind of ServiceNow Consulting Firm — drag/swipe carousel */}
           <section>
             <Differentiators data={data?.differentiators} />
           </section>
@@ -287,7 +280,7 @@ export default function HomePage() {
           </section>
 
           {/* Why Mana'o Pili */}
-          <section className="py-20 bg-white/[0.015]  md:py-28">
+          <section className="py-20 bg-gradient-to-r from-[#141414] via-zinc-900 to-[#141414]  md:py-28">
             <Reveal>
               <SectionHeading title={`Why Mana'o Pili?`} className="mb-8 md:mb-12" />
               <div className="w-full">

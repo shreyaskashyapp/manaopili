@@ -234,7 +234,7 @@ const hero = {
   title: "Services",
   description: (
     <>
-      Empowering your business with end-to-end <span className="text-[#455CFF]">ServiceNow</span> solutions, driven by expert professionals to maximize <span className="text-[#455CFF]">platform value</span>.
+      End-to-end <span className="text-[#455CFF]">ServiceNow</span> expertise across Information Technology, Information Security, and Cybersecurity, purpose-built for <span className="text-[#455CFF]">regulated industries</span>.
     </>
   )
 }
@@ -259,6 +259,7 @@ export default function Component() {
       <div className="w-full">
         {/* //hero */}
         <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
+
         <div className="container mx-auto px-4 pt-4 pb-10">
           <Suspense fallback={<ServicesAccordion services={services} categories={categories} />}>
             <ServicesContent />

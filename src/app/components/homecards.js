@@ -9,7 +9,7 @@ export default function Cards({ data }) {
                 <div className='flex flex-col md:flex-row justify-center items-stretch gap-4 pb-10 lg:mx-10 mx-4'>
                     {data.map((section, index) => (
                         <Link href={section.link} key={index} className="group w-full md:w-1/3">
-                            <Card className='relative overflow-hidden flex flex-col w-full h-full md:h-[300px] lg:h-[280px] p-2 md:gap-3 rounded-xl border border-zinc-800 shadow-lg bg-gradient-to-br from-zinc-900 to-[#141414] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-[#455CFF]/35 hover:shadow-[0_18px_50px_-24px_rgba(69,92,255,0.3)]'>
+                            <Card className='relative overflow-hidden flex flex-col w-full h-full md:h-[300px] lg:h-[280px] p-2 md:gap-3 rounded-xl border border-zinc-800 shadow-lg bg-gradient-to-br from-zinc-900 to-[#141414] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-[#455CFF]/35 hover:shadow-[0_18px_50px_-24px_rgba(69,92,255,0.3),0_10px_36px_-22px_rgba(222,255,0,0.22)]'>
                                 {/* Soft blue glow bleeding from the top on hover */}
                                 <span
                                     aria-hidden
@@ -18,7 +18,7 @@ export default function Cards({ data }) {
                                 {/* Thin accent line along the top edge */}
                                 <span
                                     aria-hidden
-                                    className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-transparent to-transparent transition-all duration-500 group-hover:via-[#455cff]/70"
+                                    className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-transparent to-transparent transition-all duration-500 group-hover:via-[#deff00]/70"
                                 />
 
                                 <CardHeader className="relative z-10">
@@ -33,7 +33,7 @@ export default function Cards({ data }) {
                                 </CardContent>
                                 <CardFooter className='relative z-10 flex justify-end'>
                                     <Image
-                                        src="/arrow_blue.webp"
+                                        src="/arrow_yellow.png"
                                         alt="Arrow"
                                         width={20}
                                         height={20}

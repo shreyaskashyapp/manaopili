@@ -71,23 +71,16 @@ export default function HeroSection({
         </>
       )}
 
-      {/* Aurora — blue depth glow anchored behind the title */}
-      {reduceMotion ? (
-        <div
-          aria-hidden
-          className="pointer-events-none absolute left-[18%] top-[55%] h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#455CFF] opacity-[0.16] blur-[160px]"
-        />
-      ) : (
-        <motion.div
-          aria-hidden
-          className="pointer-events-none absolute left-[18%] top-[55%] h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#455CFF] opacity-[0.16] blur-[160px]"
-          animate={{ x: [0, 50, -35, 0], y: [0, -30, 25, 0], scale: [1, 1.1, 0.95, 1] }}
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-        />
-      )}
+      {/* Aurora — blue depth glow behind the title, built from CSS
+          radial-gradients instead of blur filters (a 160px blur pegs
+          WebKit/iOS; a gradient renders essentially free, near-identical look). */}
       <div
         aria-hidden
-        className="pointer-events-none absolute right-[8%] top-[20%] h-[20rem] w-[20rem] rounded-full bg-[#455CFF] opacity-[0.07] blur-[140px]"
+        className="pointer-events-none absolute left-[18%] top-[55%] h-[44rem] w-[44rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(69,92,255,0.18)_0%,rgba(69,92,255,0.05)_40%,transparent_70%)]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-[8%] top-[20%] h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(69,92,255,0.08)_0%,transparent_70%)]"
       />
 
       {/* Film grain for texture consistency with homepage */}
