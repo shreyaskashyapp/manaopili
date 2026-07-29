@@ -271,7 +271,7 @@ const BlogCard = ({ post }) => {
             </div>
             <div className="p-4 space-y-3 flex flex-col ">
                 {/* <p className="text-sm text-gray-400 mb-1">{post.date}</p> */}
-                <p className="text-[11px] uppercase tracking-[0.2em] text-[#455CFF]">{post?.category}</p>
+                <p className="text-[11px] uppercase tracking-[0.2em] text-[#455CFF]"><span aria-hidden className="text-[#deff00]">— </span>{post?.category}</p>
                 <h3 className="font-heading text-xl font-semibold group-hover:text-white text-zinc-200 transition-colors duration-200">{post.title}</h3>
                 <p className="text-gray-500 text-sm md:text-base  line-clamp-2 pb-20">{post.description}</p>
                 {isMobile ? (
@@ -286,7 +286,7 @@ const BlogCard = ({ post }) => {
                     </a>
                 ) : (
 
-                    <button onClick={() => router.push(`/white-paper?paper=${post.slug}`)} className="text-[#455CFF] bottom-5 absolute flex items-start font-medium text-sm md:text-lg underline-offset-4 group-hover:underline">
+                    <button onClick={() => router.push(`/white-paper?paper=${post.slug}`)} className="text-[#455CFF] bottom-5 absolute flex items-start font-medium text-sm md:text-lg underline-offset-4 transition-colors duration-200 group-hover:text-[#deff00] group-hover:underline">
                         Read More
                     </button>
 
@@ -392,7 +392,7 @@ function ContentHub() {
         <div className="min-h-screen bg-[#141414]">
             {/* Compact header */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-6 md:pt-32">
-                <p className="text-[11px] uppercase tracking-[0.25em] text-[#455CFF] mb-3">Resources</p>
+                <p className="text-[11px] uppercase tracking-[0.25em] text-[#455CFF] mb-3"><span aria-hidden className="text-[#deff00]">— </span>Resources</p>
                 <h1 className="font-heading text-4xl md:text-6xl font-light text-white leading-tight">Expert Guides</h1>
                 <p className="mt-4 max-w-2xl text-zinc-400 leading-relaxed">
                     Articles, playbooks, and videos on getting more out of your ServiceNow investment.
@@ -412,7 +412,7 @@ function ContentHub() {
                                 }`}
                             >
                                 {t.label}
-                                <span className="ml-1.5 align-top text-[11px] text-zinc-600">{t.count}</span>
+                                <span className="ml-1.5 align-top text-[11px] text-[#deff00]/60">{t.count}</span>
                             </button>
                         ))}
                     </div>

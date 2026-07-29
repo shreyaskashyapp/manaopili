@@ -79,7 +79,7 @@ function Row({ item, Icon, reduceMotion }) {
           >
             {item.capabilities.map((c) => (
               <li key={c} className="flex items-start gap-3 text-base text-zinc-300">
-                <Check className="mt-1 h-4 w-4 shrink-0 text-[#455CFF]" strokeWidth={3} />
+                <Check className="mt-1 h-4 w-4 shrink-0 text-[#deff00]" strokeWidth={3} />
                 {/* Mask-rise text — matches the WordReveal language */}
                 <span className="inline-block overflow-hidden pb-[0.1em] -mb-[0.1em] align-bottom">
                   <motion.span variants={reduceMotion ? undefined : itemVar} className="inline-block">

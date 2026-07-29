@@ -53,7 +53,7 @@ export default function ServicesAccordion({ services, categories, defaultSection
               >
                 <span
                   aria-hidden
-                  className="font-heading w-12 select-none text-4xl font-light leading-none text-white/[0.08] transition-colors duration-300 group-hover:text-[#455CFF]/30 md:w-20 md:text-6xl"
+                  className="font-heading w-12 select-none text-4xl font-light leading-none text-white/[0.08] transition-colors duration-300 group-hover:text-[#deff00]/40 md:w-20 md:text-6xl"
                 >
                   0{index + 1}
                 </span>
@@ -103,7 +103,7 @@ export default function ServicesAccordion({ services, categories, defaultSection
                               </p>
                             </div>
                             <ArrowUpRight
-                              className="h-4 w-4 shrink-0 text-zinc-600 transition-all duration-200 group-hover/item:translate-x-0.5 group-hover/item:-translate-y-0.5 group-hover/item:text-[#455CFF]"
+                              className="h-4 w-4 shrink-0 text-zinc-600 transition-all duration-200 group-hover/item:translate-x-0.5 group-hover/item:-translate-y-0.5 group-hover/item:text-[#deff00]"
                             />
                           </Link>
                         ))}

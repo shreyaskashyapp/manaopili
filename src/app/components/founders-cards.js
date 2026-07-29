@@ -25,11 +25,12 @@ export default function Founders({ team }) {
                         />
                     </div>
                     <div className="mt-6">
-                        {member.titles.map((title) => (
+                        {member.titles.map((title, i) => (
                             <p
                                 key={title}
                                 className="text-[11px] uppercase tracking-[0.25em] text-[#455CFF]"
                             >
+                                {i === 0 && <span aria-hidden className="text-[#deff00]">— </span>}
                                 {title}
                             </p>
                         ))}

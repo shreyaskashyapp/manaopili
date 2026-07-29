@@ -68,7 +68,7 @@ export default function FocusAreas({
   return (
     <div className={`container mx-auto max-w-6xl px-6 ${className}`}>
       <div className="text-center">
-        <p className="mb-3 text-[11px] uppercase tracking-[0.25em] text-[#455CFF] md:text-xs">
+        <p className="mb-3 text-[11px] uppercase tracking-[0.25em] text-[#DEFF00] md:text-xs">
           Areas We Serve
         </p>
         <h2 className="font-heading mx-auto max-w-2xl text-2xl leading-snug text-[#e2e2e2] md:text-3xl">

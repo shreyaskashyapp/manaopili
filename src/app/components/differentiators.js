@@ -30,7 +30,7 @@ function ContentTile({ card, index }) {
 
       {/* Heading + lead */}
       <div className="relative max-w-2xl">
-        <span aria-hidden className="mb-6 block h-1 w-12 rounded-full bg-[#455CFF]" />
+        <span aria-hidden className="mb-6 block h-1 w-12 rounded-full bg-[#deff00]" />
         <h3 className="font-heading text-3xl leading-[1.05] text-white md:text-4xl lg:text-5xl">
           {card.title}
         </h3>
@@ -48,7 +48,7 @@ function ContentTile({ card, index }) {
             <li key={p} className="flex items-baseline gap-3.5">
               <span
                 aria-hidden
-                className="shrink-0 text-[11px] tracking-widest text-[#455CFF]"
+                className="shrink-0 text-[11px] tracking-widest text-[#deff00]"
               >
                 0{i + 1}
               </span>

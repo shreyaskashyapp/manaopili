@@ -64,7 +64,7 @@ export default function ContactBanner({ color }) {
               key={feature}
               className="flex items-center gap-2.5 px-6 py-3 text-sm text-zinc-400 sm:py-0"
             >
-              <Check className="h-3.5 w-3.5 shrink-0 text-[#455CFF]" strokeWidth={3} />
+              <Check className="h-3.5 w-3.5 shrink-0 text-[#deff00]" strokeWidth={3} />
               {feature}
             </span>
           ))}

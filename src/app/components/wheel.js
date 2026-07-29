@@ -103,7 +103,7 @@ export default function WhyManaopiliWheel() {
 
                         {/* Savings label */}
                         <div
-                            className="absolute top-[-25px] md:top-[-40px] left-1/2 transform -translate-x-1/2 text-white text-center font-sans text-xs md:text-xl font-normal leading-none cursor-pointer hover:text-[#455cff]"
+                            className="absolute top-[-25px] md:top-[-40px] left-1/2 transform -translate-x-1/2 text-white text-center font-sans text-[10px] md:text-xl font-normal leading-none cursor-pointer hover:text-[#455cff]"
                             onMouseEnter={() => selectPillar('savings')}
                             onTouchStart={() => selectPillar('savings')}
                         >
@@ -119,7 +119,7 @@ export default function WhyManaopiliWheel() {
 
                         {/* Experience label */}
                         <div
-                            className="absolute top-[28%] md:top-[30%] right-[-87px] md:right-[-37%] transform -translate-x-1/2 text-white text-center font-sans text-xs md:text-xl font-normal leading-none cursor-pointer hover:text-[#455cff]"
+                            className="absolute top-[28%] md:top-[30%] right-[-72px] md:right-[-37%] transform -translate-x-1/2 text-white text-center font-sans text-[10px] md:text-xl font-normal leading-none cursor-pointer hover:text-[#455cff]"
                             onMouseEnter={() => selectPillar('experience')}
                             onTouchStart={() => selectPillar('experience')}
                         >
@@ -135,7 +135,7 @@ export default function WhyManaopiliWheel() {
 
                         {/* Customer Centric label */}
                         <div
-                            className="absolute top-[32%] left-[-55px] md:left-[-78px] transform -translate-y-1/2 text-white text-center font-sans text-xs md:text-xl font-normal leading-none cursor-pointer hover:text-[#455cff]"
+                            className="absolute top-[32%] left-[-45px] md:left-[-78px] transform -translate-y-1/2 text-white text-center font-sans text-[10px] md:text-xl font-normal leading-none cursor-pointer hover:text-[#455cff]"
                             onMouseEnter={() => selectPillar('customerCentric')}
                             onTouchStart={() => selectPillar('customerCentric')}
                         >
@@ -151,7 +151,7 @@ export default function WhyManaopiliWheel() {
 
                         {/* Transform in Place label */}
                         <div
-                            className="absolute top-[85%] right-[-36px] md:right-[-60px] transform -translate-y-1/2 text-white text-center font-sans text-xs md:text-xl font-normal leading-none cursor-pointer hover:text-[#455cff]"
+                            className="absolute top-[85%] right-[-30px] md:right-[-60px] transform -translate-y-1/2 text-white text-center font-sans text-[10px] md:text-xl font-normal leading-none cursor-pointer hover:text-[#455cff]"
                             onMouseEnter={() => selectPillar('transform')}
                             onTouchStart={() => selectPillar('transform')}
                         >
@@ -167,7 +167,7 @@ export default function WhyManaopiliWheel() {
 
                         {/* Technical Expertise label */}
                         <div
-                            className="absolute left-[-30px] md:left-[-48px] top-[80%] text-white text-center font-sans text-xs md:text-xl font-normal leading-none cursor-pointer hover:text-[#455cff]"
+                            className="absolute left-[-30px] md:left-[-48px] top-[80%] text-white text-center font-sans text-[10px] md:text-xl font-normal leading-none cursor-pointer hover:text-[#455cff]"
                             onMouseEnter={() => selectPillar('technical')}
                             onTouchStart={() => selectPillar('technical')}
                         >

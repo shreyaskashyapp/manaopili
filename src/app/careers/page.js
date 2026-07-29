@@ -81,7 +81,7 @@ function JobCard({ job, index }) {
           View Details
           <ArrowRight
             size={14}
-            className="group-hover:translate-x-1 transition-transform duration-200"
+            className="group-hover:translate-x-1 group-hover:text-[#deff00] transition-all duration-200"
           />
         </Link>
       </div>

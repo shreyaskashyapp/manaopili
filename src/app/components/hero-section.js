@@ -100,7 +100,7 @@ export default function HeroSection({
         {/* Accent bar — small, deliberate */}
         <motion.span
           aria-hidden
-          className="block h-1 w-14 rounded-full bg-[#455CFF] origin-left"
+          className="block h-1 w-14 rounded-full bg-[#deff00] origin-left"
           {...(reduceMotion
             ? {}
             : {
