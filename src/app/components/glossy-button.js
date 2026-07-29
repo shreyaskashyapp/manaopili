@@ -27,7 +27,7 @@ export default function GlossyButton({ href = "#", icon: Icon = ArrowUpRight, cl
     >
       {children}
       {Icon && (
-        <Icon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        <Icon className="h-4 w-4 transition-transform text-[#DEFF00] duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
       )}
     </Link>
   )

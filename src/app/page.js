@@ -238,7 +238,7 @@ export default function HomePage() {
                 {/* Proof points */}
                 <motion.div
                   {...appear(1.25)}
-                  className="mt-10 flex w-full max-w-sm flex-col items-center divide-y divide-[#DEFF00] sm:mt-14 sm:w-auto sm:max-w-none sm:flex-row sm:items-stretch sm:divide-y-0 sm:divide-x"
+                  className="mt-10 flex w-full max-w-sm flex-col items-center divide-y divide-white/10 sm:mt-14 sm:w-auto sm:max-w-none sm:flex-row sm:items-stretch sm:divide-y-0 sm:divide-x"
                 >
                   {data.hero.bullets.map((p) => (
                     <p

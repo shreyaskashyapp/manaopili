@@ -258,7 +258,7 @@ export default function Component() {
     <div className=" bg-[#141414]">
       <div className="w-full">
         {/* //hero */}
-        <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
+        <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} bgImage="/digital-assets/volcano.webp" />
 
         <div className="container mx-auto px-4 pt-4 pb-10">
           <Suspense fallback={<ServicesAccordion services={services} categories={categories} />}>
