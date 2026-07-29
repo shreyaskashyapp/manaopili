@@ -11,7 +11,7 @@ export default function SectionHeading({ eyebrow, title, align = "center", class
         <div className={`${alignment} max-w-3xl px-4 ${className}`}>
             {eyebrow && (
                 <p className="mb-3 text-[11px] md:text-xs uppercase tracking-[0.25em] text-[#455CFF]">
-                    {eyebrow}
+                    <span aria-hidden className="text-[#deff00]">— </span>{eyebrow}
                 </p>
             )}
             {typeof title === "string" ? (

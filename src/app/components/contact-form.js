@@ -70,7 +70,7 @@ export default function ContactForm() {
                         {formFields.map((field) => (
                             <div key={field.id} className="space-y-2.5">
                                 <Label htmlFor={field.id} className="text-[11px] uppercase tracking-[0.25em] text-zinc-400">
-                                    {field.label}{field.isRequired ? <span className="text-[#455CFF]"> *</span> : null}
+                                    {field.label}{field.isRequired ? <span className="text-[#deff00]"> *</span> : null}
                                 </Label>
                                 {field.type === "message" ? (
                                     <Textarea

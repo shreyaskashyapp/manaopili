@@ -9,7 +9,7 @@ export default function AboutCards({ data }) {
         <div className="mx-auto grid max-w-5xl gap-x-14 gap-y-12 md:grid-cols-2">
             {data.map((section, index) => (
                 <Reveal key={section.title} delay={index * 0.08}>
-                    <span aria-hidden className="mb-5 block h-1 w-12 rounded-full bg-[#455CFF]" />
+                    <span aria-hidden className="mb-5 block h-1 w-12 rounded-full bg-[#deff00]" />
                     <h3 className="font-heading text-2xl leading-snug text-white md:text-3xl">
                         {section.title}
                     </h3>

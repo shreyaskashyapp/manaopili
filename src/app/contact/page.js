@@ -20,7 +20,7 @@ const data = {
 export default function Contact() {
     return (
         <div>
-            <HeroSection data={data} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
+            <HeroSection data={data} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} bgImage="/digital-assets/honalulu-hero.webp"/>
             <Reveal className="pb-10">
                 <ContactForm />
             </Reveal>

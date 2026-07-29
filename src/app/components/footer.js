@@ -47,7 +47,7 @@ export default function Footer() {
             {links[item].map((link, idx) => (
               <div key={idx} className="">
                 <a href={link.href} target={item==="Connect" ? "_blank" : ""}>
-                  <p className="text-base text-zinc-300 hover:text-[#455CFF] transition-colors duration-200 items-center">
+                  <p className="text-base text-zinc-300 hover:text-[#deff00] transition-colors duration-200 items-center">
                     {link.icon && link.icon}
                     {link.name}
                   </p>
@@ -62,7 +62,7 @@ export default function Footer() {
       {/* copyrights */}
       <div className="border-t border-white/10 py-5 mx-6 max-w-7xl md:mx-auto flex justify-center">
         <p className="text-sm text-zinc-500">
-          &copy; 2025 {`Mana'o Pili LLC. All rights reserved.`}
+          &copy; 2026 {`Mana'o Pili LLC. All rights reserved.`}
         </p>
       </div>
     </footer>

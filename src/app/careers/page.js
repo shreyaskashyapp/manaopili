@@ -81,7 +81,7 @@ function JobCard({ job, index }) {
           View Details
           <ArrowRight
             size={14}
-            className="group-hover:translate-x-1 transition-transform duration-200"
+            className="group-hover:translate-x-1 group-hover:text-[#deff00] transition-all duration-200"
           />
         </Link>
       </div>
@@ -93,7 +93,7 @@ function JobCard({ job, index }) {
 const Careers = () => {
   return (
     <div className="min-h-screen bg-[#141414] text-white">
-      <HeroSection data={heroData} bgColor="from-[#455CFF] to-[#141414]" />
+      <HeroSection data={heroData} bgColor="from-[#455CFF] to-[#141414]" bgImage="/digital-assets/palm-trees-long.webp" />
 
       <section className="container mx-auto px-4 md:px-10 lg:px-20 py-16">
         <Reveal as="h2" className="font-heading text-4xl md:text-5xl text-white mb-10">

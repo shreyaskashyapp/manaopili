@@ -76,7 +76,7 @@ export default function About() {
   return (
     <div className=" bg-[#141414] w-full">
       {/* hero section */}
-      <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} />
+      <HeroSection data={hero} bgColor={`from-[#455CFF] to-[#141414]`} height={`[70vh]`} bgImage="/digital-assets/tiki-long.webp" />
       {/* resources */}
       <section className="px-6 py-16 md:py-24 lg:px-32">
         <Reveal>

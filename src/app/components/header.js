@@ -39,7 +39,7 @@ function DropdownMenu({ items, align = "left", open }) {
           <Link
             key={item.href + item.label}
             href={item.href}
-            className="block rounded-lg px-4 py-2.5 text-xs tracking-widest font-normal text-zinc-400 hover:text-[#455CFF] hover:bg-[#455CFF]/5 transition-colors whitespace-nowrap"
+            className="block rounded-lg px-4 py-2.5 text-xs tracking-widest font-normal text-zinc-400 hover:text-[#deff00] hover:bg-[#455CFF]/5 transition-colors whitespace-nowrap"
           >
             {item.label}
           </Link>
@@ -76,7 +76,7 @@ function NavDropdown({ label, items, align }) {
       onMouseLeave={close_}
     >
       <button
-        className="flex items-center gap-1 font-sans text-xs tracking-widest font-normal text-zinc-100 hover:text-[#455CFF] transition-colors py-2"
+        className="flex items-center gap-1 font-sans text-xs tracking-widest font-normal text-zinc-100 hover:text-[#deff00] transition-colors py-2"
         onClick={() => setOpen((v) => !v)}
       >
         {label}
@@ -118,7 +118,7 @@ export default function Header() {
             <NavDropdown label="SERVICES" items={servicesDropdown} align="left" />
             <Link
               href="/expert-guides"
-              className="text-xs tracking-widest font-normal text-zinc-100 hover:text-[#455CFF] transition-colors"
+              className="text-xs tracking-widest font-normal text-zinc-100 hover:text-[#deff00] transition-colors"
             >
               EXPERT GUIDES
             </Link>
@@ -151,7 +151,7 @@ export default function Header() {
 
             {/* Services accordion */}
             <button
-              className="flex items-center justify-between w-full text-sm tracking-widest text-zinc-100 py-3 hover:text-[#455CFF] transition-colors"
+              className="flex items-center justify-between w-full text-sm tracking-widest text-zinc-100 py-3 hover:text-[#deff00] transition-colors"
               onClick={() => setMobileServicesOpen((v) => !v)}
             >
               SERVICES
@@ -163,7 +163,7 @@ export default function Header() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="text-xs tracking-widest text-zinc-400 hover:text-[#455CFF] transition-colors py-2"
+                    className="text-xs tracking-widest text-zinc-400 hover:text-[#deff00] transition-colors py-2"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
@@ -174,7 +174,7 @@ export default function Header() {
 
             <Link
               href="/expert-guides"
-              className="text-xs tracking-widest text-zinc-100 hover:text-[#455CFF] transition-colors py-3"
+              className="text-xs tracking-widest text-zinc-100 hover:text-[#deff00] transition-colors py-3"
               onClick={() => setIsMenuOpen(false)}
             >
               EXPERT GUIDES
@@ -182,7 +182,7 @@ export default function Header() {
 
             {/* About accordion */}
             <button
-              className="flex items-center justify-between w-full text-sm tracking-widest text-zinc-100 py-3 hover:text-[#455CFF] transition-colors"
+              className="flex items-center justify-between w-full text-sm tracking-widest text-zinc-100 py-3 hover:text-[#deff00] transition-colors"
               onClick={() => setMobileAboutOpen((v) => !v)}
             >
               ABOUT
@@ -194,7 +194,7 @@ export default function Header() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="text-xs tracking-widest text-zinc-400 hover:text-[#455CFF] transition-colors py-2"
+                    className="text-xs tracking-widest text-zinc-400 hover:text-[#deff00] transition-colors py-2"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
