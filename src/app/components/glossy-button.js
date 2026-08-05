@@ -1,6 +1,6 @@
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
 import { cn } from "@/lib/utils"
+import YellowArrow from "./yellow-arrow"
 
 /**
  * Sleek, glossy outline pill CTA — the site's primary button.
@@ -8,11 +8,12 @@ import { cn } from "@/lib/utils"
  *
  * Props:
  *  - href:   destination (works for internal routes and external links)
- *  - icon:   lucide icon component (default ArrowUpRight); pass null to omit
+ *  - icon:   defaults to the brand yellow arrow; pass a lucide icon to override,
+ *            or `null` to omit the trailing mark entirely
  *  - className: extra classes
  *  - children: button label
  */
-export default function GlossyButton({ href = "#", icon: Icon = ArrowUpRight, className = "", children, ...props }) {
+export default function GlossyButton({ href = "#", icon: Icon, className = "", children, ...props }) {
   return (
     <Link
       href={href}
@@ -26,8 +27,10 @@ export default function GlossyButton({ href = "#", icon: Icon = ArrowUpRight, cl
       {...props}
     >
       {children}
-      {Icon && (
+      {Icon === null ? null : Icon ? (
         <Icon className="h-4 w-4 transition-transform text-[#DEFF00] duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+      ) : (
+        <YellowArrow className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
       )}
     </Link>
   )

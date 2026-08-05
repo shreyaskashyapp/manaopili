@@ -2,7 +2,8 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Check, ArrowUpRight } from "lucide-react";
+import { Check } from "lucide-react";
+import YellowArrow from "./yellow-arrow";
 import axios from "axios";
 import { useState } from "react";
 import LoadingIndicator from "./loader";
@@ -59,7 +60,7 @@ export default function ContactForm() {
                         className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.06] px-7 py-3 text-sm tracking-wide text-white backdrop-blur-md ring-1 ring-inset ring-white/10 transition-all duration-300 hover:border-[#455CFF]/70 hover:bg-[#455CFF]/15"
                     >
                         Send Another Message
-                        <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        <YellowArrow className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
                     </button>
                 </div>
             ) : (
@@ -97,7 +98,7 @@ export default function ContactForm() {
                             className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.06] py-3.5 text-sm md:text-base tracking-wide text-white backdrop-blur-md ring-1 ring-inset ring-white/10 shadow-lg shadow-black/20 transition-all duration-300 hover:border-[#455CFF]/70 hover:bg-[#455CFF]/15 hover:ring-[#455CFF]/30"
                         >
                             Submit
-                            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                            <YellowArrow className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
                         </button>
                     </form>
                 </div>
