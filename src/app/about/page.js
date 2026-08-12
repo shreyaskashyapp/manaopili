@@ -1,6 +1,7 @@
 import Image from "next/image";
 import AboutCards from "../components/about-cards";
 import Founders from "../components/founders-cards";
+import LeadershipCards from "../components/leadership-cards";
 import GlobalImage from "../components/global-image";
 import HeroSection from "../components/hero-section";
 import SurveyButton from "../components/surveyButton";
@@ -45,6 +46,41 @@ const data = {
           "Chief Operations Officer",
           "Co-Founder"
         ]
+      }
+    ]
+  },
+  "leadership": {
+    "description": "The experienced leaders driving our strategy, delivery, and client success.",
+    "teamMembers": [
+      {
+        "imagePath": "/about/team/mariah-krohngold.jpeg",
+        "name": "Mariah Krohngold",
+        "title": "Marketing Manager",
+        "department": "Marketing"
+      },
+      {
+        "imagePath": "/about/team/rick-yee.jpeg",
+        "name": "Rick Yee",
+        "title": "General Counsel",
+        "department": "Legal"
+      },
+      {
+        "imagePath": "/about/team/nate-han.jpeg",
+        "name": "Nate Han",
+        "title": "Program Manager",
+        "department": "Program Management"
+      },
+      {
+        "imagePath": "/about/team/january-liddell.jpeg",
+        "name": "January Liddell",
+        "title": "Sales Manager",
+        "department": "Sales"
+      },
+      {
+        "imagePath": "/about/team/nidhi-atri.jpeg",
+        "name": "Nidhi Atri",
+        "title": "Principal Architect",
+        "department": "Architecture"
       }
     ]
   },
@@ -97,11 +133,23 @@ export default function About() {
           <SurveyButton title='Schedule a meeting!' url={process.env.NEXT_PUBLIC_OUTLOOK_BOOKING_LINK} />
         </Reveal>
       </section>
-      {/* global presence */}
+      {/* leadership team */}
       <section className="py-16 md:py-24">
         <Reveal>
-          <SectionHeading title="Global Presence" className="mb-10" />
+          <SectionHeading title="Leadership Team" className="mb-4" />
         </Reveal>
+        <Reveal delay={0.1}>
+          <p className="mx-auto mb-12 max-w-2xl px-6 text-center leading-relaxed text-zinc-400 md:mb-16">
+            {data.leadership.description}
+          </p>
+        </Reveal>
+        <LeadershipCards team={data.leadership.teamMembers} />
+      </section>
+      {/* global presence */}
+      <section className="py-16 md:py-24">
+        {/* <Reveal>
+          <SectionHeading title="Global Presence" className="mb-10" />
+        </Reveal> */}
         <GlobalImage data={data.globalPresence} />
       </section>
     </div>

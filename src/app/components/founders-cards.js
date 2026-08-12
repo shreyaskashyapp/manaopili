@@ -7,7 +7,7 @@ import Reveal from './reveal'
  */
 export default function Founders({ team }) {
     return (
-        <div className="mx-auto flex max-w-4xl flex-col items-start justify-center gap-14 px-6 py-14 md:flex-row md:gap-24">
+        <div className="mx-auto flex max-w-4xl flex-col items-center justify-center gap-14 px-6 py-14 md:flex-row md:items-start md:gap-24">
             {team.map((member, index) => (
                 <Reveal key={member.name} delay={index * 0.12} className="group w-full max-w-xs">
                     <div className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.02]">
