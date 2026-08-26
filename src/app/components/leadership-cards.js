@@ -66,14 +66,14 @@ export default function LeadershipCards({ team }) {
             {team.map((member, index) => (
                 <Reveal key={member.name} delay={index * 0.08} className="group">
                     <Portrait member={member} />
-                    <p className="mt-4 text-[10px] uppercase leading-relaxed tracking-[0.2em] text-[#455CFF] sm:text-[11px]">
+                    {/* <p className="mt-4 text-[10px] uppercase leading-relaxed tracking-[0.2em] text-[#455CFF] sm:text-[11px]">
                         <span aria-hidden className="text-[#deff00]">— </span>
                         {member.title}
-                    </p>
+                    </p> */}
                     <h3 className="font-heading mt-1.5 text-lg leading-snug text-white sm:text-xl lg:text-[1.65rem]">
                         {member.name}
                     </h3>
-                    <p className="mt-1 text-md text-zinc-500">{member.department}</p>
+                    <p className="mt-1 text-md text-[#deff00]/80">{member.department}</p>
                 </Reveal>
             ))}
         </div>

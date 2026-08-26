@@ -56,11 +56,6 @@ export default function WhyManaopiliWheel() {
             description: "Enhancing user and employee experiences across the enterprise.",
         },
         {
-            id: "customerCentric",
-            title: "Customer Centric",
-            description: "Tailoring every solution to your unique needs and goals.",
-        },
-        {
             id: "transform",
             title: "Transform in Place",
             description: "Driving change without disrupting your business.",
@@ -69,6 +64,11 @@ export default function WhyManaopiliWheel() {
             id: "technical",
             title: "Technical Expertise",
             description: "Leveraging proven skills and innovation for ServiceNow success.",
+        },
+        {
+            id: "customerCentric",
+            title: "Customer Centric",
+            description: "Tailoring every solution to your unique needs and goals.",
         },
     ];
 

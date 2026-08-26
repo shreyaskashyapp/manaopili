@@ -53,10 +53,10 @@ const data = {
     "description": "The experienced leaders driving our strategy, delivery, and client success.",
     "teamMembers": [
       {
-        "imagePath": "/about/team/mariah-krohngold.jpeg",
-        "name": "Mariah Krohngold",
-        "title": "Marketing Manager",
-        "department": "Marketing"
+        "imagePath": "/about/team/lorraine.png",
+        "name": "Lorraine Sue",
+        "title": "Finance",
+        "department": "Finance"
       },
       {
         "imagePath": "/about/team/rick-yee.jpeg",
@@ -65,19 +65,19 @@ const data = {
         "department": "Legal"
       },
       {
-        "imagePath": "/about/team/nate-han.jpeg",
+        "imagePath": "/about/team/nate.webp",
         "name": "Nate Han",
         "title": "Program Manager",
         "department": "Program Management"
       },
       {
-        "imagePath": "/about/team/january-liddell.jpeg",
+        "imagePath": "/about/team/january.png",
         "name": "January Liddell",
         "title": "Sales Manager",
         "department": "Sales"
       },
       {
-        "imagePath": "/about/team/nidhi-atri.jpeg",
+        "imagePath": "/about/team/nidhi.webp",
         "name": "Nidhi Atri",
         "title": "Principal Architect",
         "department": "Architecture"

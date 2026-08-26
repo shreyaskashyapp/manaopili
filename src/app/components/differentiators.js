@@ -150,7 +150,7 @@ function Gallery({ data }) {
           )}
           {/* Directional cue: makes the horizontal mechanic obvious */}
           <div className="mt-10 flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-zinc-500">
-            <span>Scroll to explore</span>
+            <span className="text-[#DEFF00]">Scroll to explore</span>
             <motion.span
               aria-hidden
               animate={{ x: [0, 8, 0] }}
@@ -178,15 +178,15 @@ function Gallery({ data }) {
         <div className="relative h-px w-full bg-zinc-800">
           <motion.div
             style={{ scaleX: smooth, transformOrigin: "left" }}
-            className="absolute inset-0 bg-zinc-400"
+            className="absolute inset-0 bg-[#DEFF00]"
           />
         </div>
         <div className="mt-3 flex items-center justify-between">
-          <span className="text-sm tracking-widest text-zinc-400">
-            0{index} <span className="text-zinc-600">/ 03</span>
+          <span className="text-sm tracking-widest text-[#DEFF00]">
+            0{index} <span className="text-[#DEFF00]">/ 03</span>
           </span>
           <div className="flex items-center gap-4">
-            <div className="hidden items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-zinc-500 sm:flex">
+            <div className="hidden items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-[#DEFF00] sm:flex">
               <span>Scroll</span>
               <motion.span
                 aria-hidden
